@@ -20,7 +20,7 @@ This work rebels against the tyranny of centralized financial institutions. Our 
 We're setting the stage for independent money managers to rise and thrive in a decentralized system. It's about providing opportunities based on merit, talent, and hard work, not just institutional backing.
 
 ### Empowerment Through Decentralization 🌐
-The decentralized nature of our system offers more personalized, efficient, and transparent asset management services without the traditional costs and limitations. No more must you trust PDF broker statements.
+The decentralized nature of our system offers more personalized, efficient, and transparent asset management services without traditional costs and limitations. No more must you trust PDF broker statements.
 
 ---
 
