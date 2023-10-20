@@ -13,7 +13,7 @@ We're not just building an online platform; we're striving for a democratic shif
 This work rebels against the tyranny of centralized financial institutions. Our algorithms and platforms aim to give everyone, regardless of socio-economic status, a fair shot at financial stability.
 
 ### A New Trust Infrastructure 🔒
-Blockchain isn't a fad; it's the future. It moves the locus of trust from opaque corporations to transparent codes and communities. This foundational shift will redefine our financial ecosystem.
+Blockchain isn't a fad; it's the future. It moves the locus of trust from opaque corporations to transparent codes and communities.
 
 ---
 
