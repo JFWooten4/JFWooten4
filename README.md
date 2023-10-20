@@ -7,7 +7,7 @@ Welcome, kindred spirits. 🤝 This isn't just another GitHub profile; it's a st
 ## 📜 The Principle of Democratization: A Financial System for Everyone 🌍
 
 ### Reimagining Asset Management 💡
-We're not just building an online broker; we're striving for a democratic shift in asset management. By April 29, 2031, we aim to combine traditional equity, bond, and cryptocurrency markets into a single, decentralized platform.
+We're not just building an online platform; we're striving for a democratic shift in asset management. By April 29, 2031, we aim to combine traditional equity, bond, and (crypto)currency markets into a single, decentralized platform.
 
 ### Unshackling Financial Barriers 🛠
 This work rebels against the tyranny of centralized financial institutions. Our algorithms and platforms aim to give everyone, regardless of socio-economic status, a fair shot at financial stability.
