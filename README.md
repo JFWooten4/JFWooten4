@@ -30,7 +30,7 @@ The decentralized nature of our system offers more personalized, efficient, and 
 ## ✊ Join the Revolution 🛠
 
 ### Beyond Code 📚
-Your expertise is crucial, but it's your principles that will fuel this revolution. By contributing to our projects, you're not just coding; you're laying down the ethical and technological foundations of a new financial universe.
+Your expertise is crucial, but it's your principles that will fuel this revolution. By contributing to our projects, you're not just coding; you're laying down the ethical and technological foundations of a new financial system.
 
 ### The Journey Ahead 🗺
 We have a vision and the roadmap to a democratized financial future. What we need is you—your skills, your principles, and your commitment to change. Together, let's build financial systems that are by the people, for the people.
