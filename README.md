@@ -1,6 +1,6 @@
 # 🌟 A Manifesto for a Decentralized Financial Future 🌟
 
-Welcome, kindred spirits. 🤝 This isn't just another GitHub profile; it's a starting point for a transformative journey. As part of Block Transfer, I'm dedicated to creating an equitable financial system for the other 7 billion citizens without access to quality investment markets.
+Welcome, kindred spirits. 🤝 This isn't just another GitHub profile; it's a starting point for a transformative journey. As part of Block Transfer, I'm dedicated to creating an equitable financial system for the other 7 billion citizens without access to quality investments.
 
 ---
 
