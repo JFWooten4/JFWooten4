@@ -2,7 +2,7 @@
 
 Finance [Author](https://author.jfwooten4.com), Passionate [Trader](https://stockmarketsecrets.exposed), & Web3 [Entrepreneur](https://blocktransfer.com/.well-known/deck.pdf)
 
-Available for speaking engagements: [Email Us](mailto:john-speaking@wootenwealth.com)
+Available for speaking engagements 💜
 
 ### 👋 Things I'd Like to Do
 - Design universal adoption of [Stellar](https://stellar.org), ID, and rights <!-- TODO: Framwork for universal ID certificate authorities and standard interplanetary rights via collective free market gov. -->
@@ -21,7 +21,7 @@ Available for speaking engagements: [Email Us](mailto:john-speaking@wootenwealth
 
 ### Social Links
 [![GitHub](https://blocktransfer.com/imgs/email/github.png)](https://github.com/JFWooten4)
-[![Twitter](https://blocktransfer.com/imgs/email/twitter.png)](https://twitter.com/JFWooten4)
+[![X](https://blocktransfer.com/imgs/email/x.png)](https://x.com/JFWooten4)
 [![YouTube](https://blocktransfer.com/imgs/email/youtube.png)](https://youtu.be/S75IvkicWD8)
 [![LinkedIn](https://blocktransfer.com/imgs/email/linkedin.png)](https://www.linkedin.com/in/jfwooten4/)
 [![Blog](https://blocktransfer.com/imgs/email/blog.png)](https://www.blocktransfer.com/blog/author/wooten/)
