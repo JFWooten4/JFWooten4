@@ -145,7 +145,7 @@
       // END PENDING BLOG POST HERE
     };
     var path = window.location.pathname.split("/")[1].toLowerCase();
-    var redirect = redirects[path] || redirects["free"];
+    var redirect = redirects[path];
     window.location.href = redirect;
   </script>
 </body>
