@@ -4,7 +4,7 @@
 
 ## 📜 A [Financial System](https://wooten.link/explainer) for Everyone - [Starting With Free Education](https://www.ninetonoonsecrets.com/free-book) 🌍
 
-### Forging Change: Regulatory Clarity for Stellar, _inter alia_ 📄
+### Forging Change: Regulatory Clarity for Stellar, [_inter alia_](https://github.com/users/JFWooten4/projects/1) 📄
 
 #### - [S7-15-23](https://wooten.link/EDGAR): 15 final rule citations
 #### - [SR-OCC-2024-001](https://wooten.link/OCC): SRO withdrew in defeat
