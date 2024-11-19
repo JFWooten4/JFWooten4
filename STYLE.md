@@ -9,4 +9,7 @@ This is mostly for myself, in case I foget things lol
 
 ### Style Choices
 
-- "Insolvent CCPs" superstructure rather than scoped "insolved CSDs" (Conundrum is the centralization of clearing risk, not just custody)
+- "Insolvent CCPs" superstructure rather than scoped "insolved CSDs"[^csd-diction]
+
+
+[^csd-diction]: Conundrum is the centralization of clearing risk, not just custody
