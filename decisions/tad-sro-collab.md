@@ -2,7 +2,7 @@
 
 I need to decide whether or not to make TAD3 an inter-agent standard.
 
----
+## Governance Implications
 
 What does it mean to control someone? Would you call the law of the land control, given its explicit-_ish_ scope of penalties? Or perhaps you’d think of the monetary system as a control mechanism?
 
@@ -14,11 +14,38 @@ Indeed, these established institutions preferentially ingrained in our market pl
 
 [^xml]: _See, e.g.,_ the rule that all British merger proxies must be sent as a full package through post to all investors. Policies like these are demonstrably ruinous for our environment, for no reason in modern contexts. Might we establish a better way that works for these billions of new people?
 
+## Economic Specialization
+
+There are already some very experienced companies offering TA services. Indeed, their range of diversity could offer issuers personalized services in specific geographies, industries, and demographics. And of course, they should be relatively efficiently organized given their general public or otherwise shareholder-prioritized organization.
+
+I remember the conversations with all the CFOs, discussing how the hidden costs of Wall Street were snaking away at their companies. But the costs were always on the legacy Street institutions’ side, not really the TA. Indeed, it was by and large the banks, brokers, and custodians that were problematically concerning, not the TA.
+
+Namely, such a large amount of those CFOs couldn’t even tell me what they paid for their agent because it’s by and large such a minute line item. Perhaps if we can remove the wasteful inefficiencies of the financial intermediaries, the basic recordkeeping rents will follow accordingly. More to the point, as the last point of separation between companies and their investors, the role of Agents will come much more into the executive light (as compared with the primitive commodity service offered today and generally not praetiosus).
+
+---
+
 ## Pros (Making it an open standard)
 
+- Already sort of done this since it's Affero
+- Other TAs can improve upon the model
+- Different app interfaces for specific groups of ppl (?)
+- The Syndicate issuer account could add other agents as signers to implement controls as neccesary
+- There could be a standardized process to create a new "case" with the DUNA and then Syndicate acts / DUNA contract acts accordingly
 - 
 
 ## Cons (Set only for the Syndicate)[^code]
+
+- Differet app interfafces presumes that agents will work on their own apps, likely proprietarily
+  - Propritetary aps that are not part of the common standard are prone to security vulnerabilityoes
+    - There is particular risk that these companies, trying to monoze costs, implement questionable custodial solutions
+    - If they do these shortcut implementations to make things go faster, the user can't access the full power of Stellar
+- Other agents might not contribute back to the ecosystem due to their profit motives
+- Interestingly, the main nature of agent compatietion and incmoe generally comes from issuers, but there are still a large amount that charge transfer fees
+  - They could issue transfer fees and such that disincentivize the free flow of capital
+- Each agent would need to offer the full suite of compliance oversight
+  - Either that or they would need to be subscribing members of some Syndicate
+  - That would then imply that perhaps the Syndicate issues the asset for every TA and deals with the onchain tx management
+  - 
 
 ---
 
