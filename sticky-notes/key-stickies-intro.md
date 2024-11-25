@@ -1,4 +1,0 @@
-- Figure 1 in TAR original file
-- Syndicate YP
-- CB story
-- and i swear there was another pitcture i was supposed to use, and I don't think it was the waterfall re n58 in prev
