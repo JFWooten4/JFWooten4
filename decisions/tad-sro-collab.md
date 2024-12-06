@@ -24,6 +24,10 @@ Namely, such a large amount of those CFOs couldn’t even tell me what they paid
 
 ---
 
+Further community discussion [found here](https://discord.com/channels/1102309240145707049/1262090967381577759/1309318677128020008).
+
+---
+
 ## Pros (Making it an open standard)
 
 - Already sort of done this since it's Affero
