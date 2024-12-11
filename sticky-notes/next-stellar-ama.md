@@ -1,3 +1,3 @@
 ## Reddit Questions
 
-1. What kind of communications has the SDF have with Securrency after the aquisition?
+1. How have communications been with Securrency since the aquisition?
