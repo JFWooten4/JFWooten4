@@ -7,7 +7,7 @@
 ### Forging Change: Regulatory Clarity for Stellar, [_inter alia_](https://github.com/users/JFWooten4/projects/1) 📄
 
 #### - [S7-15-23](https://wooten.link/EDGAR): 15 final rule citations ([src](https://wooten.link/edgar-resp))
-#### - [SR-OCC-2024-001](https://wooten.link/OCC): SRO withdrew in defeat ([src](https://x.com/JFWooten4/status/1838612974325412246))
+#### - [SR-OCC-2024-001](https://wooten.link/OCC): SRO withdrew in defeat ([src](https://x.com/WhatCanIMT/status/1838337521325137975))
 #### - [S7-27-15](https://wooten.link/TAR) (fixing _The Great Taking_) ([src](https://thegreattaking.com))
 
 ---
