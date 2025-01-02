@@ -1,8 +1,4 @@
-[![intro](imgs/cover.png)](https://intro.jfwooten4.com)
-
-# [Decentralizing Capitalism](https://www.decentralizingcapitalism.com) 🌐
-
-## 📜 A [Financial System](https://wooten.link/explainer) for Everyone - [Starting With Free Education](https://www.ninetonoonsecrets.com/free-book) 🌍
+[![intro](imgs/cover.png)](https://wooten.link/explainer)
 
 ### Forging Change: Regulatory Clarity for Stellar, [_inter alia_](https://github.com/users/JFWooten4/projects/1) 📄
 
