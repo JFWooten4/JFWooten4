@@ -60,7 +60,7 @@ _See also releventaly_ Engels' _[On Authority](https://www.marxists.org/archive/
 
 ## Call
 
-Make it an open standrd.[^o]
+Make it an open standard.[^o]
 
 [^code]: Albeit the code repos and such probably shouldn’t move, and all that is fine as it stands for security concerns. 
 
