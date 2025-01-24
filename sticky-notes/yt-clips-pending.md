@@ -10,6 +10,7 @@
 - [ETH Gas Barrier 🚧](https://www.youtube.com/clip/UgkxISQFJYv9DEiNxZ-AkARwBc5yBSWQsD5v)
 - [DTCC Bailout Needed (Conn)](https://www.youtube.com/clip/UgkxV1YeRljQHPcN4NO5aBdj1HPS7apnbNrC)
 - [DTCC Bailout Needed (Premeditation)](https://www.youtube.com/clip/UgkxZbukKuQRCsLzfmFKDD9QkkHzXi-aVyU7)
+- [Wall Street's Premeditated Failure 👀](https://www.youtube.com/clip/UgkxBNsiQyxZ536H0cEGzrOxOwd5D0Oax5Ff)
 - [🧠 Something's Wrong 📉](https://www.youtube.com/clip/Ugkx_V1DjK4hfuqgfPeARudw1_efek9tyx-e)
 - [Myth of Overnight Success 📈](https://www.youtube.com/clip/UgkxOmlrKaPq6KhhWvzkjHeU3N3XQQ7ndpZv)
 - [Importance of Self-Custody 🔐](https://www.youtube.com/clip/Ugkx0KLlnP--6Q-u4L7H5zrgWbDhjpKr43dL)
@@ -17,10 +18,21 @@
 - [Natural Standards Monopolization & Common Infrastructure Collaboration](https://www.youtube.com/clip/UgkxTpq_yMb3Ki8PBSRung37YmrIIH8qVWVe)
 - [Franklin Templeton CEO on Stellar Transfer Agent](https://www.youtube.com/clip/Ugkx2wQ2mgqLquhbF9mza9SaLf26VAYqkdPF)
 - [Great series 🧠 4.0 is where Procyon comes in ⛓️](https://www.youtube.com/clip/Ugkx9b1y0gmaimRZZNNS4M9nWiqZUGSQ9O9U)
+- [Dark Pool International Routing 🌐](https://www.youtube.com/clip/Ugkxb4KmEoSZE6q6nlmTurodkB59S5RmGCMX)
+- [Gensler DEX Innovative Regulation 📃](https://www.youtube.com/clip/Ugkxwmjh0lmQqzvvHr_XrFc19lDt5-A_uLoa)
+- [Growing Systemic CCP Risk](https://www.youtube.com/clip/UgkxX1DN63sYrhFeAXBDM76mAyRXQBl-TGME)
+- [Joint Access/Education Significance](https://www.youtube.com/clip/Ugkx3-JF93_OxlmMWJORNA0Tyqk11gV2hHrc)
+- [Questionable Independent Enforcement Authority](https://www.youtube.com/clip/UgkxQEYB1y2f8dyaGUJQGfejgbBfKE8BqSld)
+- [Private Aggregate Custody Obligation](https://www.youtube.com/clip/Ugkx3SwESHQjLZKm-dQ3eF-aWuNvT36rMRHg)
+- [Circumventing Public Investor Disclosures](https://www.youtube.com/clip/Ugkxi5nF77KvaoIwfDXhHMYHCDxN9gvfv2ri)
+- [Federal Identity Verification System 💭](https://www.youtube.com/clip/UgkxBayaNuBVOPwyoVMJVjitnqhN2gIuN0fG)
+- [McCaleb Removing Counterparty Risk](https://www.youtube.com/clip/UgkxtHrLI0lAJELpFBSbyha9XeDFautIoDAZ)
+- [Systemic Centralized Trust Quandaries (Securrency)](https://www.youtube.com/clip/UgkxXEmtxkLwy3BpgrbEKTeHlzjDZWsptDhX)
+- [Franklin Templeton Regulatory Leadership](https://www.youtube.com/clip/UgkxRYNtxmTspkWXD4456RgelJcrLC7YYAwU)
 
 ## Clips not yet cited in footnotes
 
-- 
+- _pending_
 
 ## To Cite in Upcoming Comments
 
