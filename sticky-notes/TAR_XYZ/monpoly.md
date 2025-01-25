@@ -1,0 +1,1 @@
+If we want to dive more into the intricacies of present centrlaizing natural monopolies: _See_ [_The Promise & Perils of Open Finance_](https://openyls.law.yale.edu/bitstream/handle/20.500.13051/18234/Dan%20Awrey%20%20Joshua%20Macey%20The%20Promise%20%20Perils%20of%20Open%20Finance%2040%20Yale%20J.%20on%20Regul.%201%20%282023%29.pdf?sequence=1&isAllowed=y)
