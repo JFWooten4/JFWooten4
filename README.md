@@ -38,3 +38,7 @@ Your expertise is crucial, but it's your principles that will fuel this revoluti
 We have a vision and the roadmap to a democratized financial future. What we need is you—your skills, your principles, and your commitment to change. Together, let's build financial systems that are by the people, for the people.
 
 [![more](imgs/socials.png)](https://github.com/JFWooten4/JFWooten4/issues/4)
+
+[^pic]
+
+[^pic]: Profile image credit to BGM/Prince from [music](https://youtu.be/6OoSnurHlr8). Above social image credit to Stellar Development Foundation from [media](https://docs.google.com/presentation/d/1Au5rroYIYN675IZ7FHvjw2ehpIHQSo6g7X6n1AtAKk0/edit).
