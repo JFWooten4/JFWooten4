@@ -29,7 +29,7 @@
 - [McCaleb Removing Counterparty Risk](https://www.youtube.com/clip/UgkxtHrLI0lAJELpFBSbyha9XeDFautIoDAZ)
 - [Systemic Centralized Trust Quandaries (Securrency)](https://www.youtube.com/clip/UgkxXEmtxkLwy3BpgrbEKTeHlzjDZWsptDhX)
 - [Franklin Templeton Regulatory Leadership](https://www.youtube.com/clip/UgkxRYNtxmTspkWXD4456RgelJcrLC7YYAwU)
-
+- [Vlad's Margin Call Story](https://youtube.com/clip/UgkxaLZNPl1Bby-1VVJ2ex4NLr4yZjRdzO4k)
 ## Clips not yet cited in footnotes
 
 - [On-chain vs Off-chain Data Transparency](https://www.youtube.com/clip/UgkxcYCMzF5LmTme3x2i2CzCowYYu3-C1syd)
