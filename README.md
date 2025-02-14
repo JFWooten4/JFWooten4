@@ -1,6 +1,10 @@
 [![intro](imgs/cover.png)](https://wooten.link/explainer)
 
-### Forging Change: Creating a Decentralized, Egalitarian, and Safe Free Market, [_inter alia_](https://github.com/users/JFWooten4/projects/1) 📄
+> Things will get better. That much I know. Things will get better, and far we will go.
+
+[Agenda](https://github.com/users/JFWooten4/projects/1)
+
+### Forging Change: Creating a Decentralized, Egalitarian, and Safe Market free from Wall St 📄
 
 #### - [S7-15-23](https://wooten.link/EDGAR): 15 final rule citations ([src](https://wooten.link/edgar-resp))
 #### - [SR-OCC-2024-001](https://wooten.link/OCC): SRO withdrew in defeat ([src](https://x.com/WhatCanIMT/status/1838337521325137975))
