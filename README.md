@@ -2,7 +2,9 @@
 
 > Things will get better. That much I know. Things will get better, and far we will go.
 
-[Agenda](https://github.com/users/JFWooten4/projects/1)
+I'm only on this journey because of the generous support from our incredible community.
+
+## [Agenda 🛤](https://github.com/users/JFWooten4/projects/1)
 
 ### Forging Change: Creating a Decentralized, Egalitarian, and Safe Market free from Wall St 📄
 
