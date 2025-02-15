@@ -1,1 +1,4 @@
 Don't see this in any of the articles or explicitly in the Congressional report, but it was my understanding that Apex froze for all [200+](https://www.sec.gov/Archives/edgar/data/1834518/000119312521049864/d137294dex991.htm) their custodian-B/D clients
+
+
+Etrade does its own routing
