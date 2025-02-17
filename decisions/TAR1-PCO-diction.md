@@ -1,24 +1,24 @@
-# Disction Surorunding the GameStop Short Sneeze
+# Diction Surrounding the GameStop Short Sneeze
 
-I need to decide whether or not ot adpot Chive's dictions around the buy-button turnoff being a "Position-close only" event v. referencing the entire fiasco as an unprecesdentel limit of transactional capapbilities. 
+I need to decide whether or not to adopt Chive's dictions around the buy-button turnoff being a "Position-close only" event v. referencing the entire fiasco as an unprecedented limit of transactional capabilities.
 
 ## Pros (PCO)
 - Succinct
-- Easy to incorproate into a setnence as a reference
-- UNworkablke logistically in the context of the uptick rule (would effectively freeze all trading)
+- Easy to incorporate into a sentence as a reference
+- Unworkable logistically in the context of the uptick rule (would effectively freeze all trading)
 - Specific
 - Relatively bland for a public audience
-- Implicates why buiys take no margin
+- Implicates why buys take no margin
 
 ## Cons (favor of removing rights)
 - Sounds more meaningful
 - Not a sort of technical lingo
-  - ERasier for the public to understand
-  - More emotional comnnotations
-  - Pits one partyt (buyers) against another 9shots)
+  - Easier for the public to understand
+  - More emotional connotations
+  - Pits one party (buyers) against another (shorts)
 - Vague and/or wordy (in the explanation setup)
-  - Allows you to add emotion by really te;lling a story with it tho
+  - Allows you to add emotion by really telling a story with it though
 
 # Call
 
-Use PCO in refrences with strict regulatory context; a more elebaoreate convo in public settings.
+Use PCO in references with strict regulatory context; a more elaborate convo in public settings.
