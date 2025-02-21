@@ -2,7 +2,7 @@
 - TWI: chives
 - Trix: K
 - Spike: ?
-- AJ: ?
+- AJ: Bob
 - FLT: ?
 - PP: ?
 - Rarity: Jake
