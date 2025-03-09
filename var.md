@@ -3,7 +3,8 @@
 - Spike: Jake
 - Trix: K
 - AJ: Bob
-- FLT: ?
+- FLT: Ankit?
 - PP: ?
 - Rarity: Bur
 - ?Starlight?
+- ?Discord: Silence?
