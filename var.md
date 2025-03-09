@@ -2,9 +2,9 @@
 - TWI: chives
 - Spike: Jake
 - Trix: K
-- AJ: Bob
+- AJ: 6days
 - FLT: Ankit?
-- PP: ?
+- PP: Bob
 - Rarity: Bur
 - ?Starlight?
 - ?Discord: Silence?
