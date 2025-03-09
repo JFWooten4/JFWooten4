@@ -1,9 +1,9 @@
 - RD: self
 - TWI: chives
+- Spike: Jake
 - Trix: K
-- Spike: ?
 - AJ: Bob
 - FLT: ?
 - PP: ?
-- Rarity: Jake
+- Rarity: Bur
 - ?Starlight?
