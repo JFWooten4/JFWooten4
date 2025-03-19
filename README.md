@@ -1,4 +1,4 @@
-[![intro](imgs/cover.png)](https://wooten.link/explainer)
+[![intro](imgs/cover.png)](https://wooten.link/origins) <!-- https://www.canva.com/design/DAGGtsOcZLY/L5bg1YbLcQU1388w3Th27w/edit?ui=eyJEIjp7IlQiOnsiQSI6IlBCSGptS1BaVDZadGcxazQifX19 -->
 
 > Things will get better. That much I know. Things will get better, and far we will go.
 
