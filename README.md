@@ -1,7 +1,7 @@
 [![intro](imgs/cover.png)](https://wooten.link/media) <!-- https://www.canva.com/design/DAGGtsOcZLY/L5bg1YbLcQU1388w3Th27w/edit?ui=eyJEIjp7IlQiOnsiQSI6IlBCSGptS1BaVDZadGcxazQifX19 -->
 
 
-### It's about so much more than consensus. It's about the freedom of global populations themselves. It's quite explicitly the dark pools of yesteryear which directly placed all existing capital in the hands of thieves.
+### It's so much more than consensus. It's about the freedom of global populations themselves. It's quite explicitly the [dark pools](https://youtu.be/bP74RBTE8kI?t=481s) of yesteryear which directly placed all existing capital in the hands of thieves.
 
 Passionate advocate for building an investor-centric market that frees stocks from central bankers.
 
