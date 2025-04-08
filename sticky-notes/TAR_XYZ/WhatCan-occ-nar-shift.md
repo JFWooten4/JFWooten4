@@ -7,3 +7,7 @@ https://youtu.be/o22EH9Hr6DA?t=5688
 
 and hrten we have from p2 a section supporting Pefferily's systemic crash scenario circa june
 https://youtu.be/T_HEoRPS4N8?t=1842
+
+# Literal fucking segway to the pre-Atkins agenda
+
+https://www.sec.gov/newsroom/speeches-statements/peirce-statement-rfi-022125 at Q.41
