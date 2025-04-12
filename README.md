@@ -1,7 +1,7 @@
 [![intro](imgs/cover.png)](https://wooten.link/media) <!-- https://www.canva.com/design/DAGGtsOcZLY/L5bg1YbLcQU1388w3Th27w/edit?ui=eyJEIjp7IlQiOnsiQSI6IlBCSGptS1BaVDZadGcxazQifX19 -->
 
 
-### It's about so much more than consensus. The freedom of global populations hangs in the balance. It's the [dark pools](https://youtu.be/bP74RBTE8kI?t=481s) of yesteryear which directly placed all existing capital in the hands of thieves.
+# [asset manager](https://youtu.be/bP74RBTE8kI?t=481s)
 
 Passionate advocate for building an investor-centric market that frees stocks from central bankers.
 
