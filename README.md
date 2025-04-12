@@ -1,9 +1,9 @@
 [![intro](imgs/cover.png)](https://wooten.link/media) <!-- https://www.canva.com/design/DAGGtsOcZLY/L5bg1YbLcQU1388w3Th27w/edit?ui=eyJEIjp7IlQiOnsiQSI6IlBCSGptS1BaVDZadGcxazQifX19 -->
 
 
-# [asset manager](https://youtu.be/bP74RBTE8kI?t=481s)
+# [Asset manager](https://youtu.be/bP74RBTE8kI?t=481s)
 
-Passionate advocate for building an investor-centric market that frees stocks from central bankers.
+& passionate advocate for building an investor-centric market that frees stocks from central bankers.
 
 [<img width="450" alt="more" src="imgs/socials.png">](https://wooten.link/origins)
 [^pic]
