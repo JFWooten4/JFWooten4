@@ -3,7 +3,9 @@
 
 # DRSrupting [Wall Street](https://youtu.be/bP74RBTE8kI?t=481s) 🌌
 
-> The ruling did not cover participation by shareholders whose stock was registered in the name of nominees... be sure to have your stock registered in your name
+> The ruling did not cover participation by shareholders whose stock was registered in the name of nominees...
+>
+> be sure to have your stock registered in your name
 > 
 > — [Warren Buffet](https://www.berkshirehathaway.com/letters/1981.html)
 
