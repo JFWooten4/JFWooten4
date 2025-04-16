@@ -5,7 +5,7 @@
 
 <blockquote>
   <h3>
-    The ruling did not cover participation by shareholders whose stock was registered in the name of nominees...<br><br>
+    The ruling did not cover participation by shareholders whose stock was registered in the name of nominees, such as brokers, and additionally required that the owners of all designating shares make certain assurances...<br><br>
     be sure to have your stock registered in your name
   </h3>
   <h3>— <a href="https://www.berkshirehathaway.com/letters/1981.html">Warren Buffett</a></h3>
