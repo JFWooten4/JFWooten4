@@ -1,7 +1,7 @@
 [![intro](imgs/cover.png)](https://wooten.link/media) <!-- https://www.canva.com/design/DAGGtsOcZLY/L5bg1YbLcQU1388w3Th27w/edit?ui=eyJEIjp7IlQiOnsiQSI6IlBCSGptS1BaVDZadGcxazQifX19 -->
 
 
-# DRSrupting [Wall St]()(https://youtu.be/bP74RBTE8kI?t=481s) 🌌
+# DRSrupting [Wall Street](https://youtu.be/bP74RBTE8kI?t=481s) 🌌
 
 I'm a passionate advocate for building an investor-centric market that frees stocks from central bankers.
 
