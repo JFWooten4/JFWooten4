@@ -4,10 +4,19 @@
   <meta charset="UTF-8">
   <title>John Wooten Info</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
       font-family: Arial, sans-serif;
       font-size: larger;
       line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .content {
+      text-align: center;
+      padding: 40px;
     }
     h2 {
       font-family: Verdana, sans-serif;
@@ -16,7 +25,7 @@
       font-weight: 600;
     }
     h3 {
-      font-family: Georgia, sserif;
+      font-family: Georgia, serif;
       margin-top: 45px;
       font-weight: 600;
     }
@@ -27,7 +36,6 @@
     .social-links {
       margin-top: 30px;
       margin-bottom: 30px;
-      margin-right: 30px;
       list-style: none;
       padding: 25px;
     }
@@ -38,7 +46,7 @@
   </style>
 </head>
 <body>
-  <script> // Legacy link support
+  <script>
     var redirects = {
       "alpha": "https://github.com/blocktransfer/erc20-deprecated",
       "aspirations": "https://docs.google.com/document/d/1546NL1xCOyKNQ3FjMevaZVhiLUq2hRLyU-GNJHlDDgs/edit",
@@ -125,18 +133,20 @@
     if (redirect) {
       window.location.href = redirect;
     } else {
-      if (window.location.host.endsWith("wooten.link")) { // Duplicate domain deployment
+      if (window.location.host.endsWith("wooten.link")) {
         window.location.href = "https://github.com/JFWooten4/JFWooten4/issues/4";
       }
     }
   </script>
-  <div style="margin-left: 45px">
-    <h2><i style="margin-left: 45px; font-family: 'Courier New', monospace;">Website for John Wooten</i></h2>
+
+  <div class="content">
+    <h2><i style="font-family: 'Courier New', monospace;">Website for John Wooten</i></h2>
     <p style="line-height: .64;">Finance <a href="https://author.jfwooten4.com">Author</a>, Passionate <a href="https://stockmarketsecrets.exposed">Trader</a>, & Web3 <a href="https://blocktransfer.com/.well-known/deck.pdf">Entrepreneur</a></p>
     <p>Avaliable for speaking engagements:
-    <script type="text/javascript">
-      document.write('<a href="mai' + 'lto:' + 'john-speaking' + '@w' + 'ootenwealth' + '.com?subject=Speaking%20Engagement%20Organizer%20Application&body=Hi%20Mr.%20Wooten,%0D%0A%0D%0AWe%20would%20like%20you%20to%20consider%20this%20engagement:%0D%0A%0D%0AEvent:%20%0D%0ADate:%20%0D%0ATime:%20%0D%0A%0D%0AWe%20can%20compensate%20you%20___%20XLM%20for%20this%20work.%0D%0A%0D%0ASincerely,%0D%0AXX">Email Me</a>');
-    </script></p>
+      <script type="text/javascript">
+        document.write('<a href="mai' + 'lto:' + 'john-speaking' + '@w' + 'ootenwealth' + '.com?subject=Speaking%20Engagement%20Organizer%20Application&body=Hi%20Mr.%20Wooten,%0D%0A%0D%0AWe%20would%20like%20you%20to%20consider%20this%20engagement:%0D%0A%0D%0AEvent:%20%0D%0ADate:%20%0D%0ATime:%20%0D%0A%0D%0AWe%20can%20compensate%20you%20___%20XLM%20for%20this%20work.%0D%0A%0D%0ASincerely,%0D%0AXX">Email Me</a>');
+      </script>
+    </p>
 
     <div class="social-links">
       <a href="https://github.com/JFWooten4" target="_blank">
@@ -155,7 +165,6 @@
         <img src="https://blocktransfer.com/imgs/email/blog.png" alt="Blog">
       </a>
     </div>
-
   </div>
 </body>
 </html>
