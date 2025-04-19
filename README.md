@@ -15,7 +15,7 @@
 <br><br><br><br>
 
 
-[<img width="450" alt="more" src="imgs/socials.png">](https://wooten.link/origins)
+[<img width="450" alt="more" src="imgs/socials.png">](https://jfwooten4.com)
 [^pic]
 
 [^pic]: Profile image credit to BGM/Prince from [music](https://youtu.be/6OoSnurHlr8). Above social image credit to Stellar Development Foundation from [media](https://docs.google.com/presentation/d/1Au5rroYIYN675IZ7FHvjw2ehpIHQSo6g7X6n1AtAKk0/edit).
