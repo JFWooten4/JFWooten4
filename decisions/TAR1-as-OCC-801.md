@@ -1,15 +1,3 @@
-fuck bthius'll be hard
-
-have until; friuday
-
----
-
-one option is a simple html comment referncing upconming work in TAR
-
-
-
-
-
 okay so we've  got  a p retty privotal  decision here. The mmatter  at hand is whetehr or not to redirect he existing  TAR1  comment  to the oCC's 802 rule  closing  May 18. That i s a  tuerminus date,m  but memory  serves  that  hte Commission  stays  on  the d eadlines for  SRO filigns like this.
 
  if your elooking back atthis from sme time in  the future, here is the relevant discussion: [GitHub](https://github.com/WhyDRS/SEC-Comments/discussions/14)
@@ -19,6 +7,9 @@ okay so we've  got  a p retty privotal  decision here. The mmatter  at hand is w
  ---
 
  ### B ackgorund of  two  options
+
+Ignoring the easy answer of a simple html comment referncing upconming work in TAR.
+
 
  ####  OCC Adoptiopn
 
