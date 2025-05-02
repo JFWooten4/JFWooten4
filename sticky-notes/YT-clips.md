@@ -69,3 +69,5 @@
 - [DTCC Bailout Needed](https://www.youtube.com/clip/Ugkxd0_I3EmB6m2oRNnJ2kTku32HTsIleI34)
 
 - [🧠 Something's Wrong 📉](https://www.youtube.com/clip/Ugkx_V1DjK4hfuqgfPeARudw1_efek9tyx-e)
+ [Unilaterally Controlling Financial Infrastructure
+ ](https://youtube.com/clip/UgkxvR-0P5MQCn_bNr9L_6volUdIf_NAvM8L)
