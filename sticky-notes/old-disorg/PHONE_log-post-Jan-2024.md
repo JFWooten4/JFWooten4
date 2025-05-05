@@ -657,6 +657,7 @@ Have the 1000 Grant go to BT, configure all the corporate tax info for them
 ### 2 Aug 2024
 
 Footnote FOIA request on Dole Foods et al
+_See also_ https://chatgpt.com/share/6818a760-0d0c-8010-9ac1-df77baaef4d3
 
 Draft an MOU for ISP with initial 100k consideration to be deployed on initialization costs for Wyoming SPDI, as discussed. Shall also outline our intended per deal fees, although all numerical charges stated may be increased with due reason. Notwithstanding the foregoing, the syndicate shall continually target a profit margin on services rendered of not more than 13%
 
