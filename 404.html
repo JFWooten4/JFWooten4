@@ -3,11 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>Wooten.link Redirect</title>
+  <style>
+    html, body {
+      background-color: black;
+    }
+  </style>  
 </head>
 <body>
   <script>
     var redirects = {
       "_a": null,
+      "uber": "https://www.youtube.com/watch?v=rGNgWqQcrs0",
+      "uberman": "https://www.youtube.com/watch?v=rGNgWqQcrs0",
+      "cat": "https://web.archive.org/web/20250506015502/https://www.reddit.com/r/Superstonk/comments/1kfj1nc/a_regsho_loophole_for_cat_errors_exposing",
+      "flavor": "https://github.com/ikatyang/emoji-cheat-sheet?tab=readme-ov-file#github-custom-emoji",
+      "pension": "https://www.reddit.com/r/Superstonk/comments/1awj4io/pension_pilfering_playbook",
+      "rd": "https://www.youtube.com/playlist?list=PLTXMdcHDYXPLMHt_2-wP9UyTHTKAJ6c0g",
+      "fractional-top": "https://www.reddit.com/r/Superstonk/comments/12gjugb/fractional_gme_shares_were_selling_for_512450_per", // 🖼 https://web.archive.org/web/20250313141003/https://www.reddit.com/r/Superstonk/comments/12gjugb/fractional_gme_shares_were_selling_for_512450_per
+      "data-expose": "https://www.reddit.com/r/Superstonk/comments/181cuqr/proof_expos%C3%A9_calculation_of_doddfrank", // 📺 https://web.archive.org/web/20241201200342/https://www.reddit.com/r/Superstonk/comments/181cuqr/proof_expos%C3%A9_calculation_of_doddfrank/
+      "modifying-pledge-ownership": "https://web.archive.org/web/20210402001227/https://www.reddit.com/r/GME/comments/mi8mo9/legal_interpretation_of_the_proposed_srdtc2021005",
+      "hidden-shorts-data-pt2": "https://web.archive.org/web/20210706044239/https://www.reddit.com/r/Superstonk/comments/oenvoh/peekaboo_i_see_103m_hidden_shorts_part_deux",
+      "married-put-mm-exemptions": "https://web.archive.org/web/20210330155051/https://www.reddit.com/r/GME/comments/mgj0j1/the_naked_shorting_scam_revealed_lending_of",
+      "expanding-liquidity-facilities": "https://www.https://web.archive.org/web/20220725205626/https://www.reddit.com/r/Superstonk/comments/w7zy4c/occ_filing_of_advance_notice_expanding_nonbank",
+      "carpet-brief-history": "https://web.archive.org/web/20250111170358/https://www.reddit.com/r/Superstonk/comments/1hxllrt/a_brief_history_of_gamestop_from_meme_to_moass",
+      "instinet-expose": "https://www.reddit.com/r/Superstonk/comments/17en1cf/instinet_except_this_time_uploaded_directly_to",
+      "tar1": "https://github.com/WhyDRS/SEC-Comments/tree/main/SR-OCC-2025-801",
+      "srac-2024": "https://onlinexperiences.com/Launch/Event/ShowKey=265242",
+      "chuck": "https://youtu.be/C638kTY9R50?t=3302",
+      "great-collateral-taking": "https://communications.dtcc.com/great-collateral-experiment-ty-17760.html?aliId=eyJpIjoiNDZkRGpoS2ttVDg5WDAzaiIsInQiOiJPaFNZNHFFQTduMnZFZzhsWmZTY2R3PT0ifQ%3D%3D",
+      "dole":  "https://courts.delaware.gov/Opinions/Download.aspx?id=252690",
+      "slip": "https://github.com/satoshilabs/slips/commit/5f494a0d05dbd191dd757ec8ef640881ebc7f295",
+      "advertising": "https://www.benjacoin.com/s/benjacoin_EN_072917compressed.pdf",
+      "tad3": "https://www.blocktransfer.com/blog/post/introducing-transfer-agent-depository",
+      "xlm": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5u1sQsz-FAmRgFf9HEhyqj-",
+      "goal": "https://www.youtube.com/watch?v=6sqCilpMjOE&list=PLWUFvhKuc_5uYBfAiK62sfhZkDw-151NX&t=455s",
       "trading-sell-error": "https://jfwooten4.com/static/srcs/2019-trading-failure.pdf",
       "instinet": "https://www.reddit.com/r/Superstonk/comments/17en1cf/instinet_except_this_time_uploaded_directly_to",
       "listen": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5sDW-0Elb1tc-TffW1xbpMh",
@@ -28,7 +57,7 @@
       "capstone": "https://drive.blocktransfer.com/external/a712210f56128320f446729c7413473ead2653311735b99d9fc9d6433438457a",
       "fed-certainty": "https://archive.org/details/ec-clearing-questionnaire",
       "kroll-cede": "https://restructuring.ra.kroll.com/bbby/Home-DownloadPDF?id1=MTQ5Nzg4MA==&id2=-1",
-      "stop-it": "https://tube.bigpicture.watch/w/bWtSrmAy8P5QuPnudHUX7G",
+      "stop-it": "https://www.youtube.com/watch?v=Vbr3hfjVOxw",
       "dtc-closure-v2": "https://web.archive.org/web/20241230231828/https://www.dtcc.com/-/media/Files/Downloads/issues/Unscheduled_Close.pdf",
       "dtc-closure-v1": "https://web.archive.org/web/20240605090446/https://www.dtcc.com/-/media/Files/Downloads/issues/Unscheduled_Close.pdf",
       "heat": "https://online.fliphtml5.com/lvrgy/kqab",
@@ -38,8 +67,10 @@
       "minimum": "https://drive.google.com/file/d/1lw9w1-u7aocYCa8kDbsYrMSBjCjh-4JE/view",
       "balancing": "https://github.com/wealth-dao/sponsors/blob/d8f878e242c1d3f55ad17b71a0b3058758b1c965/publications/balancing-the-world.pdf",
       "alpine": "https://www.courtlistener.com/docket/67486807/alpine-securities-corporation-v-financial-industry-regulatory-authority/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
+      "alpine-dc": "https://www.courtlistener.com/docket/67486807/alpine-securities-corporation-v-financial-industry-regulatory-authority/?filed_after=&filed_before=&entry_gte=&entry_lte=&order_by=desc",
       "help": "https://github.com/orgs/WhyDRS/projects/3",
       "jobs": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5uIHno6ZC1QA3jKhvI9rVXU",
+      "dc": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5uIHno6ZC1QA3jKhvI9rVXU",
       "723": "https://github.com/stellar/stellar-docs/pull/723#issuecomment-2410026689",
       "advice": "https://simpleflipbook.aflip.in/c86660d6ef.html",
       "hedgies": "https://www.reddit.com/r/Superstonk/comments/pjf2vx/hedgies_r_fuk",
@@ -78,7 +109,7 @@
       "micro": "https://www.linkedin.com/pulse/new-technical-analysis-candlestick-pattern-micro-w-john-f-wooten-iv",
       "microw": "https://www.linkedin.com/pulse/new-technical-analysis-candlestick-pattern-micro-w-john-f-wooten-iv",
       "steam": "https://steamcommunity.com/id/n64retro/recommended",
-      "tar": "https://github.com/WhyDRS/SEC-Comments/blob/main/TAR-S7-27-15.md",
+      "tar": "https://github.com/WhyDRS/SEC-Comments/discussions/14",
       "cede": "https://www.whydrs.org/post/cede-ing-ownership-why-almost-all-publicly-traded-stock-belongs-to-one-company",
       "opensource": "https://x.com/JFWooten4/status/1796309242116239745",
       "inaugural": "https://stellar.expert/explorer/public/asset/1984803ORD-GDRM3MK6KMHSYIT4E2AG2S2LWTDBJNYXE4H72C7YTTRWOWX5ZBECFWO7",

@@ -6,5 +6,8 @@
 - FLT: limegreen?
 - PP: Bob
 - Rarity: Bur
+- Spitfire: Jed
+- Starswirl: Garand
 - ?Starlight: Ankit?
 - ?Discord: Silence?
+- ?Daring: vylet?
