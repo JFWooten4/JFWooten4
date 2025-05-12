@@ -6,3 +6,4 @@ I want to keep a written record of material stories:
 - tewch  plate smashing
 - ap chem
 - MIT triplicate (interview, genslar, and bitcoin)
+- grocery ice cream throw BN speed 
