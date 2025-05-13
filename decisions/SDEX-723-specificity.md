@@ -14,7 +14,7 @@ Re [ongoing developments](https://github.com/users/JFWooten4/projects/1/views/1?
 
 ## Cons
 
-- Could seriously delay from EoY attempt, potentially causing material mismatch between regulatory review in Jan
+- Could seriously delay from EoY attempt, potentially causing material mismatch between regulatory review in Jan[^hoi]
   - Unsure how long it will take to complete the review
   - A lot of code to review
   - Still have 2 more sections
@@ -26,3 +26,5 @@ Re [ongoing developments](https://github.com/users/JFWooten4/projects/1/views/1?
 ## Call
 
 Full detail disclosure, exemplification
+
+[^hoi]: John from the future just chiming in here that I put forth material efforts, and this ended up coming true. The extra EoY workload delayed any January filing, pushing TAR1 back to May, which turned out well. 💜
