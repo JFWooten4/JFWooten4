@@ -1,3 +1,13 @@
+The early 20th-century decentralist movements in America were a response to the growing centralization of economic wealth and political power.
+
+- The decentralists advocated for a return to small-scale, local economies
+
+- They promoted increased property ownership as a way to empower individuals and communities
+
+- This ought foster economic independence and reduced reliance on centralized systems
+
+---
+
 Early 20th-Century Decentralist Movements in America
 
 Origins: Industrialization and the “Curse of Bigness”
