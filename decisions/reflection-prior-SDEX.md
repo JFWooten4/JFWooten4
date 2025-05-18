@@ -14,7 +14,7 @@ Whether or not to have a reflection day before startign the findal run-through, 
 - MMentally map out how we want to conslucede all the info
 - Review internally the politicial points which were crucially included in my present CA
 - Speed comes from adequate parreparation
-- 
+- John happy easy quick way
 
 ## Cons
 
@@ -29,4 +29,7 @@ Whether or not to have a reflection day before startign the findal run-through, 
 - Do i really need mroe time to [prepare for the terminius , given this is pretty mechnical work rather than inspired?
   - It really stems to the techinal points, but I just care about them far too much
 
+## Call
+
+The next thing I have to implmenet (lol post-gov) is how to implmenet the EDGAR Next API, so let's get his out, reflect after it's done but before the traversal, and then that gives them a full 24 extra hours to review things.
 
