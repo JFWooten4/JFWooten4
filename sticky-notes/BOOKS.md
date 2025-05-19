@@ -7,3 +7,5 @@ https://www.audiobooks.com/audiobook/web3-charting-the-internets-next-economic-a
 https://www.amazon.com/Driverless-Finance-Fintechs-Financial-Stability/dp/0197626807
 
 https://www.amazon.com/Last-Call-Rise-Fall-Prohibition/dp/074327704X
+
+https://marshallbrain.com/manna1
