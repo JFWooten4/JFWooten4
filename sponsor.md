@@ -81,5 +81,6 @@ Your sponsorship is not just a boost to our work—it's a beacon for free, indep
 [^c]: If you need my info for tax forms, you can reach out in the confirmation email. Ditto if you want to share coins not on the network. _See also_ [speaking engagements](https://jfwooten4.com).
 
 
-## XXSEC2 May 2025
+## 20 May 2025
 
+I am an investor-turned-developer who cares deeply about financial markets. Briefly, the infrastructure of yesteryear hinders humanity's growth, despite widespread adoption. The solution requires deep nonprofit roots, which means I presently make no income other than here. 💜
