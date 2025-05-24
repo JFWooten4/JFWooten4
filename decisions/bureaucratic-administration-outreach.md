@@ -164,3 +164,9 @@ Fuck their systems, man. If there are others in the community who want to involv
 [^e]: I’ll also note that I’ve asked questions which simply never get a reply from any community member, even in cases when I re-reference it by bringing the channel up someplace else. In these cases, I’ve found that the substance of my question is simply too complex for a public answer, or I need to think through it myself more. When reflecting on query framing, I think back to college when I would spam the class discussion forms with questions I'd end up answering myself half the time (but many hours after posting), sort of like #13 in this repo implementing a design improvement. There, everyone from top students to the professors would chime in on the discussions I started with a strong question, providing a wealth of knowledge that’s both decentralized and “public”—the best kind of answer-finding.
 
 [^f]: _See, e.g.,_ DTCC C-suite chat. _See also_ WhyDRS Gensler discussion. _See finally_ Bernanke’s TARP roundtable.
+
+### Edit
+
+This was the right call. [Here](https://x.com/JFWooten4/status/1925017406000308391) I look foolish after [full context](https://x.com/gttyson/status/1926010532160537083). Notably, there's an RFC at the end (tagging a co-author and author of first consensus mechanism), establishing the requested discourse participants.
+
+While I might not get an explicit callout from most bureaucracies, I've got to think DTC was doing something along these lines when they titled their presentation "The Great" something. These are some really nuanced traps they're laying, and I appreciate the opportunity to fall into a harmless one from the community first. Again, we might get this faster central response through explicit leadership prodding, but frankly, it's just lending credence to concepts I don't care about or [want adopted](https://x.com/gttyson/status/1925652074471055574) over superior infrastructure.
