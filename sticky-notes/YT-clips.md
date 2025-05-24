@@ -29,9 +29,11 @@
 - [McCaleb Removing Counterparty Risk](https://www.youtube.com/clip/UgkxtHrLI0lAJELpFBSbyha9XeDFautIoDAZ)
 - [Systemic Centralized Trust Quandaries (Securrency)](https://www.youtube.com/clip/UgkxXEmtxkLwy3BpgrbEKTeHlzjDZWsptDhX)
 - [Franklin Templeton Regulatory Leadership](https://www.youtube.com/clip/UgkxRYNtxmTspkWXD4456RgelJcrLC7YYAwU)
-- [Vlad's Margin Call Story](https://youtube.com/clip/UgkxaLZNPl1Bby-1VVJ2ex4NLr4yZjRdzO4k)
-- [Supply v. Demand from Inside](https://youtube.com/clip/UgkxkjSFXLQtP9WnDp8Q7dd39_cGHwvosbaM)
+- [Vlad's Margin Call Story](https://www.youtube.com/clip/UgkxaLZNPl1Bby-1VVJ2ex4NLr4yZjRdzO4k)
+- [Supply v. Demand from Inside](https://www.youtube.com/clip/UgkxkjSFXLQtP9WnDp8Q7dd39_cGHwvosbaM)
 - [BTC guy SEC predictions](https://www.youtube.com/clip/Ugkxn9VbkgNcm-W64MKmqWowJSIoEKBkcVoD)
+- [Premeditated Failure (Central Clearing)](https://www.youtube.com/clip/Ugkx_yGx5hgPG7flPbRy0B4Ct6NRqteXgUEr)
+- [Unilaterally Controlling Financial Infrastructure](https://www.youtube.com/clip/UgkxvR-0P5MQCn_bNr9L_6volUdIf_NAvM8L)
 
 ## Clips not yet cited in footnotes
 
@@ -55,12 +57,12 @@
 - [Federal Identity Verification System 💭](https://www.youtube.com/clip/UgkxBayaNuBVOPwyoVMJVjitnqhN2gIuN0fG)
 - [McCaleb Removing Counterparty Risk](https://www.youtube.com/clip/UgkxtHrLI0lAJELpFBSbyha9XeDFautIoDAZ)
 - [Franklin Templeton Regulatory Leadership](https://www.youtube.com/clip/UgkxRYNtxmTspkWXD4456RgelJcrLC7YYAwU)
+- [Premeditated Failure (Central Clearing)](https://www.youtube.com/clip/Ugkx_yGx5hgPG7flPbRy0B4Ct6NRqteXgUEr)
 
 ## To Cite in Upcoming Comments
 
-- [Importance of Self-Custody 🔐](https://www.youtube.com/clip/Ugkx0KLlnP--6Q-u4L7H5zrgWbDhjpKr43dL)
 - [Growing Systemic CCP Risk](https://www.youtube.com/clip/UgkxX1DN63sYrhFeAXBDM76mAyRXQBl-TGME)
-- [Systemic Centralized Trust Quandaries (Securrency)](https://www.youtube.com/clip/UgkxXEmtxkLwy3BpgrbEKTeHlzjDZWsptDhX)
+- [Premeditated Failure (Central Clearing)](https://www.youtube.com/clip/Ugkx_yGx5hgPG7flPbRy0B4Ct6NRqteXgUEr)
 
 ### systemic bailout req.
 
@@ -69,5 +71,3 @@
 - [DTCC Bailout Needed](https://www.youtube.com/clip/Ugkxd0_I3EmB6m2oRNnJ2kTku32HTsIleI34)
 
 - [🧠 Something's Wrong 📉](https://www.youtube.com/clip/Ugkx_V1DjK4hfuqgfPeARudw1_efek9tyx-e)
- [Unilaterally Controlling Financial Infrastructure
- ](https://youtube.com/clip/UgkxvR-0P5MQCn_bNr9L_6volUdIf_NAvM8L)
