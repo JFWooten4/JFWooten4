@@ -1,7 +1,11 @@
 laughably large  dialogind  to  hold in hand
  - can b e in front jacket pocket
- -  requisites glasses  from  inner pocket  breast
+ -  requisites glasses  from  inner pocket  breast[^a]
 
 fir eeexcintguisherf filled with  XYZ_INTERSTING_BLUE_THING
 
 [smoking gun  here]
+
+
+
+[^a]: Also,  for  clothign i n general,  we shoudl  prsume multiple app.s  with  the singular t-shirt option as  post-introductory  (and iderally more o n the  governnace  duna  for frames  fo  refeernce)
