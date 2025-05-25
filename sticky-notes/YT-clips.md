@@ -34,6 +34,7 @@
 - [BTC guy SEC predictions](https://www.youtube.com/clip/Ugkxn9VbkgNcm-W64MKmqWowJSIoEKBkcVoD)
 - [Premeditated Failure (Central Clearing)](https://www.youtube.com/clip/Ugkx_yGx5hgPG7flPbRy0B4Ct6NRqteXgUEr)
 - [Unilaterally Controlling Financial Infrastructure](https://www.youtube.com/clip/UgkxvR-0P5MQCn_bNr9L_6volUdIf_NAvM8L)
+- [The SDF on Market Structure](https://youtube.com/clip/UgkxmWUzfpnZauARPTIzphRvOPqhIgGTc51G)
 
 ## Clips not yet cited in footnotes
 
