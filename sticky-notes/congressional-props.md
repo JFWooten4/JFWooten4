@@ -11,3 +11,7 @@ fir eeexcintguisherf filled with  XYZ_INTERSTING_BLUE_THING
 [^a]: Also,  for  clothign i n general,  we shoudl  prsume multiple app.s  with  the singular t-shirt option as  post-introductory  (and iderally more o n the  governnace  duna  for frames  fo  refeernce)
 
 Crucially, I n eed to  know going into t his  who  the 2 m embers from  the Fed  r
+
+ancellarry attire:
+- tempos
+- nspire
