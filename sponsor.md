@@ -84,3 +84,20 @@ Your sponsorship is not just a boost to our work—it's a beacon for free, indep
 ## 20 May 2025
 
 I am an investor-turned-developer who cares deeply about financial markets. Briefly, the infrastructure of yesteryear hinders humanity's growth, despite widespread adoption. The solution requires deep nonprofit roots, which means I presently make no income other than here. 💜
+
+
+### Welcome Message
+
+While I tend away from private email updates, everyone should get this message even if they don't subscribe to email updates.
+
+---
+
+Thanks you for your sponsorship. Your support is not just a boost our work—it's a beacon for free, independent investment education, blockchain innovation, and trading advocacy. 🚀
+
+Thanks to you, we're breaking down complex financial concepts into accessible knowledge, empowering individuals to take control of their financial futures. 📚
+
+Moreover, your support fuels our journey in blockchain, driving forward a technology that promises a more transparent, secure, and equitable digital world. 🔗
+
+You've made a great choice joining our community of sponsors. Let's keep the conversation going! Your thoughts, questions, or ideas are always welcome. 
+
+Together, we're making a tangible difference! Text any questions to (341) 46-JOHNW. 💬
