@@ -12,5 +12,6 @@
 - ?Discord: Silence?
 - ?Daring: vylet?
 - Quibble: Enrique
+- Celestia: Pam
 
 [^rainboom]: We have as the shared starting experience here the community consolidation on WSB to tear a hole in their system, bringing Wall Street out into the light for all to judge.
