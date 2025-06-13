@@ -1,9 +1,9 @@
 - RD:[^rainboom] self
-- TWI: chives <!-- possibly self , althrough I'm not a massive fna hof having myself -->
+- TWI:  ?limegreen
 - Spike: Jake
 - Trix: K
 - AJ: 6days
-- FLT: limegreen? <!-- could be chives if approaced from a different perspective ... -->
+- FLT: chives
 - PP: Bob
 - Rarity: DFV
 - Spitfire: Jed
