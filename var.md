@@ -15,4 +15,4 @@
 - Celestia: Pam
 - ?Hooves?: Bur
 
-[^rainboom]: We have as the shared starting experience here the community consolidation on WSB to tear a hole in their system, bringing Wall Street out into the light for all to judge.
+[^rainboom]: As the [shared](https://youtu.be/io8Xk120xOc) experience, _see_ community consolidation on WSB to tear a hole in their system, bringing Wall Street out into the light.
