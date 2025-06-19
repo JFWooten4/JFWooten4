@@ -1,9 +1,9 @@
 - RD:[^rainboom] self
-- TWI: limegreen
+- TWI: chives
 - Spike: Jake
 - Trix: K
 - AJ: 6days
-- FLT: chives
+- FLT: limegreen
 - PP: Bob
 - Rarity: DFV
 - Spitfire: Jed
