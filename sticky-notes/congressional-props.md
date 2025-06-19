@@ -2,7 +2,7 @@ laughably large  dialogind  to  hold in hand
  - can b e in front jacket pocket
  -  requisites glasses  from  inner pocket  breast[^a]
         - _See also_ a finger trap
-        
+
 fir eeexcintguisherf filled with  XYZ_INTERSTING_BLUE_THING
 
 [smoking gun  here]
@@ -19,6 +19,6 @@ ancellarry attire:
 
 # requisites
 
-bathroom button
+~~bathroom button~~ that leg bag thing
 
 fucking WATER 🌊🌊
