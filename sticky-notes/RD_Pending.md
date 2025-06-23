@@ -1,1 +1,4 @@
-hmm (see otaku) https://chatgpt.com/c/68535251-efc0-8010-839d-21dfc2c36334
+https://youtu.be/ES9A5IA6hfw
+
+##  vetting  insprs. from  _Solo_
+https://www.youtube.com/watch?v=ayMdexqk5G4&list=RDayMdexqk5G4&start_radio=1
