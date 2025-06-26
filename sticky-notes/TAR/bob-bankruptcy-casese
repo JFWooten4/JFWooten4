@@ -1,0 +1,2 @@
+aas premise backgorund  for  TGAR1  asccuations
+https://discord.com/channels/1102309240145707049/1342187220655673344/1342201083442888817
