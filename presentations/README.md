@@ -1,0 +1,1 @@
+Pending thouts and images for crafting narratives
