@@ -35,6 +35,7 @@
 - [Premeditated Failure (Central Clearing)](https://www.youtube.com/clip/Ugkx_yGx5hgPG7flPbRy0B4Ct6NRqteXgUEr)
 - [Unilaterally Controlling Financial Infrastructure](https://www.youtube.com/clip/UgkxvR-0P5MQCn_bNr9L_6volUdIf_NAvM8L)
 - [The SDF on Market Structure](https://youtube.com/clip/UgkxmWUzfpnZauARPTIzphRvOPqhIgGTc51G)
+- [Liquidity for Small-Business Capital-Formation](https://www.youtube.com/clip/UgkxXmd78BMGq6Mu5FU9BU-625WOIGurWtWh) (BT Response #5)
 
 ## Clips not yet cited in footnotes
 
