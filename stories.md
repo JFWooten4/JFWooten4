@@ -11,3 +11,4 @@ I want to keep a written record of material stories:
 - Seneca B -> MIT (impl.s book & reverse cards))
 - biting toenails
 - Fish story as tadpoles swimming upstream compared to the salmon swimming upstream versus them being in a farm through municipal bonds with government backing where they just go around in a circle, like based on Dad's word
+- St. Mark's elementary carpool Bible 
