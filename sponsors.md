@@ -101,3 +101,18 @@ Moreover, your support fuels our journey in blockchain, driving forward a techno
 You've made a great choice joining our community of sponsors. Let's keep the conversation going! Your thoughts, questions, or ideas are always welcome. 
 
 Together, we're making a tangible difference! Text any questions to (341) 46-JOHNW. 💬
+
+
+## 20 Jul 2025
+
+Thank you for exploring my work—or some of the incredible community contributions which vastly outweigh my own efforts. While it’s been nearly a decade, the true solutions stem from our collective efforts toward shared visions like a stock market that actually works for the people. This has been such a distant goal for so many, but I know we have our best shot at it in a long time, right here and now.
+
+The problem’s been painted in black and white for the public since the late 1990s by some of the pioneers in our industry. They are exceptional inspirations who I won’t disserve with brief summaries here. All I want to get across is how much your contributions mean.
+
+When you help me, you help all of us. I spend all my days working to make TAD3 the common infrastructure connecting investors with companies—no middleman needed. I deeply believe a system of this caliber must stay in public ownership with all the accountable transparency possible.
+
+That’s why so much of my work revolves around the nonprofit DAO, and support from those who care—like you—means so much. It’s a signal that I’m on the right track, which gets me just a little bit closer to the freedom over my time for complete immersion. Even though this is all I do, there are massive holes I would appreciate funding to bring in more assistance.
+
+Over the years, I’ve learned that I’m pretty separated from requesting funds or general marketing. Once I realized how simple it was to do well trading, I just stopped focusing so much on money. But I decided long ago that I wouldn’t perpetuate their centralized schemes with long-tail devastation, so it’s only the kindness and generosity from this which affords a roof over our heads.
+
+I get the life I live with Kayla may seem unconventional to those natured in hierarchical work. All I can hope is that the public work-product available throughout this platform serves to benefit your needs or vision for what our financial system ought to resemble. Trust is the first step in all this, and to have a little bit of yours would mean the world. 💜
