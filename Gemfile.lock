@@ -17,6 +17,7 @@ GEM
     commonmarker (0.17.13)
       ruby-enum (~> 0.5)
     concurrent-ruby (1.1.9)
+    csv (3.3.5)
     dnsruby (1.61.7)
       simpleidn (~> 0.1)
     em-websocket (0.5.2)
@@ -273,6 +274,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  csv
   github-pages (~> 215)
   jekyll-feed (~> 0.12)
   minima (~> 2.5)
