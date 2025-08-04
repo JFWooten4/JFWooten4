@@ -12,14 +12,20 @@ I'm  going  to  try tchanign sleep schedules to  get myself back into  a more  c
 
 
 
+## Options
 
-## Pros
+IO coudl not snd the letter, elacing staff completley unrunterruprted in their oversight process. Presuambly this owuld mean also not realchin out premateuterl to Donna to speak on overachign items and regualtory sentiments. 
+
+I;m trying deepl yto figure out hotw to remove myself from this equation and let community collaoration flourish.
+
+### Pros (drafting voer and sending
 
 
 
-## Cons
+### Cons (submitting onyly PF template form john@whydrs email)
 
 
 !~~ Extremely centralized
+
 
 a lot  of this revolves arioudn trust
