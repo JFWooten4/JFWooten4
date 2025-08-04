@@ -8,3 +8,16 @@ iv;e  started  feelign this way since i went down  the  coffee route to get the 
 
 I'm  going  to  try tchanign sleep schedules to  get myself back into  a more  coonmfortable place,  btu for the immediate m oment,  I have a very short window to choose and act ont his time. It recovles entirelyt around the last week fo prep we've don in getting WhatCan's  pincedbiel thoughts  into  a  stellar  [prititon]](https://www.reddit.com/r/Superstonk/comments/1mhdxrs/petition_to_close_regsho_loopholes_allowing).
 
+
+
+
+## Pros
+
+
+
+## Cons
+
+
+!~~ Extremely centralized
+
+a lot  of this revolves arioudn trust
