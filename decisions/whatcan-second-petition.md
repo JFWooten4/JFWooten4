@@ -17,6 +17,13 @@ I could not send the letter, leaving staff completely uninterrupted in their ove
 
 I'm trying deeply to figure out how to remove myself from this equation and let community collaboration flourish.
 
+
+## Interum Call
+
+I'm goign to Give Donna a call later today and get a little more context o nteh positioning after discussion with other Exmaniner that;'s worked with "blpockcahin"  TA . I like callign  "low-level" stafg most akin to direct engineers because we have an actuall legitimate working relationshup together.  I don't  equaate it to ploticking becise I alreaey know them and we;ve conversed before/.
+
+
+
 ### Pros (drafting over and sending)
 
 ### Cons (submitting only PF template from john@whydrs email)
