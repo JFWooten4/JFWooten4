@@ -2,7 +2,8 @@ I'm dealing with what could be my most centralized decisions yet. For setup cont
 
 [^1]: This perfectly exemplifies the root of the matter, which is that I've become too central to the regulatory interactions and broader policy discourse. It needs to center around Syndivate public policies and collective operating principles rather than my view.
 
-The essence of the quandary stems around how quickly I want to tie the interweaving knot between all these established relationships. I'm feeling very rushed by the impending circumstances, even though I've known about them for so long and greatly prepared.
+The essence of the quandary stems around how quickly I want to tie the interweaving knot between all these established relationships. I'm going to take my time given an impending circumstance, because I've known about them and prepared deeply for so long.
+
 
 ## Context
 
