@@ -11,18 +11,27 @@ I've started feeling this way since I went down the coffee route to get the last
 
 I'm going to try changing sleep schedules to get myself back into a more comfortable place, but for the immediate moment, I have a very short window to choose and act on this time. It revolves entirely around the last week of prep we've done in getting WhatCan's principled thoughts into a stellar [petition](https://www.reddit.com/r/Superstonk/comments/1mhdxrs/petition_to_close_regsho_loopholes_allowing).
 
-## Options
+
+### Options
 
 I could not send the letter, leaving staff completely uninterrupted in their oversight process. Presumably this would mean also not reaching out prematurely to Donna to speak on overarching items and regulatory sentiments.
 
 I'm trying deeply to figure out how to remove myself from this equation and let community collaboration flourish.
 
 
-## Interum Call
+### Interum Call
 
 I'm goign to Give Donna a call later today and get a little more context o nteh positioning after discussion with other Exmaniner that;'s worked with "blpockcahin"  TA . I like callign  "low-level" stafg most akin to direct engineers because we have an actuall legitimate working relationshup together.  I don't  equaate it to ploticking becise I alreaey know them and we;ve conversed before/.
 
 
+### NonRepsosive Feedbacck
+
+UNforutnalye  (and forutnatley), I didn't hear form Donna and  still on the cold waiting phase until our last  meeting to go over the Exam resutls . I' mglad for the expanded scope and comprehensivve reviewe, not to m ention some  time to get  stick ynotes from phsycial nto nottkaing form. This  leaves me  in my standard frame for all these years: interpetting.
+
+One reading with sufficient evidence-based backing cnaa  take hte cake. I'm  very p lleased with how Exmainations arei n  themselves a  staff reading  of hte  hard framework laws.   Thus  I find myself here at the drawing  baord in solace, a common comfortin g zone
+
+
+## Factors
 
 ### Pros (drafting over and sending)
 
