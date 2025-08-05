@@ -33,10 +33,27 @@ One reading with sufficient evidence-based backing cnaa  take hte cake. I'm  ver
 
 ## Factors
 
-### Pros (drafting over and sending)
+### Pros (drafting cover and sending)
 
-### Cons (submitting only PF template from john@whydrs email)
+-  Embed a personal narrative
+  - Connect  to existing work
+  - Add date for refrences
+  - Backlink  to PREV
+- Add color to  the swatch of strikeouts
+- Adds to overall petitioner  support and sujustidicaitkon
+- add diversity to communtiyh perspectves with strong basis
+-  Chnace to throw a timestamp on the FAC poitns not known
+- bacik an established, passionate voice doing much good
 
-!~~ Extremely centralized
 
-A lot of this revolves around trust.
+### Cons (submitting only WC template from john@whydrs email)
+
+- IMp[oses my own credit onto WC's work-product (can be minimized by only signing last  page or  staying anonymous)
+- Somewhat shows distrust i n standalone perfomrance
+-  Na e and imaging irrevocably associatged whith WhyDRS
+  - Good thing long term but a big jum pfro staff here at  start
+  - Ca  establish links at cost  of a hastey judgment turnaround
+  - Begins challenging work of disentangling and removeing conflicts
+- Narrative changes risk alientating original draft sentiments
+- Cwentralazized in the senes of pusahign a direct narrative over and aboe thoughtful profdding thoiugh sdiscarded qeustions.
+
