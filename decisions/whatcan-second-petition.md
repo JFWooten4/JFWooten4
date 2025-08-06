@@ -57,3 +57,12 @@ One reading with sufficient evidence-based backing cnaa  take hte cake. I'm  ver
 - Narrative changes risk alientating original draft sentiments
 - Cwentralazized in the senes of pusahign a direct narrative over and aboe thoughtful profdding thoiugh sdiscarded qeustions.
 
+
+## Logic
+
+I  really hate politickign; I'm just  so  sick of  it./ It's an insane  amoutn of mental bandwidfth, and so itoftne it's literally for  naut.  I am happy that I sepent  so  mcuh time nad effort  getting my first impressions correct with t he  five femeniene orgnaizations which matter in my life. But like bruh sincerelyt I could not given another single flying  fuckl aboutj how people vciew my  work.,
+
+## Call
+
+lol let's do it.
+the worst  case here  is not even a frinking caser at all
