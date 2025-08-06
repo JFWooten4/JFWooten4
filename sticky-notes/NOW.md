@@ -28,3 +28,10 @@ we  have rolling 5-0+% therhehosdld  during onbaoridnig of trusxterd users
 e.g. 2/3, 2/4
 
 
+---
+
+we have execute TOD:
+
+1.  get  WC  choice made
+2. get cover written  as REQW'd
+/3. segue to podcastg owith basis at _supra_ note 1
