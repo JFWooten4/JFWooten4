@@ -31,8 +31,4 @@ So much focus on "10X" that they ignore the innovators right under their noses.
 - Personal Cardone anecdote  
   - Double down on incalls
 
-For time example we can _+compare_ Christina's work at https://github.com/Soneso/stellar_flutter_sdk/pull/68  
-with https://github.com/Soneso/stellar_flutter_sdk/pull/69 (as in like checking schematics of changes)  
-as basis for needing funding for https://discord.com/channels/1102309240145707049/1136343213091856486/1402777197332135956
-
 Opportunity for _anyone_ is not opportunity for _everyone_.
