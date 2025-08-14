@@ -23,12 +23,10 @@ Also I want a [direct href](https://discord.com/channels/897514728459468821/1144
 
 There is no distinct rail separating legacy SCF entrenching voter slavery with the new public goods "channel" with the same diving permissioning evidenced in the clear gea.co.
 
-So much focus on "10X" that they ignore the innovators right under their noses.  
-- FUIYI from  
-- "vissionary/catlaist" supercedent winner nomenclature  
+
+
   - "And we just want to give you the space and tools to build it better." [src](https://stellar.org/blog/foundation-news/better-on-stellar-challenge-from-what-if-to-what-now)
   -  [content creator]() rduction cadence preffered ... easy backdir in a few months to sayth
-- Personal Cardone anecdote  
-  - Double down on incalls
+
 
 Opportunity for _anyone_ is not opportunity for _everyone_.
