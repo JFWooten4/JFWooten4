@@ -21,7 +21,7 @@ Sentence ref only to outstanding #S-P PRs without a fuckin' link, bro.
 Then we have trump card in CPA42 initial PR as deprecation of friendship.  
 ~~~
 
-Also I want a direct href to where I brought up Bur as an example to introduce capital intensity.
+Also I want a [direct href](https://discord.com/channels/897514728459468821/1144254446629572629/1393285187151990905) to where I brought up Bur as an example to introduce capital intensity.
 
 There is no distinct rail separating legacy SCF entrenching voter slavery with the new public goods "channel" with the same diving permissioning evidenced in the clear gea.co.
 
