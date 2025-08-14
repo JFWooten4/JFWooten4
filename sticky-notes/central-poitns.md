@@ -16,9 +16,7 @@ LOL just from update from 12 years ago to today's modern OSs direct incent.
 ~~~wAm  
 We have a basis from the FORK BRANCH LINK (backup).  
 
-Sentence ref only to outstanding #S-P PRs without a fuckin' link, bro.  
-
-Then we have trump card in CPA42 initial PR as deprecation of friendship.  
+Sentence ref only to outstanding #S-P PRs without a fuckin' link, bro.
 ~~~
 
 Also I want a [direct href](https://discord.com/channels/897514728459468821/1144254446629572629/1393285187151990905) to where I brought up Bur as an example to introduce capital intensity.
@@ -27,7 +25,9 @@ There is no distinct rail separating legacy SCF entrenching voter slavery with t
 
 So much focus on "10X" that they ignore the innovators right under their noses.  
 - FUIYI from  
-- "Dreamer" supercedent winner nomenclature  
+- "vissionary/catlaist" supercedent winner nomenclature  
+  - "And we just want to give you the space and tools to build it better." [src](https://stellar.org/blog/foundation-news/better-on-stellar-challenge-from-what-if-to-what-now)
+  -  [content creator]() rduction cadence preffered ... easy backdir in a few months to sayth
 - Personal Cardone anecdote  
   - Double down on incalls
 
