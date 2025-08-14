@@ -1,68 +1,38 @@
-i want the power centralization DOXing point made theriugh pricate PB screenshot and href to x announcement 
+I want the power centralization doxing point made through private PB screenshot and href to X announcement.
 
+# Let's do the whole thing as a cantra move to throw from the ereceptor fan locale temp interim.
 
-# lets di the whole things as a can ntra move to thdrom the ereceptor fan locale temp interim
+There is bias on it as an interlay between a central mechanism of the power source.  
+Possible semantic in re-sparking story.
 
-there is bais on it as an interlay between a centeal mechism of the power source
-possible samante in re soarking story
+Bias from the starting intermediate as laundry mechanisms (binary).
 
-baiss from the starting interomediate as laundry mexhisms (binary)
+Then it moves to the antiquated hearing mechanism.
 
-then it moves to the antiquated hearing mechanism
+Comparatively, we are dealing with giants on the surface of the sun.
 
-cimparatively,we are dealing with giants on the surface if the sun
+LOL just from update from 12 years ago to today's modern OSs direct incent.
 
-lol just fon update from 12 years ago to todays moderns oSs direct incent
+~~~wAm  
+We have a basis from the FORK BRANCH LINK (backup).  
 
+Sentence ref only to outstanding #S-P PRs without a fuckin' link, bro.  
 
+Then we have trump card in CPA42 initial PR as deprecation of friendship.  
+~~~
 
+Also I want a direct href to where I brought up Bur as an example to introduce capital intensity.
 
+There is no distinct rail separating legacy SCF entrenching voter slavery with the new public goods "channel" with the same diving permissioning evidenced in the clear gea.co.
 
-~~~wAm
-we have ab sasis dfom the FORK BRANCH LINK (backup)
+So much focus on "10X" that they ignore the innovators right under their noses.  
+- FUIYI from  
+- "Dreamer" supercedent winner nomenclature  
+- Personal Cardone anecdote  
+  - Double down on incalls
 
-sentence ref only to outstanind #S-P PRs with out a fuckn link bro
+For time example we can _+compare_ Christina's work at https://github.com/Soneso/stellar_flutter_sdk/pull/68  
+with https://github.com/Soneso/stellar_flutter_sdk/pull/69 (as in like checking schematics of changes)  
+as basis for needing funding for https://discord.com/channels/1102309240145707049/1136343213091856486/1402777197332135956
 
-then we have trump card in CPA42 initial pr as depreceation of friendship
-
-```
-
-
-
-also I want a direct href to where i brought up bur as an example to introduce capital intensity
-
-
-
-
-
-
-there is no distinct rail separating legact SCF entraching voter slavery witht the new public goods "channel" with the same diving permissioning evidenced in the clear gea. co
-
-
-
-
-
-
-
-so much focus on "10X" that they ignore the innovators right under their noses
-- FUIYI from
-- "dreamer" supercedant winner nomenclature
-- personal cardone anectdote
-  - double down on incalls
-
-
-
-
-  for time example we  can _+compare_ chrsitina work at https://github.com/Soneso/stellar_flutter_sdk/pull/68
-  with https://github.com/Soneso/stellar_flutter_sdk/pull/69  (asd  in like checking  schemintics  of  changes)
-  as bassi for needing funding for https://discord.com/channels/1102309240145707049/1136343213091856486/1402777197332135956
-
-
-
-
-
-
-
-
-
-opporuninty for _anyone_ is nto opporuntiy for _everyone_
+Opportunity for _anyone_ is not opportunity for _everyone_.
