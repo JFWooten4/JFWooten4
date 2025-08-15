@@ -41,7 +41,7 @@ we have execute TOD:
 
 ---
 
-DRS POdcast on exam
+DRS POdcast on exam:  laws  as problem far and above the  people
 
 - staff efforts like wow
 - communit assistence on response 4
