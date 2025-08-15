@@ -35,3 +35,14 @@ we have execute TOD:
 1.  get  WC  choice made
 2. get cover written  as REQW'd
 /3. segue to podcastg owith basis at _supra_ note 1
+
+
+
+
+---
+
+DRS POdcast on exam
+
+- staff efforts like wow
+- communit assistence on response 4
+- wirerd send time on ":good afternoon" lolk
