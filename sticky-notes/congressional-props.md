@@ -1,24 +1,26 @@
-laughably large  dialogind  to  hold in hand
- - can b e in front jacket pocket
- -  requisites glasses  from  inner pocket  breast[^a]
-        - _See also_ a finger trap
+Laughably large dialog ind to hold in hand
+- Can be in front jacket pocket
+- Requisites glasses from inner pocket breast[^a]
+  - _See also_ a finger trap
 
-fir eeexcintguisherf filled with  XYZ_INTERSTING_BLUE_THING
+Fire extinguisher filled with XYZ_INTERESTING_BLUE_THING
 
-[smoking gun  here]
+[Smoking gun / Bee Movie here]
 
+[^a]: Also, for clothing in general, we should presume multiple apps with the singular t-shirt option as post-introductory (and ideally more on the governance dune for frames of reference).
 
+Crucially, I need to know going into this who the 2 members from the Fed are.
 
-[^a]: Also,  for  clothign i n general,  we shoudl  prsume multiple app.s  with  the singular t-shirt option as  post-introductory  (and iderally more o n the  governnace  duna  for frames  fo  refeernce)
+Ancillary attire:
+- Tempos
+- Inspire
 
-Crucially, I n eed to  know going into t his  who  the 2 m embers from  the Fed  r
+# Requisites
 
-ancellarry attire:
-- tempos
-- nspire
+~~Bathroom button~~ that leg bag thing
 
-# requisites
+Fucking WATER 🌊🌊
 
-~~bathroom button~~ that leg bag thing
+## Some on attire
 
-fucking WATER 🌊🌊
+- https://usa.tommy.com/en/tommy-adaptive/mens-adaptive/tops/regular-fit-oxford-shirt/MW39518-0GZ.html
