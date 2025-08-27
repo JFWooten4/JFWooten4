@@ -1,46 +1,45 @@
-it  feels nice to be back in this repo dolder. These lastm onths have b een so many ccdecisions with PII or MNPI that make it impossible for me to draft in public. But liuckily I think msot of that is well bedhind me knnow and we ;l'lll have all teh publicaiton out.
+It feels nice to be back in this repo folder. These last months have been so many decisions with PII or MNPI that make it impossible for me to draft in public. But luckily I think most of that is well behind me now and we'll have all the publication out.
 
- i;m at  a really tough crossroads (but where the road starts pslitting) between my DRS and XLM work. Or at least, it's a railroad siding that runs parallel for some distance before recocmnnecting. The core channlenge is the hsseer armount of pending work in the Defficiny  ltetter response.
+I'm at a really tough crossroads (but where the road starts splitting) between my DRS and XLM work. Or at least, it's a railroad siding that runs parallel for some distance before reconnecting. The core challenge is the sheer amount of pending work in the Deficiency letter response.
 
-I very seriously contemplated  attending a communtiy even some distancce away during the reiew peiod due on Sep 15. I won't pull punches or politckikc ty ou through how that decision was made. A happenstance of factors lead to a lotgistical inconvencinece whccih I took as a sign to abandon otureach.
+I very seriously contemplated attending a community event some distance away during the review period due on Sep 15. I won't pull punches or politic you through how that decision was made. A happenstance of factors led to a logistical inconvenience which I took as a sign to abandon outreach.
 
-THat said, I'm stil elft with material communtiy outreach on both siddes, and I'm having a really hcallenging qualm between prikoritizing me _very centralized work_ getting this frameworkk and factual efidence back  to the Commission. THe essence for me is **explaining v. accting** the reaility I'm describing to them. It's whetehr I should lean into decentralized work that brings the whole ecosysteem forward or  my own statutory obligations.
+That said, I'm still left with material community outreach on both sides, and I'm having a really challenging qualm between prioritizing my _very centralized work_ getting this framework and factual evidence back to the Commission. The essence for me is **explaining vs. accepting** the reality I'm describing to them. It's whether I should lean into decentralized work that brings the whole ecosystem forward or my own statutory obligations.
 
 ## Pros[^1]
 
-[^1]: For  clarity,  the decision at stake  its whetehr to engage with Hunter in  the immeiate response period to their outreach, likely entailing a phone call. I still need to circel around with the government numbering office  to  get a solid reference for § 1/ ogff the reply. That alone could take up two days of social bandwidth.
+[^1]: For clarity, the decision at stake is whether to engage with Hunter in the immediate response period to their outreach, likely entailing a phone call. I still need to circle around with the government numbering office to get a solid reference for § 1 of the reply. That alone could take up two days of social bandwidth.
 
-- Already engaging in a community call on friday:
+- Already engaging in a community call on Friday:
   - With Chives and WhatCan
-  - framed around getting to the bottom off FAST reporting  discrepencies
-  - not exactly someonthinee I am imediaelyt authoritatively needed to assists, but rather done for the explorative and political purposes of the Hunter  caht
-- Deepen a greally great relatinoshiip where we're both amking bug strides to get netowrrk funding right
--  THey are really xmart, and  did I mention they are working on really  cool stuff despite huge challenges
--0 Inlay to Silence working itmes through Atlaas dev groupo, which has direct liinks to the FOundation
-  - Not sure and almsot  a con in the latter part
-  - Existing developmetns incomplete with Bri and inside team on docs
-  - OUtsidfe of public forum and refreshes the tiimeclockk on backdated referfences for Dash
-- Very strong [historical outrach](https://discord.com/channels/897514728459468821/911254664576643122/1362183910309757120)
+  - Framed around getting to the bottom of FAST reporting discrepancies
+  - Not exactly something I am immediately authoritatively needed to assist, but rather done for the explorative and political purposes of the Hunter chat
+- Deepen a really great relationship where we're both making big strides to get network funding right
+- They are really smart, and did I mention they are working on really cool stuff despite huge challenges
+- Inlay to Silence working items through Atlas dev group, which has direct links to the Foundation
+  - Not sure and almost a con in the latter part
+  - Existing developments incomplete with Bri and inside team on docs
+  - Outside of public forum and refreshes the time clock on backdated references for Dash
+- Very strong [historical outreach](https://discord.com/channels/897514728459468821/911254664576643122/1362183910309757120)
 
-##  cons
+## Cons
 
-- In the DRS example, I have a whoel new colaborator to gain 
-  - Extrmeley similar overlap of existing wokr
-  - Same itnerestes in investigation and reformm
+- In the DRS example, I have a whole new collaborator to gain 
+  - Extremely similar overlap of existing work
+  - Same interests in investigation and reform
   - Not really the case with Hunter, who I sponsor
-- Crux of the item is my lacking frameworks for collective working item renumartion, and I sdislike requesting efforts with no evenue for compensation in anny of its forms
-- COuld probably  happen later, albeit wiht less timely rgior
-- Could deter existing narrativve which is at least 2 months bacmlklogged  by the SEC burndne
-- Take material time awayh ffrom the response which jsut  gkeeps expanding in sccope
-- Risks missing something timestampped whi ch could be a backlinek in TAR2
-- The  historical outreeach extends  NQWG  and SCF work rather  than  the nimmediated needed SEC reploy
-  - TO  the  textnet relative,  this is proabbly  the m ost sccruitinty _I_ will have  as the indepddnent coordinator of all the SYdnicate efforts
-  - Getting it right therfore with the same prudence as past judicial arguments made in condensed timeframes would set  an exceptikonal precedent
-  - As a counter, I don't klnwo how often we;'ll see Steve oncce we mocve to INdiaina oversight sector, but I believe they would still cross-ref
+- Crux of the item is my lacking frameworks for collective working item remuneration, and I dislike requesting efforts with no avenue for compensation in any of its forms
+- Could probably happen later, albeit with less timely rigor
+- Could deter existing narrative which is at least 2 months backlogged by the SEC burden
+- Take material time away from the response which just keeps expanding in scope
+- Risks missing something timestamped which could be a backlink in TAR2
+- The historical outreach extends NQWG and SCF work rather than the immediate needed SEC reply
+  - To the textnet relative, this is probably the most scrutiny _I_ will have as the independent coordinator of all the Syndicate efforts
+  - Getting it right therefore with the same prudence as past judicial arguments made in condensed timeframes would set an exceptional precedent
+  - As a counter, I don't know how often we'll see Steve once we move to Indiana oversight sector, but I believe they would still cross-ref
 
+## Call
 
-##  CAll
+This is really hard because every instinct in my heart says to perform the community outreach and continue growing together. I just absolutely hate how these centralized deadlines arbitrarily force me into binds.[^2] You know, the Commission has been quite satisfied with plan layouts and public references, so I say let's squeeze it in and say hi to the start of technical delegation.
 
-This is really hard because veery insstinct in my heart satys  to perform the communiy ourtreach and continue growing together.  I just absoluite hate how these centralized ddeadlines arbitrarirly forcem into biunnds.[^2] Yuo know, the Commission has been quite satisfied with plan layouts and publidc references, so  Isay let's squeeze it in and say hi  to the start of technical delegatioj.
-
-[^2]: And it;s not tlike they fdon't help get things across the finish line. _See, e.g.,_ the epxedidted TAR1  comment termination, which  itself  cut o ff in the genesis  material DEX documentation work still outstanding. But it's a matterr  of form that's more intimately violated, takign the locust  of control away from creative  collabotrotr liberties.
+[^2]: And it's not like they don't help get things across the finish line. _See, e.g.,_ the expedited TAR1 comment termination, which itself cut off in the genesis material DEX documentation work still outstanding. But it's a matter of form that's more intimately violated, taking the locus of control away from creative collaborator liberties.
