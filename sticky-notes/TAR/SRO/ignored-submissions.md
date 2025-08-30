@@ -2,3 +2,5 @@
 - [source](https://docs.google.com/document/d/1OCop8lN1K3XQKuP97gIrX5MjYRVnWZm5YZhgoaYwxi8/edit) and [context](https://github.com/JFWooten4/agenda/issues/15#issuecomment-3165693075)
 
 and we will have the fn follow up cc'd to aslaskan foolfice
+
+## reuires `pulishing`
