@@ -1,3 +1,5 @@
+# October*ish* presentiaton
+
 I want to flesh out hte public goods qualification criteria
 
 # Requisites
