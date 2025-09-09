@@ -8,3 +8,7 @@ andr then we need a tie-back to https://github.com/stellar/stellar-protocol/pull
 
 
 (shoudl rturnaroffund twithin a week)
+
+
+I'm sincerely sorry, but we r gonna need to footnote https://github.com/stellar/stellar-protocol/pull/1781 on the basis of remarks from the August meeting
+(to Gemma)
