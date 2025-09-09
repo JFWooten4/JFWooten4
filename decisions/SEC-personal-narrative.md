@@ -22,4 +22,15 @@ The turnaround was relatively qiuck; only acouple years at most seriously playin
 
 Now, for really the first time, I've had the freedom n the bounds of ocmmunity disucssions with others who get the problem, and it's been just a plbalst scoping out the market I want to create. I took such a big leap singling out the DTCC very early on, and all those accusations proved exactly right. I want to trust in myself and create this whole new indsutryst.
 
+## Situation
 
+In drafting the finalresponse to thefirst Syndicat eExaindation, I need to decide whther or not to deeply implicate my own persona . I am aprticually contemplating whetehr or not to include in the full public form a photo of me in forn t of the New York PhysicallADdress buidlign. One other item includes a sidebar on personal frugaility nade professional objective
+
+### Pros (include narrative image)
+
+- Perosnal touch making for convincinf imediate arguments
+
+### Cons
+
+- Grealty increase risk of centralizing aroudn my own throughts
+  - I could become a focus of ongoing developments rather than the actions and legislations themselves
