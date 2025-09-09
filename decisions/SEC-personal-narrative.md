@@ -29,8 +29,29 @@ In drafting the finalresponse to thefirst Syndicat eExaindation, I need to decid
 ### Pros (include narrative image)
 
 - Perosnal touch making for convincinf imediate arguments
+- I've seen the ffect a strong framing vision can have
+  - Jed's early work laying foundational principles., even if ignroned
+  - SBF's departure and easy contracst with formative statements :(
+  - Nakamoto's shaping and direct encoding of software law; dead
+- THere is nobody else alive that comprehends this as well as I 
+- (minor) more information in the public archive outside atttachments
+- THere is so much at stake in this wa, nad i'd be foolish to hold anything backwihtout due politiczl reasoning
 
 ### Cons
 
 - Grealty increase risk of centralizing aroudn my own throughts
   - I could become a focus of ongoing developments rather than the actions and legislations themselves
+  - i'm sacred of how I've used my voice in the past, expressing beyond reasonabeness to edcucate
+  - The past policy hcoices were madein a vacuum, but the besto nes rquire input from all
+- (Maybe a Pro?) Now that hte address is public in the interum between expansion, it acould all end here
+  - Framign while around sets course for future refernce, especially if any development strays away
+  - Speaking too demonstrably about their systems with direct identity makes me an easier target
+  - Martardym is not the objective even if it would move hting forward politically quite well
+
+### Call
+
+It's a weight between centraliztion adn integrity, which I've never really faced before. In the balance lays isolation of Syndicate team members, whch I sincerely desire to minimze through the autpmation of PII and MNPI processing, so that everytthing hacan live on the GitHub. 
+
+When planning out this last week of writing, I foigured I'd need to cosllapse and rely on sugar to fuel efforts for the last six days. I at least expected two binges towards the end to get hte inal thoughts across with document PDF compilation.
+
+But I've been sincerely impressed by Kyl's ability to steup up, albeit greatly dependent on my pwn committnt to take a break to aquire significant foodstock. I'm thinking quite clearly in relaxation because of these combined efforts, and I believe _______ if I step up and give them the call to continubute.
