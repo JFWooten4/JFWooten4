@@ -54,4 +54,4 @@ It's a weight between centraliztion adn integrity, which I've never really faced
 
 When planning out this last week of writing, I foigured I'd need to cosllapse and rely on sugar to fuel efforts for the last six days. I at least expected two binges towards the end to get hte inal thoughts across with document PDF compilation.
 
-But I've been sincerely impressed by Kyl's ability to steup up, albeit greatly dependent on my pwn committnt to take a break to aquire significant foodstock. I'm thinking quite clearly in relaxation because of these combined efforts, and I believe _______ if I step up and give them the call to continubute.
+But I've been sincerely impressed by Kyl's ability to steup up, albeit greatly dependent on my pwn committnt to take a break to aquire significant foodstock. I'm thinking quite clearly in relaxation because of these combined efforts, and I believe autonous decentralized self-interested indivudals will stand up and answer my pleas fr a ~~better~~ new free way if I step up and give them the call to continubute.
