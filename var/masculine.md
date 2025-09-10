@@ -5,3 +5,4 @@
 - FLT: Bri
 - PP: Autumn
 - Rarity: Donna
+- Trixie: Staff
