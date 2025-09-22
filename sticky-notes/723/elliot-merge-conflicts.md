@@ -1,6 +1,6 @@
 docs/learn/fundamentals/transactions/list-of-operations.mdx has Revoke Sponsorship`
 
-- docs/learn/encyclopedia/storage/README.mdx
+- docs/learn/encyclopedia/storage/README.mdx (now also docs/learn/encyclopedia/contract-development/README.mdx)
   - thi shsouldd  be th edecription for thhe DEX secrion, not  data
   - i  guess  the reorg rrmemoved this  page
      -  I FUKN GOT M OVED UP  TO  CORE CONECPTS LOLLLLL ---- change the sidebar_label  to `Stellar  DEX` to match other  cc's
