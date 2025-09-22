@@ -6,4 +6,5 @@
      -  I FUKN GOT M OVED UP  TO  CORE CONECPTS LOLLLLL ---- change the sidebar_label  to `Stellar  DEX` to match other  cc's
 - docs/learn/fundamentals/stellar-consensus-protocol.mdx
   -  replase  H1 with vid thumbnaikl
-
+- docs/learn/fundamentals/stellar-data-structures/accounts.mdx
+   - lett's just  mke evryonee's life  eassier iwth  `—` 💜
