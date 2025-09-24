@@ -9,5 +9,3 @@ fra,me staerrt
 the question is whether you can decentralize custody (because that's what DRS is) while maintaining centralized exchange venue, routing, and corporate control. 
 
 #  this  is a  Resp. 8 fn n 113 linjmk  1
-
-check on draft pr. "how can i help?" thanks a ton for you efforts because i haven't been able to get tikz pics in md either lol
