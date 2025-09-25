@@ -2,6 +2,7 @@ fra,me staerrt
 
 ..that we've started with the AtS and the review comment.
 
+Mark has an email from Marcus Lemonis and Alan Konevsky about setting up a conference call, that was months ago......
 
 > I will say things that are against your economic interest because it is better for the market and investors.
 
