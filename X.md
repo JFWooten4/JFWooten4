@@ -1,0 +1,20 @@
+fra,me staerrt
+
+..that we've started with the AtS and the review comment.
+
+Mark has an email from Marcus Lemonis and Alan Konevsky about setting up a conference call, that was months ago......
+
+> I will say things that are against your economic interest because it is better for the market and investors.
+
+
+the question is whether you can decentralize custody (because that's what DRS is) while maintaining centralized exchange venue, routing, and corporate control. 
+
+#  this  is a  Resp. 8 fn n 113 linjmk  1
+
+link out to https://x.com/whydrs/status/1970929460418638005 (segues to narjet  strucutre)
+
+
+
+# end
+
+" DTCC doesn't  just  throw  140 people into a conference call for n o reason"
