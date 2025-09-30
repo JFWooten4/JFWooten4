@@ -20,7 +20,7 @@ Ancillary attire:
 ~~Bathroom button~~ that leg bag thing
 
 Fucking WATER 🌊🌊
-- unopened cherry coke (discreet)
+- unopened cherry coke (discreet) - Reoubs only
 ## Some on attire
 
 - https://usa.tommy.com/en/tommy-adaptive/mens-adaptive/tops/regular-fit-oxford-shirt/MW39518-0GZ.html
