@@ -15,3 +15,13 @@ but ran "ppoorly" with "issues"
 nothing seemed worked or "no money flowing" so no devs paid to work on communiy projects
 
 --> made HIM!
+
+--
+
+make a compare to a mock token of a secuirt ````contrast with xlm:````
+
+- comparing with existing rules
+- in re XRP & SOl
+- start with borarderline securiites
+- and then explain hw things work onstelalr
+
