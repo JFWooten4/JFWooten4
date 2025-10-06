@@ -1,0 +1,1 @@
+Can do CC S A 3 film firghts after the first movie to pay XYZ% of net reeneues to author
