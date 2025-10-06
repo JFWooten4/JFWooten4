@@ -1,0 +1,1 @@
+a trend I’ve seen among dozens of investment committees, communities, & cooperatives
