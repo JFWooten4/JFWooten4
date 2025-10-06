@@ -10,4 +10,11 @@ For not seeing certificates as evidence of ownership, I can reference 6days' wor
 
 examiner Donna - "first time on github
 
-- lol change Discord pronounds to stallion/DRS'r
+## ca;lls
+
+- Donna
+  - staff approahc to confidentiality over /per linkedin 
+- Dave
+  - TA change as MNPI? adjusting your service provider.
+      ^ i uguess it's if ythey would consider it material to the market or not 
+                   ^ but tis shouldnt gahh
