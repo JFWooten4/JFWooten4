@@ -12,5 +12,8 @@ withmounts for the team depending on where you were from
 another parotipant came from the EU can got $4k
 
 
-they all got the stellarrbeat proposal together to work together 
+they all got the !stellarrbeat proposal together to work together 
 main H with alt Tplui and subseq sil>?
+
+moved to stellar atlast = inice now
+came with a 2-year SDF contract since it's a "very important project"
