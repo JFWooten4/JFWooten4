@@ -13,3 +13,6 @@ Specifically Banjk of NY : Hare & Co - 50 years old
 staory of Reg S / 144A "global note" omnibus registry mailed from/back to NY via Camen's
 
 
+---
+
+absolute power corupts absolutely {not in their case but def. seen in beurcratic strucutre}
