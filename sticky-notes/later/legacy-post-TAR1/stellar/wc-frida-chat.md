@@ -28,7 +28,7 @@ Possible adiditonal commentary in the case on the Cede number anomily.
 
 Defers to Lawson paper quote on DRS disclosure diction. 
 
-### TAR2
+### TAR2 //!-- it would also be sick af TODO get the Fidelity timestamp docs 
 
 BBBQ difference twould've borroewed more than every registered share avaliable
 
