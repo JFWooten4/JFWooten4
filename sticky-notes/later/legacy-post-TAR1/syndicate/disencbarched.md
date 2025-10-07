@@ -17,3 +17,5 @@ if occ easy refernce (n.14
 
 "
 Synd. may kook very structurally different next time we meet")
+
+there's also a {{fn href after congress TAR report on Response 1 note {OCC} SRO entitty statutre for DUNA as TAs' collective
