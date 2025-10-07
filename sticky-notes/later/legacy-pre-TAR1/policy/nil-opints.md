@@ -13,3 +13,9 @@ OCC SRO & EDGAR note 2 ref @ note 16
 ---
 
 custody - > no individual accountability --> pfreezes impossible 
+
+---
+
+Finish on 2-space & see how mobile looks 
+
+e.x. we ave binance with SSN and address only 
