@@ -19,3 +19,7 @@ custody - > no individual accountability --> pfreezes impossible
 Finish on 2-space & see how mobile looks 
 
 e.x. we ave binance with SSN and address only 
+
+---
+
+check out the compilot impoicatiosn if we have more doc examples 
