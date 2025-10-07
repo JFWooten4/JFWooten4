@@ -17,3 +17,9 @@ main H with alt Tplui and subseq sil>?
 
 moved to stellar atlast = inice now
 came with a 2-year SDF contract since it's a "very important project"
+
+### shoudl be done 
+
+change disucssion title @ end
+
+simple 1 ps comment expiring reivew
