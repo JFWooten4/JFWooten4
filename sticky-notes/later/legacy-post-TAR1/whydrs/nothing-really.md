@@ -22,3 +22,10 @@ finish announvrmdent trpost
 - psyh psymrnyd ,prtrggrtrf ytidyilinrd, nsyibr frc detc 
 
 from Chives: Laweson sat in on the chat with Trumbath & has a id acadmeice conenction 
+
+## dram goals
+
+saydid to see the changing CPA team review. i wantedt email Jed asking to call for 15min asfter 723 
+in re DEX
+
+think it coulda hot an ohjour interviewing about the orderbook alking to ta.eth . still could. i jsut want to take am ore "McRee Coop" attack a la chives
