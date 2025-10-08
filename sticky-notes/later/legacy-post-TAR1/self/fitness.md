@@ -1,0 +1,1 @@
+don;t like the gynm & want to get back into running
