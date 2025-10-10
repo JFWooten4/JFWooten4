@@ -37,7 +37,7 @@ we have execute TOD:
 /3. segue to podcastg owith basis at _supra_ note 1
 
 
-
+https://chatgpt.com/share/68e8b4a8-c8ac-8010-bcee-0f12e7d0f697
 
 ---
 
