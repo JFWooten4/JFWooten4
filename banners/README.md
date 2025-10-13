@@ -2,6 +2,7 @@ I keep losing all the social profile banners I use across different centralized 
 
 ## Credits
 
-- `consensys.md` comes from @silence48 ([src](https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772))
+- `consensys` comes from @silence48 ([src](https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772))
 - `rails` comes from @bobmahalo ([src](https://discordapp.com/channels/1102309240145707049/1118990437684875357/1296830496973787196))
-- `massie` (bleeding) comes from @6days1week ([src](https://discord.com/channels/1102309240145707049/1118990437684875357/1418078804412469298))
+- `massie` (bleeding) comes from `6days1week` ([src](https://discord.com/channels/1102309240145707049/1118990437684875357/1418078804412469298))
+- `decievingly-cute` comes from `Krista_21` ([src](https://x.com/Kristalina_21/status/1843336237266153699))
