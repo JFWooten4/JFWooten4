@@ -10,3 +10,8 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 
 
 [^a]: For instance, I just had it as the [mission](../banners/mission.png) for the longest time. While that's my distilled public-facing goal and an introduction to my ideals, it is sorta boring lol. And that's perfectly fine, since financial markets are supposed to be boring (_see_ BT logo colors)!
+
+## Credits
+
+- `flawless-ocean` comes from Dowa ([src](https://x.com/DowaPone/status/1845056649192522231))
+- `embracing-art` comes from Krista ([src](https://x.com/Kristalina_21/status/1720914062496919652))
