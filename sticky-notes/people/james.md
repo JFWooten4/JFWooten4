@@ -9,3 +9,5 @@ more than jsut requesting information?
 
 
 
+💜💜 the tool
+💗💗 best give info to masses (msot efficintly)
