@@ -1,0 +1,5 @@
+- Chase
+- Chashapp
+  - x2
+    - she can send to me, 
+- Investor deposits? 
