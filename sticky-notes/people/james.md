@@ -1,3 +1,6 @@
+
+
+
 how to maimuize usabiulity in gamecock?
 
 more than jsut requesting information? 
@@ -10,4 +13,8 @@ more than jsut requesting information?
 
 
 💜💜 the tool
-💗💗 best give info to masses (msot efficintly)
+💗💗 best give info to masses (msot efficintly
+
+
+
+also i should ACK the 6days intro in thread mention)
