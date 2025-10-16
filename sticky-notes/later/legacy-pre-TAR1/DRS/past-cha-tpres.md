@@ -1,0 +1,1 @@
+Don;t join James _TS_ until main interview over
