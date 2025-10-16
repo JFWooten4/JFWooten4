@@ -41,3 +41,20 @@ idk if seperation post or such but relevant sentimients from :
 lulling Congressionalisna skepecism on specialized regualtory org @ n.42
 
 Wall Sst work "stealing from the pockets of investors, small businesses, and the American taxpayer"
+
+
+### cont'd
+
+n.129 in re "decentralizing" the filing agent market ++ updatinged filder amanual description/docs
+
+enhanced scope of peromsission & trsut minimization at n.133 and accouopanyuny text
+
+API toolkit pre-built & open-sourced at 69 !
+
+quote genslar statment
+
+### wins
+
+single-handndly (check this) go them to intro "Tech Acdmin" role
+
+fucking love the formatting in n.96
