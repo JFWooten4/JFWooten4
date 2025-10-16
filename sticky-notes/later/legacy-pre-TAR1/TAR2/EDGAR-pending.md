@@ -32,3 +32,12 @@ EDGAR Final Rule: Single-member small business Form ID POA needs to be notarized
 
 Should be able to opt to share IAL2 instead of notary per 19 [cited added cost in n.43]
 
+## EDGAR Next Final rule
+
+"Fuck Wall St" {~~}
+
+idk if seperation post or such but relevant sentimients from : 
+
+lulling Congressionalisna skepecism on specialized regualtory org @ n.42
+
+Wall Sst work "stealing from the pockets of investors, small businesses, and the American taxpayer"
