@@ -22,3 +22,13 @@ they pushed back on the e-signatureds because i failed to incorprate hte "Person
 
 {{fone!}}
 
+### disconcurs
+
+Stated goal of "individual traceability and multifactor authentication," & if a superior alternative exists, "that technology will be considered as appropriate." [at 21]
+
+Best case re n.63 & p.27 would be using public-key cryptography (maybe cite IRS bad crypto)
+
+EDGAR Final Rule: Single-member small business Form ID POA needs to be notarized [p.18]
+
+Should be able to opt to share IAL2 instead of notary per 19 [cited added cost in n.43]
+
