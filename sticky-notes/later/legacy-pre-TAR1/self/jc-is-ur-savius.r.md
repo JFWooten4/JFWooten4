@@ -1,0 +1,1 @@
+Garand, you have quite the backround in legacy capital markets. Do you think liquidity is its own incentive?

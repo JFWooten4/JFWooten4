@@ -1,0 +1,1 @@
+Dude, here's a thought. Would ETH ahve stayed PoW if Thiel application stayd denied >? N Owine & dine dinner with capital vproviders to change vision to silicon valley.
