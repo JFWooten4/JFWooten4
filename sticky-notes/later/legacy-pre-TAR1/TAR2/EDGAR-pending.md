@@ -13,3 +13,12 @@ n.91-92L : important examples of diversity & SEC responding to public comment, u
 
 
 so the EDGAR NEXT REVIEW RESPONSE page number should be aroun ther e
+
+---
+
+### refelctions
+
+they pushed back on the e-signatureds because i failed to incorprate hte "Persona agument" which should prob. wait until open-source
+
+{{fone!}}
+
