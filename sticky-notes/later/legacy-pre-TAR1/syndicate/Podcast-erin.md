@@ -5,4 +5,4 @@ Podcast flow:
 
 FOIA on GME frozen DRS #s --- 
 
-MAJOR SECtION
+MAJOR SECtION {{what's transpareny develop process like? anything private?}}
