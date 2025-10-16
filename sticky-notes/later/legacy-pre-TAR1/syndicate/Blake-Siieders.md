@@ -23,3 +23,11 @@ Says SDF assigned a person to him & then they didn't do anything & invested in a
 So just got a new CFO who did in 1 mo what yhtey couldn't do in 6 mo
 
 CEO Pavlo Pablo"" asked for a good review b/c diddn't udnerstand actual work
+
+0---
+
+
+talked with business dev & had Priscilla as helped in SCF11 bootcamp
+
+she went to mentittny leave & didn;t do anyhting communcaited during return
+
