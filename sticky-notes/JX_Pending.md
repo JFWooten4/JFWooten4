@@ -7,3 +7,5 @@ https://www.youtube.com/@TheForgottenGlamrock/videos
 #### a lot of censored stuff which'll take searching
 
 There were some other ones avaliable on th epublic version not listed, bt it was mostly backup and only the extreme darker side of [source](https://tamers12345.fandom.com/wiki/Tamers12345%27s_My_Little_Pony_Episodes).
+
+https://x.com/CStrawberryMilk
