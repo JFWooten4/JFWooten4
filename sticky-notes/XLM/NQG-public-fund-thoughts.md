@@ -21,3 +21,16 @@ Generalize data with transparent user and repository API; generous free MS API l
 ---
 
 Thus we get to Sponsors as delegation votes
+
+
+# condusions
+
+https://discord.com/channels/897514728459468821/1124340476288454657/1428764150716432405
+on
+https://web.archive.org/save/https://stellar.gitbook.io/scf-handbook/supporting-programs/public-goods-award/official-rules
+
+and https://discord.com/channels/897514728459468821/1124340476288454657/1209152307317702676
+as resolve
+
+downto
+https://discord.com/channels/897514728459468821/1082054027317096478/1427307764857966676
