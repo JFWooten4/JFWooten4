@@ -17,7 +17,7 @@ bets ou have more power in bankrutcy countrrt than perhaps FAST agreement censor
 - TA doesn't tell issuer FAST balence
 
 Wants to change rules to ahve quarterly reporting of Cede's # shares held
-{{could be achivesd by change in TA legering }}
+(could be achivesd by change in TA legering)
 ...to make shorts laign regualrly with balances
 
 
