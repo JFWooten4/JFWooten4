@@ -1,0 +1,8 @@
+lol wat if we do a `stick-notes` repo hidden archive item that 
+
+is like the fkn derpy marraige scneene
+ 
+ and thats the 404 
+
+ https://pony.tube/w/fHHWLy33yPqudEDFYaF28e
+ 
