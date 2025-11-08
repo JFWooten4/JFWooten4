@@ -1,28 +1,28 @@
-SO basically I'm at thi point where I Need to decide how much I trust myself. Howmm uhc I belive in my onw abiliy and intuition to do what's right/ ti's really scary.
+So basically I'm at this point where I need to decide how much I trust myself. How much I believe in my own ability and intuition to do what's right. It's really scary.
 
-I started to eealize how menainguf lthis is when I was wiritning the DEX doca for Stellar. I am at the point hwere I weave in the free-market sentiments. Important!
+I started to realize how meaningful this is when I was writing the DEX docs for Stellar. I am at the point where I weave in the free-market sentiments. Important!
 
-This culminates a lot of work back in [1558](https://wooten.link/1558), which started me down the TAR work. it was a good practice frun for hte immense politcking and decision-makign i needed in the Review. That took a lot, and I was not fulfilled at home during it. 
+This culminates a lot of work back in [1558](https://wooten.link/1558), which started me down the TAR work. It was a good practice run for the immense politicking and decision-making I needed in the Review. That took a lot, and I was not fulfilled at home during it.
 
-i thought kayla added everything i was missing form my mission. a perfect secondh half to fill my complimentary skillssets. but i realize now that I need soemthing much more.
+I thought Kayla added everything I was missing from my mission. A perfect second half to fill my complementary skill sets. But I realize now that I need something much more.
 
-it's onot right to keep on with this when the love is gone, vanishing with trust. i just couldnt have fairth in the stability. and i know that matters so very much in crisis.
+It's not right to keep on with this when the love is gone, vanishing with trust. I just couldn't have faith in the stability, and I know that matters so very much in crisis.
 
-The whole thing is going to come down, and nobody even sees it. It's all going to hit a wall harder than anyhting we've ever seen. And I need the absolute best home team when it does.
+The whole thing is going to come down, and nobody even sees it. It's all going to hit a wall harder than anything we've ever seen. And I need the absolute best home team when it does.
 
-### other factors
+### Other factors
 
-This chalgnes literally an insnae amount. It's a super differnet pat h which has comparatively much less supporting evidence. But it feels wright.
+This challenges literally an insane amount. It's a super different path which has comparatively much less supporting evidence. But it feels right.
 
-That's what I'm msot scared of. What if I'm doing somethat that seems wrong but feels right? Becuase of course I don't wnat to leave this behind.
+That's what I'm most scared of. What if I'm doing something that seems wrong but feels right? Because of course I don't want to leave this behind.
 
-It's a slipperly slope to centralization, akin to power. I have such hightened responsabilities and voice now, and ... I jus want to do righ!!!
+It's a slippery slope to centralization, akin to power. I have such heightened responsibilities and voice now, and I just want to do right!!!
 
-There's more emotion charged in this than anythign I've hever had to choose before. It is not my strong suit. I just want to UwU :) xc i;i =p
+There's more emotion charged in this than anything I've ever had to choose before. It is not my strong suit. I just want to UwU :) xc i;i =p
 
-I've already cried a lot over this starting in August. It really hit me in July, and obv. led to blog for RD. I never felt that need before.
+I've already cried a lot over this starting in August. It really hit me in July, and obviously led to the blog for RD. I never felt that need before.
 
-she;s helped me develop this deadly politcal skill. I feel like I should have the bandwidth to continue making it work. But it's draining.
+She's helped me develop this deadly political skill. I feel like I should have the bandwidth to continue making it work. But it's draining.
 
 ## Pros
 
@@ -30,59 +30,59 @@ she;s helped me develop this deadly politcal skill. I feel like I should have th
 - Nobody to come home to
   - Quiet peace
   - Complete focus
-  - Total responsability
+  - Total responsibility
 - More time for online friends
 - Easier to travel (minimal)
-- Dont need to go to the mall or othert things i dont like
-- Dont have to listen to music I dont like
+- Don't need to go to the mall or other things I don't like
+- Don't have to listen to music I don't like
 - Control over sensory inputs
-- Move away from loud neighbor s and cold
+- Move away from loud neighbors and cold
 - Near the beach, which is relaxing
 - Less complete junk food in the house
-- Nopony to keep me up when on the verge of second wind
-- Feels more authentic, like I keep my integrity which othersise feels lke it would slowley drain away
-- Leaving a very centralized perosn
-- Allows space for my strengths adn characteristics to flourish wihtout the politial downtpulls
-- obviously there are better fits somehwere in the fandom closer to my autism than her 
+- Nobody to keep me up when on the verge of second wind
+- Feels more authentic, like I keep my integrity which otherwise feels like it would slowly drain away
+- Leaving a very centralized person
+- Allows space for my strengths and characteristics to flourish without the political downpulls
+- Obviously there are better fits somewhere in the fandom closer to my autism than her
 - Brave thing to do
-- I can sell my valued , trasured, central-ish Soroban Dmoains ot fund things like food
-- Great parents who are supportive in spirirtt regaurdelsss of peevs over time lol
-- Bring focus back around to mission and goal rather tha nlike being happy in life
-- Do not need to constantnly go on illy vacations so that she can destress from work
-  - It's quesitonable whether this would stop after she stops woking
-  - I et peeved when I learn about the cnetalized shit she buys
-  - Donotn eneed to listen to all her work drama and pays
--v Less influkence from the sescae[aredes pf cmetra; rtea, amaangment
+- I can sell my valued, treasured, central-ish Soroban Domains to fund things like food
+- Great parents who are supportive in spirit regardless of peeves over time, lol
+- Bring focus back around to mission and goal rather than like being happy in life
+- Do not need to constantly go on silly vacations so that she can de-stress from work
+  - It's questionable whether this would stop after she stops working
+  - I get peeved when I learn about the centralized stuff she buys
+  - Do not need to listen to all her work drama and pay
+- Less influence from the seascapes of central retail management
 
 ## Cons
 
 - Less excitement from dates, fun together, and intimacy
-- Drastic change ot living enviorment
-  - Move back with parents.... owch
-  - Litarlly mnimal income at learst now
-  - Nobody to 'come home' to
-- Could lead to loniliness
-- Have to both aquire and prepare foods
-- Get to use her car with good gas milage rn
+- Drastic change to living environment
+  - Move back with parents... ouch
+  - Literally minimal income at least now
+  - Nobody to "come home" to
+- Could lead to loneliness
+- Have to both acquire and prepare foods
+- Get to use her car with good gas mileage right now
 - Someone to help plan fun things no more
-- Removes all the hugs , curteness, and stuff
-- She is possibly broadly decentralized in choice, and leaving is a step into entralization
-- A centralized person could be a good parthern 
-- hard to move
-- retty cool parents
+- Removes all the hugs, cuteness, and stuff
+- She is possibly broadly decentralized in choice, and leaving is a step into centralization
+- A centralized person could be a good partner
+- Hard to move
+- Pretty cool parents
 - Legit unsafe to leave fiscally
-- we ave a great shred parst and understnaing
-- She is a very good political card, lke extrmeley good
+- We have a great shared past and understanding
+- She is a very good political card, like extremely good
   - Known this since the start
-  - I could keep seeing how my jnuchjes play out ocer the long-term
-  - Obviously attractive to minority groups if I never needed to pander for broad support
-- She is a cool eprson and i love her very much
+  - I could keep seeing how my hunches play out over the long term
+  - Obviously attractive to minority groups if I ever needed to pander for broad support
+- She is a cool person and I love her very much
 - We are aligned on life objectives
-  - she has done just such an amazing job supporting my mission so that we can live otgether while she stays home
-  - aligns with my desires on kids no matter what
-  - broadly extrmely dfemanine withth right setup
-- Cease earlning more nuance aorund central orgs through her employer
+  - She has done such an amazing job supporting my mission so that we can live together while she stays home
+  - Aligns with my desires on kids no matter what
+  - Broadly extremely feminine with the right setup
+- Cease earning more nuance around central orgs through her employer
 
 ## Call
 
-This reall sincerely hurts . Fuck it let's do it. 
+This really sincerely hurts. Fuck it, let's do it.
