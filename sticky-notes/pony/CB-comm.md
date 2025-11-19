@@ -1,4 +1,8 @@
-"I'm take sorry, my PayPal was banned after sending PW £41. how about i send through Coinbase (no fee)?.........
+"I'm take sorry, my PayPal was banned after sending PW £43. How about i send through Coinbase (no fee)?
+
+........
+
+
 
 
 
