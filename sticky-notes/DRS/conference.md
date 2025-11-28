@@ -18,3 +18,11 @@ as theeahold for gradual decentelaization of NQG
 pre to deleating specifics ETC ETC
 
 and then effecrively communicating how things become a crazy beorcracy over time which is exceptional for stability 
+
+---
+
+For profit in utility capital
+
+Entrance ticket to a premier club exclusive
+Key to a for needed by all business
+Instructions to life
