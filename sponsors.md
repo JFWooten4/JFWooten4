@@ -116,3 +116,11 @@ That’s why so much of my work revolves around the nonprofit DAO, and support f
 Over the years, I’ve learned that I’m pretty separated from requesting funds or general marketing. Once I realized how simple it was to do well trading, I just stopped focusing so much on money. But I decided long ago that I wouldn’t perpetuate their centralized schemes with long-tail devastation, so it’s only the kindness and generosity from this which affords a roof over our heads.
 
 I get the life I live with Kayla may seem unconventional to those natured in hierarchical work. All I can hope is that the public work-product available throughout this platform serves to benefit your needs or vision for what our financial system ought to resemble. Trust is the first step in all this, and to have a little bit of yours would mean the world. 💜
+
+## 2 Dec 2025
+
+I work on nonprofit financial infrastructure to help masses of people build real savings and retirements.
+
+Please be patient with me as I'm currently transitioning to Dvorak 💜
+
+### [Past Work](https://github.com/users/JFWooten4/projects/1/views/1?filterQuery=-status%3A%22Pending+%F0%9F%92%9C%22%2C%22%F0%9F%9A%80+Critical+Mission+%F0%9F%8C%8C%22%2C%22Backlogged+%28High%29+%F0%9F%8E%AF%22%2C%22Backlogged+%28Medium%29+%F0%9F%A7%A0%22%2C%22Backlogged+%28Low%29+%F0%9F%A4%9D%22%2C%22Awaiting+Response%22%2C%22Ideas+%F0%9F%92%A1%22)
