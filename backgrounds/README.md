@@ -15,3 +15,6 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 
 - `flawless-ocean` comes from Dowa ([src](https://x.com/DowaPone/status/1845056649192522231))
 - `embracing-art` comes from Krista ([src](https://x.com/Kristalina_21/status/1720914062496919652))
+- `single-thing` comes from Reggie ([src](https://x.com/NG16_REGGIE/status/1947036884292497783))
+- `finding-love` comes from [Evrlasting_Stations](https://everlastingstations.straw.page) ([src](https://discord.com/channels/370605707965235200/509869543875805185/1376782644439945296))
+- `dash-ahead` comes from HauntedTuba, Oomles, and DrDinosaur ([src](https://youtu.be/SMAPk2oRVik?t=4999))

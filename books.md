@@ -1,4 +1,93 @@
-I want to try to keep track of all the books I read/listen to:
+This list ignores [formative education](https://www.youtube.com/playlist?list=PLWUFvhKuc_5ttS7F3BRXE4-NS4A-5VgA3), which includes at least hundreds of writings.[^1] There are also at least 400 finished audiobooks from the free/included Audible catalog which I obviate in favor of purchased titles, some of which might be out there because they were from a 2-for-1 sale. I'm moving on now to my own audio renderings using the WW tools, so the consumption can be much more intentful rather than just all business and self-help category titles available.
 
-_
-- Peast?
+[^1]: I'll include all the books I've kept over the years, but I do recall twiddling down my collection. Particularly, I donated the excess I didn't have room for when moving from college to my first shared apartment with my dad. This removed much of the Brunson marketing books in particular plus some other early developments which I found less meaningful.
+
+- _Metabolical_ by Robert H. Lustig  
+- _The Hard Thing About Hard Things_ by Ben Horowitz  
+- _Build_ by Tony Fadell  
+- _Flat Army_ by Dan Pontefract  
+- _Makers and Takers_ by Rana Foroohar  
+- _The Startup Owner's Manual_ by Steve Blank, Bob Dorf  
+- _Small Giants_ by Bo Burlingham  
+- _Wheat Belly_ by William David MD  
+- _The Power of the Other_ by Henry Cloud  
+- _It Worked for Me_ by Colin Powell  
+- _Compensation_ by Ralph Waldo Emerson  
+- _$100M Offers_ by Alex Hormozi  
+- _Company of One_ by Paul Jarvis  
+- _The Pragmatic Programmer: 20th Anniversary Edition, 2nd Edition_ by David Thomas, Andrew Hunt  
+- _Radical Honesty: How to Transform Your Life by Telling the Truth_ by Brad Blanton  
+- _The Truth About Lies_ by Aja Raden  
+- _Business Brokers and Securities Laws_ by Douglas Slain  
+- _No B.S. Time Management for Entrepreneurs_ by Dan S. Kennedy  
+- _Start_ by Jon Acuff  
+- _Great by Choice_ by Jim Collins, Morten T. Hansen  
+- _Smarter Faster Better_ by Charles Duhigg  
+- _Why We Swim_ by Bonnie Tsui  
+- _Genius Foods_ by Max Lugavere, Paul Grewal  
+- _Atlas Shrugged_ by Ayn Rand  
+- _Capital in the Twenty-First Century_ by Thomas Piketty, Arthur Goldhammer (translator)  
+- _Traffic Secrets_ by Russell Brunson  
+- _Fundraising_ by Ryan Breslow  
+- _Running Remote_ by Liam Martin, Rob Rawson  
+- _How Not to Die_ by M.D. FACLM Michael Greger, Gene Stone  
+- _Aging Backwards_ by Miranda Esmonde-White  
+- _Peopleware_ by DeMarco Tom, Lister Tim  
+- _How to Be a 3% Man_ by Corey Wayne  
+- _Charlie Munger: A Biography_ by Chase Archibald  
+- _The Age of Reason (AmazonClassics Edition)_ by Thomas Paine  
+- _The Almanack of Naval Ravikant_ by Eric Jorgenson, Tim Ferriss  
+- _The House of Morgan_ by Ron Chernow  
+- _Titan_ by Ron Chernow  
+- _Who Not How_ by Dan Sullivan, Dr. Benjamin Hardy  
+- _The Six Secrets of Raising Capital_ by Bill Fisher  
+- _The Sales Acceleration Formula_ by Mark Roberge  
+- _Eat to Beat Disease_ by William W Li MD MD  
+- _The Sales Bible_ by Jeffrey Gitomer  
+- _Meditations_ by Marcus Aurelius, George Long (translator), Duncan Steen (translator)  
+- _Ask!_ by Mark Victor Hansen, Crystal Dwyer Hansen  
+- _Girls & Boys_ by Dennis Kelly  
+- _Invent and Wander_ by Jeff Bezos, Walter Isaacson (introduction)  
+- _How to Talk to Anyone_ by Leil Lowndes  
+- _The Gap and the Gain_ by Dan Sullivan, Dr. Benjamin Hardy  
+- _Don't Sweat the Small Stuff, and It's All Small Stuff_ by Richard Carlson  
+- _The Gifts of Imperfection, 10th Anniversary Edition_ by Brené Brown
+- _Noncompliant_ by Carmen Segarra  
+- _The Rule_ by Larry Hite, Michael Covel (foreword)  
+- _The Alignment Problem_ by Brian Christian  
+- _Speak Like a CEO_ by Suzanne Bates  
+- _The Art of Startup Fundraising_ by Alejandro Cremades, Barbara Corcoran (foreword)  
+- _Proof of Stake_ by Vitalik Buterin, Nathan Schneider (introduction)  
+- _Amp It Up_ by Frank Slootman  
+- _Inspired_ by Marty Cagan  
+- _12 Months to $1 Million_ by Ryan Daniel Moran  
+- _Crystallizing Public Opinion_ by Edward Bernays  
+- _The Protestant Ethic and the Spirit of Capitalism_ by Max Weber  
+- _The Privatization of Everything_ by Donald Cohen, Allen Mikaelian  
+- _The Airbnb Story_ by Leigh Gallagher  
+- _7 Rules of Power_ by Jeffrey Pfeffer  
+- _The 12 Week Year_ by Brian P. Moran, Michael Lennington  
+- _The Monk Who Sold His Ferrari_ by Robin Sharma  
+- _Kingpin_ by Kevin Poulsen  
+- _Radical Markets_ by Eric A. Posner, E. Glen Weyl  
+- _The Money Game_ by Adam Smith  
+- _Adam Smith's America_ by Glory M. Liu  
+- _Capitalist Manifesto_ by Robert T. Kiyosaki
+- _Remote, Inc._ by Robert C. Pozen, Alexandra Samuel  
+- _The 80/80 Marriage_ by Nate Klemp PhD, Kaley Klemp  
+- _We the Poisoned_ by Jordan Chariton, Erin Brockovich (foreword)  
+- _Hijacking Bitcoin_ by Roger Ver, Jeffrey Tucker (foreword)  
+- _The Bezos Blueprint_ by Carmine Gallo  
+- _The Creature from Jekyll Island_ by G. Edward Griffin  
+- _A Decade of Armageddon_ by Susanne Trimbath  
+- _Life Is a Lazy Susan of Sh*t Sandwiches_ by Jennifer Welch, Angie Sullivan  
+- _Social Startup Success_ by Kathleen Kelly Janus  
+- _Lincoln on the Verge_ by Ted Widmer  
+- _The Heart Is the Strongest Muscle_ by Tia Toomey  
+- _Capitalism, Socialism, and Democracy_ by Joseph A. Schumpeter  
+- _A Promised Land_ by Barack Obama  
+- _Becoming Supernatural_ by Joe Dispenza  
+- _Midnight in Chernobyl_ by Adam Higginbotham  
+- _Takeover_ by Timothy W. Ryback  
+- _Quotes, Ruminations & Contemplations: Volumes I & II_ by Corey Wayne  
+

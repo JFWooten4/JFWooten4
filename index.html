@@ -40,6 +40,10 @@
       margin-bottom: 30px;
       list-style: none;
       padding: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
     }
     .social-links a {
       margin: 0 20px;
@@ -53,8 +57,6 @@
 </head>
 <body>
   <script>
-    const CHIEF_AMBITION = "https://github.com/WhyDRS/DUNA-docs/issues/51#issuecomment-2917855818";
-
     var redirects = {
       "alpha": "https://github.com/blocktransfer/erc20-deprecated",
       "aspirations": "https://docs.google.com/document/d/1546NL1xCOyKNQ3FjMevaZVhiLUq2hRLyU-GNJHlDDgs/edit",
@@ -142,7 +144,7 @@
       window.location.href = redirect;
     } else {
       if (window.location.host.endsWith("wooten.link")) {
-        window.location.href = CHIEF_AMBITION;
+        window.location.href = "https://jfwooten4.com";
       }
     }
 
@@ -166,13 +168,13 @@
     <p>Finance <a href="https://wooten.link/book">Author</a>, Passionate <a href="https://wooten.link/secrets">Trader</a>, & Web3 <a href="https://wooten.link/deck">Entrepreneur</a></p>
 
     <ul style="text-align: left; display: inline-block; margin-top: 40px;">
-      <li>What do you care about? <a href="https://wooten.link/origins">Answer</a></li>
+      <li>What do you care about? <a href="https://whydrs.org">Answer</a></li>
       <li>Where else do you publish? <a href="https://github.com/JFWooten4/free-markets">Answer</a></li>
       <li>Why do we need a free DEX? <a href="https://www.youtube.com/playlist?list=PLWUFvhKuc_5uIHno6ZC1QA3jKhvI9rVXU">Answer</a></li>
     </ul>  
 
     <div class="social-links">
-      <a href="https://web.archive.org/web/20240224001448/https://www.blocktransfer.com/about/values" target="_blank" aria-label="Values">
+      <a href="https://web.archive.org/web/20240224001448/https://www.blocktransfer.com/about/values" target="_blank">
         <img src="imgs/unicorn-heart.png" alt="Values">
       </a>
       <a href="https://github.com/JFWooten4" target="_blank">
@@ -192,6 +194,14 @@
       </a>
       <a href="https://discord.gg/pn3GcVKJ6j" target="_blank">
         <img src="https://blocktransfer.com/imgs/email/discord.png" alt="Discord">
+      </a>
+      <a href="https://wooten.link/origins" target="_blank" aria-label="Listen to Origins">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="9" y="3" width="6" height="11" rx="3" ry="3" fill="none" stroke="#AC51FF" stroke-width="2"/>
+          <path d="M5 10v1a7 7 0 0 0 14 0v-1" fill="none" stroke="#AC51FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="12" y1="18" x2="12" y2="21" stroke="#AC51FF" stroke-width="2" stroke-linecap="round"/>
+          <line x1="9" y1="21" x2="15" y2="21" stroke="#AC51FF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </a>
       <a id="email-link" href="#" aria-label="Email John Wooten">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
