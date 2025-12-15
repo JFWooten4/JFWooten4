@@ -1,0 +1,2 @@
+- https://github.com/metabrainz
+- https://github.com/skyhitz
