@@ -1,8 +1,4 @@
 
-setup on X
-
-poss re no priv. Discord group chat 
-
 ## content
 
 Ay yo @raven and @Pwaveter could you two help me with a challenge> 
