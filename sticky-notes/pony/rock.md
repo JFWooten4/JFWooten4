@@ -1,10 +1,4 @@
 
-circ circ helping frens
-
-intro dir CROSSbrd $25-0
-
-constr. ask WITHOUT A DIRECT AMOUNT IN THE GRANT to be found lol x
-
 ---
 
 did bancamp frdaiay but  lacks the direct feedback of time related to awesome new drop {SICK HREF VOCAB}
