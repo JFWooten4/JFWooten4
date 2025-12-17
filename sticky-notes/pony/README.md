@@ -15,14 +15,9 @@ did bancamp frdaiay but  lacks the direct feedback of time related to awesome ne
 been working with a friend on xyz solution that's work__ at some {sound dclip dist. SOFTWARE}} . We've been oth been building on stellar these last tyears, which {xyz lets payment no fee}. INC R E
 --
 
-an hours with support  fchat ion nov 12
+an hour with support chat a month ago
 
-
-
----
-"
-
-Paid likle $20 just between a few artists reccently"
+> Paid likle $20 just between a few artists reccently"
 
 DIR REF PAYPAL PROBLEM WITH:
 a. past [[trimbath]] sponsorship
