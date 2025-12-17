@@ -36,6 +36,7 @@
 - [Unilaterally Controlling Financial Infrastructure](https://www.youtube.com/clip/UgkxvR-0P5MQCn_bNr9L_6volUdIf_NAvM8L)
 - [The SDF on Market Structure](https://youtube.com/clip/UgkxmWUzfpnZauARPTIzphRvOPqhIgGTc51G)
 - [Liquidity for Small-Business Capital-Formation](https://www.youtube.com/clip/UgkxXmd78BMGq6Mu5FU9BU-625WOIGurWtWh) (BT Response #5)
+- [Austin Campbell on TAD](https://www.youtube.com/clip/UgkxGM96APdTXta-w-s19FEyWpNkAWiDDYHG)
 
 ## Clips not yet cited in footnotes
 
@@ -60,16 +61,21 @@
 - [McCaleb Removing Counterparty Risk](https://www.youtube.com/clip/UgkxtHrLI0lAJELpFBSbyha9XeDFautIoDAZ)
 - [Franklin Templeton Regulatory Leadership](https://www.youtube.com/clip/UgkxRYNtxmTspkWXD4456RgelJcrLC7YYAwU)
 - [Premeditated Failure (Central Clearing)](https://www.youtube.com/clip/Ugkx_yGx5hgPG7flPbRy0B4Ct6NRqteXgUEr)
+- [Austin Campbell on TAD](https://www.youtube.com/clip/UgkxGM96APdTXta-w-s19FEyWpNkAWiDDYHG)
 
 ## To Cite in Upcoming Comments
 
 - [Growing Systemic CCP Risk](https://www.youtube.com/clip/UgkxX1DN63sYrhFeAXBDM76mAyRXQBl-TGME)
 - [Premeditated Failure (Central Clearing)](https://www.youtube.com/clip/Ugkx_yGx5hgPG7flPbRy0B4Ct6NRqteXgUEr)
+- [Austin Campbell on TAD](https://www.youtube.com/clip/UgkxGM96APdTXta-w-s19FEyWpNkAWiDDYHG)
 
 ### systemic bailout req.
 
 - [DTCC Bailout Needed (Conn)](https://www.youtube.com/clip/UgkxV1YeRljQHPcN4NO5aBdj1HPS7apnbNrC)
 - [DTCC Bailout Needed (Premeditation)](https://www.youtube.com/clip/UgkxZbukKuQRCsLzfmFKDD9QkkHzXi-aVyU7)
-- [DTCC Bailout Needed](https://www.youtube.com/clip/Ugkxd0_I3EmB6m2oRNnJ2kTku32HTsIleI34)
 
 - [🧠 Something's Wrong 📉](https://www.youtube.com/clip/Ugkx_V1DjK4hfuqgfPeARudw1_efek9tyx-e)
+
+### Removed Videos
+
+- [DTCC Bailout Needed](https://www.youtube.com/clip/Ugkxd0_I3EmB6m2oRNnJ2kTku32HTsIleI34)
