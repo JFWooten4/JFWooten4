@@ -1,6 +1,7 @@
-### old `.xlm` supporting emojis
+### old `.xlm` brand
 
 github 🤝
 x 🪐
 discord 🚀
 bandcamp 🌱
+youtube 📈
