@@ -5,3 +5,5 @@ x 🪐
 discord 🚀
 bandcamp 🌱
 youtube 📈
+tumblr 🏳️‍🌈
+linkedin 🌍
