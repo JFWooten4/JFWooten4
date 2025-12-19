@@ -26,3 +26,6 @@ For profit in utility capital
 Entrance ticket to a premier club exclusive
 Key to a for needed by all business
 Instructions to life
+
+
+rberand to basis from https://chatgpt.com/c/694556a5-5230-8330-8310-f4543f2fa0da
