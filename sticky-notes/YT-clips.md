@@ -37,6 +37,8 @@
 - [The SDF on Market Structure](https://youtube.com/clip/UgkxmWUzfpnZauARPTIzphRvOPqhIgGTc51G)
 - [Liquidity for Small-Business Capital-Formation](https://www.youtube.com/clip/UgkxXmd78BMGq6Mu5FU9BU-625WOIGurWtWh) (BT Response #5)
 - [Austin Campbell on TAD](https://www.youtube.com/clip/UgkxGM96APdTXta-w-s19FEyWpNkAWiDDYHG)
+- [Jed Comparing Charging Rent](https://www.youtube.com/clip/UgkxZ0x8fJcGacDY7bioQyPh6Xf_C7LIjl8X)
+- [Open Networks Breaking Monopolies](https://www.youtube.com/clip/UgkxOpXpXTNwebNkCluSkavcWX9hRGdIo8Ym)
 
 ## Clips not yet cited in footnotes
 
