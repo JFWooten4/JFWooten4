@@ -1,3 +1,5 @@
+see if we can't integrate this with Mel
+^ reqs `Cync A19`
 
 
-- for Canny we have https://x.com/BernieAprils at https://www.youtube.com/watch?v=RXIIRHv-iXM
+there is some synergy here with Canni that could snowball into Tamers _if_ I get the capital
