@@ -1,9 +1,18 @@
 ### old `.xlm` brand
 
-github 🤝
-x 🪐
-discord 🚀
-bandcamp 🌱
-youtube 📈
-tumblr 🏳️‍🌈
-linkedin 🌍
+- github 🤝
+- x 🪐
+- discord 🚀
+- bandcamp 🌱
+- youtube 📈
+- tumblr 🏳️‍🌈
+- linkedin 🌍
+
+### 🗓️ Agenda & Personal Records Archive 🛤
+
+- Pending 💜
+- 🚀 Critical Mission 🌌
+- Backlogged (High) 🎯
+- Backlogged (Medium) 🧠
+- Backlogged (Low) 🤝
+- Ideas 💡
