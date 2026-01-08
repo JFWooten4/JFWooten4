@@ -29,3 +29,9 @@ The matter in full contextis that she andI had a joint account where wed put our
 ## Call
 
 empty and close it like i said
+
+### Edit
+
+This was the correct call. I nearly had o panic attack which coalesced into a junk binge last night just taking care to remove the last extra interest from last month. I think it's the combination of interacting with banks plus the complex emotional ramifications (in normal forum, which is just the same too much to handle from the fund[^c])
+
+[^c]: Chives' humorous solution to this challenge was to just not give a shit about the people whose money you manage. I think it's hilarious because that's effectively what happens when you charge a management fee on a down year. Any partner fiscal entanglements unfortunately seem to trigger this same mental need to perfect returns despite internal costs.
