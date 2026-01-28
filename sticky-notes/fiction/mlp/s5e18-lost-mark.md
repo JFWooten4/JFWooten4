@@ -6,6 +6,8 @@ And then Diamand Turaca
 
 I see a lot of myseld in them both. For DT we have directive bassis. And for CMC we have an oddysee and thaen acceptace of stablilty with conticatoin3
 
+Thte change in der cordiantion mechanimsms raellp hit. And it beirg from the CMCas infliencee. It just mirrors so much how everything must rhange for me.
+
 
 ### Sulver Spoon
 
