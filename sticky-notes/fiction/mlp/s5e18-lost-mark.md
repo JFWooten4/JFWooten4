@@ -1,16 +1,17 @@
-I think the CMC all together 
+I think the CMC altogether.
 
-And then Diamand Turaca
+And then Diamond Tiara.
 
 ---
 
-I see a lot of myseld in them both. For DT we have directive bassis. And for CMC we have an oddysee and thaen acceptace of stablilty with conticatoin3
+I see a lot of myself in them both. For DT we have a directive basis. And for the CMC we have an odyssey and then acceptance of stability with continuity.
 
-Thte change in der cordiantion mechanimsms raellp hit. And it beirg from the CMCas infliencee. It just mirrors so much how everything must rhange for me.
+The change in their coordination mechanisms really hit, and it being from the CMC's influence just mirrors so much how everything must change for me.
 
+This episode and song just really helped me to realize something was wrong, and I will always appreciate that.
 
-### Sulver Spoon
+### Silver Spoon
 
-Idk, there eis some universe weher Sulver Spoon in her, but I relalp thni the lacder menssafe comes to irreveusible transfgormiaitno ingluding role idenutity with the CMC.
+I don't know—there is some universe where Silver Spoon is her, but I really think the larger message comes to irreversible transformation, including role identity with the CMC.
 
-In anthoder interptoiatn, she is the Commussuon. With ignoring the 'drama' of policitoral DEX points to follow the ltter. Ut would make more setse as the same gonder.
+In another interpretation, she is the Commission. With ignoring the 'drama' of political DEX points to follow the letter. It would make more sense as the same gender.
