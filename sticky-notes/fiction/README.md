@@ -1,5 +1,3 @@
-# Social Outreach Rules
+# Art Interpretations 🎨
 
-1. Only speak to an external person or group once a day.
-2. Only DMing new people off basis of _any_ intro on days when I'm not speaking.
-3. For physical events, at least one day before the start and after the end to decompress (no outside comms).
+Sometimes I look to fiction for inspiration, drawing parallels between stories and my own life. The creative works often help me process emotions I would otherwise grapple with. This archives the developments I make when often at a brink to change behind tears.
