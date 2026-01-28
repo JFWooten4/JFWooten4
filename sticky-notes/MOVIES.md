@@ -5,10 +5,3 @@ Starship Troopers
 https://www.c-span.org/program/book-tv/licensed-to-lie/356256
 & book setup^
 
-
-
-
-
-Not sure wehere we waant to extrapolate these notes, but I see a lot of Eliza in Kayla.
-And the nwe have basis of 'free mmarkent' oricicnal vision in ro the one hot gilrrl I apprached at sunchh (Traattoria) & then how he really likes Angelica
-
