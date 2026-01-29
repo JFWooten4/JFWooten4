@@ -25,12 +25,3 @@ we  have rolling 5-0+% therhehosdld  during onbaoridnig of trusxterd users
 e.g. 2/3, 2/4
 
 
-
-
----
-
-DRS POdcast on exam:  laws  as problem far and above the  people
-
-- staff efforts like wow
-- communit assistence on response 4
-- wirerd send time on ":good afternoon" lolk
