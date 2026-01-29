@@ -5,10 +5,6 @@ SDF sole code
 Network chiropractor 
 
 
-Oct 31 notary meltdown in car after 1hr round trip to friends house while sick instead of waiting in line or scheduling bank appointment next door
-Bank suggested to use post office because other party Russell hadn't signed and wasn't there, but post office doesn't have person
-
-
 
 Market pandamonia metaphor through story of plane smoke on runway incident fatality
 
