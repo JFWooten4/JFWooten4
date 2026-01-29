@@ -18,3 +18,5 @@ But not necessarily liquidity quality.
 https://chatgpt.com/c/697bc228-4da4-8329-93a5-ff1f5e854fee
 
 https://chatgpt.com/c/697bc7a3-b660-8331-aef4-224643c38df5
+
+_See also_ Tim's [arbitrage engine](https://blog.hoops.finance/p/devlog-the-hoops-finance-markets-system-arbitrage-engine-overhaul)
