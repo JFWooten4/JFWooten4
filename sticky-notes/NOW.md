@@ -1,4 +1,4 @@
-GDRS...DUNA address
+
 capitalism.xlm
 
 ---
