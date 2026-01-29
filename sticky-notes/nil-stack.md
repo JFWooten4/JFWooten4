@@ -1,7 +1,8 @@
 
 
 
-We had our first day in Hilton Head and I still feel the same about romantic attractions. But I'm starting to think about what family (did.) —could be like as ever.
+We had our first day in Hilton Head and I still feel the same about romantic attractions
+
 
 I think mostly on my and wonder what I.
 
