@@ -10,31 +10,3 @@ Easily influenced weak psyche  bent to basic marketing
 3+ elon misk hrefs to 10=State asset , something ivw been concerned about q lot which only amplified after the demose of Byrne
 
 
-
-
-
-
-The medicaid chat gets iinto government handouts 
-We have basis on Yen hoin thoguh divorce
-Needs something as low income
-But also a idky investing in the market after reading my book earlier this year. +10k on 64k portfolio present value 
-Govenrment gocontrol over home service market in Petits work from 80s era infoation and central control
-
-Segues from that into principle of centralozation within kayla
-
-
-
-
-Should start woth plain LGBT href and tweet correcting denelle
-
-Lost my promise 
-
-I don't awmmemwmwmwmwmcassnsdra
-
-
-
-
-
-Eg feds showed up to Russel's house after 50k engineering checks deposited 
-
-
