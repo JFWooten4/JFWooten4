@@ -1,1 +1,0 @@
-upon custody affirmation, need sorobandomains url and poss skyhitz re eaastro in gh description or the more theoough ABOUT page
