@@ -25,16 +25,7 @@ we  have rolling 5-0+% therhehosdld  during onbaoridnig of trusxterd users
 e.g. 2/3, 2/4
 
 
----
 
-we have execute TOD:
-
-1.  get  WC  choice made
-2. get cover written  as REQW'd
-/3. segue to podcastg owith basis at _supra_ note 1
-
-
-https://chatgpt.com/share/68e8b4a8-c8ac-8010-bcee-0f12e7d0f697
 
 ---
 
