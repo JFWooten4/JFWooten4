@@ -1,0 +1,422 @@
+---
+permalink: /search/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wooten Link Href Lookup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #0b0f1a;
+      --bg-2: #101b2d;
+      --ink: #e9eef5;
+      --muted: #9fb2c8;
+      --accent: #f4b43c;
+      --accent-2: #6dd6c8;
+      --card: rgba(10, 20, 34, 0.85);
+      --stroke: rgba(255, 255, 255, 0.08);
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 600px at 85% 10%, rgba(244, 180, 60, 0.12), transparent 60%),
+        radial-gradient(800px 600px at 10% 80%, rgba(109, 214, 200, 0.16), transparent 60%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2));
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 36px;
+      animation: fadeUp 600ms ease both;
+    }
+
+    .eyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 0.18rem;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 3vw, 3.4rem);
+      font-weight: 700;
+    }
+
+    .lead {
+      margin: 0;
+      font-family: "Crimson Pro", Georgia, serif;
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      box-shadow: 0 18px 40px var(--shadow);
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+      animation: fadeUp 700ms ease 120ms both;
+    }
+
+    .controls {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr auto;
+    }
+
+    .controls input {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--ink);
+      padding: 14px 16px;
+      font-size: 1rem;
+      outline: none;
+      transition: border 150ms ease, box-shadow 150ms ease;
+    }
+
+    .controls input:focus {
+      border-color: rgba(244, 180, 60, 0.6);
+      box-shadow: 0 0 0 3px rgba(244, 180, 60, 0.2);
+    }
+
+    .controls button {
+      border-radius: 14px;
+      border: none;
+      padding: 12px 20px;
+      background: linear-gradient(120deg, var(--accent), #f7d58a);
+      color: #1a1406;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .controls button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(244, 180, 60, 0.25);
+    }
+
+    .meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status {
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      min-height: 1.2rem;
+    }
+
+    .results {
+      display: grid;
+      gap: 12px;
+    }
+
+    .result {
+      background: rgba(7, 14, 26, 0.8);
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 16px;
+      display: grid;
+      gap: 8px;
+      animation: fadeUp 420ms ease both;
+    }
+
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .key {
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .href {
+      word-break: break-all;
+      color: var(--ink);
+      font-size: 0.98rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .actions a,
+    .actions button {
+      font-size: 0.85rem;
+      border-radius: 999px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border 150ms ease, color 150ms ease, transform 150ms ease;
+    }
+
+    .actions a:hover,
+    .actions button:hover {
+      border-color: rgba(109, 214, 200, 0.6);
+      color: var(--accent-2);
+      transform: translateY(-1px);
+    }
+
+    .empty {
+      text-align: center;
+      padding: 24px 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 720px) {
+      main {
+        padding: 48px 18px 64px;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .controls button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">wooten.link</div>
+      <h1>Href lookup</h1>
+      <p class="lead">Search the short keys that power wooten.link and jump to the full href in one click.</p>
+    </section>
+
+    <section class="panel">
+      <div class="controls">
+        <input id="query" type="text" placeholder="Search by key or href" autocomplete="off">
+        <button id="clear" type="button">Clear</button>
+      </div>
+      <div class="meta">
+        <span>Total: <strong id="count">0</strong></span>
+        <span>Matches update as you type.</span>
+      </div>
+      <div id="status" class="status" aria-live="polite"></div>
+      <div id="results" class="results"></div>
+      <div id="empty" class="empty" hidden>No matches. Try a different query.</div>
+    </section>
+  </main>
+
+  <script>
+    function loadRedirects() {
+      if (window.LINKS) {
+        return Promise.resolve(window.LINKS);
+      }
+
+      return fetch("/404.html", { cache: "no-store" })
+        .then(function (response) { return response.text(); })
+        .then(function (html) {
+          var match = html.match(/<script id=\"all-redirects\">([\\s\\S]*?)<\\/script>/);
+          if (!match) {
+            return {};
+          }
+
+          try {
+            new Function(match[1])();
+          } catch (err) {
+            return {};
+          }
+
+          return window.LINKS || {};
+        })
+        .catch(function () { return {}; });
+    }
+
+    loadRedirects().then(function (redirects) {
+      var entries = Object.keys(redirects).map(function (key) {
+        return { key: key, href: redirects[key] };
+      }).sort(function (a, b) {
+        return a.key.localeCompare(b.key);
+      });
+
+      var queryInput = document.getElementById("query");
+      var clearBtn = document.getElementById("clear");
+      var resultsEl = document.getElementById("results");
+      var countEl = document.getElementById("count");
+      var emptyEl = document.getElementById("empty");
+      var statusEl = document.getElementById("status");
+
+      function setStatus(message) {
+        statusEl.textContent = message || "";
+        if (message) {
+          setTimeout(function () {
+            statusEl.textContent = "";
+          }, 1600);
+        }
+      }
+
+      function renderList(list) {
+        resultsEl.innerHTML = "";
+        countEl.textContent = String(list.length);
+        emptyEl.hidden = list.length !== 0;
+
+        list.forEach(function (item, index) {
+          var row = document.createElement("div");
+          row.className = "result";
+          row.style.animationDelay = Math.min(index * 50, 300) + "ms";
+
+          var header = document.createElement("div");
+          header.className = "result-header";
+
+          var key = document.createElement("div");
+          key.className = "key";
+          key.textContent = item.key;
+
+          var actions = document.createElement("div");
+          actions.className = "actions";
+
+          var openLink = document.createElement("a");
+          openLink.href = item.href;
+          openLink.target = "_blank";
+          openLink.rel = "noopener";
+          openLink.textContent = "Open";
+
+          var copyBtn = document.createElement("button");
+          copyBtn.type = "button";
+          copyBtn.textContent = "Copy href";
+          copyBtn.addEventListener("click", function () {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(item.href).then(function () {
+                setStatus("Copied " + item.key);
+              }).catch(function () {
+                setStatus("Copy failed");
+              });
+              return;
+            }
+            var temp = document.createElement("input");
+            temp.value = item.href;
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+              document.execCommand("copy");
+              setStatus("Copied " + item.key);
+            } catch (err) {
+              setStatus("Copy failed");
+            }
+            document.body.removeChild(temp);
+          });
+
+          actions.appendChild(openLink);
+          actions.appendChild(copyBtn);
+
+          header.appendChild(key);
+          header.appendChild(actions);
+
+          var href = document.createElement("div");
+          href.className = "href";
+          href.textContent = item.href;
+
+          row.appendChild(header);
+          row.appendChild(href);
+          resultsEl.appendChild(row);
+        });
+      }
+
+      function filterResults() {
+        var term = String(queryInput.value || "").trim().toLowerCase();
+        if (!term) {
+          renderList(entries);
+          return;
+        }
+        var filtered = entries.filter(function (item) {
+          return item.key.toLowerCase().includes(term) || item.href.toLowerCase().includes(term);
+        });
+        renderList(filtered);
+      }
+
+      queryInput.addEventListener("input", filterResults);
+      clearBtn.addEventListener("click", function () {
+        queryInput.value = "";
+        queryInput.focus();
+        renderList(entries);
+      });
+
+      var params = new URLSearchParams(window.location.search);
+      if (params.has("q")) {
+        queryInput.value = params.get("q");
+      }
+
+      renderList(entries);
+      if (queryInput.value) {
+        filterResults();
+      }
+    });
+  </script>
+</body>
+</html>
