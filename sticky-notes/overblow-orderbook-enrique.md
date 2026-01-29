@@ -1,3 +1,5 @@
+## Tomer Points
+
 We can use the duopoly 22% paper and then substantiate it with the government regulations literally mandating equivalency and direct function.
 
 Thus, this extends to Garand's co-location experiences. (we can prbabsy de-ref this as 1558 S 1.1)
@@ -14,4 +16,5 @@ Exchange competition mainly improves:
 But not necessarily liquidity quality.
 
 https://chatgpt.com/c/697bc228-4da4-8329-93a5-ff1f5e854fee
+
 https://chatgpt.com/c/697bc7a3-b660-8331-aef4-224643c38df5
