@@ -38,10 +38,3 @@ I don't awmmemwmwmwmwmcassnsdra
 Eg feds showed up to Russel's house after 50k engineering checks deposited 
 
 
-
-
-
-
-Finish tzero item with Trimbath outreach an dm and then email main pointed questions from discussion to Julie per group chat
-
-
