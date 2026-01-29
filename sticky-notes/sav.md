@@ -82,12 +82,6 @@ Seeing things as a clear line rather than complex consideration Coco
 
 
 
-Oh and WE NEED A REF TO THE BRI P24
-POST BEFORE T+30
-
-
-!!!!!!!!!!! NN
-
 
 
 
