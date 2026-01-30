@@ -2,6 +2,8 @@
 
 ## Attributes
 
+- Secure-independent attachment style
+
 ## Boundaries
 - No interrupting work.
 - No mentioning diet.
