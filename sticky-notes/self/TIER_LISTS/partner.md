@@ -14,3 +14,10 @@ These would likely be appreciated by an artist familiar with flow state.
 
 - Tight waistline
   - Relatively implicated from fitness care.
+
+### value-endpoints
+
+• deep focus
+• long-term risk
+• intense building phases
+• delayed rewards
