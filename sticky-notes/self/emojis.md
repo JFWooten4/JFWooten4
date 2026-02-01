@@ -7,6 +7,7 @@
 - youtube 📈
 - tumblr 🏳️‍🌈
 - linkedin 🌍
+- soundcloud 🎸
 
 ### 🗓️ Agenda & Personal Records Archive 🛤
 
