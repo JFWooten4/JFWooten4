@@ -6,6 +6,13 @@ if [ -z "${CACHED_COMMIT_REF:-}" ]; then
   exit 1
 fi
 
+# When Netlify can't resolve a previous cached deploy, it can still set CACHED_COMMIT_REF to COMMIT_REF.
+# That makes the diff empty and causes us to incorrectly skip builds (even when the current deploy changes site files).
+if [ "${CACHED_COMMIT_REF:-}" = "${COMMIT_REF:-}" ]; then
+  echo "Netlify: CACHED_COMMIT_REF equals COMMIT_REF; running build."
+  exit 1
+fi
+
 if ! git cat-file -e "${CACHED_COMMIT_REF}^{commit}" 2>/dev/null; then
   echo "Netlify: missing CACHED_COMMIT_REF in clone; running build."
   exit 1
@@ -16,11 +23,17 @@ if ! changed_files="$(git diff --name-only "$CACHED_COMMIT_REF" "$COMMIT_REF")";
   exit 1
 fi
 
-
-# Skip the build when every changed file lives under one of the media folders.
-if printf '%s\n' "$changed_files" | grep -Ev '^(sticky-notes/|banners/|bookmarks/|backgrounds/|presentations/|imgs/|headshots/|props/|var/|$)' >/dev/null; then
+if [ -z "$changed_files" ]; then
+  echo "Netlify: no changed files detected; running build."
   exit 1
 fi
 
-echo "Netlify: only media-folder changes detected; skipping build."
-exit 0
+
+# Skip the build only when every changed file lives under one of the media folders.
+if printf '%s\n' "$changed_files" | grep -Ev '^(sticky-notes/|banners/|bookmarks/|backgrounds/|presentations/|imgs/|headshots/|props/|var/|$)' >/dev/null; then
+  echo "Netlify: changes outside media folders detected; running build."
+  exit 1
+else
+  echo "Netlify: only media-folder changes detected; skipping build."
+  exit 0
+fi
