@@ -8,3 +8,10 @@ plugins:
 include:
   - imgs
   - _headers
+exclude:
+  - site # Excludes Docusaurus site from the Jekyll build
+defaults:
+  - scope:
+      path: "sticky-notes" # Many sticky-notes contain `{{ ... }}` which Liquid will try to interpret.
+    values:
+      render_with_liquid: false # Treat them as literal text while still letting Jekyll render Markdown.

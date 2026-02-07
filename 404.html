@@ -10,11 +10,17 @@
   </style>
 </head>
 <body>
-  <script>
+  <script id="all-redirects">
     const LATEST_COMMENT = "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf";
     const CHIEF_AMBITION = "https://github.com/WhyDRS/SEC-Comments/pull/25#discussion_r1947830692";
-    var redirects = {
+    window.LINKS = {
       "_a": null,
+      "burn": "https://stellar.expert/explorer/public/tx/fc66377172cfeb1c464ddf6f316feee565d4cb2e8c7b14e75adb301524b40e8b",
+      "duopoly": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2782692",
+      "search": "https://wooten.link/static/search.html",
+      "foia": "https://www.muckrock.com/foi/list/?q=&status=&agency=240&has_embargo=&has_crowdfund=&minimum_pages=&date_range_min=&date_range_max=&file_types=",
+      "jake": "https://www.youtube.com/watch?v=yBP2yjKILrw&list=PLWUFvhKuc_5sLV0dxk2L0LyBRLVSXuTEo",
+      "blue": "http://placeholder.com/hard-to-find-rip",
       "sleepi": "https://x.com/JFWooten4/status/2002816451376496754",
       "bottleneck": CHIEF_AMBITION,
       "typo": "https://github.com/Taking-Stock/RSSfeed/commit/bec14c0ae7eaf177f8240ed97597b7f3122f2fe8",
@@ -220,14 +226,14 @@
       "join": "https://discord.gg/pn3GcVKJ6j",
       "chat": "https://discord.gg/pn3GcVKJ6j",
       "journal": "https://amzn.to/441h6mQ",
-      "kit": "https://https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
+      "kit": "https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
       "lead": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5sWkocNPTrB0bfAeFTWYwzo",
       "leadership": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5sWkocNPTrB0bfAeFTWYwzo",
       "learn": "https://jfwooten4.com/resources.html",
       "linked": "https://www.linkedin.com/in/jfwooten4",
       "linkedin": "https://www.linkedin.com/in/jfwooten4",
       "lnc": "https://docs.google.com/document/d/1Sx_UGMkeBJBZnlSdF93sjouaUxcljOS7rPFCzVSFVps/edit",
-      "marketing": "https://https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
+      "marketing": "https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
       "media": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5vycN0giWpgWIBbL4vuK88t",
       "mining": "https://docs.google.com/document/d/1mFuKiYjS9w8etI65vK0nU_egyDrDCDWzjMSFvhkAeQo/edit",
       "mindset": "https://www.harveker.com/free-trainings",
@@ -235,7 +241,7 @@
       "mom": "https://docs.google.com/document/d/1rUsPN7VpvS4cJyDn_1Kha5lBcuh-KcaBZSYtqeyW8LM/edit",
       "nonprofit": "https://workdrive.zohoexternal.com/external/writer/0d1d496f6722054b2fc24fd8b926a2384a61fc70cf1251060d2d8b279d570499",
       "occ": "https://www.sec.gov/comments/sr-occ-2024-001/srocc2024001-474471-1355754.pdf",
-      "ofa": "https://https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
+      "ofa": "https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
       "options": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5u7Qm6Hj-ahiZ9_C0A5zKAE",
       "origin": "https://web.archive.org/web/20250210013223/https://www.blocktransfer.com/blog/post/introducing-transfer-agent-depository",
       "origins": "https://www.listennotes.com/podcasts/taking-stock/taking-stock-episode-14-the-4EdkeJohLRZ",
@@ -289,8 +295,11 @@
       "liquidity": "https://github.com/stellar/stellar-protocol/discussions/1558" // is it's own incentive
       // END PENDING BLOG POST HERE
     };
+  </script>
+  <script>
     var path = window.location.pathname.split("/")[1].toLowerCase();
-    var redirect = redirects[path] || "https://www.youtube.com/watch?v=TB4GkDOY4iI";
+    var redirects = window.LINKS || {};
+    var redirect = redirects[path] || "https://www.vyletpony.com/my-love-is-a-quickscope";
     window.location.href = redirect;
   </script>
 </body>

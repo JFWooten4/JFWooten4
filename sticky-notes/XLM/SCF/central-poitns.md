@@ -1,0 +1,29 @@
+I want the power centralization doxxing point made through a private PB screenshot and an href to the X announcement.
+
+# Let's do the whole thing as a contra move to throw from the ereceptor fan locale temp interim.
+
+There is bias on it as an interplay between a central mechanism of the power source.  
+Possible semantics in re-sparking story.
+
+Bias from the starting intermediate as laundry mechanisms (binary).
+
+Then it moves to the antiquated hearing mechanism.
+
+Comparatively, we are dealing with giants on the surface of the sun.
+
+LOL, just from an update from 12 years ago to today's modern OSes, direct incentive.
+
+~~~wAm  
+We have a basis from the FORK BRANCH LINK (backup).
+
+Sentence ref only to outstanding #S-P PRs without a fuckin' link, bro.
+~~~
+
+Also, I want a direct href (https://discord.com/channels/897514728459468821/1144254446629572629/1393285187151990905) to where I brought up Bur as an example to introduce capital intensity.
+
+There is no distinct rail separating legacy SCF entrenching voter slavery with the new public goods "channel," with the same diving permissioning evidenced in the clear gea.co.
+
+- "And we just want to give you the space and tools to build it better." [src](https://stellar.org/blog/foundation-news/better-on-stellar-challenge-from-what-if-to-what-now)
+- content creator production cadence preferred ... easy backdoor in a few months to say
+
+Opportunity for _anyone_ is not opportunity for _everyone_.

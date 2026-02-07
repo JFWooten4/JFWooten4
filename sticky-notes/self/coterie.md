@@ -1,3 +1,16 @@
+## Robes
+
+- [Main / Thick](https://parachutehome.com/products/classic-turkish-cotton-robe-white)
+- [Tropic / Waffle](https://www.oliveandloom.com/products/airy-waffle-robe)
+
+### slippers (?)
+
+
+## Shirts
+
+- [Adaptive Medium Seated Checked](https://usa.tommy.com/en/tommy-adaptive/mens-adaptive/tops/regular-fit-oxford-shirt/MW39518-0GZ.html)
+
+
 - https://woolandprince.com/products/quarter-zip-ponte-pullover-black-marl
 - https://woolandprince.com/products/quarter-zip-ponte-pullover-black-marl
 - https://woolandprince.com/products/stretch-tech-jogger-black

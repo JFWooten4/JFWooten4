@@ -10,6 +10,9 @@
 
 we have 97 Netflix pivot to subscription blending
 
+this might be a little out there but there's the closeout sale plot point from Rules of Rarity 
+
+
 ## [reply](https://discord.com/channels/1102309240145707049/1328734255148433408/1445518217417068724)
 
 basis sense them re young people having the ideas but no $, setup with most rich ppl doin _nothing_ new (see fortune billnrs lo name not immigrant) 
