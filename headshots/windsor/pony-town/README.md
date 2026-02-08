@@ -1,6 +1,6 @@
-I need some naming rules to keep clean boundaries:
-
 ## Discord Accounts
+
+I need some naming rules to keep clean boundaries. Anything for normal work is just `wooten`
 
 ### Introductions
 
