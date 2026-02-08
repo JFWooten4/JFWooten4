@@ -1,9 +1,11 @@
 I need some naming rules to keep clean boundaries:
 
-### Discord Accounts
+## Discord Accounts
 
-| Porson is girl
-|   Could this relationship have a clear, immediate, business purpose
+### Introductions
+
+| Person is girl
+|   Could this relationship have a clear, immediate, business purpose?
 |     Yes
 |       switch venue:
 |         con -> n64retro
@@ -11,8 +13,20 @@ I need some naming rules to keep clean boundaries:
 |         online form -> existing intro
 |     No
 |       switch resationship status:
-|   Single[^vi]
-|     -> n64retro
-|   Unknown resationship status
+|         single -> n64retro
+|         boyfriend -> n64retro
+|         girlfriend -> n64retro
+|         married -> john
+|         unknown -> n64retro
+| Pone is boy
+|   Is it business / a (masking) celeb?
+|     yes -> john
+|     no -> n64retro
 
-[^vi]: The only acceptions to this are Suri and Vylet, who need to stay on `john`
+### Continual
+
+| Person has assets allocated
+|   Yes
+|     in any relationship -> john only
+|   No
+|     marries -> john
