@@ -1,0 +1,5 @@
+asset management is like playing the guitar. i can tell you that I'm playing the G chord, but I can't tell you how to play guitar. it's a skill honed through years of studying the best, practicing late into the night, and maturing through learning pains. 
+
+to puc it in technical analysis term, i can tell you how it was a double-M top inside the monthly Bollinger bands, but i cant explain why I made the trade. i can justify it with a story around some crucial facts. but i can never convey the entirety of my thought process, some of which will still be in the works and seeking market validation. 
+
+the allocator's mind is a black box of unparalleled neurologic complexity. a truly good one finds the hidden potential among innovators and helps draw it out into reality. many describe this capital deployment as an art because it forms in a style defined by the craftsman's character. 
