@@ -36,5 +36,6 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 - `shaking-hands` comes from AnimatedJames ([src](https://www.youtube.com/watch?v=UOueMzKYbP0&t=180s))
 - `red-heart` comes from PrinceWhateverer ([src](https://youtu.be/UEVuJcs4FWs))
 - `doin-it` comes from [Shino](https://x.com/shinodage) ([src](https://spaceponyos.com/art))
+- `market-calling` comes from [DinoHorse](https://linktr.ee/DinoHorse) ([src](https://dinohorse.tumblr.com/post/784820587947229184/11-x-17-rarity-pin-up-prints-link-to-buy))
 
 [^chatgpt]: Slightly altered for format with DALL-E.
