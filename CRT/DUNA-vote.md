@@ -1,6 +1,5 @@
-if time forces us to preliminary approval vote into this (conditional op move) then we can do
-
-- client drop (no biz)
+xy donate all or part of the shares in [BlockTrans Syndicate](https://www.issuers.info/1846058) by {date}
 
 build this year during dist and start biz in 2027
 
+may need to word as trust comitment 'donate'
