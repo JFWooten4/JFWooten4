@@ -180,3 +180,152 @@ We can adjust for:
 OR we can also draft the voter explanation summary that would accompany this resolution.
 
 Just tell me where you want to go next.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Perfect. Good correction.
+
+You're right — this is not a board resolution.
+It’s a governance proposal to members.
+
+So it shouldn’t sound like:
+
+> “WHEREAS… RESOLVED…”
+
+
+
+That tone implies directors acting under corporate authority.
+
+What you need instead is:
+
+• Clear • Direct • Written to voters • Focused on responsibility • Explicit about what “Yes” means
+
+Let’s rewrite this in proper DUNA vote format.
+
+
+---
+
+Draft — DUNA Governance Proposal
+
+Proposal Title
+
+Affirmation of Stewardship Mandate for Block Transfer Shares
+
+
+---
+
+Summary
+
+This proposal asks whether the DUNA explicitly accepts permanent ownership and stewardship responsibility for Block Transfer, Inc.
+
+A “Yes” vote affirms that the DUNA is willing to become the legal owner of all Block Transfer shares upon donation and to hold them indefinitely in service of the WhyDRS mission.
+
+A “No” vote indicates the DUNA does not wish to accept this responsibility.
+
+This proposal does not execute a transfer of shares. It establishes whether the DUNA accepts the mandate to do so.
+
+
+---
+
+Background
+
+Block Transfer, Inc. operates as transfer agent infrastructure aligned with the WhyDRS mission of protecting direct ownership and investor rights.
+
+The founder and current shareholder has expressed intent to donate all shares of Block Transfer into permanent mission stewardship rather than retain personal ownership.
+
+Because ownership carries long-term legal and governance responsibility, this decision requires explicit acceptance by the DUNA before any transfer occurs.
+
+To date, there have been general expressions of support. This proposal seeks a clear and formal mandate.
+
+
+---
+
+What This Proposal Does
+
+If approved, the DUNA affirms that:
+
+1. It accepts permanent stewardship responsibility for Block Transfer.
+
+
+2. It is willing to become the legal owner of its shares.
+
+
+3. Any shares received will be held solely in furtherance of the WhyDRS mission.
+
+
+4. Ownership is not for private enrichment or speculative gain.
+
+
+5. Appropriate legal and governance structures may be developed to facilitate the transfer.
+
+
+
+
+---
+
+What This Proposal Does NOT Do
+
+This proposal does not:
+
+• Immediately transfer shares
+• Create new financial obligations
+• Change current operations of Block Transfer
+• Finalize tax or structural mechanics
+
+It establishes acceptance of responsibility only.
+
+
+---
+
+The Question
+
+Should the DUNA explicitly accept permanent ownership and stewardship responsibility for Block Transfer, Inc., and authorize preparation for donation and registration of its shares to the DUNA?
+
+
+---
+
+Why this version works
+
+This reads like:
+
+• A governance vote • Clear consequences • No faux-corporate tone • No accidental legal overreach • Very understandable to members
+
+It treats voters like:
+
+> People being asked to take on responsibility — not directors executing a transaction.
+
+
+
+
+---
+
+Now, here’s the deeper strategic question:
+
+Do you want this to feel:
+
+1. Neutral and procedural
+
+
+2. Philosophical and mission-heavy
+
+
+3. Stark and gravity-focused
+
+
+
+Because tone will affect how people emotionally process the responsibility.
+
+Tell me the tone you want, and we’ll refine it exactly to that.
+
+
+
