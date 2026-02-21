@@ -1,8 +1,20 @@
-### Title
+## Title
+
+DUNA Ownership, Governance, and Stewardship of BlockTransfer
 
 
+## Body
 
-### Body
+### Preface
+
+First and foremost, information regarding this proposal was presented orally at the [ Custody Conference](hreg++throad) today. To account for the delay in publishing this talk, I've set the maximum voting timeframe (to 30 days). 
+
+Generally, I do not like using videos as (primary) sources for governance proposals. Doing so soems sloppy, takes vuch longer to skim, and can't be easily released on  subscription feeds. 
+
+However,the contents of this proprsal have been in the works for two years,and feedback has deen good so far. Moreover, this is a nonbinding sentiment vote to greenlight implementation work. 
+
+
+### 
 
 xy donate all or part of the shares in [BlockTrans Syndicate](https://www.issuers.info/1846058) by {date}
 
