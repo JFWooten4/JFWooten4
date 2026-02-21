@@ -18,7 +18,8 @@ However,the contents of this proprsal have been in the works for two years,and f
 
 I propose to donate all or part of the shares in [BlockTrans Syndicate](https://www.issuers.info/1846058) by the end of the year. this can be done through a standard ownership transfer, encumberment, or assidgnment - based on an implementation I will subsequently propose 
 
-build this year during dist and start biz in 2027
+This will set us up to start strong next year deploying TAD3
+
 
 may need to word as trust comitment 'donate'
 
