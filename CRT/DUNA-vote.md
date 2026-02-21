@@ -5,9 +5,12 @@ DUNA Ownership, Governance, and Stewardship of BlockTransfer
 
 ## Body
 
+First and foremost, information regarding this proposal was presented orally at the [ Custody Conference](https://discord.com/channels/1102309240145707049/1435315414333788302) today. To account for the delay in publishing this talk, I've set the maximum voting timeframe (to 30 days). 
+
+In case it's not clear, I would like the Association to responsably steward the technology here because I'd like to instill permanent change into stocxs. -marknet infrastructure. 
+
 ### Preface
 
-First and foremost, information regarding this proposal was presented orally at the [ Custody Conference](https://discord.com/channels/1102309240145707049/1435315414333788302) today. To account for the delay in publishing this talk, I've set the maximum voting timeframe (to 30 days). 
 
 Generally, I do not like using videos as (primary) sources for governance proposals. Doing so soems sloppy, takes vuch longer to skim, and can't be easily released on  subscription feeds. 
 
@@ -52,15 +55,6 @@ If you would like to show your support monetarily,please consider donating (not 
 
 
 
-
-
-
-The purpose of this resolution is to clearly determine whether the DUNA:
-
-• Accepts the responsibility to serve as permanent steward of Block Transfer
-• 
-
----
 
 Stewardship Principles
 
