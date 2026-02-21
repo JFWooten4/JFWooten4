@@ -7,7 +7,7 @@ DUNA Ownership, Governance, and Stewardship of BlockTransfer
 
 ### Preface
 
-First and foremost, information regarding this proposal was presented orally at the [ Custody Conference](hreg++throad) today. To account for the delay in publishing this talk, I've set the maximum voting timeframe (to 30 days). 
+First and foremost, information regarding this proposal was presented orally at the [ Custody Conference](https://discord.com/channels/1102309240145707049/1435315414333788302) today. To account for the delay in publishing this talk, I've set the maximum voting timeframe (to 30 days). 
 
 Generally, I do not like using videos as (primary) sources for governance proposals. Doing so soems sloppy, takes vuch longer to skim, and can't be easily released on  subscription feeds. 
 
