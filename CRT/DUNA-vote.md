@@ -7,7 +7,7 @@ DUNA Ownership, Governance, and Stewardship of BlockTransfer
 
 First and foremost, information regarding this proposal was presented orally at the [ Custody Conference](https://discord.com/channels/1102309240145707049/1435315414333788302) today. To account for the delay in publishing this talk, I've set the maximum voting timeframe (to 30 days). 
 
-In case it's not clear, I would like the Association to responsably steward the technology here because I'd like to instill permanent change into stocxs. -marknet infrastructure. 
+In case it's not clear, I would like the Association to responsably steward the technology here because I'd like to instill permanent change into stocxs. -marknet infrastructure. That said, I don't think it's appropriate to personally vote on this agenda item. 
 
 ### Preface
 
@@ -32,6 +32,11 @@ If you would like to show your support monetarily,please consider donating (not 
 
 
 
+### Principles
+
+There are some nuonces to word legally, mut broadly I would like the shares to stay in the Association forever. I believe we can facilitate issuer representative without a separate carveout outside this holding structure. 
+
+This also helps keep tho shares out of the profit-driven market, locking them away without financial interest. Let's keep DRS in our control!
 
 
 
@@ -45,54 +50,9 @@ If you would like to show your support monetarily,please consider donating (not 
 
 ### Options
 
-- [0] Yes = / Accept
-- No/Decline
+- [0] Yes - accept the ownership 
+- No - decline this responsibility 
 - 💭 Abstain
-
-
-
-
-
-
-
-
-Stewardship Principles
-
-If adopted, the DUNA affirms the following principles:
-
-1. Perpetual Mission Alignment
-Any shares received shall be held exclusively to support the WhyDRS mission and public-interest objectives.
-
-
-2. Non-Extractive Ownership
-Ownership shall not exist for private enrichment, speculation, or financial extraction.
-
-
-3. Protection Against Capture
-Shares shall be held and governed in a manner designed to prevent concentration of control inconsistent with mission purposes.
-
-
-4. Long-Term Stewardship Duty
-The DUNA acknowledges this role represents an ongoing governance responsibility extending indefinitely into the future.
-
-
-
- “Yes” vote affirms that the DUNA is willing to become the legal owner of all Block Transfer shares upon donation and to hold them indefinitely in service of the WhyDRS mission.
-
-A “No” vote indicates the DUNA does not wish to accept this responsibility.
-
-
-
-
-
-
-3. Any shares received will be held solely in furtherance of the WhyDRS mission.
-
-
-4. Ownership is not for private enrichment or speculative gain.
-
-
-5. Appropriate legal and governance structures may be developed to facilitate the transfer.
 
 
 
