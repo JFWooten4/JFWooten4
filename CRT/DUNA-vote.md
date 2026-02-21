@@ -24,17 +24,39 @@ may need to word as trust comitment 'donate'
 
 
 
-### Vote
+### Budget 
 
-#### Timeframe
+i do not feel comfortable asking the DUNA for funds allocatohd to this proposal. Once we have sentiment affirmed, it should be a relatively straightforward transfer process with the Syndicate acting as its own agent (as resolved last AGM).
+
+If you would like to show your support monetarily,please consider donating (not tax-exempt) directly to one of my accounts. there is a law firm ive followed aver che years through my preliminary design explorations. 
+
+Based on some minimal searching, they could help go through things all the way to the end for {$X,00}. Again, I don't think this is the best use of DUNA funds because I have a lot of experience configuring corporate forms, which should allow me to complete the task (albeit maybe slowwer and mith a typo like in our Articles). 
+
+This could take some time 
+
+
+
+
+
+
+
+
+
+## Vote
+
+### Timeframe
 
 30 days
 
-#### Options
+### Options
 
 - [0] Yes = / Accept
 - No/Decline
 - 💭 Abstain
+
+
+
+
 
 
 
