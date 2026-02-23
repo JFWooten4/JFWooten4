@@ -1,1 +1,1 @@
-- `name` comes from artist ([src]())
+- `tricky-canon` comes from [cerberus](https://columnare.straw.page) ([src](https://x.com/fcolumnare/status/1952740544443998252))
