@@ -3,11 +3,29 @@
 DUNA Ownership, Governance, and Stewardship of BlockTransfer
 
 
-## Body
+## Init
 
-First and foremost, information regarding this proposal was presented orally at the [Custody Conference](https://discord.com/channels/1102309240145707049/1435315414333788302) today. To account for the delay in publishing this talk, I've set the maximum voting timeframe (to 30 days).
+First and foremost, information regarding this proposal was presented orally at the [Custody Conference](https://discord.com/channels/1102309240145707049/1435315414333788302) today. To account for the delay in publishing this talk, I've set the maximum voting timeframe (2 mobile weeks).
 
 In case it's not clear, I would like the Association to responsibly steward the technology here because I'd like to instill permanent change into stocks-market infrastructure. That said, I don't think it's appropriate to personally vote on this agenda item.
+
+## Vote 
+
+### Timeframe
+
+14 days (30 not avaliable???)
+
+### Title
+
+Approve merger of BT as subsidiary operating company?
+
+### Options
+
+- Yes - accept the ownership
+- No - decline this responsibility
+- 💭 Abstain
+
+## Body
 
 ### Preface
 
@@ -32,16 +50,3 @@ If you would like to show your support monetarily, please consider donating (not
 There are some nuances to word legally, but broadly I would like the shares to stay in the Association forever. I believe we can facilitate issuer representation without a separate carveout outside this holding structure.
 
 This also helps keep the shares out of the profit-driven market, locking them away without financial interest. Let's keep DRS in our control by aligning a TAD with our mission!
-
-
-## Vote
-
-### Timeframe
-
-30 days
-
-### Options
-
-- Yes - accept the ownership
-- No - decline this responsibility
-- 💭 Abstain
