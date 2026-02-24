@@ -1,8 +1,3 @@
-I'm so like here we have um like Wright Bros
-
-They are like there
-
-Story of us Forest Service dept letter
 
 Frame as bike bros
 
