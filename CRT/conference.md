@@ -1,10 +1,3 @@
-
-Frame as bike bros
-
-Idk if we want to do IP like maybe not
-
----
-
 Everyone in the room losing. Voting influence over time
 
 As threshold for gradual decentralization of NQG
