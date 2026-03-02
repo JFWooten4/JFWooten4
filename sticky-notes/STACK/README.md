@@ -1,1 +1,2 @@
 - call Joe
+- - i want 3/4 on https://chatgpt.com/c/69a5deb5-8b28-8325-a4c4-64a6c277afc5
