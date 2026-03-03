@@ -1,1 +1,1 @@
-The syntax heure is tbd if we mave this parint dir nito static. Nenteheless thiese are the [s/ldise](https://www.canva.com/design/DAHA14Ud3yw/iifUC0oPuBelxct_9e9CdA/view) for the DUNA [dnation announcgement]().
+The syntax here is TBD if we move this parent dir into static. Nonetheless, these are the [slides](https://www.canva.com/design/DAHA14Ud3yw/iifUC0oPuBelxct_9e9CdA/view) for the DUNA [donation announcement](https://youtu.be/yOKd7VLw7PU?t=901).
