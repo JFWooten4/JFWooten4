@@ -1,15 +1,3 @@
-I'm so like here we have um like Wright Bros
-
-They are like there
-
-Story of us Forest Service dept letter
-
-Frame as bike bros
-
-Idk if we want to do IP like maybe not
-
----
-
 Everyone in the room losing. Voting influence over time
 
 As threshold for gradual decentralization of NQG
