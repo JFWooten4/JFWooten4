@@ -1,0 +1,3 @@
+- `genesis-heart` comes from me ([src](https://wooten.link/heart))
+- `linear-threshold` comes from [BGM](https://youtu.be/uPqukVV6rr8) ([src](https://bgmponydegeneracy.bandcamp.com/track/perfection-incarnate))
+- `watch-out` comes from Netflix / Fortiche ([src](https://www.reddit.com/r/ekkomains/comments/1gzgyww/s1_arcane_ekko_profile_icon))
