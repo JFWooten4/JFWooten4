@@ -1,1 +1,2 @@
-- `` comes from name ([src]())
+- `femanine` comes from Kiriya ([src](https://derpibooru.org/images/3394656))
+- `flawless` comes from [Tamers12345](https://x.com/TheTamers12345) ([src](https://pony.tube/w/7bnDJzumq5kvVyd4dHjNdF?start=15m10s))
