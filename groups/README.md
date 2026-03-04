@@ -1,0 +1,2 @@
+- `stellar-consensus` was taken at Stellar's hacker house for [this](https://stellar.org/community/events/consensus) ([src](https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772))
+- `original-whydrs` was taken at the presentation pub we announced [here](https://x.com/whydrs/status/2013993995681067081) (my camera)
