@@ -1,1 +1,3 @@
-- `` comes from name ([src]())
+- `steel-wings` comes from [BGM](https://youtu.be/6OoSnurHlr8) ([src](https://bgmponydegeneracy.bandcamp.com/track/steel-wings))
+- `light-embrace` and `alt-intro` come from [Tamers12345](https://x.com/TheTamers12345) ([src](https://pony.tube/w/3R8Hat8bzyhNXgCELcDnxq) compiled [here](https://youtu.be/pDp1_3dFqDU))
+- `final-act` comes from [Twital](https://www.youtube.com/@TwitalHD) ([src](https://youtu.be/Ru0_6FtBzTQ?t=192))
