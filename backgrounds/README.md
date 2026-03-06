@@ -23,8 +23,8 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 - `hunting-hour` comes from RysunkowaSucharia ([src](https://www.deviantart.com/rysunkowasucharia/art/Das-kleine-lila-Pferd-814065716))
 - `mad-time` comes from [Vylet Pony](https://www.vyletpony.com) ([src](https://youtu.be/-iOr0WZRoI4?t=249))
 - `mad-split` comes from Blizzard Entertainment ([src](https://youtu.be/oJ09xdxzIJQ?t=264))
-- `baby-animatic` comes from Dr. Yaoi Throne ([src](https://dryaoithrone.straw.page))
-- `discovering-friendship` comes from Nedemai ([src](https://discord.com/channels/87583189161226240/187262429573414912/1406795801052840049)); sparkles from Ethepony ([src](https://ethepony.ecrater.com/p/11863528/twilight-sparkle-cutie-mark-patch))
+- `baby-animatic` comes from an [Oogie Woogle](https://dryaoithrone.straw.page) DM ([src](https://tamers12345continued.my.canva.site))
+- `discovering-friendship` comes from Nedemai ([src](https://discord.com/channels/87583189161226240/187262429573414912/1406795801052840049))
 - `taking-flight` comes from KOTLT ([src](https://youtu.be/J9Q3i5w6-Ug?t=128))[^chatgpt]
 - `whats-up` comes from Republic Records ([src](https://youtu.be/nZFNut0RGlQ?t=132))
 - `embracing-art` comes from Krista ([src](https://x.com/Kristalina_21/status/1720914062496919652))

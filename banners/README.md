@@ -18,7 +18,7 @@ I keep losing all the social profile banners I use across different centralized 
 - `patrol-line` comes from Riot/Fortiche ([src](https://youtu.be/OkscEokV238?t=57))
 - `rails` comes from @bobmahalo ([src](https://discordapp.com/channels/1102309240145707049/1118990437684875357/1296830496973787196))
 - `smoking-gun` comes from DreamWorks Animation ([src](https://youtu.be/7VXrvcc7tL8?t=82))
-- `soroban` comes from John Rubisoff ([src](https://discord.com/channels/761985725453303838/761985725453303841/1478765755498762281))
+- `soroban` comes from [John Rubisoff](https://x.com/spintax2) ([src](https://discord.com/channels/761985725453303838/761985725453303841/1478765755498762281))
 - `standing-tall` comes from Riot/Fortiche[^pfp] ([src](https://youtu.be/HYsz1hP0BFo?t=102))
 - `universe-game` comes from Davy Jones ([src](https://www.spriters-resource.com/pc_computer/rpgmakermv/asset/100229))
 - `what-matters` comes from Blizzard Entertainment ([src](https://youtu.be/cPRRupAM4DI?t=257))
