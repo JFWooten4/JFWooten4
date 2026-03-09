@@ -298,39 +298,10 @@
     };
   </script>
   <script>
-    (function () {
-      var redirects = window.LINKS || {};
-      var host = (window.location.hostname || "").toLowerCase();
-      var subdomain = host.split(".")[0];
-      var cleanPath = (window.location.pathname || "")
-        .replace(/^\/+|\/+$/g, "")
-        .toLowerCase();
-      var pathKey = cleanPath.split("/")[0] || "";
-
-      // Support both key paths (wooten.link/key) and subdomain keys (key.wooten.link).
-      var keysToTry = [];
-      if (
-        host.endsWith("wooten.link") &&
-        subdomain &&
-        subdomain !== "www" &&
-        subdomain !== "wooten"
-      ) {
-        keysToTry.push(subdomain);
-      }
-      if (pathKey) {
-        keysToTry.push(pathKey);
-      }
-
-      for (var i = 0; i < keysToTry.length; i += 1) {
-        var key = keysToTry[i];
-        if (redirects[key]) {
-          window.location.replace(redirects[key]);
-          return;
-        }
-      }
-
-      // Fallback to info index instead of a dead-end URL.
-      window.location.replace("https://jfwooten4.com/info/");
+    var path = window.location.pathname.split("/")[1].toLowerCase();
+    var redirects = window.LINKS || {};
+    var redirect = redirects[path] || "https://www.vyletpony.com/my-love-is-a-quickscope";
+    window.location.href = redirect;
     })();
   </script>
 </body>
