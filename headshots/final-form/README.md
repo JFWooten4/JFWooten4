@@ -1,2 +1,2 @@
 - `love-weapon` comes from Cerberus ([src](https://x.com/fcolumnare/status/1952740544443998252))
-- `flawless-mare` comes from [Tamers12345](https://x.com/TheTamers12345) ([src](todo crazed form))
+- `flawless-mare` comes from [Tamers12345](https://x.com/TheTamers12345) ([src](https://pony.tube/w/2oyQhzsFKc6mkADyfwr1KL?start=33m49s))
