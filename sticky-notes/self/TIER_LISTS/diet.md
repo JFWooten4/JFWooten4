@@ -1,5 +1,9 @@
 - keto
 
+#### YAYs
+
+- RYZE mushroom hot chocolate
+
 ### NOs
 
 - gluten

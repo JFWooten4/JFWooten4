@@ -1,8 +1,4 @@
-Celestia: Ross
-
-Luna : FBRunson
-
-Cadence : Hill
+\
 \\
 
 
