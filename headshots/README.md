@@ -1,1 +1,1 @@
-- `love-weapon` comes from Cerberus ([src](https://x.com/fcolumnare/status/1952740544443998252))
+The `near-line` and `final-form` groups are heavily influenced by [this story](https://youtu.be/E2Rj2gQAyPA?t=49).

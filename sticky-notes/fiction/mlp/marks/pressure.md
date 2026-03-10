@@ -1,0 +1,3 @@
+- Celestia: Ross Cameron
+- Luna: Russell Brunson
+- Cadence: Napoleon Hill
