@@ -1,1 +1,0 @@
-- `love-weapon` comes from Cerberus ([src](https://x.com/fcolumnare/status/1952740544443998252))
