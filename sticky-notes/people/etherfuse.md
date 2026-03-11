@@ -1,3 +1,3 @@
-exmaple hewehre we have Foudnation seperation from Commmunity (Fund)
+Example where we have Foundation separation from Community (Fund).
 
-3rd party./sountosurcing just "dippin toes in" 
+3rd party / outsourcing just "dipping toes in"
