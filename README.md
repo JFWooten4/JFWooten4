@@ -2,11 +2,13 @@
 
 # TODO 
 
-### NEEDS TO DO DEPLOY STICKERS 1st b/c re see centralization of clearing risk
+## Execution Order
 
-See political capital of _Influence_ vs. hard asset management.
+Taxes -> stickers -> docs -> fin. pubs
 
-Particularly, they have very different levels of verbosity that lead to unclear incentives in the former, which inspires emotional entanglement.
+- centralization of clearing risk
+- political capital of _Influence_ vs. hard asset management.
+  - they have very different levels of verbosity that lead to unclear incentives in the former, which inspires emotional entanglement.
 
 _**TAXES MAR 16**_
 
