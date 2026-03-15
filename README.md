@@ -7,8 +7,7 @@
 Taxes -> stickers -> docs -> fin. pubs
 
 - centralization of clearing risk
-- political capital of _Influence_ vs. hard asset management.
-  - they have very different levels of verbosity that lead to unclear incentives in the former, which inspires emotional entanglement.
+
 
 _**TAXES MAR 16**_
 
