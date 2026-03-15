@@ -2,6 +2,7 @@ I keep losing all the social profile banners I use across different centralized 
 
 ## Credits
 
+- `inventure-banner` comes form Georgia Public Broadcasting/PBS ([src](https://youtu.be/S75IvkicWD8?t=66))
 - `climbing-pheonix` comes from Riot/Fortiche ([src](https://youtu.be/fB8TyLTD7EE?t=69))
 - `consensys` comes from @silence48 ([src](https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772))
 - `dash-confident` comes from tehnomad ([src](https://wallup.net/my-little-pony-rainbow-dash-4))
