@@ -1,14 +1,15 @@
 [![intro](banners/buffett.png)](https://www.whydrs.org/companies-who-encourage-drs "After formal IRS clarification, Buffett explains that a property law \"did not cover participation by shareholders whose stock was registered in the name of nominees, such as brokers, and additionally required that the owners\" certify ownership of their own assets.")
 
-# TODO 
+# MMBG: Trust in my own word 
 
 ## Execution Order
 
 Taxes -> stickers -> docs -> fin. pubs
 
-- centralization of clearing risk
-- political capital of _Influence_ vs. hard asset management.
-  - they have very different levels of verbosity that lead to unclear incentives in the former, which inspires emotional entanglement.
+- see if we can close out all the DMs
+
+for Usteban maybee we can tie-ref `centralization of clearing risk`
+
 
 _**TAXES MAR 16**_
 
