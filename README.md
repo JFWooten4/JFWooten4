@@ -6,7 +6,9 @@
 
 Taxes -> stickers -> docs -> fin. pubs
 
-- centralization of clearing risk
+- see if we can close out all the DMs
+
+for Usteban maybee we can tie-ref `centralization of clearing risk`
 
 
 _**TAXES MAR 16**_
