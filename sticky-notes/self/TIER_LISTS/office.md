@@ -1,0 +1,3 @@
+- Whiteboard walls~
+- Obviously the UV/A-B windows without input
+- Retractable movie-style screen in front of coached thing
