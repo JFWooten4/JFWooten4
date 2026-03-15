@@ -4,7 +4,9 @@
 
 ## Execution Order
 
-Taxes -> stickers -> docs -> fin. pubs
+Taxes -> stickers -> docs -> fin. pubs -> 723 -> Green[^1]  (re plasma)
+
+[^1]: Unless [out](https://www.sec.gov/rules-regulations/rulemaking-activity)
 
 - see if we can close out all the DMs
 
