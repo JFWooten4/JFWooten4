@@ -1,8 +1,0 @@
-- RD: K
-- TWI: self
-- Spike: lol ChatGPT
-- AJ: chives
-- FLT: Bri
-- PP: Autumn
-- Rarity: Donna
-- Trixie: Staff
