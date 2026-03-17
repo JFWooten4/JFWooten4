@@ -5,3 +5,9 @@
 - https://pegasys1.bandcamp.com/album/8-bit-brony-bop
 - https://trial-of-harmony.itch.io/my-little-pony-trial-of-harmony
 - https://spaceponyos.com/issue-1
+
+### Music
+
+- https://www.youtube.com/playlist?list=PLm-6EceGv6FLKtt0MYll_lIputEIKxHZc
+- https://www.youtube.com/playlist?list=PLm-6EceGv6FIuNNTkqRluwn9Yvjg_0KeE
+- https://www.youtube.com/playlist?list=PLm-6EceGv6FK3ciG5i1Rdk90NJv3Allzm
