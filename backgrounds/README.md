@@ -16,7 +16,7 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 - `writing-TAR1` comes from an unknown artist ([src](https://www.peakpx.com/en/hd-wallpaper-desktop-gwurm))
 - `rising-color` comes from sambaneko ([src](https://spacecatsamba.com/works/v/rainbow-dash-silhouette-wall))
 - `work-time` comes from Justin_Case001 ([src](https://mlpforums.com/topic/132387-moon-dancer-fan-club/page/3))
-- `floating-forward` comes from CallmeMH (NightmareMoonLuna) (src not recorded in git history)
+- `floating-forward` comes from CallmeMH, NightmareMoonLuna ([src](https://www.mylittlewallpaper.com/c/my-little-pony/download/504598b34a9d15.99902250))
 - `relaxing-wait` comes from MLPWallpaperz ([src](https://www.deviantart.com/mlpwallpaperz/art/Starlight-Glimmer-Wallpaper-575667853))
 - `soaring-together` comes from Stun-dash-99 ([src](https://trixiebooru.org/images/599332)); related thread ([src](https://mlpforums.com/topic/104596-pinkiedash-fan-club/?do=findComment&comment=2924227))[^chatgpt]
 - `galaxy-bananas` comes from GoneNannurs ([src](https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site))[^chatgpt]
@@ -37,5 +37,7 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 - `red-heart` comes from PrinceWhateverer ([src](https://youtu.be/UEVuJcs4FWs))
 - `doin-it` comes from [Shino](https://x.com/shinodage) ([src](https://spaceponyos.com/art))
 - `market-calling` comes from [DinoHorse](https://linktr.ee/DinoHorse) ([src](https://dinohorse.tumblr.com/post/784820587947229184/11-x-17-rarity-pin-up-prints-link-to-buy))
+- `secret-slash` comes from [Darktailsko (Cody)](https://www.deviantart.com/discourt) ([src](https://derpibooru.org/images/1650702))
+- `distant-engine` comes from [Shino](https://spaceponyos.com) ([src](https://x.com/ShinodaGE/status/1270296149627371521))
 
 [^chatgpt]: Slightly altered for format with DALL-E.

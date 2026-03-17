@@ -2,6 +2,7 @@ I keep losing all the social profile banners I use across different centralized 
 
 ## Credits
 
+- `gatech-inventure` comes form Georgia Public Broadcasting/PBS ([src](https://youtu.be/S75IvkicWD8?t=66))
 - `climbing-pheonix` comes from Riot/Fortiche ([src](https://youtu.be/fB8TyLTD7EE?t=69))
 - `consensys` comes from @silence48 ([src](https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772))
 - `dash-confident` comes from tehnomad ([src](https://wallup.net/my-little-pony-rainbow-dash-4))
@@ -23,6 +24,6 @@ I keep losing all the social profile banners I use across different centralized 
 - `universe-game` comes from Davy Jones ([src](https://www.spriters-resource.com/pc_computer/rpgmakermv/asset/100229))
 - `what-matters` comes from Blizzard Entertainment ([src](https://youtu.be/cPRRupAM4DI?t=257))
 - `when-ape` comes from Riot/Fortiche ([src](https://youtu.be/dmDuz0OUNY0?t=65))
-
+- `flawless-overlook` comes from [Tamers12345](https://x.com/TheTamers12345) ([src](https://pony.tube/w/2oyQhzsFKc6mkADyfwr1KL?start=33m49s))
 
 [^pfp]: This was used in conjunction with [this headshot](../headshots/politicking/dreamer-shoulders.png).
