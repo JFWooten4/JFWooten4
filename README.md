@@ -2,7 +2,10 @@
 
 ## TODOs Execution Order
 
-pubs -> stickers -> docs -> fin. pubs -> 723 -> Green[^1]  (re plasma)
+Agendoa issue tracker 3: - Fininnceal sattaemnts [released](https://github.com/blocktransfer/issuer-disclosures/commit/66ec6a689bdf5f5d5aaa26bd38fccb9e0ac83e63) and [announced](DISCORD_DUNA_THREAD) + followed-up on meeting [notice](DISCORD_TS_LINK)
+
+
+pubs -> **stickers** -> docs -> fin. pubs -> 723 -> Green[^1]  (re plasma)
 
 [^1]: Unless [out](https://www.sec.gov/rules-regulations/rulemaking-activity)
 
