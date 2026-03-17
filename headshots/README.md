@@ -1,5 +1,1 @@
-I also want t he swiss gelass fly4ing ski photo[^1]
-
-[^1]: _See_ Tres Valles
-
-&& GT -> PNG as `-teaching`
+The `near-line` and `final-form` groups are heavily influenced by [this story](https://youtu.be/E2Rj2gQAyPA?t=49).

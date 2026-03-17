@@ -1,31 +1,19 @@
-I'm so like here we have um lieke wright bros
+Everyone in the room losing. Voting influence over time
 
-they r like there 
+As threshold for gradual decentralization of NQG
 
-story of us forest srtvice dept letter
+Pre to deleting specifics etc etc
 
-frame as bike bros 
-
-
-idk if we wana do ip like msybe not
+And then effectively communicating how things become a crazy bureaucracy over time which is exceptional for stability
 
 ---
 
-everyone in the room losig. votong onfluence over time
+For-profit in utility capital
 
-as theeahold for gradual decentelaization of NQG
+Entrance ticket to a premier exclusive club
 
-pre to deleating specifics ETC ETC
+Key to a for needed by all businesses
 
-and then effecrively communicating how things become a crazy beorcracy over time which is exceptional for stability 
-
----
-
-For profit in utility capital
-
-Entrance ticket to a premier club exclusive
-Key to a for needed by all business
 Instructions to life
 
-
-rberand to basis from https://chatgpt.com/c/694556a5-5230-8330-8310-f4543f2fa0da
+Rebrand to basis from https://chatgpt.com/c/694556a5-5230-8330-8310-f4543f2fa0da

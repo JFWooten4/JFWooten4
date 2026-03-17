@@ -15,6 +15,9 @@
     const CHIEF_AMBITION = "https://github.com/WhyDRS/SEC-Comments/pull/25#discussion_r1947830692";
     window.LINKS = {
       "_a": null,
+      "stallman": "https://workdrive.zohoexternal.com/folder/kc1eob3b6011c53334e5cb44b3040eabcf0ad",
+      "logo": "https://www.canva.com/design/DAEW-cFzRA4/YLM9sfMf5u0GrlGwo38N3Q/view",
+      "burn": "https://stellar.expert/explorer/public/tx/fc66377172cfeb1c464ddf6f316feee565d4cb2e8c7b14e75adb301524b40e8b",
       "duopoly": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2782692",
       "search": "https://wooten.link/static/search.html",
       "foia": "https://www.muckrock.com/foi/list/?q=&status=&agency=240&has_embargo=&has_crowdfund=&minimum_pages=&date_range_min=&date_range_max=&file_types=",
@@ -222,7 +225,7 @@
       "github": "https://github.com/JFWooten4",
       "gme": "https://www.linkedin.com/pulse/gamestop-first-successful-short-squeeze-john-wooten-xvyne",
       "intro": "https://www.youtube.com/watch?v=2mh-sLXJBNQ&list=PLWUFvhKuc_5vycN0giWpgWIBbL4vuK88t",
-      "join": "https://discord.gg/pn3GcVKJ6j",
+      "join": "https://discord.gg/pn3GcVKJ6j", // DRS server
       "chat": "https://discord.gg/pn3GcVKJ6j",
       "journal": "https://amzn.to/441h6mQ",
       "kit": "https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
@@ -297,10 +300,40 @@
     };
   </script>
   <script>
-    var path = window.location.pathname.split("/")[1].toLowerCase();
-    var redirects = window.LINKS || {};
-    var redirect = redirects[path] || "https://www.vyletpony.com/my-love-is-a-quickscope";
-    window.location.href = redirect;
+    (function () {
+      var redirects = window.LINKS || {};
+      var host = (window.location.hostname || "").toLowerCase();
+      var subdomain = host.split(".")[0];
+      var cleanPath = (window.location.pathname || "")
+        .replace(/^\/+|\/+$/g, "")
+        .toLowerCase();
+      var pathKey = cleanPath.split("/")[0] || "";
+
+      // Support both key paths (wooten.link/key) and subdomain keys (key.wooten.link).
+      var keysToTry = [];
+      if (
+        host.endsWith("wooten.link") &&
+        subdomain &&
+        subdomain !== "www" &&
+        subdomain !== "wooten"
+      ) {
+        keysToTry.push(subdomain);
+      }
+      if (pathKey) {
+        keysToTry.push(pathKey);
+      }
+
+      for (var i = 0; i < keysToTry.length; i += 1) {
+        var key = keysToTry[i];
+        if (redirects[key]) {
+          window.location.replace(redirects[key]);
+          return;
+        }
+      }
+
+      // Fallback to info index instead of a dead-end URL.
+      window.location.replace("https://jfwooten4.com/info/");
+    })();
   </script>
 </body>
 </html>

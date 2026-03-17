@@ -1,0 +1,4 @@
+- `artifacts` and `fannign` are generic TF2 item photos
+- `insignia` is from an unknown artist ([src](https://www.pngwing.com/en/free-png-pmsnm))
+- `smirk` is [canon](https://youtu.be/YHp6wHBGUjk?t=845), clipped by Tardifice ([src](https://www.clipartmax.com/middle/m2H7H7A0G6N4N4m2_rainbow-dash-with-a-proud-smirk-by-tardifice-rainbow-dash-smirk))
+- `twiggl` comes from Ethepony ([src](https://ethepony.ecrater.com/p/11863528/twilight-sparkle-cutie-mark-patch))

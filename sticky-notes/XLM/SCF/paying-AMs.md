@@ -1,0 +1,1 @@
+its not unlike a mechanic with gettdng rippud off but alse having no onhder optien bc yoi need the experinge to know thu best path

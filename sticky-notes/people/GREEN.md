@@ -18,3 +18,13 @@ this might be a little out there but there's the closeout sale plot point from R
 basis sense them re young people having the ideas but no $, setup with most rich ppl doin _nothing_ new (see fortune billnrs lo name not immigrant) 
 
 & end on "more likely to find true innovation in your friends" 
+
+
+---
+
+
+fac is it _distrts incetives_ 
+
+
+- political capital of _Influence_ vs. hard asset management.
+  - they have very different levels of verbosity that lead to unclear incentives in the former, which inspires emotional entanglement.

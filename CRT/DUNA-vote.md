@@ -1,5 +1,6 @@
-if time forces us to preliminary approval vote into this (conditional op move) then we can do
+rem. points only https://discord.com/channels/1102309240145707049/1102309240741310503/1477309355757015230
 
-- client drop (no biz)
+and just the headset audio for vid + channel
 
-build this year during dist and start biz in 2027
+
+for Bob "submitted to legal" at https://discord.com/channels/1102309240145707049/1474836852841386286/1480641092473847810, I can be 'legal'

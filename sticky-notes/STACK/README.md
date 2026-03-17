@@ -1,9 +1,2 @@
-# Commit msg blocktransfer/SEC-publications
-
-Rost of L?aylor work
-
-The 
-
-easest to close beta > shestring in
-
-https://zopen.to/EPYuQzayTDOiKvg46VyU (mind the typo in year, which was correcteh in our closing document correspenodace). THose messagges were acknowledh by Ms. Harris in writing.**^^
+- call Joe
+- - i want 3/4 on https://chatgpt.com/c/69a5deb5-8b28-8325-a4c4-64a6c277afc5
