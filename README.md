@@ -14,9 +14,6 @@ pubs -> **stickers** -> docs -> fin. pubs -> 723 -> Green[^1]  (re plasma)
 for Esteban maybee we can tie-ref `centralization of clearing risk`
 
 
-_**TAXES MAR 16**_
-
-- rel post 5 (dpr)
 - house-done-cleanin
 - setup-bulk-freezables
 - roundout-SDEX-page
