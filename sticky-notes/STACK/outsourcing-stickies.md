@@ -26,3 +26,6 @@ This is a complete waste of my time.
 - Ignore anything crossed out
 - Different orientations on the same note = different notes
 - If it continues over from one side to another in the same note, then there _should_ be an arrow from the starting side
+
+
+You could go down the route of bringing a person on through a written contract and get them they can handle the mail office clerical categorization and scans.
