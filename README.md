@@ -8,7 +8,4 @@ pubs -> **stickers** -> AGM -> 723 -> Green[^1]  (re plasma)
 
 for Esteban maybee we can tie-ref `centralization of clearing risk`
 
-
-- house-done-cleanin
-- setup-bulk-freezables
 - roundout-SDEX-page
