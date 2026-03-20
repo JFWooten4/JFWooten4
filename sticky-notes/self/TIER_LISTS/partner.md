@@ -41,3 +41,7 @@ Your deal-breakers (patterns, not incidents)
 - sorta wanna say unhealthy eating
 - Clingy to parents
 - Unable to make small decisions
+
+## fem
+
+_If_ girl _then_ EU con meeting locale
