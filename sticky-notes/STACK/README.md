@@ -1,2 +1,5 @@
 - call Joe
 - - i want 3/4 on https://chatgpt.com/c/69a5deb5-8b28-8325-a4c4-64a6c277afc5
+- politics
+  - https://chatgpt.com/c/69c2f54c-8974-8329-b928-4411f12631ae
+  - https://chatgpt.com/c/69c163c1-ff54-8332-926d-e64c08d08359
