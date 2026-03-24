@@ -6,4 +6,4 @@ pubs -> **stickers** -> AGM -> 723 -> Green[^1]  (re plasma)
 
 - close out all the DMs
 
-for Esteban maybee we can tie-ref `centralization of clearing risk`
+for Esteban maybee we can [tie-ref](https://1999.37signals.com/17.html) `centralization of clearing risk`
