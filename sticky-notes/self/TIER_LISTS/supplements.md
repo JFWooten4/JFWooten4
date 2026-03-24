@@ -5,3 +5,7 @@
 ## Weekly
 
 - Beta carotine
+
+## sussy baka
+
+- Protease
