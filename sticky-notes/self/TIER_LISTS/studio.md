@@ -1,4 +1,4 @@
 - Whiteboard walls _everywhere_
-  - Mag holdsters with pen-style writing preci
+  - Mag holdsters with pen-style writing precision tips
 - Obviously the UV/A-B windows without input
 - Retractable movie-style screen in front of couched thing
