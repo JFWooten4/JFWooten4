@@ -1,0 +1,3 @@
+- Whiteboard walls _everywhere_
+- Obviously the UV/A-B windows without input
+- Retractable movie-style screen in front of couched thing
