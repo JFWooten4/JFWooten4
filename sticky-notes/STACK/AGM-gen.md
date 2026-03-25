@@ -1,6 +1,6 @@
 ### 'Pilons into bedrock
 
-[Final centralized headshotting](https://www.canva.com/design/DAGrLsMjQBE/PJmyZ0R2E6DFX1uoEJoToQ/edit)
+[Final centralized headshotting](./Soneso.png) -- vote announcement BT X w dir link to tmp Discord
 
 
 
