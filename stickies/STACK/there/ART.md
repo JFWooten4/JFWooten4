@@ -10,3 +10,5 @@
 - https://electrokaplosion.bandcamp.com/album/catch-these-hooves-wip-album
 - https://hashtagfemcel.bandcamp.com/album/equestrian-ego-death-hosted-by-dj-pon-3
 - https://suno.com/playlist/512375c9-85e5-4f09-8c0b-251aadde58ab
+- https://www.youtube.com/watch?v=QlNXjBtFBhg
+- https://www.youtube.com/watch?v=wLKnSRLbsTw
