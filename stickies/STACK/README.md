@@ -3,3 +3,4 @@
 - politics
   - https://chatgpt.com/c/69c2f54c-8974-8329-b928-4411f12631ae
   - https://chatgpt.com/c/69c163c1-ff54-8332-926d-e64c08d08359
+  - https://github.com/user-attachments/files/26287684/Valve.s.Open-Allocation.Flat.System_.Rise.and.Decline.pdf
