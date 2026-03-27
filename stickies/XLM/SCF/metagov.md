@@ -5,3 +5,6 @@ mising Anke embed but we have [politicking post](https://x.com/JFWooten4/status/
 > "The whole world is simply nothing but a big flowchart for capital."
 > — Paul Tudor Jones
 https://youtu.be/TQuxVz52w2w?si=hxFJ9uovaKwnfvl9&t=1087
+
+dir src law on measurement contsrusion
+https://youtu.be/ekt6rYtOY94?t=649
