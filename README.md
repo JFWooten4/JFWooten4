@@ -4,10 +4,10 @@ _reqS paper updates and NY mail disp.__
 
 i need to setup a basis for backup fat bombs
 
-pubs -> **stickers** -> AGM -> 723 -> Green[^1]  (re plasma)
+pubs -> **stickers** -> AGM -> Macro: prez asp.s -> 723 -> Green[^1]  (re plasma)
 
 [^1]: Unless [out](https://www.sec.gov/rules-regulations/rulemaking-activity)
 
-- close out all the DMs
+- [close out](https://github.com/JFWooten4/JFWooten4/pull/42) all the DMs
 
 for Esteban maybee we can [tie-ref](https://1999.37signals.com/17.html) `centralization of clearing risk`
