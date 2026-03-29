@@ -23,6 +23,7 @@ NS = {
 CITATION_RE = re.compile(r"\[(\d+)\]")
 BIBLIO_RE = re.compile(r"^(?:\[\d+\]\s+)+.+")
 URL_RE = re.compile(r"^https?://\S+$")
+FOOTNOTE_DEF_RE = re.compile(r"^(\[\^[A-Za-z0-9\-]+\]:)\s+(.*)$")
 FILENAME_STOP_WORDS = {
     "a",
     "an",
@@ -137,7 +138,8 @@ def renderDocx(path: Path) -> str:
     for key, value in usedNotes.items():
         rendered.append(f"[^{key}]: {value}")
 
-    return "\n".join(rendered).rstrip() + "\n"
+    markdown = "\n".join(rendered).rstrip() + "\n"
+    return normalizeFootnoteDefinitions(markdown)
 
 
 def deriveOutputPath(inputPath: Path, rawOutput: str | None, markdown: str) -> Path:
@@ -261,7 +263,7 @@ def extractBibliography(paragraphs: list[dict[str, object]]) -> dict[str, dict[s
         if i + 1 < len(paragraphs):
             nextText = str(paragraphs[i + 1]["text"]).strip()
             if URL_RE.match(nextText):
-                url = nextText
+                url = canonicalizeUrl(nextText)
                 i += 1
 
         numbers = CITATION_RE.findall(entry)
@@ -287,10 +289,7 @@ def convertCitations(
 
         noteId = number
         if noteId not in usedNotes:
-            if entry["url"]:
-                usedNotes[noteId] = f"{entry['title']}. <{entry['url']}>"
-            else:
-                usedNotes[noteId] = entry["title"]
+            usedNotes[noteId] = formatFootnoteValue(entry["title"], entry["url"])
         return f"[^{noteId}]"
 
     text = CITATION_RE.sub(replace, text)
@@ -303,12 +302,65 @@ def escapePipes(text: str) -> str:
     return text.replace("|", r"\|")
 
 
+def formatFootnoteValue(title: str, url: str) -> str:
+    title = title.strip()
+    url = canonicalizeUrl(url)
+    if not url:
+        return title
+
+    normalizedTitle = title.removesuffix(".").strip()
+    normalizedLinkedTitle = normalizedTitle.removeprefix("<").removesuffix(">")
+    if normalizedTitle == url or normalizedLinkedTitle == url:
+        return f"<{url}>"
+    return f"{title}. <{url}>"
+
+
+def normalizeFootnoteDefinitions(markdown: str) -> str:
+    lines: list[str] = []
+    for line in markdown.splitlines():
+        match = FOOTNOTE_DEF_RE.match(line)
+        if not match:
+            lines.append(line)
+            continue
+
+        prefix, value = match.groups()
+        value = value.strip()
+        if URL_RE.match(value):
+            lines.append(f"{prefix} <{canonicalizeUrl(value)}>")
+            continue
+
+        linkedValue = value.removeprefix("<").removesuffix(">")
+        if value.startswith("<") and value.endswith(">") and URL_RE.match(linkedValue):
+            lines.append(f"{prefix} <{canonicalizeUrl(linkedValue)}>")
+            continue
+
+        duplicateMatch = re.fullmatch(r"(https?://\S+)\.\s+<\1>", value)
+        if duplicateMatch:
+            lines.append(f"{prefix} <{canonicalizeUrl(duplicateMatch.group(1))}>")
+            continue
+
+        lines.append(line)
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def collapseSpacing(text: str) -> str:
     text = text.replace("\u00a0", " ")
     text = text.replace("\u201c", '"').replace("\u201d", '"')
     text = re.sub(r"[ \t]+", " ", text)
     text = re.sub(r" *\n *", " ", text)
     return text.strip()
+
+
+def canonicalizeUrl(url: str) -> str:
+    url = url.strip()
+    if not url:
+        return ""
+
+    unwrapped = url.removeprefix("<").removesuffix(">")
+    if URL_RE.match(unwrapped):
+        return unwrapped.rstrip("/")
+    return unwrapped
 
 
 def localName(tag: str) -> str:
