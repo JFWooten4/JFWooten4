@@ -28,7 +28,7 @@ URL_RE = re.compile(r"^https?://\S+$")
 def main() -> int:
     parser = argparse.ArgumentParser(description="Convert DOCX to Markdown.")
     parser.add_argument("input", nargs="?", help="Path to the DOCX file.")
-    parser.add_argument("-o", "--output", default="output.md", help="Output Markdown path.")
+    parser.add_argument("-o", "--output", help="Output Markdown path.")
     args = parser.parse_args()
 
     input_path = resolve_input(args.input)
@@ -37,7 +37,7 @@ def main() -> int:
         return 1
 
     markdown = render_docx(input_path)
-    output_path = Path(args.output).expanduser().resolve()
+    output_path = derive_output_path(input_path, args.output, markdown)
     output_path.write_text(markdown, encoding="utf-8")
     print(f"Wrote {output_path}")
     return 0
@@ -120,6 +120,40 @@ def render_docx(path: Path) -> str:
         rendered.append(f"[^{key}]: {value}")
 
     return "\n".join(rendered).rstrip() + "\n"
+
+
+def derive_output_path(input_path: Path, raw_output: str | None, markdown: str) -> Path:
+    if raw_output:
+        return Path(raw_output).expanduser().resolve()
+
+    suggested_name = suggest_output_name(markdown) or input_path.stem
+    return input_path.with_name(f"{suggested_name}.md").resolve()
+
+
+def suggest_output_name(markdown: str) -> str | None:
+    for line in markdown.splitlines():
+        cleaned = line.strip()
+        if not cleaned:
+            continue
+        if cleaned.startswith("[^"):
+            continue
+
+        cleaned = re.sub(r"^#{1,6}\s+", "", cleaned)
+        cleaned = re.sub(r"\[\^[A-Za-z0-9\-]+\]", "", cleaned)
+        slug = slugify_filename(cleaned)
+        if slug:
+            return slug
+    return None
+
+
+def slugify_filename(text: str, max_length: int = 80) -> str:
+    text = text.strip().lower()
+    text = re.sub(r"[\\/:*?\"<>|]+", " ", text)
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"[-\s]+", "-", text).strip("-._")
+    if not text:
+        return ""
+    return text[:max_length].rstrip("-._")
 
 
 def parse_paragraph(paragraph: ET.Element) -> dict[str, object]:
