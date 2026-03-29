@@ -175,70 +175,66 @@ Key uncertainties (not resolved by public primary sources): - Exact contractual 
 
 Assumptions used (and why): - Open allocation mechanics are primarily described by the 2012 handbook and contemporaneous accounts (handbook + Varoufakis essay + interviews). This is assumed to be the best available representation of the pre‑2014 era, recognizing it may blend aspiration and practice.[^61] - When sources specify only month/season, timeline anchors are approximate (as shown in the mermaid chart).[^2]
 
-### Primary documents (direct links)
 
-```text
-Valve-hosted (archived) “Valve Economics” index page (Sept 2012 capture): https://web.archive.org/web/20120922140834/http://blogs.valvesoftware.com/economics/  “It All Began With a Strange Email” (June 14, 2012): https://web.archive.org/web/20120922140834/http://blogs.valvesoftware.com/economics/it-all-began-with-a-strange-email/  “Arbitrage and Equilibrium in the Team Fortress 2 Economy” (June 22, 2012): https://web.archive.org/web/20121020031732/http://blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/  “To Truck, Barter and Exchange?” (July 1, 2012): https://web.archive.org/web/20120926151252/http://blogs.valvesoftware.com/economics/to-truck-barter-and-exchange-on-the-nature-of-valves-social-economies/  “Why Valve?” (Aug 3, 2012): https://web.archive.org/web/20120913230340/http://blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/  Valve Handbook for New Employees (2012) PDF: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf  Steam/Valve press release: “Steam Community Market Now In Beta” (Dec 12, 2012): https://store.steampowered.com/oldnews/9594  Team Fortress 2 blog: “Steam Community Market beta” announcement (Dec 12, 2012): https://www.teamfortress.com/post.php?id=9567  Team Fortress 2 blog: “Introducing Steam Trading Beta” (Aug 2011): https://www.teamfortress.com/post.php?id=6040  Valve GDC 2012 slide deck (Joe Ludwig): “TF2: From The Orange Box to Free to Play…”: https://cdn.fastly.steamstatic.com/apps/valve/2012/TF2_Orange_Box_To_Free_To_Play_GDC2012.pdf  EconTalk episode page and transcript: https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/
-```
+[^1]: EconTalk episode page and transcript: <https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/>
+[^2]: Valve-hosted (archived) “Valve Economics” index page (Sept. 2012 capture): <https://web.archive.org/web/20120922140834/http://blogs.valvesoftware.com/economics/>
+[^5]: Valve Handbook for New Employees (2012) PDF: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^6]: “Why Valve?” (Aug. 3, 2012): <https://web.archive.org/web/20120913230340/http://blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/>
+[^9]: “Arbitrage and Equilibrium in the Team Fortress 2 Economy” (June 22, 2012): <https://web.archive.org/web/20121020031732/http://blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^25]: “To Truck, Barter and Exchange?” (July 1, 2012): <https://web.archive.org/web/20120926151252/http://blogs.valvesoftware.com/economics/to-truck-barter-and-exchange-on-the-nature-of-valves-social-economies/>
+[^49]: Steam/Valve press release, “Steam Community Market Now In Beta” (Dec. 12, 2012): <https://store.steampowered.com/oldnews/9594>
+[^12]: Team Fortress 2 blog, “Introducing Steam Trading Beta” (Aug. 2011): <https://www.teamfortress.com/post.php?id=6040>
+[^31]: Valve GDC 2012 slide deck (Joe Ludwig), “TF2: From The Orange Box to Free to Play…”: <https://cdn.fastly.steamstatic.com/apps/valve/2012/TF2_Orange_Box_To_Free_To_Play_GDC2012.pdf>
 
-[^1]: https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/. <https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/>
-[^2]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^3]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^4]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^5]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^6]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/>
-[^7]: https://reason.com/2014/05/07/a-multiplayer-game-environment/. <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
-[^8]: https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/. <https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/>
-[^9]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^10]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^11]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/>
-[^12]: https://www.teamfortress.com/post.php?id=6040. <https://www.teamfortress.com/post.php?id=6040>
-[^13]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^14]: https://reason.com/2014/05/07/a-multiplayer-game-environment/. <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
-[^15]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^16]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^17]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^18]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^19]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/>
-[^20]: https://www.washingtonpost.com/news/wonk/wp/2012/09/28/the-economics-of-video-games/. <https://www.washingtonpost.com/news/wonk/wp/2012/09/28/the-economics-of-video-games/>
-[^21]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^22]: https://reason.com/2014/05/07/a-multiplayer-game-environment/. <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
-[^23]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^24]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^25]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/to-truck-barter-and-exchange-on-the-nature-of-valves-social-economies/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/to-truck-barter-and-exchange-on-the-nature-of-valves-social-economies/>
-[^26]: https://www.washingtonpost.com/news/wonk/wp/2012/09/28/the-economics-of-video-games/. <https://www.washingtonpost.com/news/wonk/wp/2012/09/28/the-economics-of-video-games/>
-[^27]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^28]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^29]: https://reason.com/2014/05/07/a-multiplayer-game-environment/. <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
-[^30]: https://www.geekwire.com/2011/experiments-video-game-economics-valves-gabe-newell/. <https://www.geekwire.com/2011/experiments-video-game-economics-valves-gabe-newell/>
-[^31]: https://cdn.fastly.steamstatic.com/apps/valve/2012/TF2_Orange_Box_To_Free_To_Play_GDC2012.pdf. <https://cdn.fastly.steamstatic.com/apps/valve/2012/TF2_Orange_Box_To_Free_To_Play_GDC2012.pdf>
-[^32]: https://reason.com/2014/05/07/a-multiplayer-game-environment/. <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
-[^33]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^34]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^35]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^36]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^37]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^38]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^39]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^40]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/>
-[^41]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^42]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^43]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^44]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^45]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^46]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^47]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^48]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^49]: https://store.steampowered.com/oldnews/9594. <https://store.steampowered.com/oldnews/9594>
-[^50]: https://www.teamfortress.com/post.php?id=6040. <https://www.teamfortress.com/post.php?id=6040>
-[^51]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^52]: https://www.geekwire.com/2011/experiments-video-game-economics-valves-gabe-newell/. <https://www.geekwire.com/2011/experiments-video-game-economics-valves-gabe-newell/>
-[^53]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/to-truck-barter-and-exchange-on-the-nature-of-valves-social-economies/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/to-truck-barter-and-exchange-on-the-nature-of-valves-social-economies/>
-[^54]: https://www.teamfortress.com/post.php?id=6040. <https://www.teamfortress.com/post.php?id=6040>
-[^55]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^56]: https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/. <https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/>
-[^57]: https://reason.com/2014/05/07/a-multiplayer-game-environment/. <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
-[^58]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
-[^59]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
-[^60]: https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/. <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
-[^61]: https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf. <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^3]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^4]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^7]: <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
+[^8]: <https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/>
+[^10]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^11]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/>
+[^13]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^14]: <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
+[^15]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^16]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^17]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^18]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^19]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/>
+[^20]: <https://www.washingtonpost.com/news/wonk/wp/2012/09/28/the-economics-of-video-games/>
+[^21]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^22]: <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
+[^23]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^24]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^26]: <https://www.washingtonpost.com/news/wonk/wp/2012/09/28/the-economics-of-video-games/>
+[^27]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^28]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^29]: <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
+[^30]: <https://www.geekwire.com/2011/experiments-video-game-economics-valves-gabe-newell/>
+[^32]: <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
+[^33]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^34]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^35]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^36]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^37]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^38]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^39]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^40]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/why-valve-or-what-do-we-need-corporations-for-and-how-does-valves-management-structure-fit-into-todays-corporate-world/>
+[^41]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^42]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^43]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^44]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^45]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^46]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^47]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^48]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^50]: <https://www.teamfortress.com/post.php?id=6040>
+[^51]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^52]: <https://www.geekwire.com/2011/experiments-video-game-economics-valves-gabe-newell/>
+[^53]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/to-truck-barter-and-exchange-on-the-nature-of-valves-social-economies/>
+[^54]: <https://www.teamfortress.com/post.php?id=6040>
+[^55]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^56]: <https://www.econtalk.org/varoufakis-on-valve-spontaneous-order-and-the-european-crisis/>
+[^57]: <https://reason.com/2014/05/07/a-multiplayer-game-environment/>
+[^58]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/>
+[^59]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
+[^60]: <https://web.archive.org/web/20120922140834/http%3A//blogs.valvesoftware.com/economics/arbitrage-and-equilibrium-in-the-team-fortress-2-economy/>
+[^61]: <https://assets.sbnation.com/assets/1074301/Valve_Handbook_LowRes.pdf>
