@@ -12,6 +12,7 @@ we have 97 Netflix pivot to subscription blending
 
 this might be a little out there but there's the closeout sale plot point from Rules of Rarity 
 
+- https://youtu.be/yTUjaQ36SME
 
 ## [reply](https://discord.com/channels/1102309240145707049/1328734255148433408/1445518217417068724)
 
