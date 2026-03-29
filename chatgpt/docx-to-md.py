@@ -23,6 +23,24 @@ NS = {
 CITATION_RE = re.compile(r"\[(\d+)\]")
 BIBLIO_RE = re.compile(r"^(?:\[\d+\]\s+)+.+")
 URL_RE = re.compile(r"^https?://\S+$")
+FILENAME_STOP_WORDS = {
+    "a",
+    "an",
+    "and",
+    "as",
+    "at",
+    "by",
+    "for",
+    "from",
+    "in",
+    "into",
+    "of",
+    "on",
+    "or",
+    "the",
+    "to",
+    "with",
+}
 
 
 def main() -> int:
@@ -150,7 +168,10 @@ def slugifyFilename(text: str, maxLength: int = 80) -> str:
     text = text.strip().lower()
     text = re.sub(r"[\\/:*?\"<>|]+", " ", text)
     text = re.sub(r"[^\w\s-]", "", text)
-    text = re.sub(r"[-\s]+", "-", text).strip("-._")
+    words = [word for word in re.split(r"[-\s]+", text) if word and word not in FILENAME_STOP_WORDS]
+    if not words:
+        words = [word for word in re.split(r"[-\s]+", text) if word]
+    text = "-".join(words).strip("-._")
     if not text:
         return ""
     return text[:maxLength].rstrip("-._")
@@ -284,6 +305,7 @@ def escapePipes(text: str) -> str:
 
 def collapseSpacing(text: str) -> str:
     text = text.replace("\u00a0", " ")
+    text = text.replace("\u201c", '"').replace("\u201d", '"')
     text = re.sub(r"[ \t]+", " ", text)
     text = re.sub(r" *\n *", " ", text)
     return text.strip()
