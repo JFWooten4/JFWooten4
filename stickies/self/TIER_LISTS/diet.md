@@ -3,12 +3,15 @@
 #### YAYs
 
 - RYZE mushroom hot chocolate
+- herbal / fluit tea
 
 ### NOs
 
 - gluten
 - rice
-- rissoto
+- rissot
+- caffine / coffee
+- black / dark tea
 
 #### Poison
 
