@@ -1,3 +1,4 @@
 - [Manna: Two Views of Humanity’s Future](https://marshallbrain.com/manna1)
+- [Defender Suggestion](https://www.amazon.com/G%C3%B6del-Escher-Bach-Eternal-Golden/dp/0465026567)
 - [Business as Unusual: The Team Fortress 2 virtual econ](https://a.co/d/04F3T3CG)
 - [Hock's One From Many v2](https://www.amazon.com/One-Many-VISA-Chaordic-Organization/dp/1576753328)
