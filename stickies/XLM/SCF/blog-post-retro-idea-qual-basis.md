@@ -2,4 +2,4 @@ https://x.com/JFWooten4/status/2038840553991749736
 
 https://discord.com/channels/897514728459468821/1124340476288454657/1219742906781274215
 
-(this was in the 4:19 rant, but it's a better src here)
+(this was in https://discord.com/channels/897514728459468821/1124340476288454657/1431195506029105263, but it's a better src here)
