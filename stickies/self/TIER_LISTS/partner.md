@@ -8,11 +8,13 @@
 
 - No interrupting work.
 - No mentioning diet.
+- Understands the value of time.
 
 These would likely be appreciated by an artist familiar with flow state.
 
 # Desires
 
+- Blonde
 - Creates something of artistic value
 - Tight waistline
   - Relatively implicated from fitness care.

@@ -1,18 +1,16 @@
-do 333 or 303 prop exec as 300 basis fopr gme stat.,
+Do 333 or 303 prop exec as 300 basis for GME stat.,
 
-then we have DIRECT DFISCORD  DM  
+Then we have direct Discord DM
 
-outreach BEFORFE THE PW CHAT GORUP  
+Outreach before the PW chat group
 
+_we_ have also that it's not just the tx fee sending but also them literally blocking my account after P!Wsa Tx
 
+Lockout under review  
+Abandoning
 
-_we_ whave alsoo that ti's not jsut hte tx fee sending but also tthem literally blocking my account a fter P!Wsa Tx
-
-lokcund ujnder vrieviewe
-amandbnfiong
-
-diuction here tbd
+Discussion here TBD
 
 ---
 
-do s mp le wahat rwere the fees at T+18 
+Do simple what were the fees at T+18
