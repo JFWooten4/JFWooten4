@@ -1,16 +1,17 @@
 [![intro](banners/buffett.png)](https://www.whydrs.org/companies-who-encourage-drs "After formal IRS clarification, Buffett explains that a property law \"did not cover participation by shareholders whose stock was registered in the name of nominees, such as brokers, and additionally required that the owners\" certify ownership of their own assets.")
 
-# TODO 
+_reqS paper updates and NY mail disp.__
 
-### NEEDS TO DO DEPLOY STICKERS 1st b/c re see centralization of clearing risk
+i need to setup a basis for backup fat bombs
 
-See political capital of _Influence_ vs. hard asset management.
+pubs -> **stickers** -> Macro: prez asp.s[^3] -> AGM[^2] -> 723 -> Green[^1]  (re plasma)
 
-Particularly, they have very different levels of verbosity that lead to unclear incentives in the former, which inspires emotional entanglement.
+[^1]: Unless [out](https://www.sec.gov/rules-regulations/rulemaking-activity)
 
-_**TAXES MAR 16**_
+- [close out](https://github.com/JFWooten4/JFWooten4/pull/42) all the DMs
 
-- rel post 5 (dpr)
-- house-done-cleanin
-- setup-bulk-freezables
-- roundout-SDEX-page
+for Esteban maybee we can [tie-ref](https://1999.37signals.com/17.html) `centralization of clearing risk`
+
+[^2]: April 3
+
+[^3]: April 2. ⚠ — Let's do setup as a _scope down_ to a narrow execution field

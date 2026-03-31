@@ -1,2 +1,0 @@
-- [Manna: Two Views of Humanity’s Future](https://marshallbrain.com/manna1)
-- [Defender Suggestion](https://www.amazon.com/G%C3%B6del-Escher-Bach-Eternal-Golden/dp/0465026567)

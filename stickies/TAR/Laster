@@ -1,0 +1,32 @@
+_supra_ note {{^Dole}}
+
+let's  fucking implicate the BBY miscount from Discord
+
+more if  time permits
+
+---
+
+
+also  we ahve  a  spei la prtoectionism for insicers at cedde
+
+in  Inc.	C.A. No. 9079-VCL
+
+use https://courts.delaware.gov/opinions/download.aspx?ID=228790
+
+
+9also  we  have cede info opacity  at 5 onwards with  data  outreach nonresponse of 127  letters
+
+
+
+
+"nearly  a  doze" with  focus o n  "Hudson Bay Merger Arbitrage Opportunities Master Fund Ltd."
+
+pernsions  if  time permists:
+https://www.courtlistener.com/docket/4221007/san-antonio-fire-and-police-pension-fund-v-dole-food-company-inc/
+
+
+
+---
+
+elseware, we can ref _supra_ note ^Dole 
+since here we can estlihs 99.9% was cede 

@@ -1,0 +1,1 @@
+I think we could probably move some of it into the SCP Standalone page, either as a subsection or just an easy footnote. And then I want to big thank you on upgrading the folder priority for the DEX page.

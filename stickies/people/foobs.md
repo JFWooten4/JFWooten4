@@ -1,0 +1,1 @@
+He had been sitting on the NSC docs for two years before the refresh ideology from Reese.

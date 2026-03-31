@@ -1,0 +1,3 @@
+- standard 50/50 ISP
+  - clowd pleasers
+    - anyone here ever wait forever to upload a YouTube video? what's up with that? 
