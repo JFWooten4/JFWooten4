@@ -18,12 +18,15 @@ import xml.etree.ElementTree as ET
 
 NS = {
     "w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
+    "cp": "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
+    "dc": "http://purl.org/dc/elements/1.1/",
 }
 
 CITATION_RE = re.compile(r"\[(\d+)\]")
 BIBLIO_RE = re.compile(r"^(?:\[\d+\]\s+)+.+")
 URL_RE = re.compile(r"^https?://\S+$")
 FOOTNOTE_DEF_RE = re.compile(r"^(\[\^[A-Za-z0-9\-]+\]:)\s+(.*)$")
+COPY_SUFFIX_RE = re.compile(r"\s*\(\d+\)$")
 FILENAME_STOP_WORDS = {
     "a",
     "an",
@@ -42,6 +45,19 @@ FILENAME_STOP_WORDS = {
     "to",
     "with",
 }
+GENERIC_FILENAME_CANDIDATES = {
+    "abstract",
+    "appendix",
+    "conclusion",
+    "executive-summary",
+    "introduction",
+    "overview",
+    "references",
+    "sources",
+    "summary",
+    "timeline",
+}
+TITLE_STYLE_NAMES = {"Title", "Subtitle", "Heading1", "Heading2"}
 
 
 def main() -> int:
@@ -146,24 +162,93 @@ def deriveOutputPath(inputPath: Path, rawOutput: str | None, markdown: str) -> P
     if rawOutput:
         return Path(rawOutput).expanduser().resolve()
 
-    suggestedName = suggestOutputName(markdown) or inputPath.stem
+    suggestedName = suggestOutputName(inputPath, markdown) or slugifyFilename(COPY_SUFFIX_RE.sub("", inputPath.stem))
+    if not suggestedName:
+        suggestedName = inputPath.stem
     return inputPath.with_name(f"{suggestedName}.md").resolve()
 
 
-def suggestOutputName(markdown: str) -> str | None:
+def suggestOutputName(inputPath: Path, markdown: str) -> str | None:
+    sourceSlug = slugifyFilename(COPY_SUFFIX_RE.sub("", inputPath.stem))
+    fallback: str | None = None
+
+    for candidate in iterOutputNameCandidates(inputPath, markdown):
+        slug = slugifyFilename(candidate)
+        if not slug:
+            continue
+        if fallback is None:
+            fallback = slug
+        if slug == sourceSlug:
+            continue
+        if slug in GENERIC_FILENAME_CANDIDATES:
+            continue
+        return slug
+
+    return fallback
+
+
+def iterOutputNameCandidates(inputPath: Path, markdown: str) -> Iterable[str]:
+    seen: set[str] = set()
+
+    for candidate in iterDocxTitleCandidates(inputPath):
+        normalized = candidate.strip()
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            yield normalized
+
     for line in markdown.splitlines():
         cleaned = line.strip()
-        if not cleaned:
-            continue
-        if cleaned.startswith("[^"):
+        if not cleaned or cleaned.startswith("[^"):
             continue
 
         cleaned = re.sub(r"^#{1,6}\s+", "", cleaned)
-        cleaned = re.sub(r"\[\^[A-Za-z0-9\-]+\]", "", cleaned)
-        slug = slugifyFilename(cleaned)
-        if slug:
-            return slug
-    return None
+        cleaned = re.sub(r"\[\^[A-Za-z0-9\-]+\]", "", cleaned).strip()
+        if cleaned and cleaned not in seen:
+            seen.add(cleaned)
+            yield cleaned
+
+
+def iterDocxTitleCandidates(path: Path) -> Iterable[str]:
+    try:
+        with zipfile.ZipFile(path) as archive:
+            coreTitle = readCoreTitle(archive)
+            if coreTitle:
+                yield coreTitle
+
+            documentRoot = ET.fromstring(archive.read("word/document.xml"))
+    except (FileNotFoundError, KeyError, zipfile.BadZipFile, ET.ParseError):
+        return
+
+    body = documentRoot.find("w:body", NS)
+    if body is None:
+        return
+
+    scannedParagraphs = 0
+    for child in body:
+        if localName(child.tag) != "p":
+            continue
+
+        scannedParagraphs += 1
+        paragraph = parseParagraph(child)
+        text = str(paragraph["text"]).strip()
+        if not text:
+            continue
+
+        style = str(paragraph["style"])
+        if style in TITLE_STYLE_NAMES or scannedParagraphs <= 3:
+            yield text
+        if scannedParagraphs >= 12:
+            break
+
+
+def readCoreTitle(archive: zipfile.ZipFile) -> str:
+    try:
+        root = ET.fromstring(archive.read("docProps/core.xml"))
+    except (KeyError, ET.ParseError):
+        return ""
+
+    title = root.findtext("dc:title", default="", namespaces=NS)
+    return collapseSpacing(title)
 
 
 def slugifyFilename(text: str, maxLength: int = 80) -> str:
