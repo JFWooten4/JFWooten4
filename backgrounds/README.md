@@ -39,5 +39,6 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 - `market-calling` comes from [DinoHorse](https://linktr.ee/DinoHorse) ([src](https://dinohorse.tumblr.com/post/784820587947229184/11-x-17-rarity-pin-up-prints-link-to-buy))
 - `secret-slash` comes from [Darktailsko (Cody)](https://www.deviantart.com/discourt) ([src](https://derpibooru.org/images/1650702))
 - `distant-engine` comes from [Shino](https://spaceponyos.com) ([src](https://x.com/ShinodaGE/status/1270296149627371521))
+- `flight-time` comes from [Vultraz](https://odysee.com/@vul:0) ([src](https://ponerpics.org/images/6805273))
 
 [^chatgpt]: Slightly altered for format with DALL-E.
