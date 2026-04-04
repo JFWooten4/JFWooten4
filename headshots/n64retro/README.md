@@ -1,2 +1,3 @@
-- `femanine` comes from Kiriya ([src](https://derpibooru.org/images/3394656))
-- `flawless` comes from [Tamers12345](https://x.com/TheTamers12345) ([src](https://pony.tube/w/7bnDJzumq5kvVyd4dHjNdF?start=15m10s))
+- `steam` comes from [KP-ShadowSquirrel](https://civitai.com/user/Beatrix_Violet) ([src](https://www.deviantart.com/kp-shadowsquirrel/art/Cadance-Portrait-329151870))
+- `yoyoexpert` comes from Madhouse (Killua Zoldyck)
+- `overwatch` comes from Blizzard Entertainment ([src](https://overwatch.fandom.com/wiki/Player_Icons?file=PI_Siege_Mode.png))

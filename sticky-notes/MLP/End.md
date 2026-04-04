@@ -1,1 +1,0 @@
-we can terminus the second initiate with a reference to the Charlie conversation as a basis for the thinking start point

@@ -1,1 +1,0 @@
-- [Manna: Two Views of Humanity’s Future](https://marshallbrain.com/manna1)
