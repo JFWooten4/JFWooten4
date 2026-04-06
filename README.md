@@ -4,6 +4,4 @@ pubs -> **stickers**[^3] -> AGM -> 723
 
 - [close out](https://github.com/JFWooten4/JFWooten4/pull/42) all the DMs
 
-for Esteban maybee we can [tie-ref](https://1999.37signals.com/17.html) `centralization of clearing risk`
-
 [^3]: blocks https://github.com/JFWooten4/JFWooten4/pull/49 which blocks [FFpfp](https://canva.link/rsa0a0ree3apuyv) ¶ 5
