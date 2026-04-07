@@ -1,1 +1,0 @@
-Done in gel pen and later [posted](https://x.com/JFWooten4/status/2002816451376496754).
