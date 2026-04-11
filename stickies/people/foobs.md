@@ -1,1 +1,1 @@
-hed been sitting on the NSC docs  for two yetars before th refresh idealogoy  from Reese
+He had been sitting on the NSC docs for two years before the refresh ideology from Reese.
