@@ -1,0 +1,1 @@
+https://web.archive.org/web/20220419000513/https://www.ftfnews.com/dtcc-to-explore-clearing-settlement-for-u-s-cbdc/31129

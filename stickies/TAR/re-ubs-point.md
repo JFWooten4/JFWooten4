@@ -1,0 +1,2 @@
+- (pending src on tweet img)
+- https://www.reddit.com/r/Superstonk/comments/122y0nr/apes_against_bagholder_bonds_credit_suisse_at1 (setup)

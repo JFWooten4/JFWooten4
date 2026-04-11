@@ -1,0 +1,1 @@
+[sponssor](https://groups.google.com/g/stellar-dev/c/vSsf75cYi5Q/m/hu5ZTlqNAwAJ)

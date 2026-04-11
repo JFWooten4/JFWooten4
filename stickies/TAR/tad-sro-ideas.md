@@ -1,0 +1,1 @@
+- sro membership as using the tad code from core blocktransfer

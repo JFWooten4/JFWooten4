@@ -1,1 +1,0 @@
-movie royalties can go to the treasury :)
