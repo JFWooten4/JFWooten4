@@ -1,1 +1,0 @@
-I will uncover somethign magic on the ski trip if I do poen + paper notebook _only)_

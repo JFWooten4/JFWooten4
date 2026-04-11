@@ -1,1 +1,0 @@
-https://scholar.google.com/scholar?hl=en&as_sdt=0%2C15&q=OpenBazaar&btnG=

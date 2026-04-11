@@ -1,1 +1,0 @@
-also explain rest of routing simpley with cats and laser
