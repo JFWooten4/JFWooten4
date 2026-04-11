@@ -1,1 +1,0 @@
-what about contemplated (objectivist) centralization to maintain integrity? 

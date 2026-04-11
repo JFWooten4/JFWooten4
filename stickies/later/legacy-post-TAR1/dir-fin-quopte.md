@@ -1,1 +1,0 @@
-THroughout my entire career [BrokerCheck], I've only held the bonds in DTC or "physical form."

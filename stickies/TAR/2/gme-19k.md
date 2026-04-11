@@ -1,1 +1,0 @@
-nminumum closing price is 24.94

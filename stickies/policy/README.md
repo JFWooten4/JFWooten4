@@ -1,1 +1,0 @@
-protecting against their own counterparties v. actual trade certainty
