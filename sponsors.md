@@ -124,3 +124,27 @@ I work on nonprofit financial infrastructure to help masses of people build real
 Please be patient with me as I'm currently transitioning to Dvorak 💜
 
 ### [Past Work](https://github.com/users/JFWooten4/projects/1/views/1?filterQuery=-status%3A%22Pending+%F0%9F%92%9C%22%2C%22%F0%9F%9A%80+Critical+Mission+%F0%9F%8C%8C%22%2C%22Backlogged+%28High%29+%F0%9F%8E%AF%22%2C%22Backlogged+%28Medium%29+%F0%9F%A7%A0%22%2C%22Backlogged+%28Low%29+%F0%9F%A4%9D%22%2C%22Awaiting+Response%22%2C%22Ideas+%F0%9F%92%A1%22)
+
+
+## 11 Apr 2026
+
+I work full time on nonprofit financial infrastructure, public market research, and permissionless investor protections. I am less interested in optimizing for short-term trading gains than in improving the judgment, infrastructure, and governance needed for long-run allocation. If legacy finance is organized around bureaucracy and rent extraction, I want to keep pushing toward systems that protects real investment opportunities, innovation, and pensions.
+
+Over the last many years, I have intentionally moved away from the easier path of private trading, closed development, and centralized finance work. I care much more about building public systems that help ordinary people save, invest, and retire without so many extractive middlemen standing between them and the assets they actually own.
+
+Most of that work lives across my public repositories and organizations. The throughline is consistent: new market structure, clear ownership, and transparent governance. We get to build financial tools that siphon value away from centralized institutions and back to the people.
+
+That is why we formed the 501(c)(3) to keep this as nonprofit work. I am not trying to build a closed system that enriches a small class of managers. I want common infrastructure, accountable transparency, and public-facing work-products that can outlast me. TAD3, the surrounding policy work, the DAO ideas, the public comments, and the documentation materials all fit within that same mission.
+
+If you support this work, you are helping me keep it public, independent, and substance-first rather than steering toward CEXs, extraction, or gatekeeping. Your support helps fund the time required to write, code, and coordinate all of this in the open.
+
+### [Working Agenda](https://github.com/users/JFWooten4/projects/1)
+
+If you want the best live view of what I am actively building, researching, and trying to ship next, start there.
+
+If this mission resonates with you, sponsorship helps fund:
+
+- TAD3 and related market-structure development;
+- nonprofit and DAO-oriented governance research;
+- free philosophical writing, public comments, and open documentation; plus
+- stock infrastructure work building savings and retirements for masses of people!
