@@ -132,11 +132,11 @@ I work full time on nonprofit financial infrastructure, public market research, 
 
 Over the last five years, I have intentionally moved away from the easier path of private trading, closed development, and centralized finance work. I care much more about building public systems that help ordinary people save, invest, and retire without so many extractive middlemen standing between them and the assets they actually own.
 
-Most of that work lives across my public repositories and organizations. The throughline is consistent: better market structure, clearer ownership, transparent governance, less bureaucracy, and financial tools that serve workers, savers, and retirees instead of quietly siphoning value upward through centralized institutions.
+Most of that work lives across my public repositories and organizations. The throughline is consistent: new market structure, clear ownership, and transparent governance. We get to build financial tools that siphon value away from centralized institutions and back to the people.
 
-That is why I keep framing this as nonprofit work and formed the 501(c)(3). I am not trying to build a closed system that enriches a small class of managers. I want common infrastructure, accountable transparency, and public-facing work-products that can outlast me. TAD3, the surrounding policy work, the DAO ideas, the public comments, and the documentation materials all fit within that same mission.
+That is why we formed the 501(c)(3) to keep this as nonprofit work. I am not trying to build a closed system that enriches a small class of managers. I want common infrastructure, accountable transparency, and public-facing work-products that can outlast me. TAD3, the surrounding policy work, the DAO ideas, the public comments, and the documentation materials all fit within that same mission.
 
-If you support this work, you are helping me keep it public, independent, and substance-first rather than steering toward ads, paywalls, promotional deals, or traditional equity incentives. Your support helps fund the time required to write, code, research, publish, and coordinate all of this in the open.
+If you support this work, you are helping me keep it public, independent, and substance-first rather than steering toward CEXs, extraction, or gatekeeping. Your support helps fund the time required to write, code, and coordinate all of this in the open.
 
 ### [Working Agenda](https://github.com/users/JFWooten4/projects/1)
 
