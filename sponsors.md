@@ -130,7 +130,7 @@ Please be patient with me as I'm currently transitioning to Dvorak 💜
 
 I work full time on nonprofit financial infrastructure, public market research, and permissionless investor protections. I am less interested in optimizing for short-term trading gains than in improving the judgment, infrastructure, and governance needed for long-run allocation. If legacy finance is organized around bureaucracy and rent extraction, I want to keep pushing toward systems that protects real investment opportunities, innovation, and pensions.
 
-Over the last five years, I have intentionally moved away from the easier path of private trading, closed development, and centralized finance work. I care much more about building public systems that help ordinary people save, invest, and retire without so many extractive middlemen standing between them and the assets they actually own.
+Over the last many years, I have intentionally moved away from the easier path of private trading, closed development, and centralized finance work. I care much more about building public systems that help ordinary people save, invest, and retire without so many extractive middlemen standing between them and the assets they actually own.
 
 Most of that work lives across my public repositories and organizations. The throughline is consistent: new market structure, clear ownership, and transparent governance. We get to build financial tools that siphon value away from centralized institutions and back to the people.
 
@@ -147,4 +147,4 @@ If this mission resonates with you, sponsorship helps fund:
 - TAD3 and related market-structure development;
 - nonprofit and DAO-oriented governance research;
 - free philosophical writing, public comments, and open documentation; plus
-- long-run infrastructure work aimed at better savings and retirements for masses of people!
+- stock infrastructure work building savings and retirements for masses of people!
