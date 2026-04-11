@@ -130,11 +130,11 @@ Please be patient with me as I'm currently transitioning to Dvorak 💜
 
 I work full time on nonprofit financial infrastructure, public market research, and free investor protections.
 
-Over the last several years, I have intentionally moved away from the easier path of private trading, closed research, and conventional finance work. I care much more about building public systems that help ordinary people save, invest, and retire without so many extractive middlemen standing between them and the assets they actually own.
+Over the last five years, I have intentionally moved away from the easier path of private trading, closed development, and conventional finance work. I care much more about building public systems that help ordinary people save, invest, and retire without so many extractive middlemen standing between them and the assets they actually own.
 
 Most of that work lives across my public repositories and organizations. The throughline is consistent: better market structure, clearer ownership, transparent governance, less bureaucracy, and financial tools that serve workers, savers, and retirees instead of quietly siphoning value upward through centralized institutions.
 
-That is why I keep framing this as nonprofit work. I am not trying to build a closed system that enriches a small class of managers. I want common infrastructure, accountable transparency, and public-facing work-products that can outlast me. TAD3, the surrounding policy work, the DAO ideas, the public comments, and the documentation materials all fit within that same mission.
+That is why I keep framing this as nonprofit work and formed the 501(c)(3). I am not trying to build a closed system that enriches a small class of managers. I want common infrastructure, accountable transparency, and public-facing work-products that can outlast me. TAD3, the surrounding policy work, the DAO ideas, the public comments, and the documentation materials all fit within that same mission.
 
 I am less interested in optimizing for short-term trading gains than in improving the judgment, infrastructure, and governance needed for better long-run allocation. If legacy finance is organized around bureaucracy and rent extraction, I want to keep pushing toward systems that better protect real investment opportunities and pensions.
 
