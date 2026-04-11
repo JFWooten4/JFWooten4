@@ -146,7 +146,7 @@ If you want the best live view of what I am actively building, researching, and 
 
 If this mission resonates with you, sponsorship helps fund:
 
-- TAD3 and related market-structure development
-- nonprofit and DAO-oriented governance research
-- free educational writing, public comments, and open documentation
-- long-run infrastructure work aimed at better savings and retirements for ordinary people
+- TAD3 and related market-structure development;
+- nonprofit and DAO-oriented governance research;
+- free educational writing, public comments, and open documentation; plus
+- long-run infrastructure work aimed at better savings and retirements for masses of people!
