@@ -128,13 +128,13 @@ Please be patient with me as I'm currently transitioning to Dvorak 💜
 
 ## 11 Apr 2026
 
-I work full time on nonprofit financial infrastructure, public market research, and free investor education.
+I work full time on nonprofit financial infrastructure, public market research, and free investor protections.
 
 Over the last several years, I have intentionally moved away from the easier path of private trading, closed research, and conventional finance work. I care much more about building public systems that help ordinary people save, invest, and retire without so many extractive middlemen standing between them and the assets they actually own.
 
 Most of that work lives across my public repositories, especially this one and [`free-markets`](https://github.com/JFWooten4/free-markets). The throughline is consistent: better market structure, clearer ownership, transparent governance, less bureaucracy, and financial tools that serve workers, savers, and retirees instead of quietly siphoning value upward through centralized institutions.
 
-That is why I keep framing this as nonprofit work. I am not trying to build a closed system that enriches a small class of managers. I want common infrastructure, accountable transparency, and public-facing work-products that can outlast me. TAD3, the surrounding policy work, the DAO ideas, the public comments, and the educational materials all fit within that same mission.
+That is why I keep framing this as nonprofit work. I am not trying to build a closed system that enriches a small class of managers. I want common infrastructure, accountable transparency, and public-facing work-products that can outlast me. TAD3, the surrounding policy work, the DAO ideas, the public comments, and the documentation materials all fit within that same mission.
 
 Recent writing in `free-markets` has made that shift even clearer for me: I am less interested in optimizing for short-term trading gains than in improving the judgment, infrastructure, and governance needed for better long-run allocation. If legacy finance is organized around bureaucracy and rent extraction, I want to keep pushing toward systems that better protect real savings and pensions.
 
@@ -148,5 +148,5 @@ If this mission resonates with you, sponsorship helps fund:
 
 - TAD3 and related market-structure development;
 - nonprofit and DAO-oriented governance research;
-- free educational writing, public comments, and open documentation; plus
+- free philosophical writing, public comments, and open documentation; plus
 - long-run infrastructure work aimed at better savings and retirements for masses of people!
