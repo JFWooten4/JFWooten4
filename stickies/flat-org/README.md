@@ -1,0 +1,1 @@
+The word they use for it is [anarcho-syndicalism](https://www.icarusfilms.com/if-nogods) ([dup](https://www.struggle.ws/exwsm/content/belfast-int-womens-day-film-showing-ethel-macdonald-anarchists-story.html) [src](https://www.youtube.com/watch?v=gxRXtWvWCuY))

@@ -1,0 +1,1 @@
+I'd like the Stellar Info File on the base domain acting as a root central depot

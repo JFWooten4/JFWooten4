@@ -1,0 +1,34 @@
+{
+  "name": "docx-to-md-context",
+  "displayName": "DOCX To Markdown Context Menu",
+  "description": "Adds an Explorer command that converts DOCX files to Markdown using chatgpt/docx-to-md.py.",
+  "version": "0.0.1",
+  "publisher": "jfwooten4",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:jfwooten4.convertDocxToMarkdown"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jfwooten4.convertDocxToMarkdown",
+        "title": "Convert DOCX to Markdown"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "jfwooten4.convertDocxToMarkdown",
+          "when": "resourceScheme == file && resourceExtname == .docx",
+          "group": "2_workspace@50"
+        }
+      ]
+    }
+  }
+}

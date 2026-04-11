@@ -1,5 +1,4 @@
-if time forces us to preliminary approval vote into this (conditional op move) then we can do
 
-- client drop (no biz)
+and just the headset audio for vid + channel
 
-build this year during dist and start biz in 2027
+

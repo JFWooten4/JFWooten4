@@ -1,8 +1,7 @@
 [build]
-  command = "bundle install && bundle exec jekyll build"
-  publish = "_site"
+  command = "rm -rf site/static/static && mkdir -p site/static/static && cp 404.html site/static/404.html && cp resources.html site/static/resources.html && cp -R static/. site/static/static/ && npm --prefix site ci && npm --prefix site run build"
+  publish = "site/build"
   ignore = "bash ./build-ignore"
 
 [build.environment]
-  RUBY_VERSION = "3.1.4"
-  BUNDLER_VERSION = "2.4.22"
+  NODE_VERSION = "20"

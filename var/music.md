@@ -1,3 +1,0 @@
-## Brainstorming
-
-## Executing
