@@ -9,33 +9,33 @@ History of https://wooten.link/sponsor
 > Hi @everyone,
 > I haven't heard back from the grant yet, but hopefully that will support our hiring of devs.
 >
-> The plan since early on (we were first denied for 50k at the end of 2022) was to use those community funds to build out the frontend based on the (continuing) years of work I've put into the backend. Long-term, I'd love to open-source it so that we can have common global settlement. :handshake:
+> The plan since early on (we were first denied for 50k at the end of 2022) was to use those community funds to build out the frontend based on the (continuing) years of work I've put into the backend. Long-term, I'd love to open-source it so that we can have common global settlement. 🤝
 >
 > Common global settlement, imo, redefines how we approach capitalism. It's been an enlightening journey taking TAD3 from an idea to proper documentation/SEC review. However, all this research and development has been effectively self-funded, per our startup post.
 >
-> I'm at a crossroads. :railway_track:
+> I'm at a crossroads. 🛤️
 >
 > Recently upon reflecting I came to the conclusion that raising money was a good next step for BT.
 >
 > We're at the point where we really need development help to flesh out the interface with TAD3.
 > As I've said in the Discord, I'm starkly against raising and will not sell traditional equity.
-> If I was to go down that rabbit hole, I would sell capped-profit contracts like OpenAI. :money_with_wings:
+> If I was to go down that rabbit hole, I would sell capped-profit contracts like OpenAI. 💸
 >
-> We can't let TAD3, or whatever we all ultimately use (nothing similar I know of) fall victim to the same rent-seeking incentives plaguing DTCC. :earth_africa:
+> We can't let TAD3, or whatever we all ultimately use (nothing similar I know of) fall victim to the same rent-seeking incentives plaguing DTCC. 🌍
 > Just last week dozens of industry experts expressed bafflement at how slow stocks clear when Amazon delivers in an hour, by one Seattle man's account.
 >
 > This is something important, and that's why I was so excited the day I learned about the WhyDRS community and movement.
 >
 > I actually couldn't tear myself away from the computer long enough to eat a meal the first day I found the WhyDRS site.
-> After a minor passing out, I still could not believe an active group of other people understood and cared about these massive hidden market problems. :star2:
+> After a minor passing out, I still could not believe an active group of other people understood and cared about these massive hidden market problems. 🌟
 > More specifically, I was so overcome with fulfillment that I proposed to my girlfriend (of 3 years, similar to BT). (she said yes)
 >
-> I am building this the right way, or not at all. :100:
+> I am building this the right way, or not at all. 💯
 >
 > That's why I'm setting up a GH sponsor page to keep my work alive, community-focused, and nonprofit.
 > If you support democratizing capitalism, freeing our markets from Wall St, and decentralized independent money management, please learn more at https://sponsor.jfwooten4.com/
 >
-> Either way, this community is truly incredible and will always have my ongoing support. :purple_heart:
+> Either way, this community is truly incredible and will always have my ongoing support. 💜
 >
 > [<img width="100" alt="reactions" src="https://github.com/user-attachments/assets/53327d81-ccf5-49c6-baf3-8c1e06886d06">](https://discord.com/channels/1102309240145707049/1120679402754281575/1214286885871026208)
 
@@ -98,9 +98,9 @@ Thanks to you, we're breaking down complex financial concepts into accessible kn
 
 Moreover, your support fuels our journey in blockchain, driving forward a technology that promises a more transparent, secure, and equitable digital world. 🔗
 
-You've made a great choice joining our community of sponsors. Let's keep the conversation going! Your thoughts, questions, or ideas are always welcome. 
+You've made a great choice joining our community of sponsors. Let's keep the conversation going! Your thoughts, questions, or ideas are always welcome.
 
-Together, we're making a tangible difference! Text any questions to (341) 46-JOHNW. 💬
+Together, we're making a tangible difference! Text any questions to me. 💬
 
 
 ## 20 Jul 2025
