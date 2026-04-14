@@ -1,3 +1,0 @@
-## concepts
-
-Network chiropractor

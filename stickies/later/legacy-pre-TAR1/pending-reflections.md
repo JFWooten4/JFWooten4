@@ -1,4 +1,0 @@
-- life satisfaction
-- permissionless innovation
-- ability to delegate narrative
-- masculine intention toward the universe

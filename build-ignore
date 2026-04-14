@@ -29,7 +29,7 @@ fi
 
 # Custem Rules
 
-if printf '%s\n' "$changed_files" | grep -Ev '^(sticky-notes/|banners/|bookmarks/|backgrounds/|presentations/|imgs/|headshots/|props/|var/|$)' >/dev/null; then
+if printf '%s\n' "$changed_files" | grep -Ev '^(stickies/|banners/|backgrounds/|presentations/|headshots/|props/|var/|$)' >/dev/null; then
   echo "Changes outside media folders detected; running build."
   exit 1
 else

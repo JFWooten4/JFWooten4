@@ -1,1 +1,0 @@
-Should you need capital to specutlate?
