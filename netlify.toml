@@ -2,3 +2,6 @@
   command = "bundle exec jekyll build"
   publish = "_site"
   ignore = "bash ./build-ignore"
+
+[build.environment]
+  RUBY_VERSION = "3.1.4"
