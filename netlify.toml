@@ -1,7 +1,4 @@
 [build]
-  command = "rm -rf site/static/static && mkdir -p site/static/static && cp 404.html site/static/404.html && cp -R static/. site/static/static/ && npm --prefix site ci && npm --prefix site run build"
-  publish = "site/build"
+  command = "bundle exec jekyll build"
+  publish = "_site"
   ignore = "bash ./build-ignore"
-
-[build.environment]
-  NODE_VERSION = "20"
