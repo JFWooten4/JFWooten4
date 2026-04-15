@@ -3,7 +3,7 @@ name: Update Sponsors
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"
+    - cron: "17 */4 * * *"
 
 permissions:
   contents: write
