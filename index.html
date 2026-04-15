@@ -343,7 +343,7 @@
 
       var activeLayer = layerA;
       var inactiveLayer = layerB;
-      var imageIndex = 0;
+      var imageIndex = Math.floor(Math.random() * images.length);
 
       function preload(src) {
         var image = new Image();
@@ -351,7 +351,7 @@
       }
 
       images.forEach(preload);
-      activeLayer.style.backgroundImage = 'url("' + images[0] + '")';
+      activeLayer.style.backgroundImage = 'url("' + images[imageIndex] + '")';
 
       if (images.length < 2) {
         return;
