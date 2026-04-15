@@ -16,7 +16,41 @@
       justify-content: center;
       align-items: center;
     }
+    body {
+      position: relative;
+      overflow: hidden;
+    }
+    /* Slow crossfading group-photo background behind the landing page content. */
+    .background-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .background-layer {
+      position: absolute;
+      inset: -3%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0;
+      transform: scale(1.03);
+      transition: opacity 5s ease-in-out;
+      will-change: opacity;
+    }
+    .background-layer.is-visible {
+      opacity: 0.18;
+    }
+    .background-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.72)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.7));
+    }
     .content {
+      position: relative;
+      z-index: 1;
       text-align: center;
       padding: 40px;
     }
@@ -100,6 +134,11 @@
   </style>
 </head>
 <body>
+  <div class="background-stage" aria-hidden="true">
+    <div class="background-layer is-visible" id="bg-layer-a"></div>
+    <div class="background-layer" id="bg-layer-b"></div>
+    <div class="background-shade"></div>
+  </div>
   <script>
     var redirects = {
       "alpha": "https://github.com/blocktransfer/erc20-deprecated",
@@ -286,6 +325,48 @@
         .catch(function () {
           sponsorNote.innerHTML = 'Unable to refresh the sponsor feed right now. See <a href="https://github.com/sponsors/JFWooten4?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.';
         });
+    })();
+
+    (function () {
+      // Rotate the available group photos through two background layers so the
+      // landing page gets a slow, low-opacity crossfade instead of a hard swap.
+      var images = [
+        "/groups/stellar-consensus.jpg",
+        "/groups/original-whydrs.png"
+      ];
+      var layerA = document.getElementById("bg-layer-a");
+      var layerB = document.getElementById("bg-layer-b");
+
+      if (!layerA || !layerB || !images.length) {
+        return;
+      }
+
+      var activeLayer = layerA;
+      var inactiveLayer = layerB;
+      var imageIndex = 0;
+
+      function preload(src) {
+        var image = new Image();
+        image.src = src;
+      }
+
+      images.forEach(preload);
+      activeLayer.style.backgroundImage = 'url("' + images[0] + '")';
+
+      if (images.length < 2) {
+        return;
+      }
+
+      window.setInterval(function () {
+        imageIndex = (imageIndex + 1) % images.length;
+        inactiveLayer.style.backgroundImage = 'url("' + images[imageIndex] + '")';
+        inactiveLayer.classList.add("is-visible");
+        activeLayer.classList.remove("is-visible");
+
+        var previous = activeLayer;
+        activeLayer = inactiveLayer;
+        inactiveLayer = previous;
+      }, 12000);
     })();
   </script>
 </body>
