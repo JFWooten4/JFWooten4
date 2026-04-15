@@ -91,6 +91,12 @@
       color: #d5c7e7;
       font-size: 0.95rem;
     }
+    .sponsor-cta {
+      margin-top: 14px;
+      margin-bottom: 0;
+      color: #d5c7e7;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -219,25 +225,68 @@
 
     <div class="sponsors">
       <h3>Active GitHub Sponsors</h3>
-      <ul class="sponsor-list">
-        <li>
-          <a href="https://github.com/JamesAlfonse" target="_blank" rel="noreferrer">
-            <img src="https://github.com/JamesAlfonse.png?size=96" alt="JamesAlfonse">
-            <span>JamesAlfonse</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/tehchives" target="_blank" rel="noreferrer">
-            <img src="https://github.com/tehchives.png?size=96" alt="tehchives">
-            <span>tehchives</span>
-          </a>
-        </li>
-      </ul>
-      <p class="sponsor-note">
-        Public sponsors currently shown by
+      <ul class="sponsor-list" id="sponsor-list"></ul>
+      <p class="sponsor-note" id="sponsor-note">
+        Loading public sponsors from
         <a href="https://github.com/sponsors/JFWooten4?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.
+      </p>
+      <p class="sponsor-cta">
+        <a href="https://github.com/sponsors/JFWooten4?frequency=recurring" target="_blank" rel="noreferrer">Become a sponsor</a>
       </p>
     </div>
   </div>
+  <script>
+    (function () {
+      var sponsorList = document.getElementById("sponsor-list");
+      var sponsorNote = document.getElementById("sponsor-note");
+
+      if (!sponsorList || !sponsorNote) {
+        return;
+      }
+
+      fetch("/static/data/sponsors.json", { cache: "no-store" })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Failed to load sponsor feed");
+          }
+          return response.json();
+        })
+        .then(function (data) {
+          var sponsors = Array.isArray(data.sponsors) ? data.sponsors : [];
+          sponsorList.innerHTML = "";
+
+          if (!sponsors.length) {
+            sponsorNote.innerHTML = 'No public sponsors are currently listed. <a href="https://github.com/sponsors/JFWooten4?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.';
+            return;
+          }
+
+          sponsors.forEach(function (sponsor) {
+            var item = document.createElement("li");
+            var link = document.createElement("a");
+            var avatar = document.createElement("img");
+            var label = document.createElement("span");
+
+            link.href = sponsor.url;
+            link.target = "_blank";
+            link.rel = "noreferrer";
+
+            avatar.src = sponsor.avatar_url;
+            avatar.alt = sponsor.login;
+
+            label.textContent = sponsor.login;
+
+            link.appendChild(avatar);
+            link.appendChild(label);
+            item.appendChild(link);
+            sponsorList.appendChild(item);
+          });
+
+          sponsorNote.innerHTML = sponsors.length + ' public sponsor' + (sponsors.length === 1 ? '' : 's') + ' currently shown by <a href="' + data.source + '?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.';
+        })
+        .catch(function () {
+          sponsorNote.innerHTML = 'Unable to refresh the sponsor feed right now. See <a href="https://github.com/sponsors/JFWooten4?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.';
+        });
+    })();
+  </script>
 </body>
 </html>
