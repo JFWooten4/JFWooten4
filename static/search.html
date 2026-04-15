@@ -282,7 +282,7 @@ permalink: /search/
       return fetch("/404.html", { cache: "no-store" })
         .then(function (response) { return response.text(); })
         .then(function (html) {
-          var match = html.match(/<script id=\"all-redirects\">([\\s\\S]*?)<\\/script>/);
+          var match = html.match(/<script id="all-redirects">([\s\S]*?)<\/script>/);
           if (!match) {
             return {};
           }
@@ -299,7 +299,9 @@ permalink: /search/
     }
 
     loadRedirects().then(function (redirects) {
-      var entries = Object.keys(redirects).map(function (key) {
+      var entries = Object.keys(redirects).filter(function (key) {
+        return Boolean(redirects[key]);
+      }).map(function (key) {
         return { key: key, href: redirects[key] };
       }).sort(function (a, b) {
         return a.key.localeCompare(b.key);
@@ -395,7 +397,7 @@ permalink: /search/
           return;
         }
         var filtered = entries.filter(function (item) {
-          return item.key.toLowerCase().includes(term) || item.href.toLowerCase().includes(term);
+          return item.key.toLowerCase().includes(term) || String(item.href).toLowerCase().includes(term);
         });
         renderList(filtered);
       }
