@@ -141,10 +141,10 @@
     var subdomain = window.location.host.split(".")[0].toLowerCase();
     var redirect = redirects[subdomain];
     if (redirect) {
-      window.location.href = redirect;
+      window.location.replace(redirect);
     } else {
       if (window.location.host.endsWith("wooten.link")) {
-        window.location.href = "https://jfwooten4.com";
+        window.location.replace("https://jfwooten4.com");
       }
     }
   </script>

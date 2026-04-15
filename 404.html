@@ -310,7 +310,7 @@
     var path = window.location.pathname.split("/")[1].toLowerCase();
     var redirects = window.LINKS || {};
     var redirect = redirects[path] || "https://wooten.link/search";
-    window.location.href = redirect;
+    window.location.replace(redirect);
   </script>
 </body>
 </html>
