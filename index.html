@@ -53,6 +53,44 @@
     .social-links svg {
       width: 20px;
     }
+    .sponsors {
+      margin-top: 36px;
+    }
+    .sponsors h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    .sponsor-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .sponsor-list a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid #2d203c;
+      border-radius: 999px;
+      background: rgba(172, 81, 255, 0.08);
+      text-decoration: none;
+      color: white;
+    }
+    .sponsor-list img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: block;
+    }
+    .sponsor-note {
+      margin: 0;
+      color: #d5c7e7;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -177,6 +215,28 @@
           <line x1="9" y1="21" x2="15" y2="21" stroke="#AC51FF" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
+    </div>
+
+    <div class="sponsors">
+      <h3>Active GitHub Sponsors</h3>
+      <ul class="sponsor-list">
+        <li>
+          <a href="https://github.com/JamesAlfonse" target="_blank" rel="noreferrer">
+            <img src="https://github.com/JamesAlfonse.png?size=96" alt="JamesAlfonse">
+            <span>JamesAlfonse</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/tehchives" target="_blank" rel="noreferrer">
+            <img src="https://github.com/tehchives.png?size=96" alt="tehchives">
+            <span>tehchives</span>
+          </a>
+        </li>
+      </ul>
+      <p class="sponsor-note">
+        Public sponsors currently shown by
+        <a href="https://github.com/sponsors/JFWooten4?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.
+      </p>
     </div>
   </div>
 </body>
