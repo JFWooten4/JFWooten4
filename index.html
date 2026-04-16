@@ -312,7 +312,7 @@
       // Rotate the available group photos through two background layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
       var images = [
-        {% assign background_files = site.static_files | where_exp: "file", "file.path contains '/backgrounds/'" %}
+        {% assign background_files = site.static_files | where_exp: "file", "file.path contains '/groups/bgs/'" %}
         {% for file in background_files %}
         {
           src: "{{ file.path }}",
