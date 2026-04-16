@@ -125,6 +125,142 @@
       border-radius: 50%;
       display: block;
     }
+    .group-album {
+      margin-top: 22px;
+    }
+    .group-album h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ddd2ea;
+    }
+    .group-strip {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .group-thumb {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      width: 108px;
+      height: 72px;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, width 220ms ease, height 220ms ease;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+    }
+    .group-thumb:hover,
+    .group-thumb:focus-visible {
+      width: 152px;
+      height: 102px;
+      transform: translateY(-3px);
+      border-color: rgba(172, 81, 255, 0.5);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
+      outline: none;
+    }
+    .group-thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.84);
+      z-index: 20;
+      backdrop-filter: blur(12px);
+    }
+    .lightbox.is-open {
+      display: flex;
+    }
+    .lightbox-frame {
+      position: relative;
+      max-width: min(92vw, 1180px);
+      max-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-image {
+      display: block;
+      max-width: 100%;
+      max-height: 88vh;
+      border-radius: 22px;
+      box-shadow: 0 26px 80px rgba(0, 0, 0, 0.45);
+    }
+    .lightbox-close,
+    .lightbox-nav {
+      appearance: none;
+      border: 0;
+      background: rgba(20, 14, 29, 0.72);
+      color: white;
+      cursor: pointer;
+      font-size: 1.8rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 64px;
+      border-radius: 16px;
+    }
+    .lightbox-nav.prev {
+      left: -58px;
+    }
+    .lightbox-nav.next {
+      right: -58px;
+    }
+    @media (max-width: 720px) {
+      .content {
+        padding: 28px 18px;
+      }
+      .group-thumb {
+        width: 92px;
+        height: 62px;
+      }
+      .group-thumb:hover,
+      .group-thumb:focus-visible {
+        width: 122px;
+        height: 82px;
+      }
+      .lightbox {
+        padding: 18px;
+      }
+      .lightbox-nav.prev {
+        left: 8px;
+      }
+      .lightbox-nav.next {
+        right: 8px;
+      }
+      .lightbox-close {
+        top: 8px;
+        right: 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -259,6 +395,25 @@
     <div class="sponsors">
       <h3>Sponsors 💜</h3>
       <ul class="sponsor-list" id="sponsor-list"></ul>
+      <div class="group-album">
+        <h3>Group Album</h3>
+        <div class="group-strip" id="group-strip">
+          {% assign album_files = site.static_files | where_exp: "file", "file.path contains '/groups/bgs/'" %}
+          {% for file in album_files %}
+          <button class="group-thumb" type="button" data-lightbox-index="{{ forloop.index0 }}" aria-label="Open group photo {{ forloop.index }}">
+            <img src="{{ file.path }}" alt="Group photo {{ forloop.index }}" loading="lazy">
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lightbox" id="group-lightbox" aria-hidden="true">
+    <div class="lightbox-frame">
+      <button class="lightbox-nav prev" type="button" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
+      <img class="lightbox-image" id="lightbox-image" alt="Expanded group photo">
+      <button class="lightbox-nav next" type="button" id="lightbox-next" aria-label="Next image">&#8250;</button>
+      <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close image">&times;</button>
     </div>
   </div>
   <script>
@@ -306,6 +461,81 @@
           });
         })
         .catch(function () {});
+    })();
+
+    (function () {
+      var thumbnails = Array.prototype.slice.call(document.querySelectorAll("[data-lightbox-index]"));
+      var lightbox = document.getElementById("group-lightbox");
+      var lightboxImage = document.getElementById("lightbox-image");
+      var closeButton = document.getElementById("lightbox-close");
+      var prevButton = document.getElementById("lightbox-prev");
+      var nextButton = document.getElementById("lightbox-next");
+      var currentIndex = 0;
+
+      if (!thumbnails.length || !lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton) {
+        return;
+      }
+
+      function showImage(index) {
+        currentIndex = (index + thumbnails.length) % thumbnails.length;
+
+        var thumbImage = thumbnails[currentIndex].querySelector("img");
+        if (!thumbImage) {
+          return;
+        }
+
+        lightboxImage.src = thumbImage.src;
+        lightboxImage.alt = thumbImage.alt;
+      }
+
+      function openLightbox(index) {
+        showImage(index);
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      thumbnails.forEach(function (thumbnail, index) {
+        thumbnail.addEventListener("click", function () {
+          openLightbox(index);
+        });
+      });
+
+      prevButton.addEventListener("click", function () {
+        showImage(currentIndex - 1);
+      });
+
+      nextButton.addEventListener("click", function () {
+        showImage(currentIndex + 1);
+      });
+
+      closeButton.addEventListener("click", closeLightbox);
+
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (!lightbox.classList.contains("is-open")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        } else if (event.key === "ArrowLeft") {
+          showImage(currentIndex - 1);
+        } else if (event.key === "ArrowRight") {
+          showImage(currentIndex + 1);
+        }
+      });
     })();
 
     (function () {
