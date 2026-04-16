@@ -48,6 +48,43 @@
         radial-gradient(circle at center, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.56)),
         linear-gradient(180deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.54));
     }
+    .background-credit {
+      position: fixed;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .background-credit-card {
+      max-width: min(680px, calc(100vw - 36px));
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      background: rgba(10, 8, 16, 0.72);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
+      text-align: left;
+      pointer-events: auto;
+    }
+    .background-credit-label {
+      margin: 0 0 4px;
+      color: #d7c7eb;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .background-credit-text {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: #f6f2fb;
+    }
+    .background-credit-text a {
+      color: #d9a8ff;
+    }
     .content {
       position: relative;
       z-index: 1;
@@ -127,14 +164,6 @@
     }
     .group-album {
       margin-top: 22px;
-    }
-    .group-album h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #ddd2ea;
     }
     .group-strip {
       display: flex;
@@ -236,7 +265,7 @@
     }
     @media (max-width: 720px) {
       .content {
-        padding: 28px 18px;
+        padding: 28px 18px 96px;
       }
       .group-thumb {
         width: 92px;
@@ -259,6 +288,18 @@
       .lightbox-close {
         top: 8px;
         right: 8px;
+      }
+      .background-credit {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+      .background-credit-card {
+        padding: 10px 12px;
+        border-radius: 14px;
+      }
+      .background-credit-text {
+        font-size: 0.84rem;
       }
     }
   </style>
@@ -289,15 +330,144 @@
   </script>
   <script type="application/json" id="background-image-data">
     [
-      {% assign background_files = site.static_files | where_exp: "file", "file.path contains '/backgrounds/'" %}
-      {% for file in background_files %}
+      {% assign background_index = 0 %}
+      {% for file in site.static_files %}
+      {% assign extension = file.extname | downcase %}
+      {% if file.path contains '/backgrounds/' and extension != '.md' and extension != '.ds_store' %}
+      {% if background_index > 0 %},{% endif %}
       {
         "src": "{{ file.path }}",
-        "alt": "Background image {{ forloop.index }}",
+        "alt": "Background image {{ background_index | plus: 1 }}",
         "position": "center 54%"
-      }{% unless forloop.last %},{% endunless %}
+      }
+      {% assign background_index = background_index | plus: 1 %}
+      {% endif %}
       {% endfor %}
     ]
+  </script>
+  <script type="application/json" id="background-credit-data">
+    {
+      "baby-animatic": {
+        "artist": "Oogie Woogle",
+        "artistUrl": "https://dryaoithrone.straw.page",
+        "sourceUrl": "https://tamers12345continued.my.canva.site"
+      },
+      "dash-ahead": {
+        "artist": "HauntedTuba, Oomles, and DrDinosaur",
+        "sourceUrl": "https://youtu.be/SMAPk2oRVik?t=4999"
+      },
+      "dash-view": {
+        "artist": "Reggie",
+        "sourceUrl": "https://x.com/NG16_REGGIE/status/1947036884292497783"
+      },
+      "discovering-friendship": {
+        "artist": "Nedemai",
+        "sourceUrl": "https://discord.com/channels/87583189161226240/187262429573414912/1406795801052840049"
+      },
+      "distant-engine": {
+        "artist": "Shino",
+        "artistUrl": "https://spaceponyos.com",
+        "sourceUrl": "https://x.com/ShinodaGE/status/1270296149627371521"
+      },
+      "doin-it": {
+        "artist": "Shino",
+        "artistUrl": "https://x.com/shinodage",
+        "sourceUrl": "https://spaceponyos.com/art"
+      },
+      "embracing-art": {
+        "artist": "Krista",
+        "sourceUrl": "https://x.com/Kristalina_21/status/1720914062496919652"
+      },
+      "finding-love": {
+        "artist": "Evrlasting_Stations",
+        "artistUrl": "https://everlastingstations.straw.page",
+        "sourceUrl": "https://discord.com/channels/370605707965235200/509869543875805185/1376782644439945296"
+      },
+      "flawless-ocean": {
+        "artist": "Dowa",
+        "sourceUrl": "https://x.com/DowaPone/status/1845056649192522231"
+      },
+      "flight-time": {
+        "artist": "Vultraz",
+        "artistUrl": "https://odysee.com/@vul:0",
+        "sourceUrl": "https://ponerpics.org/images/6805273"
+      },
+      "floating-forward": {
+        "artist": "CallmeMH, NightmareMoonLuna",
+        "sourceUrl": "https://www.mylittlewallpaper.com/c/my-little-pony/download/504598b34a9d15.99902250"
+      },
+      "galaxy-bananas": {
+        "artist": "GoneNannurs",
+        "artistUrl": "https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site",
+        "sourceUrl": "https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site"
+      },
+      "hunting-hour": {
+        "artist": "RysunkowaSucharia",
+        "sourceUrl": "https://www.deviantart.com/rysunkowasucharia/art/Das-kleine-lila-Pferd-814065716"
+      },
+      "mad-split": {
+        "artist": "Blizzard Entertainment",
+        "sourceUrl": "https://youtu.be/oJ09xdxzIJQ?t=264"
+      },
+      "mad-time": {
+        "artist": "Vylet Pony",
+        "artistUrl": "https://www.vyletpony.com",
+        "sourceUrl": "https://youtu.be/-iOr0WZRoI4?t=249"
+      },
+      "market-calling": {
+        "artist": "DinoHorse",
+        "artistUrl": "https://linktr.ee/DinoHorse",
+        "sourceUrl": "https://dinohorse.tumblr.com/post/784820587947229184/11-x-17-rarity-pin-up-prints-link-to-buy"
+      },
+      "not-hero": {
+        "artist": "Unknown artist"
+      },
+      "power-mountian": {
+        "artist": "John Wooten",
+        "sourceUrl": "https://x.com/JFWooten4/status/2001291683024007262"
+      },
+      "red-heart": {
+        "artist": "PrinceWhateverer",
+        "sourceUrl": "https://youtu.be/UEVuJcs4FWs"
+      },
+      "relaxing-wait": {
+        "artist": "MLPWallpaperz",
+        "sourceUrl": "https://www.deviantart.com/mlpwallpaperz/art/Starlight-Glimmer-Wallpaper-575667853"
+      },
+      "rising-color": {
+        "artist": "sambaneko",
+        "sourceUrl": "https://spacecatsamba.com/works/v/rainbow-dash-silhouette-wall"
+      },
+      "secret-slash": {
+        "artist": "Darktailsko (Cody)",
+        "artistUrl": "https://www.deviantart.com/discourt",
+        "sourceUrl": "https://derpibooru.org/images/1650702"
+      },
+      "shaking-hands": {
+        "artist": "AnimatedJames",
+        "sourceUrl": "https://www.youtube.com/watch?v=UOueMzKYbP0&t=180s"
+      },
+      "soaring-together": {
+        "artist": "Stun-dash-99",
+        "sourceUrl": "https://trixiebooru.org/images/599332"
+      },
+      "taking-flight": {
+        "artist": "KOTLT",
+        "sourceUrl": "https://youtu.be/J9Q3i5w6-Ug?t=128"
+      },
+      "whats-up": {
+        "artist": "Republic Records",
+        "sourceUrl": "https://youtu.be/nZFNut0RGlQ?t=132"
+      },
+      "work-time": {
+        "artist": "Justin_Case001",
+        "sourceUrl": "https://mlpforums.com/topic/132387-moon-dancer-fan-club/page/3"
+      },
+      "writing-TAR1": {
+        "artist": "Unknown artist",
+        "sourceUrl": "https://www.peakpx.com/en/hd-wallpaper-desktop-gwurm"
+      }
+    }
   </script>
   <script>
     var redirects = {
@@ -426,9 +596,14 @@
       <h3>Sponsors 💜</h3>
       <ul class="sponsor-list" id="sponsor-list"></ul>
       <div class="group-album">
-        <h3>Group Album</h3>
         <div class="group-strip" id="group-strip"></div>
       </div>
+    </div>
+  </div>
+  <div class="background-credit" id="background-credit">
+    <div class="background-credit-card">
+      <p class="background-credit-label">Current Background Art</p>
+      <p class="background-credit-text" id="background-credit-text">Credit unavailable.</p>
     </div>
   </div>
   <div class="lightbox" id="group-lightbox" aria-hidden="true">
@@ -608,7 +783,49 @@
       // Rotate the available background images through two layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
       var backgroundImageData = document.getElementById("background-image-data");
+      var backgroundCreditData = document.getElementById("background-credit-data");
+      var backgroundCreditText = document.getElementById("background-credit-text");
       var images = [];
+      var creditsByName = {};
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function getImageKey(src) {
+        if (!src) {
+          return "";
+        }
+
+        var filename = src.split("/").pop() || "";
+        return filename.replace(/\.[^.]+$/, "");
+      }
+
+      function formatLink(label, href) {
+        return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noreferrer">' + escapeHtml(label) + "</a>";
+      }
+
+      function updateCredit(imageEntry) {
+        if (!backgroundCreditText || !imageEntry) {
+          return;
+        }
+
+        var credit = creditsByName[getImageKey(imageEntry.src)] || {};
+        var artistLabel = credit.artist || "Unknown artist";
+        var artistHtml = credit.artistUrl ? formatLink(artistLabel, credit.artistUrl) : escapeHtml(artistLabel);
+        var parts = ["Art by " + artistHtml];
+
+        if (credit.sourceUrl) {
+          parts.push(formatLink("source", credit.sourceUrl));
+        }
+
+        backgroundCreditText.innerHTML = parts.join(" · ");
+      }
 
       if (backgroundImageData) {
         try {
@@ -618,16 +835,154 @@
         }
       }
 
+      if (backgroundCreditData) {
+        try {
+          creditsByName = JSON.parse(backgroundCreditData.textContent);
+        } catch (error) {
+          creditsByName = {};
+        }
+      }
+
       if (!images.length) {
         images = [
           {
-            src: "/backgrounds/work-time.jpg",
+            src: "/backgrounds/baby-animatic.png",
             alt: "Background image 1",
             position: "center 54%"
           },
           {
-            src: "/backgrounds/rising-color.jpg",
+            src: "/backgrounds/dash-ahead.png",
             alt: "Background image 2",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/dash-view.png",
+            alt: "Background image 3",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/discovering-friendship.png",
+            alt: "Background image 4",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/distant-engine.jpeg",
+            alt: "Background image 5",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/doin-it.png",
+            alt: "Background image 6",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/embracing-art.png",
+            alt: "Background image 7",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/finding-love.png",
+            alt: "Background image 8",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/flawless-ocean.png",
+            alt: "Background image 9",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/flight-time.png",
+            alt: "Background image 10",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/floating-forward.png",
+            alt: "Background image 11",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/galaxy-bananas.png",
+            alt: "Background image 12",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/hunting-hour.jpg",
+            alt: "Background image 13",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/mad-split.png",
+            alt: "Background image 14",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/mad-time.jpg",
+            alt: "Background image 15",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/market-calling.png",
+            alt: "Background image 16",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/not-hero.png",
+            alt: "Background image 17",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/power-mountian.jpg",
+            alt: "Background image 18",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/red-heart.png",
+            alt: "Background image 19",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/relaxing-wait.jpg",
+            alt: "Background image 20",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/rising-color.jpg",
+            alt: "Background image 21",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/secret-slash.png",
+            alt: "Background image 22",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/shaking-hands.png",
+            alt: "Background image 23",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/soaring-together.png",
+            alt: "Background image 24",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/taking-flight.png",
+            alt: "Background image 25",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/whats-up.PNG",
+            alt: "Background image 26",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/work-time.jpg",
+            alt: "Background image 27",
+            position: "center 54%"
+          },
+          {
+            src: "/backgrounds/writing-TAR1.png",
+            alt: "Background image 28",
             position: "center 54%"
           }
         ];
@@ -684,6 +1039,7 @@
       function applyBackground(layer, imageEntry) {
         layer.style.backgroundImage = 'url("' + imageEntry.src + '")';
         layer.style.backgroundPosition = imageEntry.position;
+        updateCredit(imageEntry);
       }
 
       applyBackground(activeLayer, images[imageIndex]);
