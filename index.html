@@ -270,14 +270,20 @@
     <div class="background-shade"></div>
   </div>
   <script type="application/json" id="group-image-data">
-    [
-      {% assign group_files = site.static_files | where_exp: "file", "file.path contains '/backgrounds/'" %}
-      {% for file in group_files %}
+      [
+      {% assign group_index = 0 %}
+      {% for file in site.static_files %}
+      {% if file.path contains '/groups/' and file.extname != '.md' %}
+      {% unless file.path contains '/groups/bgs/' %}
+      {% if group_index > 0 %},{% endif %}
       {
         "src": "{{ file.path }}",
-        "alt": "Group photo {{ forloop.index }}",
+        "alt": "Group photo {{ group_index | plus: 1 }}",
         "position": "center 54%"
-      }{% unless forloop.last %},{% endunless %}
+      }
+      {% assign group_index = group_index | plus: 1 %}
+      {% endunless %}
+      {% endif %}
       {% endfor %}
     ]
   </script>
@@ -504,12 +510,12 @@
       if (!images.length) {
         images = [
           {
-            src: "/groups/bgs/stellar-consensus.webp",
+            src: "/groups/stellar-consensus.jpg",
             alt: "Group photo 1",
             position: "center 54%"
           },
           {
-            src: "/groups/bgs/original-whydrs.webp",
+            src: "/groups/original-whydrs.png",
             alt: "Group photo 2",
             position: "center 54%"
           }
@@ -599,7 +605,7 @@
     })();
 
     (function () {
-      // Rotate the available group photos through two background layers so the
+      // Rotate the available background images through two layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
       var backgroundImageData = document.getElementById("background-image-data");
       var images = [];
@@ -615,13 +621,13 @@
       if (!images.length) {
         images = [
           {
-            src: "/groups/bgs/stellar-consensus.webp",
-            alt: "Group photo 1",
+            src: "/backgrounds/work-time.jpg",
+            alt: "Background image 1",
             position: "center 54%"
           },
           {
-            src: "/groups/bgs/original-whydrs.webp",
-            alt: "Group photo 2",
+            src: "/backgrounds/rising-color.jpg",
+            alt: "Background image 2",
             position: "center 54%"
           }
         ];
