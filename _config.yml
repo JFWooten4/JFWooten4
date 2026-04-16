@@ -7,4 +7,5 @@ plugins:
   - jekyll-feed
 include:
   - imgs
+  - var
   - _headers
