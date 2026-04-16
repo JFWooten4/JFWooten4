@@ -5,11 +5,13 @@
   "sponsors": [
     {
       "login": "JamesAlfonse",
+      "name": "James",
       "url": "https://github.com/JamesAlfonse",
       "avatar_url": "https://github.com/JamesAlfonse.png?size=96"
     },
     {
       "login": "tehchives",
+      "name": "Chives",
       "url": "https://github.com/tehchives",
       "avatar_url": "https://github.com/tehchives.png?size=96"
     }

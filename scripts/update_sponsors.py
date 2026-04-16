@@ -16,11 +16,13 @@ query($login: String!) {
           __typename
           ... on User {
             login
+            name
             url
             avatarUrl(size: 96)
           }
           ... on Organization {
             login
+            name
             url
             avatarUrl(size: 96)
           }
@@ -72,6 +74,7 @@ def main() -> int:
       continue
     sponsors.append({
       "login": entity["login"],
+      "name": entity.get("name"),
       "url": entity["url"],
       "avatar_url": entity["avatarUrl"],
     })

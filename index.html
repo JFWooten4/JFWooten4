@@ -125,12 +125,6 @@
       border-radius: 50%;
       display: block;
     }
-    .sponsor-note {
-      margin: 0;
-      color: #d5c7e7;
-      font-size: 0.95rem;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
   </style>
 </head>
 <body>
@@ -265,15 +259,13 @@
     <div class="sponsors">
       <h3>Sponsors 💜</h3>
       <ul class="sponsor-list" id="sponsor-list"></ul>
-      <p class="sponsor-note" id="sponsor-note"></p>
     </div>
   </div>
   <script>
     (function () {
       var sponsorList = document.getElementById("sponsor-list");
-      var sponsorNote = document.getElementById("sponsor-note");
 
-      if (!sponsorList || !sponsorNote) {
+      if (!sponsorList) {
         return;
       }
 
@@ -289,7 +281,6 @@
           sponsorList.innerHTML = "";
 
           if (!sponsors.length) {
-            sponsorNote.innerHTML = 'No public sponsors are currently listed. <a href="https://github.com/sponsors/JFWooten4?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.';
             return;
           }
 
@@ -304,21 +295,17 @@
             link.rel = "noreferrer";
 
             avatar.src = sponsor.avatar_url;
-            avatar.alt = sponsor.login;
+            avatar.alt = sponsor.name || sponsor.login;
 
-            label.textContent = sponsor.login;
+            label.textContent = sponsor.name || sponsor.login;
 
             link.appendChild(avatar);
             link.appendChild(label);
             item.appendChild(link);
             sponsorList.appendChild(item);
           });
-
-          sponsorNote.innerHTML = sponsors.length + ' public sponsor' + (sponsors.length === 1 ? '' : 's') + ' currently shown by <a href="' + data.source + '?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.';
         })
-        .catch(function () {
-          sponsorNote.innerHTML = 'Unable to refresh the sponsor feed right now. See <a href="https://github.com/sponsors/JFWooten4?frequency=recurring" target="_blank" rel="noreferrer">GitHub Sponsors</a>.';
-        });
+        .catch(function () {});
     })();
 
     (function () {
