@@ -490,7 +490,18 @@
       }
 
       if (!images.length) {
-        return;
+        images = [
+          {
+            src: "/groups/bgs/stellar-consensus.webp",
+            alt: "Group photo 1",
+            position: "center 54%"
+          },
+          {
+            src: "/groups/bgs/original-whydrs.webp",
+            alt: "Group photo 2",
+            position: "center 54%"
+          }
+        ];
       }
 
       groupStrip.innerHTML = "";
