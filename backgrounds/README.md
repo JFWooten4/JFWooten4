@@ -37,6 +37,7 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 - `red-heart` comes from PrinceWhateverer ([src](https://youtu.be/UEVuJcs4FWs))
 - `doin-it` comes from [Shino](https://x.com/shinodage) ([src](https://spaceponyos.com/art))
 - `market-calling` comes from [DinoHorse](https://linktr.ee/DinoHorse) ([src](https://dinohorse.tumblr.com/post/784820587947229184/11-x-17-rarity-pin-up-prints-link-to-buy))
+- `not-hero` comes from Tamers12345 ([src](https://youtu.be/kzL9b92BELw?t=213))
 - `secret-slash` comes from [Darktailsko (Cody)](https://www.deviantart.com/discourt) ([src](https://derpibooru.org/images/1650702))
 - `distant-engine` comes from [Shino](https://spaceponyos.com) ([src](https://x.com/ShinodaGE/status/1270296149627371521))
 - `flight-time` comes from [Vultraz](https://odysee.com/@vul:0) ([src](https://ponerpics.org/images/6805273))
