@@ -346,19 +346,22 @@
   </script>
   <script>
     window.homepageBackgroundImages = [
+      {% assign background_keys = "writing-TAR1,rising-color,work-time,floating-forward,relaxing-wait,soaring-together,galaxy-bananas,hunting-hour,mad-time,mad-split,baby-animatic,discovering-friendship,taking-flight,whats-up,embracing-art,flawless-ocean,dash-view,finding-love,dash-ahead,power-mountian,shaking-hands,red-heart,doin-it,market-calling,not-hero,secret-slash,distant-engine,flight-time" | split: "," %}
       {% assign background_index = 0 %}
+      {% for background_key in background_keys %}
       {% for file in site.static_files %}
-      {% assign extension = file.extname | downcase %}
-      {% if file.path contains '/backgrounds/' and extension != '.md' and extension != '.ds_store' %}
+      {% if file.path contains '/backgrounds/' and file.name == background_key %}
       {% if background_index > 0 %},{% endif %}
       {
-        "key": "{{ file.name | split: '.' | first }}",
+        "key": "{{ background_key }}",
         "src": "{{ file.path }}",
         "alt": "Background image {{ background_index | plus: 1 }}",
         "position": "center 54%"
       }
       {% assign background_index = background_index | plus: 1 %}
+      {% break %}
       {% endif %}
+      {% endfor %}
       {% endfor %}
     ];
   </script>
