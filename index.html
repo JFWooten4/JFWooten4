@@ -281,6 +281,18 @@
       {% endfor %}
     ]
   </script>
+  <script type="application/json" id="background-image-data">
+    [
+      {% assign background_files = site.static_files | where_exp: "file", "file.path contains '/backgrounds/'" %}
+      {% for file in background_files %}
+      {
+        "src": "{{ file.path }}",
+        "alt": "Background image {{ forloop.index }}",
+        "position": "center 54%"
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  </script>
   <script>
     var redirects = {
       "alpha": "https://github.com/blocktransfer/erc20-deprecated",
@@ -589,12 +601,12 @@
     (function () {
       // Rotate the available group photos through two background layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
-      var groupImageData = document.getElementById("group-image-data");
+      var backgroundImageData = document.getElementById("background-image-data");
       var images = [];
 
-      if (groupImageData) {
+      if (backgroundImageData) {
         try {
-          images = JSON.parse(groupImageData.textContent);
+          images = JSON.parse(backgroundImageData.textContent);
         } catch (error) {
           images = [];
         }
