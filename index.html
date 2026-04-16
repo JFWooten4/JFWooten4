@@ -59,11 +59,6 @@
       display: flex;
       justify-content: center;
       pointer-events: none;
-      opacity: 1;
-      transition: opacity 260ms ease-in-out;
-    }
-    .background-credit.is-hidden {
-      opacity: 0;
     }
     .background-credit-card {
       max-width: min(680px, calc(100vw - 36px));
@@ -812,7 +807,6 @@
     (function () {
       // Rotate the available background images through two layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
-      var backgroundCredit = document.getElementById("background-credit");
       var backgroundCreditText = document.getElementById("background-credit-text");
       var images = Array.isArray(window.homepageBackgroundImages) ? window.homepageBackgroundImages : [];
       var creditsByName = window.homepageBackgroundCredits || {};
@@ -923,10 +917,6 @@
           var nextIndex = (imageIndex + 1) % images.length;
 
           preload(images[nextIndex]).then(function (nextImage) {
-            if (backgroundCredit) {
-              backgroundCredit.classList.add("is-hidden");
-            }
-
             applyBackground(inactiveLayer, nextImage);
 
             // Force the browser to register the new background before opacity changes.
@@ -943,10 +933,6 @@
 
             window.setTimeout(function () {
               updateCredit(nextImage);
-
-              if (backgroundCredit) {
-                backgroundCredit.classList.remove("is-hidden");
-              }
             }, fadeDurationMs);
 
             scheduleNextFade();
