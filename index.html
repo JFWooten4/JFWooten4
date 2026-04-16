@@ -911,13 +911,12 @@
         var credit = creditsByName[imageEntry.key || getImageKey(imageEntry.src)] || {};
         var artistLabel = credit.artist || "Unknown artist";
         var artistHtml = credit.artistUrl ? formatLink(artistLabel, credit.artistUrl) : escapeHtml(artistLabel);
-        var artistText = "Art by " + artistLabel;
-        var parts = ["Art by " + artistHtml];
-        var textParts = [artistText];
+        var artHtml = credit.sourceUrl ? formatLink("Art", credit.sourceUrl) : "Art";
+        var parts = [artHtml + " by " + artistHtml];
+        var textParts = ["Art by " + artistLabel];
 
         if (credit.sourceUrl) {
-          parts.push(formatLink("src", credit.sourceUrl));
-          textParts.push("src");
+          textParts[0] = "Art by " + artistLabel;
         }
 
         return {
