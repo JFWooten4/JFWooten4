@@ -91,51 +91,6 @@
     .background-credit-text a {
       color: #AC51FF;
     }
-    .background-credit-text.is-animating {
-      font-family: "Courier New", monospace;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-    .matrix-row {
-      display: inline-flex;
-      align-items: flex-start;
-      gap: 0.03em;
-      white-space: nowrap;
-    }
-    .matrix-column {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-width: 0.62em;
-      line-height: 0.74;
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 1200ms ease, transform 1200ms ease;
-      will-change: opacity, transform;
-    }
-    .matrix-column-char {
-      display: block;
-    }
-    .matrix-column-char.head {
-      color: #f6f2fb;
-    }
-    .matrix-column-char.tail {
-      color: #8fd66d;
-      opacity: 0.86;
-    }
-    .matrix-row.is-exit-active .matrix-column {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    .matrix-row.is-enter .matrix-column {
-      opacity: 0;
-      transform: translateY(-16px);
-    }
-    .matrix-row.is-enter.is-enter-active .matrix-column {
-      opacity: 1;
-      transform: translateY(0);
-    }
     .content {
       position: relative;
       z-index: 1;
@@ -922,9 +877,6 @@
       var backgroundCreditText = document.getElementById("background-credit-text");
       var images = Array.isArray(window.homepageBackgroundImages) ? window.homepageBackgroundImages : [];
       var creditsByName = window.homepageBackgroundCredits || {};
-      var matrixGlyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-=/<>?";
-      var creditAnimationFrame = null;
-      var creditAnimationTimeout = null;
 
       function escapeHtml(value) {
         return String(value)
@@ -952,109 +904,21 @@
         var credit = creditsByName[imageEntry.key || getImageKey(imageEntry.src)] || {};
         var artistLabel = credit.artist || "Unknown artist";
         var artistHtml = credit.artistUrl ? formatLink(artistLabel, credit.artistUrl) : escapeHtml(artistLabel);
-        var artistText = "Art by " + artistLabel;
         var parts = ["Art by " + artistHtml];
-        var textParts = [artistText];
 
         if (credit.sourceUrl) {
           parts.push(formatLink("src", credit.sourceUrl));
-          textParts.push("src");
         }
 
-        return {
-          html: parts.join(" · "),
-          text: textParts.join(" · ")
-        };
+        return parts.join(" · ");
       }
 
-      function randomGlyph() {
-        return matrixGlyphs.charAt(Math.floor(Math.random() * matrixGlyphs.length));
-      }
-
-      function buildMatrixMarkup(text) {
-        var columns = text.split("").map(function (character, index) {
-          if (character === " ") {
-            return '<span class="matrix-column" style="min-width: 0.38em; transition-delay: ' + (index * 22) + 'ms;"></span>';
-          }
-
-          var tail = [
-            randomGlyph(),
-            randomGlyph(),
-            randomGlyph()
-          ].map(function (glyph) {
-            return '<span class="matrix-column-char tail">' + escapeHtml(glyph) + "</span>";
-          }).join("");
-
-          return '<span class="matrix-column" style="transition-delay: ' + (index * 22) + 'ms;">' +
-            '<span class="matrix-column-char head">' + escapeHtml(character) + "</span>" +
-            tail +
-            "</span>";
-        }).join("");
-
-        return '<span class="matrix-row">' + columns + "</span>";
-      }
-
-      function clearCreditAnimation() {
-        if (creditAnimationFrame) {
-          window.cancelAnimationFrame(creditAnimationFrame);
-          creditAnimationFrame = null;
-        }
-
-        if (creditAnimationTimeout) {
-          window.clearTimeout(creditAnimationTimeout);
-          creditAnimationTimeout = null;
-        }
-      }
-
-      function updateCredit(imageEntry, useAnimation) {
+      function updateCredit(imageEntry) {
         if (!backgroundCreditText || !imageEntry) {
           return;
         }
 
-        var content = buildCreditContent(imageEntry);
-
-        if (!useAnimation) {
-          clearCreditAnimation();
-          backgroundCreditText.classList.remove("is-animating");
-          backgroundCreditText.innerHTML = content.html;
-          return;
-        }
-
-        clearCreditAnimation();
-
-        var currentText = backgroundCreditText.textContent || content.text;
-
-        backgroundCreditText.style.minHeight = backgroundCreditText.offsetHeight + "px";
-        backgroundCreditText.classList.add("is-animating");
-        backgroundCreditText.innerHTML = buildMatrixMarkup(currentText);
-
-        creditAnimationFrame = window.requestAnimationFrame(function () {
-          var exitRow = backgroundCreditText.querySelector(".matrix-row");
-
-          if (exitRow) {
-            exitRow.classList.add("is-exit-active");
-          }
-
-          creditAnimationTimeout = window.setTimeout(function () {
-            backgroundCreditText.innerHTML = buildMatrixMarkup(content.text);
-
-            var enterRow = backgroundCreditText.querySelector(".matrix-row");
-
-            if (enterRow) {
-              enterRow.classList.add("is-enter");
-
-              creditAnimationFrame = window.requestAnimationFrame(function () {
-                enterRow.classList.add("is-enter-active");
-              });
-            }
-
-            creditAnimationTimeout = window.setTimeout(function () {
-              backgroundCreditText.classList.remove("is-animating");
-              backgroundCreditText.innerHTML = content.html;
-              backgroundCreditText.style.minHeight = "";
-            }, 1320);
-          }, 1320);
-        });
+        backgroundCreditText.innerHTML = buildCreditContent(imageEntry);
       }
 
       var layerA = document.getElementById("bg-layer-a");
@@ -1113,7 +977,7 @@
       }
 
       applyBackground(activeLayer, images[imageIndex]);
-      updateCredit(images[imageIndex], false);
+      updateCredit(images[imageIndex]);
 
       if (images.length < 2) {
         return;
@@ -1139,7 +1003,7 @@
             inactiveLayer = previous;
 
             window.setTimeout(function () {
-              updateCredit(nextImage, true);
+              updateCredit(nextImage);
             }, fadeDurationMs);
 
             scheduleNextFade();
