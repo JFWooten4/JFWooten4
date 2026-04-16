@@ -99,7 +99,7 @@
     h2 {
       font-family: Verdana, sans-serif;
       margin-top: 45px;
-      margin-bottom: 0px;
+      margin-bottom: 18px;
       font-weight: 600;
     }
     h3 {
@@ -112,13 +112,14 @@
       font-weight: bold;
     }
     .content p {
-      margin-bottom: 14px;
+      margin-top: 0;
+      margin-bottom: 18px;
     }
     .social-links {
-      margin-top: 16px;
+      margin-top: 0;
       margin-bottom: 30px;
       list-style: none;
-      padding: 16px 25px 25px;
+      padding: 0 25px 25px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -337,8 +338,8 @@
       {% endfor %}
     ]
   </script>
-  <script type="application/json" id="background-image-data">
-    [
+  <script>
+    window.homepageBackgroundImages = [
       {% assign background_index = 0 %}
       {% for file in site.static_files %}
       {% assign extension = file.extname | downcase %}
@@ -353,10 +354,10 @@
       {% assign background_index = background_index | plus: 1 %}
       {% endif %}
       {% endfor %}
-    ]
+    ];
   </script>
-  <script type="application/json" id="background-credit-data">
-    {
+  <script>
+    window.homepageBackgroundCredits = {
       "baby-animatic": {
         "artist": "Oogie Woogle",
         "artistUrl": "https://dryaoithrone.straw.page",
@@ -477,7 +478,7 @@
         "artist": "Unknown artist",
         "sourceUrl": "https://www.peakpx.com/en/hd-wallpaper-desktop-gwurm"
       }
-    }
+    };
   </script>
   <script>
     var redirects = {
@@ -612,7 +613,7 @@
   </div>
   <div class="background-credit" id="background-credit">
     <div class="background-credit-card">
-      <p class="background-credit-label">current background art</p>
+      <p class="background-credit-label">Current Background</p>
       <p class="background-credit-text" id="background-credit-text">Credit unavailable.</p>
     </div>
   </div>
@@ -794,11 +795,9 @@
     (function () {
       // Rotate the available background images through two layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
-      var backgroundImageData = document.getElementById("background-image-data");
-      var backgroundCreditData = document.getElementById("background-credit-data");
       var backgroundCreditText = document.getElementById("background-credit-text");
-      var images = [];
-      var creditsByName = {};
+      var images = Array.isArray(window.homepageBackgroundImages) ? window.homepageBackgroundImages : [];
+      var creditsByName = window.homepageBackgroundCredits || {};
       var creditFadeTimeout = null;
 
       function escapeHtml(value) {
@@ -849,21 +848,6 @@
         }, 180);
       }
 
-      if (backgroundImageData) {
-        try {
-          images = JSON.parse(backgroundImageData.textContent);
-        } catch (error) {
-          images = [];
-        }
-      }
-
-      if (backgroundCreditData) {
-        try {
-          creditsByName = JSON.parse(backgroundCreditData.textContent);
-        } catch (error) {
-          creditsByName = {};
-        }
-      }
       var layerA = document.getElementById("bg-layer-a");
       var layerB = document.getElementById("bg-layer-b");
 
