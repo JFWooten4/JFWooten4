@@ -1000,6 +1000,7 @@
       var imageIndex = Math.floor(Math.random() * images.length);
       var swapDelayMs = 8000;
       var fadeDurationMs = 4200;
+      var creditLeadMs = 1900;
       var preloadDelayMs = 600;
       var imageCache = {};
 
@@ -1071,7 +1072,7 @@
 
             window.setTimeout(function () {
               updateCredit(nextImage, true);
-            }, fadeDurationMs);
+            }, creditLeadMs);
 
             scheduleNextFade();
           });
