@@ -85,7 +85,7 @@
       line-height: 1.45;
       color: #f6f2fb;
       opacity: 1;
-      transition: opacity 320ms ease-in-out;
+      transition: opacity 900ms ease-in-out;
     }
     .background-credit-text.is-fading {
       opacity: 0.22;
@@ -857,7 +857,7 @@
         creditFadeTimeout = window.setTimeout(function () {
           backgroundCreditText.innerHTML = parts.join(" · ");
           backgroundCreditText.classList.remove("is-fading");
-        }, 180);
+        }, 420);
       }
 
       var layerA = document.getElementById("bg-layer-a");
