@@ -311,15 +311,27 @@
     (function () {
       // Rotate the available group photos through two background layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
-      var images = [
-        {% assign background_files = site.static_files | where_exp: "file", "file.path contains '/groups/bgs/'" %}
-        {% for file in background_files %}
-        {
-          src: "{{ file.path }}",
-          position: "center 54%"
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ];
+      var images = Array.prototype.slice.call(document.querySelectorAll(".group-thumb img"))
+        .map(function (image) {
+          return {
+            src: image.getAttribute("src"),
+            position: "center 54%"
+          };
+        });
+
+      if (!images.length) {
+        images = [
+          {
+            src: "/groups/bgs/stellar-consensus.webp",
+            position: "center 54%"
+          },
+          {
+            src: "/groups/bgs/original-whydrs.webp",
+            position: "center 54%"
+          }
+        ];
+      }
+
       var layerA = document.getElementById("bg-layer-a");
       var layerB = document.getElementById("bg-layer-b");
 
