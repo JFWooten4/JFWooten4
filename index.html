@@ -274,15 +274,33 @@
       max-width: min(92vw, 1180px);
       max-height: 88vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 14px;
     }
     .lightbox-image {
       display: block;
       max-width: 100%;
-      max-height: 88vh;
+      max-height: min(72vh, 88vw);
       border-radius: 22px;
       box-shadow: 0 26px 80px rgba(0, 0, 0, 0.45);
+    }
+    .lightbox-info {
+      max-width: min(92vw, 720px);
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      background: rgba(15, 12, 22, 0.82);
+      color: #f4effa;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      text-align: left;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+    }
+    .lightbox-info a {
+      color: #AC51FF;
     }
     .lightbox-close,
     .lightbox-nav {
@@ -335,6 +353,16 @@
       .lightbox {
         padding: 18px;
       }
+      .lightbox-frame {
+        gap: 10px;
+      }
+      .lightbox-image {
+        max-height: min(64vh, 92vw);
+      }
+      .lightbox-info {
+        font-size: 0.84rem;
+        padding: 10px 12px;
+      }
       .lightbox-nav.prev {
         left: 8px;
       }
@@ -375,6 +403,7 @@
       {% if file.path contains '/groups/' and file.name == group_key %}
       {% if group_index > 0 %},{% endif %}
       {
+        "key": "{{ group_key }}",
         "src": "{{ file.path }}",
         "thumbnailSrc": "/groups/bgs/{{ group_key }}.webp",
         "alt": "Group photo {{ group_index | plus: 1 }}",
@@ -386,6 +415,16 @@
       {% endfor %}
       {% endfor %}
     ]
+  </script>
+  <script type="application/json" id="group-credit-data">
+    {
+      "stellar-consensus": {
+        "html": "<a href=\"https://x.com/JFWooten4/status/1796309242116239745\" target=\"_blank\" rel=\"noreferrer\">was taken</a> at Stellar's hacker house for <a href=\"https://stellar.org/community/events/consensus\" target=\"_blank\" rel=\"noreferrer\">this</a> (<a href=\"https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772\" target=\"_blank\" rel=\"noreferrer\">src</a>)"
+      },
+      "original-whydrs": {
+        "html": "<a href=\"https://x.com/JFWooten4/status/2030560283152826640\" target=\"_blank\" rel=\"noreferrer\">was taken</a> at the presentation pub we announced <a href=\"https://x.com/whydrs/status/2013993995681067081\" target=\"_blank\" rel=\"noreferrer\">here</a> (my camera)"
+      }
+    }
   </script>
   <script>
     window.homepageBackgroundImages = [
@@ -674,6 +713,7 @@
     <div class="lightbox-frame">
       <button class="lightbox-nav prev" type="button" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
       <img class="lightbox-image" id="lightbox-image" alt="Expanded group photo">
+      <div class="lightbox-info" id="lightbox-info">Credit unavailable.</div>
       <button class="lightbox-nav next" type="button" id="lightbox-next" aria-label="Next image">&#8250;</button>
       <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close image">&times;</button>
     </div>
@@ -734,16 +774,19 @@
 
     (function () {
       var groupImageData = document.getElementById("group-image-data");
+      var groupCreditData = document.getElementById("group-credit-data");
       var groupStrip = document.getElementById("group-strip");
       var lightbox = document.getElementById("group-lightbox");
       var lightboxImage = document.getElementById("lightbox-image");
+      var lightboxInfo = document.getElementById("lightbox-info");
       var closeButton = document.getElementById("lightbox-close");
       var prevButton = document.getElementById("lightbox-prev");
       var nextButton = document.getElementById("lightbox-next");
       var images = [];
+      var creditsByKey = {};
       var currentIndex = 0;
 
-      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton) {
+      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxInfo || !closeButton || !prevButton || !nextButton) {
         return;
       }
 
@@ -753,15 +796,25 @@
         images = [];
       }
 
+      if (groupCreditData) {
+        try {
+          creditsByKey = JSON.parse(groupCreditData.textContent);
+        } catch (error) {
+          creditsByKey = {};
+        }
+      }
+
       if (!images.length) {
         images = [
           {
+            key: "stellar-consensus",
             src: "/groups/stellar-consensus.jpg",
             thumbnailSrc: "/groups/bgs/stellar-consensus.webp",
             alt: "Group photo 1",
             position: "center 54%"
           },
           {
+            key: "original-whydrs",
             src: "/groups/original-whydrs.png",
             thumbnailSrc: "/groups/bgs/original-whydrs.webp",
             alt: "Group photo 2",
@@ -800,6 +853,7 @@
 
         lightboxImage.src = images[currentIndex].src;
         lightboxImage.alt = images[currentIndex].alt;
+        lightboxInfo.innerHTML = (creditsByKey[images[currentIndex].key] && creditsByKey[images[currentIndex].key].html) || "Credit unavailable.";
       }
 
       function openLightbox(index) {
