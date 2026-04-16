@@ -59,6 +59,11 @@
       display: flex;
       justify-content: center;
       pointer-events: none;
+      opacity: 1;
+      transition: opacity 260ms ease-in-out;
+    }
+    .background-credit.is-hidden {
+      opacity: 0;
     }
     .background-credit-card {
       max-width: min(680px, calc(100vw - 36px));
@@ -86,11 +91,6 @@
       font-size: 0.82rem;
       line-height: 1.45;
       color: #f6f2fb;
-      opacity: 1;
-      transition: opacity 900ms ease-in-out;
-    }
-    .background-credit-text.is-fading {
-      opacity: 0.22;
     }
     .background-credit-text a {
       color: #AC51FF;
@@ -809,10 +809,10 @@
     (function () {
       // Rotate the available background images through two layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
+      var backgroundCredit = document.getElementById("background-credit");
       var backgroundCreditText = document.getElementById("background-credit-text");
       var images = Array.isArray(window.homepageBackgroundImages) ? window.homepageBackgroundImages : [];
       var creditsByName = window.homepageBackgroundCredits || {};
-      var creditFadeTimeout = null;
 
       function escapeHtml(value) {
         return String(value)
@@ -850,16 +850,7 @@
           parts.push(formatLink("src", credit.sourceUrl));
         }
 
-        if (creditFadeTimeout) {
-          window.clearTimeout(creditFadeTimeout);
-        }
-
-        backgroundCreditText.classList.add("is-fading");
-
-        creditFadeTimeout = window.setTimeout(function () {
-          backgroundCreditText.innerHTML = parts.join(" · ");
-          backgroundCreditText.classList.remove("is-fading");
-        }, 420);
+        backgroundCreditText.innerHTML = parts.join(" · ");
       }
 
       var layerA = document.getElementById("bg-layer-a");
@@ -873,6 +864,7 @@
       var inactiveLayer = layerB;
       var imageIndex = Math.floor(Math.random() * images.length);
       var swapDelayMs = 8000;
+      var fadeDurationMs = 3200;
       var preloadDelayMs = 600;
       var imageCache = {};
 
@@ -914,10 +906,10 @@
       function applyBackground(layer, imageEntry) {
         layer.style.backgroundImage = 'url("' + imageEntry.src + '")';
         layer.style.backgroundPosition = imageEntry.position;
-        updateCredit(imageEntry);
       }
 
       applyBackground(activeLayer, images[imageIndex]);
+      updateCredit(images[imageIndex]);
 
       if (images.length < 2) {
         return;
@@ -928,6 +920,10 @@
           var nextIndex = (imageIndex + 1) % images.length;
 
           preload(images[nextIndex]).then(function (nextImage) {
+            if (backgroundCredit) {
+              backgroundCredit.classList.add("is-hidden");
+            }
+
             applyBackground(inactiveLayer, nextImage);
 
             // Force the browser to register the new background before opacity changes.
@@ -941,6 +937,14 @@
             var previous = activeLayer;
             activeLayer = inactiveLayer;
             inactiveLayer = previous;
+
+            window.setTimeout(function () {
+              updateCredit(nextImage);
+
+              if (backgroundCredit) {
+                backgroundCredit.classList.remove("is-hidden");
+              }
+            }, fadeDurationMs);
 
             scheduleNextFade();
           });
