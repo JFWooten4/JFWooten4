@@ -367,21 +367,23 @@
     <div class="background-shade"></div>
   </div>
   <script type="application/json" id="group-image-data">
-      [
+    [
+      {% assign group_keys = "stellar-consensus,original-whydrs" | split: "," %}
       {% assign group_index = 0 %}
+      {% for group_key in group_keys %}
       {% for file in site.static_files %}
-      {% if file.path contains '/groups/' and file.extname != '.md' %}
-      {% unless file.path contains '/groups/bgs/' %}
+      {% if file.path contains '/groups/' and file.name == group_key %}
       {% if group_index > 0 %},{% endif %}
       {
         "src": "{{ file.path }}",
-        "thumbnailSrc": "/groups/bgs/{{ file.name | split: '.' | first }}.webp",
+        "thumbnailSrc": "/groups/bgs/{{ group_key }}.webp",
         "alt": "Group photo {{ group_index | plus: 1 }}",
         "position": "center 54%"
       }
       {% assign group_index = group_index | plus: 1 %}
-      {% endunless %}
+      {% break %}
       {% endif %}
+      {% endfor %}
       {% endfor %}
     ]
   </script>
