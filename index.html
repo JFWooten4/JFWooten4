@@ -269,7 +269,7 @@
         return;
       }
 
-      fetch("/static/data/sponsors.json", { cache: "no-store" })
+      fetch("/var/sponsors.json", { cache: "no-store" })
         .then(function (response) {
           if (!response.ok) {
             throw new Error("Failed to load sponsor feed");

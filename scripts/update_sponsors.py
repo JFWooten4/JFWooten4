@@ -6,7 +6,7 @@ import urllib.request
 
 
 API_URL = "https://api.github.com/graphql"
-OUTPUT_PATH = os.path.join("static", "data", "sponsors.json")
+OUTPUT_PATH = os.path.join("var", "sponsors.json")
 QUERY = """
 query($login: String!) {
   user(login: $login) {
