@@ -408,7 +408,8 @@
       {% assign group_index = 0 %}
       {% for group_key in group_keys %}
       {% for file in site.static_files %}
-      {% if file.path contains '/groups/' and file.name == group_key %}
+      {% assign file_key = file.name | split: '.' | first %}
+      {% if file.path contains '/groups/' and file_key == group_key %}
       {% if group_index > 0 %},{% endif %}
       {
         "key": "{{ group_key }}",
@@ -440,7 +441,8 @@
       {% assign background_index = 0 %}
       {% for background_key in background_keys %}
       {% for file in site.static_files %}
-      {% if file.path contains '/backgrounds/' and file.name == background_key %}
+      {% assign file_key = file.name | split: '.' | first %}
+      {% if file.path contains '/backgrounds/' and file_key == background_key %}
       {% if background_index > 0 %},{% endif %}
       {
         "key": "{{ background_key }}",
