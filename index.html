@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>John Wooten Info</title>
+  <title>John Wooten</title>
   <style>
     html, body {
       background-color: black;
@@ -271,7 +271,7 @@
   </div>
   <script type="application/json" id="group-image-data">
     [
-      {% assign group_files = site.static_files | where_exp: "file", "file.path contains '/groups/bgs/'" %}
+      {% assign group_files = site.static_files | where_exp: "file", "file.path contains '/backgrounds/'" %}
       {% for file in group_files %}
       {
         "src": "{{ file.path }}",
