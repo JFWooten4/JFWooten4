@@ -136,7 +136,7 @@
     .sponsor-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 18px;
+      margin: 0 0 6px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -163,7 +163,7 @@
       display: block;
     }
     .group-album {
-      margin-top: 22px;
+      margin-top: 0;
     }
     .group-strip {
       display: flex;
@@ -319,6 +319,7 @@
       {% if group_index > 0 %},{% endif %}
       {
         "src": "{{ file.path }}",
+        "thumbnailSrc": "/groups/bgs/{{ file.name | split: '.' | first }}.webp",
         "alt": "Group photo {{ group_index | plus: 1 }}",
         "position": "center 54%"
       }
@@ -686,11 +687,13 @@
         images = [
           {
             src: "/groups/stellar-consensus.jpg",
+            thumbnailSrc: "/groups/bgs/stellar-consensus.webp",
             alt: "Group photo 1",
             position: "center 54%"
           },
           {
             src: "/groups/original-whydrs.png",
+            thumbnailSrc: "/groups/bgs/original-whydrs.webp",
             alt: "Group photo 2",
             position: "center 54%"
           }
@@ -708,7 +711,7 @@
         thumbnail.setAttribute("data-lightbox-index", String(index));
         thumbnail.setAttribute("aria-label", "Open " + image.alt.toLowerCase());
 
-        thumbnailImage.src = image.src;
+        thumbnailImage.src = image.thumbnailSrc || image.src;
         thumbnailImage.alt = image.alt;
         thumbnailImage.loading = "lazy";
 
