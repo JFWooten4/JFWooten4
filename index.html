@@ -646,6 +646,13 @@
         })
         .then(function (data) {
           var sponsors = Array.isArray(data.sponsors) ? data.sponsors : [];
+
+          sponsors.sort(function (left, right) {
+            var leftLabel = (left.name || left.login || "").toLowerCase();
+            var rightLabel = (right.name || right.login || "").toLowerCase();
+            return leftLabel.localeCompare(rightLabel);
+          });
+
           sponsorList.innerHTML = "";
 
           if (!sponsors.length) {
