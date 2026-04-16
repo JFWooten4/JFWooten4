@@ -106,11 +106,14 @@
       color: #AC51FF;
       font-weight: bold;
     }
+    .content p {
+      margin-bottom: 14px;
+    }
     .social-links {
-      margin-top: 30px;
+      margin-top: 16px;
       margin-bottom: 30px;
       list-style: none;
-      padding: 25px;
+      padding: 16px 25px 25px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -337,6 +340,7 @@
       {% if file.path contains '/backgrounds/' and extension != '.md' and extension != '.ds_store' %}
       {% if background_index > 0 %},{% endif %}
       {
+        "key": "{{ file.name | split: '.' | first }}",
         "src": "{{ file.path }}",
         "alt": "Background image {{ background_index | plus: 1 }}",
         "position": "center 54%"
@@ -818,7 +822,7 @@
           return;
         }
 
-        var credit = creditsByName[getImageKey(imageEntry.src)] || {};
+        var credit = creditsByName[imageEntry.key || getImageKey(imageEntry.src)] || {};
         var artistLabel = credit.artist || "Unknown artist";
         var artistHtml = credit.artistUrl ? formatLink(artistLabel, credit.artistUrl) : escapeHtml(artistLabel);
         var parts = ["Art by " + artistHtml];
@@ -844,151 +848,6 @@
         } catch (error) {
           creditsByName = {};
         }
-      }
-
-      if (!images.length) {
-        images = [
-          {
-            src: "/backgrounds/baby-animatic.png",
-            alt: "Background image 1",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/dash-ahead.png",
-            alt: "Background image 2",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/dash-view.png",
-            alt: "Background image 3",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/discovering-friendship.png",
-            alt: "Background image 4",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/distant-engine.jpeg",
-            alt: "Background image 5",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/doin-it.png",
-            alt: "Background image 6",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/embracing-art.png",
-            alt: "Background image 7",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/finding-love.png",
-            alt: "Background image 8",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/flawless-ocean.png",
-            alt: "Background image 9",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/flight-time.png",
-            alt: "Background image 10",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/floating-forward.png",
-            alt: "Background image 11",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/galaxy-bananas.png",
-            alt: "Background image 12",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/hunting-hour.jpg",
-            alt: "Background image 13",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/mad-split.png",
-            alt: "Background image 14",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/mad-time.jpg",
-            alt: "Background image 15",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/market-calling.png",
-            alt: "Background image 16",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/not-hero.png",
-            alt: "Background image 17",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/power-mountian.jpg",
-            alt: "Background image 18",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/red-heart.png",
-            alt: "Background image 19",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/relaxing-wait.jpg",
-            alt: "Background image 20",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/rising-color.jpg",
-            alt: "Background image 21",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/secret-slash.png",
-            alt: "Background image 22",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/shaking-hands.png",
-            alt: "Background image 23",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/soaring-together.png",
-            alt: "Background image 24",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/taking-flight.png",
-            alt: "Background image 25",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/whats-up.PNG",
-            alt: "Background image 26",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/work-time.jpg",
-            alt: "Background image 27",
-            position: "center 54%"
-          },
-          {
-            src: "/backgrounds/writing-TAR1.png",
-            alt: "Background image 28",
-            position: "center 54%"
-          }
-        ];
       }
       var layerA = document.getElementById("bg-layer-a");
       var layerB = document.getElementById("bg-layer-b");
