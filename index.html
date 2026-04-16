@@ -957,8 +957,8 @@
         var currentText = backgroundCreditText.textContent || content.text;
         var eraseIndex = currentText.length;
         var writeIndex = 0;
-        var eraseStepMs = 24;
-        var writeStepMs = 26;
+        var eraseStepMs = 40;
+        var writeStepMs = 42;
 
         backgroundCreditText.classList.add("is-typing");
         backgroundCreditText.textContent = currentText;
@@ -983,7 +983,7 @@
                   backgroundCreditText.innerHTML = content.html;
                 }
               }, writeStepMs);
-            }, 80);
+            }, 220);
           }
         }, eraseStepMs);
       }
