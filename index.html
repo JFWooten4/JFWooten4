@@ -88,6 +88,11 @@
       color: #f6f2fb;
       min-height: 1.5em;
     }
+    .background-credit-text.is-typing {
+      font-family: "Courier New", monospace;
+      letter-spacing: 0.015em;
+      opacity: 0.94;
+    }
     .background-credit-text a {
       color: #AC51FF;
     }
@@ -877,6 +882,8 @@
       var backgroundCreditText = document.getElementById("background-credit-text");
       var images = Array.isArray(window.homepageBackgroundImages) ? window.homepageBackgroundImages : [];
       var creditsByName = window.homepageBackgroundCredits || {};
+      var creditAnimationTimeout = null;
+      var creditAnimationInterval = null;
 
       function escapeHtml(value) {
         return String(value)
@@ -904,21 +911,81 @@
         var credit = creditsByName[imageEntry.key || getImageKey(imageEntry.src)] || {};
         var artistLabel = credit.artist || "Unknown artist";
         var artistHtml = credit.artistUrl ? formatLink(artistLabel, credit.artistUrl) : escapeHtml(artistLabel);
+        var artistText = "Art by " + artistLabel;
         var parts = ["Art by " + artistHtml];
+        var textParts = [artistText];
 
         if (credit.sourceUrl) {
           parts.push(formatLink("src", credit.sourceUrl));
+          textParts.push("src");
         }
 
-        return parts.join(" · ");
+        return {
+          html: parts.join(" · "),
+          text: textParts.join(" · ")
+        };
       }
 
-      function updateCredit(imageEntry) {
+      function clearCreditAnimation() {
+        if (creditAnimationTimeout) {
+          window.clearTimeout(creditAnimationTimeout);
+          creditAnimationTimeout = null;
+        }
+
+        if (creditAnimationInterval) {
+          window.clearInterval(creditAnimationInterval);
+          creditAnimationInterval = null;
+        }
+      }
+
+      function updateCredit(imageEntry, useAnimation) {
         if (!backgroundCreditText || !imageEntry) {
           return;
         }
 
-        backgroundCreditText.innerHTML = buildCreditContent(imageEntry);
+        var content = buildCreditContent(imageEntry);
+
+        if (!useAnimation) {
+          clearCreditAnimation();
+          backgroundCreditText.classList.remove("is-typing");
+          backgroundCreditText.innerHTML = content.html;
+          return;
+        }
+
+        clearCreditAnimation();
+
+        var currentText = backgroundCreditText.textContent || content.text;
+        var eraseIndex = currentText.length;
+        var writeIndex = 0;
+        var eraseStepMs = 24;
+        var writeStepMs = 26;
+
+        backgroundCreditText.classList.add("is-typing");
+        backgroundCreditText.textContent = currentText;
+
+        creditAnimationInterval = window.setInterval(function () {
+          eraseIndex -= 1;
+          backgroundCreditText.textContent = currentText.slice(0, Math.max(eraseIndex, 0));
+
+          if (eraseIndex <= 0) {
+            window.clearInterval(creditAnimationInterval);
+            creditAnimationInterval = null;
+
+            creditAnimationTimeout = window.setTimeout(function () {
+              creditAnimationInterval = window.setInterval(function () {
+                writeIndex += 1;
+                backgroundCreditText.textContent = content.text.slice(0, writeIndex);
+
+                if (writeIndex >= content.text.length) {
+                  window.clearInterval(creditAnimationInterval);
+                  creditAnimationInterval = null;
+                  backgroundCreditText.classList.remove("is-typing");
+                  backgroundCreditText.innerHTML = content.html;
+                }
+              }, writeStepMs);
+            }, 80);
+          }
+        }, eraseStepMs);
       }
 
       var layerA = document.getElementById("bg-layer-a");
@@ -977,7 +1044,7 @@
       }
 
       applyBackground(activeLayer, images[imageIndex]);
-      updateCredit(images[imageIndex]);
+      updateCredit(images[imageIndex], false);
 
       if (images.length < 2) {
         return;
@@ -1003,7 +1070,7 @@
             inactiveLayer = previous;
 
             window.setTimeout(function () {
-              updateCredit(nextImage);
+              updateCredit(nextImage, true);
             }, fadeDurationMs);
 
             scheduleNextFade();
