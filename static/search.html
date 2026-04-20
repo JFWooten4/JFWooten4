@@ -235,6 +235,22 @@ permalink: /search/
       transition: border 150ms ease, color 150ms ease, transform 150ms ease;
     }
 
+    .icon-button {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-button svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      pointer-events: none;
+    }
+
     .actions a:hover,
     .actions button:hover {
       border-color: rgba(109, 214, 200, 0.6);
@@ -378,7 +394,10 @@ permalink: /search/
 
           var copyBtn = document.createElement("button");
           copyBtn.type = "button";
-          copyBtn.textContent = "Copy href";
+          copyBtn.className = "icon-button";
+          copyBtn.setAttribute("aria-label", "Copy href for " + item.key);
+          copyBtn.title = "Copy href";
+          copyBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16h-9V7h9v14z"/></svg>';
           copyBtn.addEventListener("click", function () {
             if (navigator.clipboard && navigator.clipboard.writeText) {
               navigator.clipboard.writeText(item.href).then(function () {
