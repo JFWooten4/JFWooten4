@@ -215,12 +215,6 @@ permalink: /search/
       font-size: 0.98rem;
     }
 
-    .topic {
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.45;
-    }
-
     .actions {
       display: flex;
       gap: 8px;
@@ -507,13 +501,8 @@ permalink: /search/
           href.className = "href";
           href.textContent = item.href;
 
-          var topic = document.createElement("div");
-          topic.className = "topic";
-          topic.textContent = item.topic ? "Topic: " + item.topic : "Topic: none";
-
           row.appendChild(header);
           row.appendChild(href);
-          row.appendChild(topic);
           resultsEl.appendChild(row);
         });
       }
