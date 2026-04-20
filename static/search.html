@@ -544,17 +544,30 @@ permalink: /search/
           }
         }
 
+        var openedCount = 0;
+
         visibleEntries.forEach(function (item) {
-          var tempLink = document.createElement("a");
-          tempLink.href = item.href;
-          tempLink.target = "_blank";
-          tempLink.rel = "noopener";
-          tempLink.style.display = "none";
-          document.body.appendChild(tempLink);
-          tempLink.click();
-          document.body.removeChild(tempLink);
+          var childWindow = window.open("", "_blank");
+          if (!childWindow) {
+            return;
+          }
+
+          openedCount += 1;
+          childWindow.opener = null;
+          childWindow.location.replace(item.href);
         });
-        setStatus("Opened " + visibleEntries.length + " result" + (visibleEntries.length === 1 ? "" : "s"));
+
+        if (!openedCount) {
+          setStatus("Popup blocker stopped the tabs");
+          return;
+        }
+
+        if (openedCount < visibleEntries.length) {
+          setStatus("Opened " + openedCount + " of " + visibleEntries.length + " results");
+          return;
+        }
+
+        setStatus("Opened " + openedCount + " result" + (openedCount === 1 ? "" : "s"));
       });
 
       var params = new URLSearchParams(window.location.search);
