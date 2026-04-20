@@ -6,7 +6,7 @@ permalink: /search/
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wooten Link Href Lookup</title>
+  <title>References Search | wooten.link</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -61,20 +61,41 @@ permalink: /search/
       display: grid;
       gap: 16px;
       margin-bottom: 36px;
+      justify-items: center;
+      text-align: center;
       animation: fadeUp 600ms ease both;
+    }
+
+    .hero-home {
+      display: inline-block;
+      width: fit-content;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero-home:hover .eyebrow,
+    .hero-home:focus-visible .eyebrow {
+      color: var(--accent);
+    }
+
+    .hero-home:focus-visible {
+      outline: 2px solid rgba(109, 214, 200, 0.75);
+      outline-offset: 8px;
+      border-radius: 12px;
     }
 
     .eyebrow {
       font-size: 0.9rem;
       letter-spacing: 0.18rem;
       text-transform: uppercase;
-      color: var(--accent-2);
+      color: var(--accent);
     }
 
     h1 {
       margin: 0;
       font-size: clamp(2.2rem, 3vw, 3.4rem);
       font-weight: 700;
+      color: var(--ink);
     }
 
     .lead {
@@ -83,6 +104,7 @@ permalink: /search/
       font-size: 1.2rem;
       color: var(--muted);
       max-width: 640px;
+      margin-inline: auto;
     }
 
     .panel {
@@ -100,6 +122,8 @@ permalink: /search/
       display: grid;
       gap: 12px;
       grid-template-columns: 1fr auto;
+      width: min(60vw, 100%);
+      margin: 0 auto;
     }
 
     .controls input {
@@ -181,7 +205,7 @@ permalink: /search/
 
     .key {
       font-weight: 600;
-      color: var(--accent);
+      color: #AC51FF;
       letter-spacing: 0.02em;
     }
 
@@ -197,8 +221,7 @@ permalink: /search/
       flex-wrap: wrap;
     }
 
-    .actions a,
-    .actions button {
+    .actions a {
       font-size: 0.85rem;
       border-radius: 999px;
       padding: 6px 14px;
@@ -207,14 +230,50 @@ permalink: /search/
       color: var(--ink);
       cursor: pointer;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
       transition: border 150ms ease, color 150ms ease, transform 150ms ease;
     }
 
-    .actions a:hover,
-    .actions button:hover {
+    .icon-button {
+      appearance: none;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 150ms ease, transform 150ms ease, opacity 150ms ease;
+    }
+
+    .icon-button svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      pointer-events: none;
+    }
+
+    .actions a:hover {
       border-color: rgba(109, 214, 200, 0.6);
       color: var(--accent-2);
       transform: translateY(-1px);
+    }
+
+    .icon-button:hover {
+      color: var(--accent-2);
+      transform: translateY(-1px) scale(1.04);
+    }
+
+    .icon-button:focus-visible {
+      outline: 2px solid rgba(109, 214, 200, 0.75);
+      outline-offset: 3px;
+      border-radius: 8px;
     }
 
     .empty {
@@ -241,6 +300,7 @@ permalink: /search/
       }
 
       .controls {
+        width: min(80vw, 100%);
         grid-template-columns: 1fr;
       }
 
@@ -253,15 +313,16 @@ permalink: /search/
 <body>
   <main>
     <section class="hero">
-      <div class="eyebrow">wooten.link</div>
-      <h1>Href lookup</h1>
-      <p class="lead">Search the short keys that power wooten.link and jump to the full href in one click.</p>
+      <a class="hero-home" href="/" aria-label="Return to the main landing page">
+        <div class="eyebrow">wooten.link</div>
+      </a>
+      <h1>Reference Lookup</h1>
     </section>
 
     <section class="panel">
       <div class="controls">
-        <input id="query" type="text" placeholder="Search by key or href" autocomplete="off">
-        <button id="clear" type="button">Clear</button>
+        <input id="query" type="text" placeholder="Search by key, link, or topic" autocomplete="off">
+        <button id="open-all" type="button">Open All</button>
       </div>
       <div class="meta">
         <span>Total: <strong id="count">0</strong></span>
@@ -274,9 +335,68 @@ permalink: /search/
   </main>
 
   <script>
+    function normalizeTopicText(value) {
+      return String(value || "")
+        .replace(/https?:\/\/\S+/g, " ")
+        .replace(/[#?&_=/%:+.-]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function deriveTopicFromHref(href) {
+      try {
+        var url = new URL(href);
+        return normalizeTopicText(
+          decodeURIComponent(url.hostname + " " + url.pathname + " " + url.search + " " + url.hash)
+        );
+      } catch (err) {
+        return normalizeTopicText(href);
+      }
+    }
+
+    function buildEntriesFromSource(scriptText, redirects) {
+      var constants = {};
+      var constantPattern = /const\s+([A-Z0-9_]+)\s*=\s*"([^"]*)";/g;
+      var constantMatch;
+
+      while ((constantMatch = constantPattern.exec(scriptText))) {
+        constants[constantMatch[1]] = constantMatch[2];
+      }
+
+      return Object.keys(redirects).filter(function (key) {
+        return Boolean(redirects[key]);
+      }).map(function (key) {
+        var escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        var entryPattern = new RegExp("\"" + escapedKey + "\"\\s*:\\s*([^,\\n]+)(?:,\\s*\\/\\/\\s*(.*))?");
+        var entryMatch = scriptText.match(entryPattern);
+        var rawValue = entryMatch ? String(entryMatch[1] || "").trim() : "";
+        var comment = entryMatch ? normalizeTopicText(entryMatch[2] || "") : "";
+        var resolvedValue = rawValue;
+
+        if (constants[rawValue]) {
+          resolvedValue = constants[rawValue];
+        } else if (/^".*"$/.test(rawValue)) {
+          resolvedValue = rawValue.slice(1, -1);
+        }
+
+        var href = redirects[key] || resolvedValue;
+        var hrefTopic = deriveTopicFromHref(href);
+        var topic = normalizeTopicText(comment + " " + hrefTopic);
+
+        return {
+          key: key,
+          href: href,
+          topic: topic,
+          searchText: normalizeTopicText(key + " " + href + " " + topic).toLowerCase()
+        };
+      }).sort(function (a, b) {
+        return a.key.localeCompare(b.key);
+      });
+    }
+
     function loadRedirects() {
       if (window.LINKS) {
-        return Promise.resolve(window.LINKS);
+        return Promise.resolve(buildEntriesFromSource("", window.LINKS));
       }
 
       return fetch("/404.html", { cache: "no-store" })
@@ -284,35 +404,28 @@ permalink: /search/
         .then(function (html) {
           var match = html.match(/<script id="all-redirects">([\s\S]*?)<\/script>/);
           if (!match) {
-            return {};
+            return [];
           }
 
           try {
             new Function(match[1])();
           } catch (err) {
-            return {};
+            return [];
           }
 
-          return window.LINKS || {};
+          return buildEntriesFromSource(match[1], window.LINKS || {});
         })
-        .catch(function () { return {}; });
+        .catch(function () { return []; });
     }
 
-    loadRedirects().then(function (redirects) {
-      var entries = Object.keys(redirects).filter(function (key) {
-        return Boolean(redirects[key]);
-      }).map(function (key) {
-        return { key: key, href: redirects[key] };
-      }).sort(function (a, b) {
-        return a.key.localeCompare(b.key);
-      });
-
+    loadRedirects().then(function (entries) {
       var queryInput = document.getElementById("query");
-      var clearBtn = document.getElementById("clear");
+      var openAllBtn = document.getElementById("open-all");
       var resultsEl = document.getElementById("results");
       var countEl = document.getElementById("count");
       var emptyEl = document.getElementById("empty");
       var statusEl = document.getElementById("status");
+      var visibleEntries = entries.slice();
 
       function setStatus(message) {
         statusEl.textContent = message || "";
@@ -324,6 +437,7 @@ permalink: /search/
       }
 
       function renderList(list) {
+        visibleEntries = list.slice();
         resultsEl.innerHTML = "";
         countEl.textContent = String(list.length);
         emptyEl.hidden = list.length !== 0;
@@ -351,7 +465,10 @@ permalink: /search/
 
           var copyBtn = document.createElement("button");
           copyBtn.type = "button";
-          copyBtn.textContent = "Copy href";
+          copyBtn.className = "icon-button";
+          copyBtn.setAttribute("aria-label", "Copy href for " + item.key);
+          copyBtn.title = "Copy href";
+          copyBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16h-9V7h9v14z"/></svg>';
           copyBtn.addEventListener("click", function () {
             if (navigator.clipboard && navigator.clipboard.writeText) {
               navigator.clipboard.writeText(item.href).then(function () {
@@ -397,16 +514,91 @@ permalink: /search/
           return;
         }
         var filtered = entries.filter(function (item) {
-          return item.key.toLowerCase().includes(term) || String(item.href).toLowerCase().includes(term);
+          return item.searchText.includes(term);
         });
         renderList(filtered);
       }
 
       queryInput.addEventListener("input", filterResults);
-      clearBtn.addEventListener("click", function () {
-        queryInput.value = "";
-        queryInput.focus();
-        renderList(entries);
+      openAllBtn.addEventListener("click", function () {
+        if (!visibleEntries.length) {
+          setStatus("No results to open");
+          return;
+        }
+
+        if (visibleEntries.length > 5) {
+          var confirmed = window.confirm("Open " + visibleEntries.length + " results in new tabs?");
+          if (!confirmed) {
+            return;
+          }
+        }
+
+        var launcher = window.open("", "_blank");
+        if (!launcher) {
+          setStatus("Popup blocker stopped the launcher");
+          return;
+        }
+
+        launcher.document.open();
+        launcher.document.write(
+          "<!DOCTYPE html>" +
+          "<html><head><meta charset=\"UTF-8\"><title>Opening Results</title>" +
+          "<style>" +
+          "body{margin:0;padding:32px;font-family:Arial,sans-serif;background:#0b0f1a;color:#e9eef5;line-height:1.5;}" +
+          "h1{margin:0 0 12px;color:#AC51FF;font-size:1.6rem;}" +
+          "p{margin:0 0 16px;color:#9fb2c8;}" +
+          "button{border:0;border-radius:12px;padding:12px 18px;background:#AC51FF;color:#fff;font-weight:600;cursor:pointer;}" +
+          "ul{margin:18px 0 0;padding-left:20px;}" +
+          "a{color:#e9eef5;}" +
+          "</style></head><body>" +
+          "<h1>Opening Results</h1>" +
+          "<p id=\"status\">Launching " + String(visibleEntries.length) + " result" + (visibleEntries.length === 1 ? "" : "s") + "...</p>" +
+          "<button id=\"retry\" type=\"button\">Retry Open All</button>" +
+          "<ul id=\"links\"></ul>" +
+          "<script>" +
+          "var entries=" + JSON.stringify(visibleEntries) + ";" +
+          "var statusEl=document.getElementById('status');" +
+          "var linksEl=document.getElementById('links');" +
+          "function renderLinks(){" +
+            "linksEl.innerHTML='';" +
+            "entries.forEach(function(item){" +
+              "var li=document.createElement('li');" +
+              "var a=document.createElement('a');" +
+              "a.href=item.href;" +
+              "a.target='_blank';" +
+              "a.rel='noopener';" +
+              "a.textContent=item.key + ' -> ' + item.href;" +
+              "li.appendChild(a);" +
+              "linksEl.appendChild(li);" +
+            "});" +
+          "}" +
+          "function launchAll(){" +
+            "var opened=0;" +
+            "entries.forEach(function(item){" +
+              "var child=window.open('', '_blank');" +
+              "if(!child){return;}" +
+              "opened+=1;" +
+              "child.opener=null;" +
+              "child.location.replace(item.href);" +
+            "});" +
+            "if(!opened){" +
+              "statusEl.textContent='Your browser blocked the tabs. Use Retry Open All or the links below.';" +
+              "return;" +
+            "}" +
+            "if(opened < entries.length){" +
+              "statusEl.textContent='Opened ' + opened + ' of ' + entries.length + ' results. Use Retry Open All or the links below for the rest.';" +
+              "return;" +
+            "}" +
+            "statusEl.textContent='Opened ' + opened + ' results. This tab can be closed.';" +
+          "}" +
+          "document.getElementById('retry').addEventListener('click', launchAll);" +
+          "renderLinks();" +
+          "launchAll();" +
+          "<\/script>" +
+          "</body></html>"
+        );
+        launcher.document.close();
+        setStatus("Opened launcher for " + visibleEntries.length + " result" + (visibleEntries.length === 1 ? "" : "s"));
       });
 
       var params = new URLSearchParams(window.location.search);
