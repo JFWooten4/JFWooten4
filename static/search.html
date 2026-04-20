@@ -544,7 +544,14 @@ permalink: /search/
         }
 
         visibleEntries.forEach(function (item) {
-          window.open(item.href, "_blank", "noopener");
+          var tempLink = document.createElement("a");
+          tempLink.href = item.href;
+          tempLink.target = "_blank";
+          tempLink.rel = "noopener";
+          tempLink.style.display = "none";
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          document.body.removeChild(tempLink);
         });
         setStatus("Opened " + visibleEntries.length + " result" + (visibleEntries.length === 1 ? "" : "s"));
       });
