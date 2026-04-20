@@ -219,8 +219,7 @@ permalink: /search/
       flex-wrap: wrap;
     }
 
-    .actions a,
-    .actions button {
+    .actions a {
       font-size: 0.85rem;
       border-radius: 999px;
       padding: 6px 14px;
@@ -233,26 +232,42 @@ permalink: /search/
     }
 
     .icon-button {
-      width: 34px;
-      height: 34px;
+      appearance: none;
+      width: 42px;
+      height: 42px;
       padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      transition: color 150ms ease, transform 150ms ease, opacity 150ms ease;
     }
 
     .icon-button svg {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       fill: currentColor;
       pointer-events: none;
     }
 
-    .actions a:hover,
-    .actions button:hover {
+    .actions a:hover {
       border-color: rgba(109, 214, 200, 0.6);
       color: var(--accent-2);
       transform: translateY(-1px);
+    }
+
+    .icon-button:hover {
+      color: var(--accent-2);
+      transform: translateY(-1px) scale(1.04);
+    }
+
+    .icon-button:focus-visible {
+      outline: 2px solid rgba(109, 214, 200, 0.75);
+      outline-offset: 3px;
+      border-radius: 8px;
     }
 
     .empty {
