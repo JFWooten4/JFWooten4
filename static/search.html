@@ -319,7 +319,7 @@ permalink: /search/
     <section class="panel">
       <div class="controls">
         <input id="query" type="text" placeholder="Search by key or link" autocomplete="off">
-        <button id="clear" type="button">Clear</button>
+        <button id="open-all" type="button">Open All</button>
       </div>
       <div class="meta">
         <span>Total: <strong id="count">0</strong></span>
@@ -366,11 +366,12 @@ permalink: /search/
       });
 
       var queryInput = document.getElementById("query");
-      var clearBtn = document.getElementById("clear");
+      var openAllBtn = document.getElementById("open-all");
       var resultsEl = document.getElementById("results");
       var countEl = document.getElementById("count");
       var emptyEl = document.getElementById("empty");
       var statusEl = document.getElementById("status");
+      var visibleEntries = entries.slice();
 
       function setStatus(message) {
         statusEl.textContent = message || "";
@@ -382,6 +383,7 @@ permalink: /search/
       }
 
       function renderList(list) {
+        visibleEntries = list.slice();
         resultsEl.innerHTML = "";
         countEl.textContent = String(list.length);
         emptyEl.hidden = list.length !== 0;
@@ -464,10 +466,23 @@ permalink: /search/
       }
 
       queryInput.addEventListener("input", filterResults);
-      clearBtn.addEventListener("click", function () {
-        queryInput.value = "";
-        queryInput.focus();
-        renderList(entries);
+      openAllBtn.addEventListener("click", function () {
+        if (!visibleEntries.length) {
+          setStatus("No results to open");
+          return;
+        }
+
+        if (visibleEntries.length > 5) {
+          var confirmed = window.confirm("Open " + visibleEntries.length + " results in new tabs?");
+          if (!confirmed) {
+            return;
+          }
+        }
+
+        visibleEntries.forEach(function (item) {
+          window.open(item.href, "_blank", "noopener");
+        });
+        setStatus("Opened " + visibleEntries.length + " result" + (visibleEntries.length === 1 ? "" : "s"));
       });
 
       var params = new URLSearchParams(window.location.search);
