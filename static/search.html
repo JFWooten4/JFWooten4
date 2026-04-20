@@ -533,30 +533,72 @@ permalink: /search/
           }
         }
 
-        var openedCount = 0;
-
-        visibleEntries.forEach(function (item) {
-          var childWindow = window.open("", "_blank");
-          if (!childWindow) {
-            return;
-          }
-
-          openedCount += 1;
-          childWindow.opener = null;
-          childWindow.location.replace(item.href);
-        });
-
-        if (!openedCount) {
-          setStatus("Popup blocker stopped the tabs");
+        var launcher = window.open("", "_blank");
+        if (!launcher) {
+          setStatus("Popup blocker stopped the launcher");
           return;
         }
 
-        if (openedCount < visibleEntries.length) {
-          setStatus("Opened " + openedCount + " of " + visibleEntries.length + " results");
-          return;
-        }
-
-        setStatus("Opened " + openedCount + " result" + (openedCount === 1 ? "" : "s"));
+        launcher.document.open();
+        launcher.document.write(
+          "<!DOCTYPE html>" +
+          "<html><head><meta charset=\"UTF-8\"><title>Opening Results</title>" +
+          "<style>" +
+          "body{margin:0;padding:32px;font-family:Arial,sans-serif;background:#0b0f1a;color:#e9eef5;line-height:1.5;}" +
+          "h1{margin:0 0 12px;color:#AC51FF;font-size:1.6rem;}" +
+          "p{margin:0 0 16px;color:#9fb2c8;}" +
+          "button{border:0;border-radius:12px;padding:12px 18px;background:#AC51FF;color:#fff;font-weight:600;cursor:pointer;}" +
+          "ul{margin:18px 0 0;padding-left:20px;}" +
+          "a{color:#e9eef5;}" +
+          "</style></head><body>" +
+          "<h1>Opening Results</h1>" +
+          "<p id=\"status\">Launching " + String(visibleEntries.length) + " result" + (visibleEntries.length === 1 ? "" : "s") + "...</p>" +
+          "<button id=\"retry\" type=\"button\">Retry Open All</button>" +
+          "<ul id=\"links\"></ul>" +
+          "<script>" +
+          "var entries=" + JSON.stringify(visibleEntries) + ";" +
+          "var statusEl=document.getElementById('status');" +
+          "var linksEl=document.getElementById('links');" +
+          "function renderLinks(){" +
+            "linksEl.innerHTML='';" +
+            "entries.forEach(function(item){" +
+              "var li=document.createElement('li');" +
+              "var a=document.createElement('a');" +
+              "a.href=item.href;" +
+              "a.target='_blank';" +
+              "a.rel='noopener';" +
+              "a.textContent=item.key + ' -> ' + item.href;" +
+              "li.appendChild(a);" +
+              "linksEl.appendChild(li);" +
+            "});" +
+          "}" +
+          "function launchAll(){" +
+            "var opened=0;" +
+            "entries.forEach(function(item){" +
+              "var child=window.open('', '_blank');" +
+              "if(!child){return;}" +
+              "opened+=1;" +
+              "child.opener=null;" +
+              "child.location.replace(item.href);" +
+            "});" +
+            "if(!opened){" +
+              "statusEl.textContent='Your browser blocked the tabs. Use Retry Open All or the links below.';" +
+              "return;" +
+            "}" +
+            "if(opened < entries.length){" +
+              "statusEl.textContent='Opened ' + opened + ' of ' + entries.length + ' results. Use Retry Open All or the links below for the rest.';" +
+              "return;" +
+            "}" +
+            "statusEl.textContent='Opened ' + opened + ' results. This tab can be closed.';" +
+          "}" +
+          "document.getElementById('retry').addEventListener('click', launchAll);" +
+          "renderLinks();" +
+          "launchAll();" +
+          "<\/script>" +
+          "</body></html>"
+        );
+        launcher.document.close();
+        setStatus("Opened launcher for " + visibleEntries.length + " result" + (visibleEntries.length === 1 ? "" : "s"));
       });
 
       var params = new URLSearchParams(window.location.search);
