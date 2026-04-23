@@ -9,36 +9,73 @@ permalink: /scam/
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Story: The 2017 Cryptocurrency Scam</title>
   <style>
+    :root {
+      --bg: #080b12;
+      --bg-accent: #101827;
+      --card: #121c2c;
+      --card-border: rgba(253, 218, 36, 0.18);
+      --text: #edf2f7;
+      --muted: #a8b4c7;
+      --accent: #fdda24;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
+      padding: 48px 20px 64px;
       font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(253, 218, 36, 0.08), transparent 28%),
+        linear-gradient(180deg, var(--bg), var(--bg-accent));
     }
     h1 {
-      color: #333;
+      max-width: 860px;
+      margin: 0 auto 28px;
+      color: var(--text);
+      font-size: clamp(2rem, 4vw, 3rem);
     }
     ul {
       list-style-type: none;
       padding: 0;
+      margin: 22px auto 0;
+      max-width: 860px;
     }
     li {
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #f4f4f4;
-      border-radius: 5px;
+      margin: 0 0 18px;
+      padding: 18px 20px;
+      background-color: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
     }
     a {
       text-decoration: none;
-      color: #fdda24;
+      color: var(--accent);
       font-weight: bold;
     }
     a:hover {
       text-decoration: underline;
     }
     p {
-      margin: 5px 0 0;
-      font-size: 0.9em;
-      color: #555;
+      max-width: 860px;
+      margin: 12px auto 0;
+      font-size: 0.95em;
+      line-height: 1.6;
+      color: var(--muted);
     }
     iframe {
+      display: block;
+      width: min(860px, 100%);
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      margin: 0 auto 22px;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
       margin-bottom: 20px;
     }
   </style>

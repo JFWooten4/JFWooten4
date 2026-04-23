@@ -12,13 +12,28 @@
   status = 200
 
 [[redirects]]
+  from = "/tax"
+  to = "/static/tax/index.html"
+  status = 200
+
+[[redirects]]
   from = "/tax/*"
   to = "/static/tax/:splat"
   status = 200
 
 [[redirects]]
+  from = "/btc"
+  to = "/static/btc/index.html"
+  status = 200
+
+[[redirects]]
   from = "/btc/*"
   to = "/static/btc/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/ppt"
+  to = "/static/ppt/index.html"
   status = 200
 
 [[redirects]]

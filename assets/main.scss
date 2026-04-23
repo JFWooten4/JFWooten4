@@ -4,8 +4,51 @@
 $link-base-color: #fdda24;
 $link-visited-color: #fdda24;
 $brand-color: #fdda24;
+$text-color: #edf2f7;
+$background-color: #080b12;
 
 @import "minima";
+
+html,
+body {
+  background:
+    radial-gradient(circle at top right, rgba(253, 218, 36, 0.08), transparent 28%),
+    linear-gradient(180deg, #080b12, #101827);
+  color: #edf2f7;
+}
+
+.site-header,
+.site-footer {
+  background: rgba(8, 11, 18, 0.92);
+  border-color: rgba(253, 218, 36, 0.18);
+}
+
+.page-content {
+  background: transparent;
+}
+
+.post-meta,
+.footer-col-wrapper,
+.rss-subscribe {
+  color: #a8b4c7;
+}
+
+.post-content,
+.post-content p,
+.post-content li,
+.post-content table,
+.home,
+.page-content .wrapper {
+  color: #edf2f7;
+}
+
+.post-list > li,
+pre,
+code,
+blockquote {
+  background: rgba(18, 28, 44, 0.74);
+  border-color: rgba(253, 218, 36, 0.18);
+}
 
 a,
 a:visited {
