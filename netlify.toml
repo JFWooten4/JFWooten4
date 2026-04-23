@@ -5,3 +5,23 @@
 
 [build.environment]
   RUBY_VERSION = "3.1.4"
+
+[[redirects]]
+  from = "/src/*"
+  to = "/static/src/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/tax/*"
+  to = "/static/tax/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/btc/*"
+  to = "/static/btc/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/ppt/*"
+  to = "/static/ppt/:splat"
+  status = 200
