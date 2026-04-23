@@ -1,0 +1,29 @@
+---
+---
+
+$link-base-color: #d4af37;
+$link-visited-color: #b8952f;
+$brand-color: #d4af37;
+
+@import "minima";
+
+a,
+a:visited {
+  color: $link-base-color;
+}
+
+a:hover,
+a:focus {
+  color: #f0cc63;
+}
+
+.site-title,
+.site-title:visited,
+.site-nav .page-link,
+.site-nav .page-link:visited,
+.post-link,
+.post-link:visited,
+.footer-col a,
+.footer-col a:visited {
+  color: $link-base-color;
+}

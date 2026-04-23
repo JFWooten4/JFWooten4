@@ -6,6 +6,10 @@
   <meta charset="UTF-8">
   <title>John Wooten</title>
   <style>
+    :root {
+      --accent: #d4af37;
+      --accent-muted: #5d4a14;
+    }
     html, body {
       background-color: black;
       color: white;
@@ -75,7 +79,7 @@
       display: block;
       width: 100%;
       margin: 0 0 4px;
-      color: #AC51FF;
+      color: var(--accent);
       font-size: 0.66rem;
       letter-spacing: 0.03em;
       text-transform: none;
@@ -93,7 +97,7 @@
       opacity: 0.94;
     }
     .background-credit-text a {
-      color: #AC51FF;
+      color: var(--accent);
     }
     .content {
       position: relative;
@@ -114,7 +118,7 @@
       font-weight: 600;
     }
     a {
-      color: #AC51FF;
+      color: var(--accent);
       font-weight: bold;
     }
     .content p {
@@ -166,9 +170,9 @@
       align-items: center;
       gap: 12px;
       padding: 10px 14px;
-      border: 1px solid #2d203c;
+      border: 1px solid var(--accent-muted);
       border-radius: 999px;
-      background: rgba(172, 81, 255, 0.08);
+      background: rgba(212, 175, 55, 0.12);
       text-decoration: none;
       color: white;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -186,7 +190,7 @@
     }
     .group-label {
       margin: 0 0 4px;
-      color: #AC51FF;
+      color: var(--accent);
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 0.82rem;
       font-weight: 500;
@@ -216,7 +220,7 @@
       width: 152px;
       height: 102px;
       transform: translateY(-3px);
-      border-color: rgba(172, 81, 255, 0.5);
+      border-color: rgba(212, 175, 55, 0.55);
       box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
       outline: none;
     }
@@ -271,7 +275,7 @@
       box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
     }
     .lightbox-info a {
-      color: #AC51FF;
+      color: var(--accent);
     }
     .lightbox-close,
     .lightbox-nav {
@@ -660,10 +664,10 @@
       </a>
       <a href="https://wooten.link/origins" target="_blank" aria-label="Listen to Origins">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="9" y="3" width="6" height="11" rx="3" ry="3" fill="none" stroke="#AC51FF" stroke-width="2"/>
-          <path d="M5 10v1a7 7 0 0 0 14 0v-1" fill="none" stroke="#AC51FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="12" y1="18" x2="12" y2="21" stroke="#AC51FF" stroke-width="2" stroke-linecap="round"/>
-          <line x1="9" y1="21" x2="15" y2="21" stroke="#AC51FF" stroke-width="2" stroke-linecap="round"/>
+          <rect x="9" y="3" width="6" height="11" rx="3" ry="3" fill="none" stroke="#d4af37" stroke-width="2"/>
+          <path d="M5 10v1a7 7 0 0 0 14 0v-1" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="12" y1="18" x2="12" y2="21" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+          <line x1="9" y1="21" x2="15" y2="21" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
     </div>
