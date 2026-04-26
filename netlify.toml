@@ -22,6 +22,16 @@
   status = 200
 
 [[redirects]]
+  from = "/scam"
+  to = "/btc"
+  status = 301
+
+[[redirects]]
+  from = "/scam/*"
+  to = "/btc/:splat"
+  status = 301
+
+[[redirects]]
   from = "/btc"
   to = "/static/btc/index.html"
   status = 200
