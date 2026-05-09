@@ -407,6 +407,7 @@
         "key": "{{ group_key }}",
         "src": "{{ file.path }}",
         "thumbnailSrc": "/groups/bgs/{{ group_key }}.webp",
+        "homepageThumbnailSrc": "/groups/thumbs/{{ group_key }}.webp",
         "alt": "Group photo {{ group_index | plus: 1 }}",
         "position": "center 54%"
       }
@@ -818,6 +819,7 @@
             key: "stellar-consensus",
             src: "/groups/stellar-consensus.jpg",
             thumbnailSrc: "/groups/bgs/stellar-consensus.webp",
+            homepageThumbnailSrc: "/groups/thumbs/stellar-consensus.webp",
             alt: "Group photo 1",
             position: "center 54%"
           },
@@ -825,6 +827,7 @@
             key: "original-whydrs",
             src: "/groups/original-whydrs.png",
             thumbnailSrc: "/groups/bgs/original-whydrs.webp",
+            homepageThumbnailSrc: "/groups/thumbs/original-whydrs.webp",
             alt: "Group photo 2",
             position: "center 54%"
           }
@@ -852,10 +855,12 @@
           thumbnail.setAttribute("aria-label", "Open " + image.alt.toLowerCase());
 
           thumbnailImage.alt = image.alt;
+          thumbnailImage.width = 360;
+          thumbnailImage.height = 240;
           thumbnailImage.loading = "lazy";
           thumbnailImage.decoding = "async";
           thumbnailImage.fetchPriority = "low";
-          thumbnailImage.src = image.thumbnailSrc || image.src;
+          thumbnailImage.src = image.homepageThumbnailSrc || image.thumbnailSrc || image.src;
 
           thumbnail.appendChild(thumbnailImage);
           groupStrip.appendChild(thumbnail);
