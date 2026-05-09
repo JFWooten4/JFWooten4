@@ -400,7 +400,7 @@
   </div>
   <script type="application/json" id="group-image-data">
     [
-      {% assign group_keys = "stellar-consensus,original-whydrs" | split: "," %}
+      {% assign group_keys = "stellar-consensus,original-whydrs,marketing-consensus" | split: "," %}
       {% assign group_index = 0 %}
       {% for group_key in group_keys %}
       {% for file in site.static_files %}
@@ -832,6 +832,14 @@
             mediumSrc: "/groups/med/original-whydrs.webp",
             smallSrc: "/groups/small/original-whydrs.webp",
             alt: "Group photo 2",
+            position: "center 54%"
+          },
+          {
+            key: "marketing-consensus",
+            largeSrc: "/groups/large/marketing-consensus.jpg",
+            mediumSrc: "/groups/med/marketing-consensus.webp",
+            smallSrc: "/groups/small/marketing-consensus.webp",
+            alt: "Group photo 3",
             position: "center 54%"
           }
         ];
