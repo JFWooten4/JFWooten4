@@ -814,9 +814,11 @@
         thumbnail.setAttribute("data-lightbox-index", String(index));
         thumbnail.setAttribute("aria-label", "Open " + image.alt.toLowerCase());
 
-        thumbnailImage.src = image.thumbnailSrc || image.src;
         thumbnailImage.alt = image.alt;
         thumbnailImage.loading = "lazy";
+        thumbnailImage.decoding = "async";
+        thumbnailImage.fetchPriority = "low";
+        thumbnailImage.src = image.thumbnailSrc || image.src;
 
         thumbnail.appendChild(thumbnailImage);
         groupStrip.appendChild(thumbnail);
