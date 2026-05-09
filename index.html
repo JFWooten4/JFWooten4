@@ -201,6 +201,13 @@
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 900ms ease 160ms, transform 900ms ease 160ms;
+    }
+    .group-strip.is-ready {
+      opacity: 1;
+      transform: translateY(0);
     }
     .group-thumb {
       appearance: none;
@@ -895,7 +902,22 @@
         }
 
         thumbnailsRendered = true;
+        groupStrip.classList.remove("is-ready");
         groupStrip.innerHTML = "";
+        var loadedThumbnailCount = 0;
+
+        function markThumbnailLoaded(thumbnail) {
+          if (thumbnail.classList.contains("is-loaded")) {
+            return;
+          }
+
+          thumbnail.classList.add("is-loaded");
+          loadedThumbnailCount += 1;
+
+          if (loadedThumbnailCount >= images.length) {
+            groupStrip.classList.add("is-ready");
+          }
+        }
 
         images.forEach(function (image, index) {
           var thumbnail = document.createElement("button");
@@ -913,12 +935,15 @@
           thumbnailImage.decoding = "async";
           thumbnailImage.fetchPriority = "low";
           thumbnailImage.addEventListener("load", function () {
-            thumbnail.classList.add("is-loaded");
+            markThumbnailLoaded(thumbnail);
+          });
+          thumbnailImage.addEventListener("error", function () {
+            markThumbnailLoaded(thumbnail);
           });
           thumbnailImage.src = image.smallSrc || image.mediumSrc || image.largeSrc || image.src;
 
           if (thumbnailImage.complete) {
-            thumbnail.classList.add("is-loaded");
+            markThumbnailLoaded(thumbnail);
           }
 
           thumbnail.appendChild(thumbnailImage);
