@@ -205,7 +205,7 @@
     .group-thumb {
       appearance: none;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(19, 16, 25, 0.84);
       padding: 0;
       border-radius: 18px;
       overflow: hidden;
@@ -229,6 +229,11 @@
       height: 100%;
       display: block;
       object-fit: cover;
+      opacity: 0;
+      transition: opacity 260ms ease;
+    }
+    .group-thumb.is-loaded img {
+      opacity: 1;
     }
     .lightbox {
       position: fixed;
@@ -860,7 +865,14 @@
           thumbnailImage.loading = "lazy";
           thumbnailImage.decoding = "async";
           thumbnailImage.fetchPriority = "low";
+          thumbnailImage.addEventListener("load", function () {
+            thumbnail.classList.add("is-loaded");
+          });
           thumbnailImage.src = image.homepageThumbnailSrc || image.thumbnailSrc || image.src;
+
+          if (thumbnailImage.complete) {
+            thumbnail.classList.add("is-loaded");
+          }
 
           thumbnail.appendChild(thumbnailImage);
           groupStrip.appendChild(thumbnail);
