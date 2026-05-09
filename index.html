@@ -260,6 +260,30 @@
       max-height: min(72vh, 88vw);
       border-radius: 22px;
       box-shadow: 0 26px 80px rgba(0, 0, 0, 0.45);
+      transition: opacity 180ms ease, filter 180ms ease;
+    }
+    .lightbox.is-loading .lightbox-image {
+      filter: saturate(0.82);
+      opacity: 0.62;
+    }
+    .lightbox-loading {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(15, 12, 22, 0.82);
+      color: white;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.78rem;
+      line-height: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+    .lightbox.is-loading .lightbox-loading {
+      opacity: 1;
     }
     .lightbox-info {
       max-width: min(92vw, 720px);
@@ -693,6 +717,7 @@
     <div class="lightbox-frame">
       <button class="lightbox-nav prev" type="button" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
       <img class="lightbox-image" id="lightbox-image" alt="Expanded group photo">
+      <div class="lightbox-loading" id="lightbox-loading" aria-live="polite">Loading image...</div>
       <div class="lightbox-info" id="lightbox-info">Credit unavailable.</div>
       <button class="lightbox-nav next" type="button" id="lightbox-next" aria-label="Next image">&#8250;</button>
       <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close image">&times;</button>
@@ -758,6 +783,7 @@
       var groupStrip = document.getElementById("group-strip");
       var lightbox = document.getElementById("group-lightbox");
       var lightboxImage = document.getElementById("lightbox-image");
+      var lightboxLoading = document.getElementById("lightbox-loading");
       var lightboxInfo = document.getElementById("lightbox-info");
       var closeButton = document.getElementById("lightbox-close");
       var prevButton = document.getElementById("lightbox-prev");
@@ -765,8 +791,10 @@
       var images = [];
       var creditsByKey = {};
       var currentIndex = 0;
+      var imageLoadCache = {};
+      var activeImageRequest = 0;
 
-      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxInfo || !closeButton || !prevButton || !nextButton) {
+      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxInfo || !closeButton || !prevButton || !nextButton) {
         return;
       }
 
@@ -826,6 +854,39 @@
 
       var thumbnails = Array.prototype.slice.call(document.querySelectorAll("[data-lightbox-index]"));
 
+      function preloadFullImage(image) {
+        if (!image || !image.src) {
+          return Promise.resolve(null);
+        }
+
+        if (!imageLoadCache[image.src]) {
+          imageLoadCache[image.src] = new Promise(function (resolve) {
+            var fullImage = new Image();
+
+            fullImage.onload = function () {
+              if (typeof fullImage.decode === "function") {
+                fullImage.decode().catch(function () {}).then(function () {
+                  resolve(image);
+                });
+              } else {
+                resolve(image);
+              }
+            };
+            fullImage.onerror = function () {
+              resolve(null);
+            };
+            fullImage.src = image.src;
+          });
+        }
+
+        return imageLoadCache[image.src];
+      }
+
+      function preloadAdjacentImages(index) {
+        preloadFullImage(images[(index + 1) % images.length]);
+        preloadFullImage(images[(index - 1 + images.length) % images.length]);
+      }
+
       function showImage(index) {
         currentIndex = (index + images.length) % images.length;
 
@@ -833,9 +894,27 @@
           return;
         }
 
-        lightboxImage.src = images[currentIndex].src;
-        lightboxImage.alt = images[currentIndex].alt;
-        lightboxInfo.innerHTML = (creditsByKey[images[currentIndex].key] && creditsByKey[images[currentIndex].key].html) || "Credit unavailable.";
+        var image = images[currentIndex];
+        var requestId = activeImageRequest + 1;
+        activeImageRequest = requestId;
+
+        lightbox.classList.add("is-loading");
+        lightboxImage.alt = image.alt;
+        lightboxImage.src = image.thumbnailSrc || image.src;
+        lightboxInfo.innerHTML = (creditsByKey[image.key] && creditsByKey[image.key].html) || "Credit unavailable.";
+
+        preloadFullImage(image).then(function (loadedImage) {
+          if (requestId !== activeImageRequest) {
+            return;
+          }
+
+          if (loadedImage) {
+            lightboxImage.src = loadedImage.src;
+            preloadAdjacentImages(currentIndex);
+          }
+
+          lightbox.classList.remove("is-loading");
+        });
       }
 
       function openLightbox(index) {
@@ -847,6 +926,7 @@
 
       function closeLightbox() {
         lightbox.classList.remove("is-open");
+        lightbox.classList.remove("is-loading");
         lightbox.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
       }
