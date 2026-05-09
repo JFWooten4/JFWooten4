@@ -1192,7 +1192,10 @@
       var preloadDelayMs = 600;
       var imageCache = {};
 
-      function preload(imageEntry) {
+      function preload(imageEntry, options) {
+        var shouldDecode = !options || options.decode !== false;
+        var fetchPriority = options && options.fetchPriority;
+
         if (imageCache[imageEntry.src]) {
           return imageCache[imageEntry.src];
         }
@@ -1201,7 +1204,7 @@
           var image = new Image();
 
           function finish() {
-            if (typeof image.decode === "function") {
+            if (shouldDecode && typeof image.decode === "function") {
               image.decode().catch(function () {
                 return null;
               }).then(function () {
@@ -1211,6 +1214,10 @@
             }
 
             resolve(imageEntry);
+          }
+
+          if (fetchPriority) {
+            image.fetchPriority = fetchPriority;
           }
 
           image.onload = finish;
@@ -1260,7 +1267,7 @@
         }, swapDelayMs);
       }
 
-      preload(images[imageIndex]).then(function (initialImage) {
+      preload(images[imageIndex], { decode: false, fetchPriority: "high" }).then(function (initialImage) {
         applyBackground(activeLayer, initialImage);
         updateCredit(initialImage, false);
         markInitialBackgroundReady();
