@@ -290,18 +290,37 @@
     .lightbox.is-loading .lightbox-loading {
       opacity: 1;
     }
-    .lightbox-info {
+    .lightbox-meta {
       max-width: min(92vw, 720px);
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 10px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+    .lightbox-date,
+    .lightbox-info {
       padding: 12px 14px;
       border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 16px;
       background: rgba(15, 12, 22, 0.82);
       color: #f4effa;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 0.84rem;
-      line-height: 1.45;
-      text-align: left;
       box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+    }
+    .lightbox-date {
+      flex: 0 0 auto;
+      border-color: rgba(253, 218, 36, 0.7);
+      background: var(--accent);
+      color: #171018;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .lightbox-info {
+      flex: 1 1 auto;
+      text-align: left;
     }
     .lightbox-info a {
       color: var(--accent);
@@ -363,9 +382,19 @@
       .lightbox-image {
         max-height: min(64vh, 92vw);
       }
+      .lightbox-meta {
+        max-width: 92vw;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 0.78rem;
+      }
+      .lightbox-date,
       .lightbox-info {
         font-size: 0.78rem;
         padding: 10px 12px;
+      }
+      .lightbox-info {
+        flex-basis: 100%;
       }
       .lightbox-nav.prev {
         left: 8px;
@@ -425,13 +454,16 @@
   <script type="application/json" id="group-credit-data">
     {
       "stellar-consensus": {
-        "html": "May 29, 2024: <a href=\"https://x.com/JFWooten4/status/1796309242116239745\" target=\"_blank\" rel=\"noreferrer\">was taken</a> at Stellar's hacker house for <a href=\"https://stellar.org/community/events/consensus\" target=\"_blank\" rel=\"noreferrer\">this</a> (<a href=\"https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772\" target=\"_blank\" rel=\"noreferrer\">src</a>)"
+        "date": "29 May 2024",
+        "html": "<a href=\"https://x.com/JFWooten4/status/1796309242116239745\" target=\"_blank\" rel=\"noreferrer\">was taken</a> at Stellar's hacker house for <a href=\"https://stellar.org/community/events/consensus\" target=\"_blank\" rel=\"noreferrer\">this</a> (<a href=\"https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772\" target=\"_blank\" rel=\"noreferrer\">src</a>)"
       },
       "original-whydrs": {
-        "html": "Saturday, February 21, 2026: <a href=\"https://x.com/JFWooten4/status/2030560283152826640\" target=\"_blank\" rel=\"noreferrer\">taken</a> at the presentation pub we announced <a href=\"https://x.com/whydrs/status/2013993995681067081\" target=\"_blank\" rel=\"noreferrer\">here</a> (my camera)"
+        "date": "21 Feb 2026",
+        "html": "<a href=\"https://x.com/JFWooten4/status/2030560283152826640\" target=\"_blank\" rel=\"noreferrer\">taken</a> at the presentation pub we announced <a href=\"https://x.com/whydrs/status/2013993995681067081\" target=\"_blank\" rel=\"noreferrer\">here</a> (my camera)"
       },
       "marketing-consensus": {
-        "html": "Monday, May 4, 2026: <a href=\"https://x.com/StellarEmir/status/2051336376491102227?s=20\" target=\"_blank\" rel=\"noreferrer\">taken</a> at <a href=\"https://luma.com/sfbkbfqb\" target=\"_blank\" rel=\"noreferrer\">this event</a> for <a href=\"https://stellar.org/community/events/consensus-miami\" target=\"_blank\" rel=\"noreferrer\">Consensus Miami</a>"
+        "date": "4 May 2026",
+        "html": "<a href=\"https://x.com/StellarEmir/status/2051336376491102227?s=20\" target=\"_blank\" rel=\"noreferrer\">taken</a> at <a href=\"https://luma.com/sfbkbfqb\" target=\"_blank\" rel=\"noreferrer\">this event</a> for <a href=\"https://stellar.org/community/events/consensus-miami\" target=\"_blank\" rel=\"noreferrer\">Consensus Miami</a>"
       }
     }
   </script>
@@ -725,7 +757,10 @@
       <button class="lightbox-nav prev" type="button" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
       <img class="lightbox-image" id="lightbox-image" alt="Expanded group photo">
       <div class="lightbox-loading" id="lightbox-loading" aria-live="polite">Loading full-resolution image...</div>
-      <div class="lightbox-info" id="lightbox-info">Credit unavailable.</div>
+      <div class="lightbox-meta">
+        <div class="lightbox-info" id="lightbox-info">Credit unavailable.</div>
+        <div class="lightbox-date" id="lightbox-date">Date unavailable</div>
+      </div>
       <button class="lightbox-nav next" type="button" id="lightbox-next" aria-label="Next image">&#8250;</button>
       <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close image">&times;</button>
     </div>
@@ -791,6 +826,7 @@
       var lightbox = document.getElementById("group-lightbox");
       var lightboxImage = document.getElementById("lightbox-image");
       var lightboxLoading = document.getElementById("lightbox-loading");
+      var lightboxDate = document.getElementById("lightbox-date");
       var lightboxInfo = document.getElementById("lightbox-info");
       var closeButton = document.getElementById("lightbox-close");
       var prevButton = document.getElementById("lightbox-prev");
@@ -803,7 +839,7 @@
       var activeImageRequest = 0;
       var blankImageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
-      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxInfo || !closeButton || !prevButton || !nextButton) {
+      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxDate || !lightboxInfo || !closeButton || !prevButton || !nextButton) {
         return;
       }
 
@@ -1010,6 +1046,7 @@
         lightboxImage.alt = image.alt;
         lightboxImage.src = previewSources[0] || blankImageSrc;
         displayedLevel = previewSources[0] ? 1 : 0;
+        lightboxDate.textContent = (creditsByKey[image.key] && creditsByKey[image.key].date) || "Date unavailable";
         lightboxInfo.innerHTML = (creditsByKey[image.key] && creditsByKey[image.key].html) || "Credit unavailable.";
 
         previewSources.forEach(function (previewSrc, index) {
