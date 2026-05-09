@@ -405,21 +405,19 @@
       {% for group_key in group_keys %}
       {% for file in site.static_files %}
       {% assign file_key = file.name | split: '.' | first %}
-      {% unless file.path contains '/groups/bgs/' %}
-      {% if file.path contains '/groups/' and file_key == group_key %}
+      {% if file.path contains '/groups/large/' and file_key == group_key %}
       {% if group_index > 0 %},{% endif %}
       {
         "key": "{{ group_key }}",
-        "src": "{{ file.path }}",
-        "thumbnailSrc": "/groups/bgs/{{ group_key }}.webp",
-        "homepageThumbnailSrc": "/groups/thumbs/{{ group_key }}.webp",
+        "largeSrc": "{{ file.path }}",
+        "mediumSrc": "/groups/med/{{ group_key }}.webp",
+        "smallSrc": "/groups/small/{{ group_key }}.webp",
         "alt": "Group photo {{ group_index | plus: 1 }}",
         "position": "center 54%"
       }
       {% assign group_index = group_index | plus: 1 %}
       {% break %}
       {% endif %}
-      {% endunless %}
       {% endfor %}
       {% endfor %}
     ]
@@ -822,17 +820,17 @@
         images = [
           {
             key: "stellar-consensus",
-            src: "/groups/stellar-consensus.jpg",
-            thumbnailSrc: "/groups/bgs/stellar-consensus.webp",
-            homepageThumbnailSrc: "/groups/thumbs/stellar-consensus.webp",
+            largeSrc: "/groups/large/stellar-consensus.jpg",
+            mediumSrc: "/groups/med/stellar-consensus.webp",
+            smallSrc: "/groups/small/stellar-consensus.webp",
             alt: "Group photo 1",
             position: "center 54%"
           },
           {
             key: "original-whydrs",
-            src: "/groups/original-whydrs.png",
-            thumbnailSrc: "/groups/bgs/original-whydrs.webp",
-            homepageThumbnailSrc: "/groups/thumbs/original-whydrs.webp",
+            largeSrc: "/groups/large/original-whydrs.png",
+            mediumSrc: "/groups/med/original-whydrs.webp",
+            smallSrc: "/groups/small/original-whydrs.webp",
             alt: "Group photo 2",
             position: "center 54%"
           }
@@ -868,7 +866,7 @@
           thumbnailImage.addEventListener("load", function () {
             thumbnail.classList.add("is-loaded");
           });
-          thumbnailImage.src = image.homepageThumbnailSrc || image.thumbnailSrc || image.src;
+          thumbnailImage.src = image.smallSrc || image.mediumSrc || image.largeSrc || image.src;
 
           if (thumbnailImage.complete) {
             thumbnail.classList.add("is-loaded");
@@ -887,31 +885,33 @@
       }
 
       function preloadFullImage(image) {
-        if (!image || !image.src) {
+        var fullSrc = image && (image.largeSrc || image.src);
+
+        if (!fullSrc) {
           return Promise.resolve(null);
         }
 
-        if (!imageLoadCache[image.src]) {
-          imageLoadCache[image.src] = new Promise(function (resolve) {
+        if (!imageLoadCache[fullSrc]) {
+          imageLoadCache[fullSrc] = new Promise(function (resolve) {
             var fullImage = new Image();
 
             fullImage.onload = function () {
               if (typeof fullImage.decode === "function") {
                 fullImage.decode().catch(function () {}).then(function () {
-                  resolve(image);
+                  resolve(fullSrc);
                 });
               } else {
-                resolve(image);
+                resolve(fullSrc);
               }
             };
             fullImage.onerror = function () {
               resolve(null);
             };
-            fullImage.src = image.src;
+            fullImage.src = fullSrc;
           });
         }
 
-        return imageLoadCache[image.src];
+        return imageLoadCache[fullSrc];
       }
 
       function preloadAdjacentImages(index) {
@@ -932,16 +932,16 @@
 
         lightbox.classList.add("is-loading");
         lightboxImage.alt = image.alt;
-        lightboxImage.src = image.thumbnailSrc || image.src;
+        lightboxImage.src = image.mediumSrc || image.smallSrc || image.largeSrc || image.src;
         lightboxInfo.innerHTML = (creditsByKey[image.key] && creditsByKey[image.key].html) || "Credit unavailable.";
 
-        preloadFullImage(image).then(function (loadedImage) {
+        preloadFullImage(image).then(function (loadedSrc) {
           if (requestId !== activeImageRequest) {
             return;
           }
 
-          if (loadedImage) {
-            lightboxImage.src = loadedImage.src;
+          if (loadedSrc) {
+            lightboxImage.src = loadedSrc;
             preloadAdjacentImages(currentIndex);
           }
 
