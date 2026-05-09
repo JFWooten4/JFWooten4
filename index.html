@@ -831,28 +831,43 @@
         ];
       }
 
-      groupStrip.innerHTML = "";
+      var thumbnails = [];
+      var thumbnailsRendered = false;
 
-      images.forEach(function (image, index) {
-        var thumbnail = document.createElement("button");
-        var thumbnailImage = document.createElement("img");
+      function renderThumbnails() {
+        if (thumbnailsRendered) {
+          return;
+        }
 
-        thumbnail.className = "group-thumb";
-        thumbnail.type = "button";
-        thumbnail.setAttribute("data-lightbox-index", String(index));
-        thumbnail.setAttribute("aria-label", "Open " + image.alt.toLowerCase());
+        thumbnailsRendered = true;
+        groupStrip.innerHTML = "";
 
-        thumbnailImage.alt = image.alt;
-        thumbnailImage.loading = "lazy";
-        thumbnailImage.decoding = "async";
-        thumbnailImage.fetchPriority = "low";
-        thumbnailImage.src = image.thumbnailSrc || image.src;
+        images.forEach(function (image, index) {
+          var thumbnail = document.createElement("button");
+          var thumbnailImage = document.createElement("img");
 
-        thumbnail.appendChild(thumbnailImage);
-        groupStrip.appendChild(thumbnail);
-      });
+          thumbnail.className = "group-thumb";
+          thumbnail.type = "button";
+          thumbnail.setAttribute("data-lightbox-index", String(index));
+          thumbnail.setAttribute("aria-label", "Open " + image.alt.toLowerCase());
 
-      var thumbnails = Array.prototype.slice.call(document.querySelectorAll("[data-lightbox-index]"));
+          thumbnailImage.alt = image.alt;
+          thumbnailImage.loading = "lazy";
+          thumbnailImage.decoding = "async";
+          thumbnailImage.fetchPriority = "low";
+          thumbnailImage.src = image.thumbnailSrc || image.src;
+
+          thumbnail.appendChild(thumbnailImage);
+          groupStrip.appendChild(thumbnail);
+        });
+
+        thumbnails = Array.prototype.slice.call(document.querySelectorAll("[data-lightbox-index]"));
+        thumbnails.forEach(function (thumbnail, index) {
+          thumbnail.addEventListener("click", function () {
+            openLightbox(index);
+          });
+        });
+      }
 
       function preloadFullImage(image) {
         if (!image || !image.src) {
@@ -931,11 +946,12 @@
         document.body.style.overflow = "";
       }
 
-      thumbnails.forEach(function (thumbnail, index) {
-        thumbnail.addEventListener("click", function () {
-          openLightbox(index);
-        });
-      });
+      if (window.homepageInitialBackgroundReady) {
+        renderThumbnails();
+      } else {
+        window.addEventListener("homepage:initial-background-ready", renderThumbnails, { once: true });
+        window.setTimeout(renderThumbnails, 5000);
+      }
 
       prevButton.addEventListener("click", function () {
         showImage(currentIndex - 1);
@@ -1082,7 +1098,13 @@
       var layerA = document.getElementById("bg-layer-a");
       var layerB = document.getElementById("bg-layer-b");
 
+      function markInitialBackgroundReady() {
+        window.homepageInitialBackgroundReady = true;
+        window.dispatchEvent(new Event("homepage:initial-background-ready"));
+      }
+
       if (!layerA || !layerB || !images.length) {
+        markInitialBackgroundReady();
         return;
       }
 
@@ -1135,13 +1157,6 @@
         layer.style.backgroundPosition = imageEntry.position;
       }
 
-      applyBackground(activeLayer, images[imageIndex]);
-      updateCredit(images[imageIndex], false);
-
-      if (images.length < 2) {
-        return;
-      }
-
       function scheduleNextFade() {
         window.setTimeout(function () {
           var nextIndex = (imageIndex + 1) % images.length;
@@ -1170,15 +1185,25 @@
         }, swapDelayMs);
       }
 
-      window.setTimeout(function () {
-        images.forEach(function (imageEntry, index) {
-          if (index !== imageIndex) {
-            preload(imageEntry);
-          }
-        });
-      }, preloadDelayMs);
+      preload(images[imageIndex]).then(function (initialImage) {
+        applyBackground(activeLayer, initialImage);
+        updateCredit(initialImage, false);
+        markInitialBackgroundReady();
 
-      scheduleNextFade();
+        if (images.length < 2) {
+          return;
+        }
+
+        window.setTimeout(function () {
+          images.forEach(function (imageEntry, index) {
+            if (index !== imageIndex) {
+              preload(imageEntry);
+            }
+          });
+        }, preloadDelayMs);
+
+        scheduleNextFade();
+      });
     })();
   </script>
 </body>
