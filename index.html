@@ -897,7 +897,7 @@
         });
       }
 
-      function loadImageSrc(src, cache) {
+      function loadImageSrc(src, cache, options) {
         if (!src) {
           return Promise.resolve(null);
         }
@@ -905,23 +905,37 @@
         if (!cache[src]) {
           cache[src] = new Promise(function (resolve) {
             var loadingImage = new Image();
+            var isFinished = false;
 
-            loadingImage.onload = function () {
-              if (typeof loadingImage.decode === "function") {
+            function finish() {
+              if (isFinished) {
+                return;
+              }
+
+              isFinished = true;
+
+              if (options && options.decode && typeof loadingImage.decode === "function") {
                 loadingImage.decode().catch(function () {}).then(function () {
                   resolve(src);
                 });
               } else {
                 resolve(src);
               }
-            };
+            }
+
+            if (options && options.fetchPriority) {
+              loadingImage.fetchPriority = options.fetchPriority;
+            }
+
+            loadingImage.decoding = "async";
+            loadingImage.onload = finish;
             loadingImage.onerror = function () {
               resolve(null);
             };
             loadingImage.src = src;
 
             if (loadingImage.complete) {
-              loadingImage.onload();
+              finish();
             }
           });
         }
@@ -945,21 +959,21 @@
         return sources;
       }
 
-      function preloadPreviewImage(src) {
-        return loadImageSrc(src, previewLoadCache);
+      function preloadPreviewImage(src, options) {
+        return loadImageSrc(src, previewLoadCache, options);
       }
 
-      function preloadFullImage(image) {
+      function preloadFullImage(image, options) {
         var fullSrc = image && (image.largeSrc || image.src);
 
         if (!fullSrc) {
           return Promise.resolve(null);
         }
 
-        loadImageSrc(image.mediumSrc || image.smallSrc, previewLoadCache);
+        loadImageSrc(image.mediumSrc || image.smallSrc, previewLoadCache, { fetchPriority: "low" });
 
         if (!imageLoadCache[fullSrc]) {
-          imageLoadCache[fullSrc] = loadImageSrc(fullSrc, {});
+          imageLoadCache[fullSrc] = loadImageSrc(fullSrc, {}, options);
         }
 
         return imageLoadCache[fullSrc];
@@ -979,32 +993,38 @@
 
         var image = images[currentIndex];
         var requestId = activeImageRequest + 1;
+        var displayedLevel = 0;
+        var previewSources = getPreviewSources(image);
         activeImageRequest = requestId;
+
+        function displayImage(src, level) {
+          if (requestId !== activeImageRequest || !src || level < displayedLevel) {
+            return;
+          }
+
+          displayedLevel = level;
+          lightboxImage.src = src;
+        }
 
         lightbox.classList.add("is-loading");
         lightboxImage.alt = image.alt;
-        lightboxImage.src = blankImageSrc;
+        lightboxImage.src = previewSources[0] || blankImageSrc;
+        displayedLevel = previewSources[0] ? 1 : 0;
         lightboxInfo.innerHTML = (creditsByKey[image.key] && creditsByKey[image.key].html) || "Credit unavailable.";
 
-        getPreviewSources(image).forEach(function (previewSrc) {
-          preloadPreviewImage(previewSrc).then(function (loadedPreviewSrc) {
-            if (requestId !== activeImageRequest || !loadedPreviewSrc) {
-              return;
-            }
-
-            lightboxImage.src = loadedPreviewSrc;
+        previewSources.forEach(function (previewSrc, index) {
+          preloadPreviewImage(previewSrc, { fetchPriority: "high" }).then(function (loadedPreviewSrc) {
+            displayImage(loadedPreviewSrc, index + 1);
           });
         });
 
-        preloadFullImage(image).then(function (loadedSrc) {
+        preloadFullImage(image, { fetchPriority: "high" }).then(function (loadedSrc) {
           if (requestId !== activeImageRequest) {
             return;
           }
 
-          if (loadedSrc) {
-            lightboxImage.src = loadedSrc;
-            preloadAdjacentImages(currentIndex);
-          }
+          displayImage(loadedSrc, previewSources.length + 1);
+          preloadAdjacentImages(currentIndex);
 
           lightbox.classList.remove("is-loading");
         });
