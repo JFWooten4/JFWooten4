@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Wooten.link Redirect</title>
+  <meta name="description" content="Wooten.link redirect page. JavaScript redirects known shortlinks; automated clients may inspect the redirect map in this document.">
+  <meta name="robots" content="noindex, follow">
   <style>
     html, body {
       background-color: black;
@@ -10,8 +12,10 @@
   </style>
 </head>
 <body>
-  <script id="all-redirects">
+  <script>
     const LATEST_COMMENT = "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf";
+  </script>
+  <script>
     const CHIEF_AMBITION = "https://github.com/WhyDRS/SEC-Comments/pull/25#discussion_r1947830692";
     window.LINKS = {
       "_a": null,
@@ -306,7 +310,8 @@
     };
   </script>
   <script>
-    var path = window.location.pathname.split("/")[1].toLowerCase();
+    var path = window.location.pathname.split("/").filter(Boolean)[0];
+    path = path ? decodeURIComponent(path).toLowerCase() : path;
     var redirects = window.LINKS || {};
     var redirect = redirects[path] || "https://wooten.link/search";
     window.location.replace(redirect);
