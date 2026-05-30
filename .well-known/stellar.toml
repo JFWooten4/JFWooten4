@@ -1,0 +1,16 @@
+VERSION = "2.7.0"
+NETWORK_PASSPHRASE = "Public Global Stellar Network ; September 2015"
+ACCOUNTS = ["GC5TUPFLOXCINDYHQVYYLLVYP6GKHT65ELB2Q2WLFTGN63YYIXPQTDFJ"]
+
+[DOCUMENTATION]
+ORG_NAME = "John Wooten"
+ORG_URL = "https://wooten.link"
+ORG_DESCRIPTION = "Personal site for John Wooten."
+ORG_GITHUB = "JFWooten4"
+
+[[VALIDATORS]]
+ALIAS = "wooten-local"
+DISPLAY_NAME = "John Wooten Local Validator"
+PUBLIC_KEY = "G..."
+HOST = "wooten.link:11625"
+HISTORY = "https://wooten.link/stellar-history"
