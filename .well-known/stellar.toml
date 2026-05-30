@@ -3,10 +3,16 @@ NETWORK_PASSPHRASE = "Public Global Stellar Network ; September 2015"
 ACCOUNTS = ["GC5TUPFLOXCINDYHQVYYLLVYP6GKHT65ELB2Q2WLFTGN63YYIXPQTDFJ"]
 
 [DOCUMENTATION]
-ORG_NAME = "John Wooten"
-ORG_URL = "https://wooten.link"
-ORG_DESCRIPTION = "Personal site for John Wooten."
-ORG_GITHUB = "JFWooten4"
+ORG_NAME = "john.xlm"
+ORG_URL = "https://john.xlm.sh"
+ORG_DESCRIPTION = "John is a passionate advocate for building an investor-centric market that frees stocks from central bankers. 🕊"
+
+[[PRINCIPALS]]
+name = "John Wooten"
+github = "JFWooten4"
+twitter = "JFWooten4"
+id_photo_hash = "0dce43292a7dd2c6ef021cca9f84330ceeec34e8587172453bc2b05f1bd13edd"
+verification_photo_hash = "a3b5109c1afb0d7ce22780fc5a656bda0f24b63d4bbddcff35f44f0b8e62ff48"
 
 [[VALIDATORS]]
 ALIAS = "wooten-local"
