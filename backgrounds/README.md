@@ -1,16 +1,3 @@
-Practically none of this was made by me. I have no rights to the art. The addition commit tries its best to attribute the original source.
-
-I'm inspired to create this because:
-
-- I've lost art sources in [past work](https://youtu.be/Myumx8wLo6Y),
-- I believe my local desktop environment reflects material internal ideas,[^a] and
-- I'd like to disclose the present state of my psyche, as [attempted](https://github.com/JFWooten4/dreams).
-
-If you're an artist, please don't hate me for posting here! 💜 Generally I do not like duplicating past mental states with the same backgrounds, since innovation requires constant reinvention. 🧠 I hope everyone [discovers](https://wooten.link/lead) unique inspirations, art, and ethos. 🚀
-
-
-[^a]: For instance, I just had it as the [mission](../banners/mission.png) for the longest time. While that's my distilled public-facing goal and an introduction to my ideals, it is sorta boring lol. And that's perfectly fine, since financial markets are supposed to be boring (_see_ BT logo colors)!
-
 ## Credits
 
 - `writing-TAR1` comes from an unknown artist ([src](https://www.peakpx.com/en/hd-wallpaper-desktop-gwurm))
