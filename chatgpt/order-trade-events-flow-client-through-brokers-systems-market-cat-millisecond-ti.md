@@ -17,8 +17,65 @@ Order and trade events flow from the client through the broker’s systems to th
 
 The chart below illustrates a stylized sub-second timeline of an equity order flowing through a broker’s OMS/EMS, execution, trade reporting, and into CAT. (Time values are indicative; actual systems may operate in microseconds.)
 
-```text
-sequenceDiagram participant Client participant Broker as Broker/OMS participant Routing as Routing Desk participant Exchange participant TRF as Trade Reporting Facility participant CAT as CAT System Client->>Broker: New Order Single (Buy 100@XYZ) Note right of Broker: 0 ms – Order received; assign orderKeyDate, orderID【37†L72-L77】 (eventTimestamp) Broker-->>Broker: MENO (New Order) event reported to CAT alt Internal Route to another desk Broker->>Routing: Internally route order (with new routedOrderID)【37†L119-L124】 Routing-->>Broker: Order accepted at desk (MEOR/MEOA events) end alt External Route to market Broker->>Exchange: Send order (via FIX/Smart-Router) Note right of Exchange: ~1-5 ms – Exchange receives order Exchange-->>Broker: ACK (if electronic venue) Broker-->>Broker: MEOR (Order Route) event (with senderIMID, exchange ID, session, routedOrderID)【37†L119-L124】 Broker-->>Broker: MEOA (Order Accepted) by exchange end --- Execution --- alt Execution on exchange Note right of Exchange: ~5-10 µs – Order matches and trades Exchange->>TRF: Off-exchange print (e.g. OTC trade report) or automatically logs if on-exchange Exchange->>Broker: Execution report (with price, qty, tradeID/ExecID) else Internal match/cross Note right of Broker: ~1-5 ms – Internal execution (no exchange) end Note right of Broker: t ≈ 10+ ms – Record execution internally; assign tradeID (firm’s own) Note over Broker: Trade report submitted to TRF/ADF/ORF (if required) with BranchSeq/ComplianceID alt Trade reported Off-exchange Broker->>TRF: TRF Trade Capture (e.g. FIX) including branchSeq/ComplianceID TRF-->>Broker: ACK (returns branchSeq number if firm-generated) Note right of Broker: Branch/Seq received (from TRF)【17†L86-L88】【51†L11146-L11154】 else Trade on Exchange floor Note right of Exchange: Exchange prints trade; Exchange broadcasts a tradeID (e.g. *tradeID* or *MOOTLINK*) Note right of CAT: Exchange sends Order/Trade (OT/EOT) event to CAT with *tradeID*【24†L4338-L4341】 end --- Reporting to CAT --- Broker->>CAT: MEOT (Order Trade) event reported to CAT (up to T+1 by 8 AM). Note over Broker: CAT Trade event includes: orderID, exec price/qty, **tapeTradeID**=<BranchSeq/ComplID or exch TradeID>【51†L11146-L11154】【24†L4338-L4341】. par CAT Processing (T+1) CAT->>CAT: Link MEOT to TRF/Exchange record via tapeTradeID and IMIDs【33†L4046-L4055】【28†L3980-L3988】. alt Mismatch or missing tapeTradeID Note right of CAT: *Linkage Error* CAT-->>Broker: Error 5004 (if TRF link failed) or 6021 (if exchange link failed)【13†L26716-L26720】【15†L26840-L26844】. else Matched successfully Note right of CAT: Trade linked successfully (no error). end end
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Broker as Broker/OMS
+    participant Routing as Routing Desk
+    participant Exchange
+    participant TRF as Trade Reporting Facility
+    participant CAT as CAT System
+
+    Client->>Broker: New Order Single (Buy 100 XYZ)
+    Note right of Broker: 0 ms order received assign orderKeyDate and orderID
+    Broker-->>Broker: MENO New Order event reported to CAT
+
+    alt Internal route to another desk
+        Broker->>Routing: Internally route order with routedOrderID
+        Routing-->>Broker: Order accepted at desk (MEOR/MEOA)
+    else External route to market
+        Broker->>Exchange: Send order via FIX or smart router
+        Note right of Exchange: 1-5 ms exchange receives order
+        Exchange-->>Broker: ACK
+        Broker-->>Broker: MEOR Order Route event
+        Broker-->>Broker: MEOA Order Accepted by exchange
+    end
+
+    Note over Broker,Exchange: Execution
+
+    alt Execution on exchange
+        Note right of Exchange: 5-10 microseconds order matches and trades
+        Exchange->>TRF: Off-exchange print or exchange trade log
+        Exchange->>Broker: Execution report with price, quantity, and tradeID/ExecID
+    else Internal match or cross
+        Note right of Broker: 1-5 ms internal execution
+    end
+
+    Note right of Broker: Record execution internally and assign firm tradeID
+    Note over Broker: Submit trade report to TRF/ADF/ORF when required
+
+    alt Trade reported off-exchange
+        Broker->>TRF: Trade Capture report with BranchSeq/ComplianceID
+        TRF-->>Broker: ACK with branch sequence number when firm-generated
+        Note right of Broker: Branch/Seq received from TRF
+    else Trade on exchange floor
+        Note right of Exchange: Exchange prints trade and broadcasts tradeID or MOOTLINK
+        Note right of CAT: Exchange sends OT/EOT event to CAT with tradeID
+    end
+
+    Broker->>CAT: MEOT Order Trade event by T+1 8 AM
+    Note over Broker: CAT Trade includes orderID, exec details, and tapeTradeID
+
+    par CAT processing on T+1
+        CAT->>CAT: Link MEOT to TRF or exchange record via tapeTradeID and IMIDs
+    and Linkage feedback
+        alt Mismatch or missing tapeTradeID
+            Note right of CAT: Linkage error
+            CAT-->>Broker: Error 5004 for TRF link or 6021 for exchange link
+        else Matched successfully
+            Note right of CAT: Trade linked successfully
+        end
+    end
 ```
 
 Each CAT event above has an associated timestamp. For example, when the broker reports the new order, the orderKeyDate field in the MENO event is set to the current date/time (e.g. "20190419T092316.123456789")【47†L3335-L3339】. All reported events use Coordinated Universal Time with nanosecond precision. The orderID (assigned by the broker’s OMS) must be unique within the tuple (orderKeyDate, CATReporterIMID, symbol)【37†L72-L77】. Routing events (MEOR/MEOA) reuse that key and add the routedOrderID for linkage【37†L119-L124】. After execution, the Order Trade (MEOT) event includes the internal tradeID and the external linkage ID in the tapeTradeID field. If the execution was off-exchange, that is the TRF’s Branch-Seq or Compliance ID; if on-exchange, it is the exchange’s tradeID (e.g. MOOTLINK)【51†L11146-L11154】【26†L4375-L4382】.
