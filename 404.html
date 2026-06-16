@@ -325,8 +325,38 @@
     var path = window.location.pathname.split("/").filter(Boolean)[0];
     path = path ? decodeURIComponent(path).toLowerCase() : path;
     var redirects = window.LINKS || {};
-    var redirect = redirects[path] || "https://wooten.link/search";
-    window.location.replace(redirect);
+    var fallback = "https://wooten.link/search";
+
+    function parseMarkdownRedirects(markdown) {
+      return markdown.split(/\r?\n/).reduce(function(parsed, line) {
+        var match = line.match(/^\s*\[(_[a-z0-9][a-z0-9-]*)\]:\s*(?:<([^>]+)>|(\S+))/i);
+
+        if (match) {
+          parsed[match[1].toLowerCase()] = match[2] || match[3];
+        }
+
+        return parsed;
+      }, {});
+    }
+
+    function redirectTo(url) {
+      window.location.replace(url || fallback);
+    }
+
+    if (path && path.charAt(0) === "_") {
+      fetch("/var/law.md", { cache: "no-cache" })
+        .then(function(response) {
+          return response.ok ? response.text() : "";
+        })
+        .then(function(markdown) {
+          redirectTo(parseMarkdownRedirects(markdown)[path]);
+        })
+        .catch(function() {
+          redirectTo();
+        });
+    } else {
+      redirectTo(redirects[path]);
+    }
   </script>
 </body>
 </html>
