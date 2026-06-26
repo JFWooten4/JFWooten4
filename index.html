@@ -185,6 +185,60 @@
       border-radius: 50%;
       display: block;
     }
+    .banner-album {
+      width: min(760px, calc(100vw - 42px));
+      margin: 0 auto 18px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .banner-rail {
+      display: flex;
+      gap: 8px;
+      min-height: 62px;
+      padding: 6px 0 10px;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scrollbar-width: thin;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 700ms ease 180ms, transform 700ms ease 180ms;
+      mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    }
+    .banner-rail.is-ready {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .banner-thumb {
+      appearance: none;
+      flex: 0 0 156px;
+      width: 156px;
+      height: 52px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      background: rgba(19, 16, 25, 0.84);
+      padding: 0;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+    .banner-thumb:hover,
+    .banner-thumb:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(253, 218, 36, 0.55);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+      outline: none;
+    }
+    .banner-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+    .banner-thumb.is-loaded img {
+      opacity: 1;
+    }
     .group-album {
       margin-top: 84px;
     }
@@ -386,6 +440,14 @@
         width: 122px;
         height: 82px;
       }
+      .banner-album {
+        width: min(100vw - 28px, 760px);
+      }
+      .banner-thumb {
+        flex-basis: 132px;
+        width: 132px;
+        height: 44px;
+      }
       .lightbox {
         padding: 18px;
       }
@@ -479,6 +541,26 @@
         "html": "<a href=\"https://x.com/StellarEmir/status/2051336376491102227\" target=\"_blank\" rel=\"noreferrer\">taken</a> at <a href=\"https://luma.com/sfbkbfqb\" target=\"_blank\" rel=\"noreferrer\">this event</a> for <a href=\"https://stellar.org/community/events/consensus-miami\" target=\"_blank\" rel=\"noreferrer\">Consensus Miami</a> (<a href=\"https://x.com/JFWooten4/status/2054318783573999799\" target=\"_blank\" rel=\"noreferrer\">src</a>)"
       }
     }
+  </script>
+  <script type="application/json" id="banner-image-data">
+    [
+      {% assign banner_index = 0 %}
+      {% for file in site.static_files %}
+      {% assign ext = file.extname | downcase %}
+      {% if file.path contains '/banners/' and ext != ".md" %}
+      {% if ext == ".png" or ext == ".jpg" or ext == ".jpeg" or ext == ".webp" or ext == ".gif" %}
+      {% assign banner_key = file.name | split: "." | first %}
+      {% if banner_index > 0 %},{% endif %}
+      {
+        "key": "{{ banner_key }}",
+        "src": "{{ file.path }}",
+        "alt": "{{ banner_key | replace: '-', ' ' }} banner"
+      }
+      {% assign banner_index = banner_index | plus: 1 %}
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+    ]
   </script>
   <script>
     window.homepageBackgroundImages = [
@@ -717,6 +799,10 @@
   </script>
 
   <div class="content">
+    <div class="banner-album">
+      <div class="banner-rail" id="banner-rail"></div>
+    </div>
+
     <h2><i style="font-family: 'Courier New', monospace;">✨ John Wooten, asset manager</i></h2>
     
     <div class="social-links">
@@ -776,6 +862,18 @@
       <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close image">&times;</button>
     </div>
   </div>
+  <div class="lightbox" id="banner-lightbox" aria-hidden="true">
+    <div class="lightbox-frame">
+      <button class="lightbox-nav prev" type="button" id="banner-lightbox-prev" aria-label="Previous banner">&#8249;</button>
+      <img class="lightbox-image" id="banner-lightbox-image" alt="Expanded banner">
+      <div class="lightbox-meta">
+        <div class="lightbox-info" id="banner-lightbox-info">Banner unavailable.</div>
+        <div class="lightbox-date" id="banner-lightbox-count">Banner</div>
+      </div>
+      <button class="lightbox-nav next" type="button" id="banner-lightbox-next" aria-label="Next banner">&#8250;</button>
+      <button class="lightbox-close" type="button" id="banner-lightbox-close" aria-label="Close banner">&times;</button>
+    </div>
+  </div>
   <script>
     (function () {
       var sponsorList = document.getElementById("sponsor-list");
@@ -828,6 +926,241 @@
           });
         })
         .catch(function () {});
+    })();
+
+    (function () {
+      var bannerData = document.getElementById("banner-image-data");
+      var bannerRail = document.getElementById("banner-rail");
+      var lightbox = document.getElementById("banner-lightbox");
+      var lightboxImage = document.getElementById("banner-lightbox-image");
+      var lightboxInfo = document.getElementById("banner-lightbox-info");
+      var lightboxCount = document.getElementById("banner-lightbox-count");
+      var closeButton = document.getElementById("banner-lightbox-close");
+      var prevButton = document.getElementById("banner-lightbox-prev");
+      var nextButton = document.getElementById("banner-lightbox-next");
+      var banners = [];
+      var currentIndex = 0;
+      var railPaused = false;
+      var lastAnimationTime = 0;
+      var titleByKey = {
+        "buffett": "Buffett Receipt",
+        "burning-outside": "Burning Outside",
+        "climbing-pheonix": "Climbing Phoenix",
+        "consensys": "Consensus Floor",
+        "dash-confident": "Confident Dash",
+        "deadly-plunge": "Deadly Plunge",
+        "decievingly-cute": "Deceivingly Cute",
+        "explaining-joke": "Explaining the Joke",
+        "flawless-overlook": "Flawless Overlook",
+        "full-form": "Full Form",
+        "gatech-inventure": "Georgia Tech InVenture",
+        "gun-gun": "Gun Gun",
+        "hackathon": "Hackathon Banner",
+        "inhuman-reactions": "Inhuman Reactions",
+        "last-csuite": "Last C-Suite",
+        "last-promo": "Last Promo",
+        "magnum-opus": "Magnum Opus",
+        "massie-exposition": "Massie Exposition",
+        "mission": "Mission",
+        "origins": "Origins",
+        "patrol-line": "Patrol Line",
+        "rails": "Rails",
+        "smoking-gun": "Smoking Gun",
+        "socials": "Socials",
+        "soroban": "Soroban",
+        "standing-tall": "Standing Tall",
+        "tech-old": "Old Tech",
+        "two-sides-w-trimbath": "Two Sides with Trimbath",
+        "universe-game": "Universe Game",
+        "what-matters": "What Matters",
+        "whats-right": "What's Right",
+        "when-ape": "When Ape"
+      };
+
+      if (!bannerData || !bannerRail || !lightbox || !lightboxImage || !lightboxInfo || !lightboxCount || !closeButton || !prevButton || !nextButton) {
+        return;
+      }
+
+      try {
+        banners = JSON.parse(bannerData.textContent);
+      } catch (error) {
+        banners = [];
+      }
+
+      if (!banners.length) {
+        bannerRail.remove();
+        return;
+      }
+
+      banners.sort(function (left, right) {
+        return titleFor(left).localeCompare(titleFor(right));
+      });
+
+      function titleFor(banner) {
+        var key = banner && banner.key ? banner.key : "";
+
+        if (titleByKey[key]) {
+          return titleByKey[key];
+        }
+
+        return key.replace(/-/g, " ").replace(/\b\w/g, function (letter) {
+          return letter.toUpperCase();
+        });
+      }
+
+      function renderBanners() {
+        var loadedCount = 0;
+        bannerRail.innerHTML = "";
+
+        function markLoaded(thumbnail) {
+          if (thumbnail.classList.contains("is-loaded")) {
+            return;
+          }
+
+          thumbnail.classList.add("is-loaded");
+          loadedCount += 1;
+
+          if (loadedCount >= Math.min(banners.length, 1)) {
+            bannerRail.classList.add("is-ready");
+          }
+        }
+
+        banners.forEach(function (banner, index) {
+          var thumbnail = document.createElement("button");
+          var image = document.createElement("img");
+          var title = titleFor(banner);
+
+          thumbnail.className = "banner-thumb";
+          thumbnail.type = "button";
+          thumbnail.setAttribute("aria-label", "Open " + title);
+
+          image.alt = title;
+          image.loading = "lazy";
+          image.decoding = "async";
+          image.src = banner.src;
+          image.addEventListener("load", function () {
+            markLoaded(thumbnail);
+          });
+          image.addEventListener("error", function () {
+            markLoaded(thumbnail);
+          });
+
+          if (image.complete) {
+            markLoaded(thumbnail);
+          }
+
+          thumbnail.addEventListener("click", function () {
+            openBanner(index);
+          });
+
+          thumbnail.appendChild(image);
+          bannerRail.appendChild(thumbnail);
+        });
+
+        startRailDrift();
+      }
+
+      function startRailDrift() {
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+
+        if (banners.length < 5) {
+          return;
+        }
+
+        bannerRail.addEventListener("mouseenter", function () {
+          railPaused = true;
+        });
+        bannerRail.addEventListener("mouseleave", function () {
+          railPaused = false;
+        });
+        bannerRail.addEventListener("focusin", function () {
+          railPaused = true;
+        });
+        bannerRail.addEventListener("focusout", function () {
+          railPaused = false;
+        });
+
+        window.requestAnimationFrame(function drift(timestamp) {
+          if (!lastAnimationTime) {
+            lastAnimationTime = timestamp;
+          }
+
+          var elapsed = timestamp - lastAnimationTime;
+          lastAnimationTime = timestamp;
+
+          if (!railPaused && !lightbox.classList.contains("is-open") && bannerRail.scrollWidth > bannerRail.clientWidth) {
+            bannerRail.scrollLeft += elapsed * 0.018;
+
+            if (bannerRail.scrollLeft >= bannerRail.scrollWidth - bannerRail.clientWidth - 1) {
+              bannerRail.scrollTo({ left: 0, behavior: "smooth" });
+            }
+          }
+
+          window.requestAnimationFrame(drift);
+        });
+      }
+
+      function showBanner(index) {
+        currentIndex = (index + banners.length) % banners.length;
+
+        var banner = banners[currentIndex];
+        var title = titleFor(banner);
+
+        lightboxImage.src = banner.src;
+        lightboxImage.alt = title;
+        lightboxInfo.textContent = title;
+        lightboxCount.textContent = (currentIndex + 1) + " / " + banners.length;
+      }
+
+      function openBanner(index) {
+        showBanner(index);
+        railPaused = true;
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeBanner() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImage.src = "";
+        document.body.style.overflow = "";
+        railPaused = false;
+      }
+
+      prevButton.addEventListener("click", function () {
+        showBanner(currentIndex - 1);
+      });
+
+      nextButton.addEventListener("click", function () {
+        showBanner(currentIndex + 1);
+      });
+
+      closeButton.addEventListener("click", closeBanner);
+
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) {
+          closeBanner();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (!lightbox.classList.contains("is-open")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeBanner();
+        } else if (event.key === "ArrowLeft") {
+          showBanner(currentIndex - 1);
+        } else if (event.key === "ArrowRight") {
+          showBanner(currentIndex + 1);
+        }
+      });
+
+      renderBanners();
     })();
 
     (function () {
