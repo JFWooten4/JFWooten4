@@ -249,13 +249,22 @@ permalink: /banners/
       background: rgba(255, 255, 255, 0.04);
       line-height: 1;
     }
+    .added-date {
+      border-color: rgba(253, 218, 36, 0.55);
+      background: rgba(253, 218, 36, 0.16);
+      color: var(--accent);
+      font-weight: 700;
+    }
 
     .credit {
       min-height: 1.4em;
       margin: 0;
       color: var(--muted);
-      display: none;
       font-size: 0.82rem;
+    }
+    .credit a {
+      color: var(--accent);
+      pointer-events: auto;
     }
 
     .actions {
@@ -469,8 +478,8 @@ permalink: /banners/
         <div class="banner-body">
           <h2 class="banner-title">{{ key }}</h2>
           <div class="banner-facts">
-            <span class="pill dimensions">Measuring...</span>
             <span class="pill">{{ ext_label | upcase }}</span>
+            <span class="pill added-date">Added date unknown</span>
           </div>
           <p class="credit" data-credit></p>
           <div class="actions">
@@ -564,6 +573,44 @@ permalink: /banners/
       "when-ape": "When Ape"
     };
 
+    var bannerAddedDates = {
+      "buffett.png": "2026-03-04",
+      "burning-outside.jpg": "2026-01-13",
+      "climbing-pheonix.PNG": "2025-06-14",
+      "consensys.jpg": "2024-11-08",
+      "dash-confident.jpg": "2025-11-05",
+      "deadly-plunge.PNG": "2025-06-19",
+      "decievingly-cute.png": "2025-10-13",
+      "explaining-joke.jpg": "2025-10-19",
+      "explaining-joke.png": "2025-10-13",
+      "flawless-overlook.png": "2026-03-10",
+      "full-form.PNG": "2025-06-18",
+      "gatech-inventure.png": "2026-03-15",
+      "gun-gun.png": "2025-08-06",
+      "hackathon.jpeg": "2024-12-05",
+      "inhuman-reactions.jpg": "2025-09-10",
+      "last-csuite.jpg": "2025-05-22",
+      "last-promo.png": "2025-05-22",
+      "magnum-opus.png": "2025-06-27",
+      "massie-exposition.png": "2025-09-29",
+      "mission.jpg": "2024-11-22",
+      "mission.png": "2024-11-19",
+      "origins.jpg": "2024-11-19",
+      "patrol-line.png": "2025-07-15",
+      "rails.jpg": "2024-11-08",
+      "smoking-gun.jpeg": "2025-05-23",
+      "smoking-gun.jpg": "2025-09-28",
+      "socials.png": "2025-03-06",
+      "soroban.jpeg": "2025-10-23",
+      "standing-tall.png": "2025-05-24",
+      "tech-old.jpg": "2025-10-13",
+      "two-sides-w-trimbath.jpeg": "2024-11-08",
+      "universe-game.png": "2025-10-15",
+      "what-matters.png": "2025-07-11",
+      "whats-right.png": "2026-04-23",
+      "when-ape.png": "2025-05-07"
+    };
+
     var cards = Array.prototype.slice.call(document.querySelectorAll(".banner-card"));
     var search = document.getElementById("search");
     var resultCount = document.getElementById("result-count");
@@ -593,6 +640,44 @@ permalink: /banners/
       return credit ? "Credit: " + credit.artist : "Credit: archived in README";
     }
 
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function creditHtml(key) {
+      var credit = bannerCredits[key];
+
+      if (credit && credit.sourceUrl) {
+        return "Source: <a href=\"" + escapeHtml(credit.sourceUrl) + "\" target=\"_blank\" rel=\"noreferrer\">" + escapeHtml(credit.artist) + "</a>";
+      }
+
+      return "Source: <a href=\"/banners/README.md\">" + escapeHtml("README") + "</a>";
+    }
+
+    function fileNameFromSrc(src) {
+      return (src || "").split("/").pop();
+    }
+
+    function formatDate(date) {
+      var parts = (date || "").split("-");
+      var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+      if (parts.length !== 3) {
+        return "date unknown";
+      }
+
+      return months[Number(parts[1]) - 1] + " " + Number(parts[2]) + ", " + parts[0];
+    }
+
+    function addedDateText(src) {
+      var addedDate = bannerAddedDates[fileNameFromSrc(src)];
+      return addedDate ? "Added " + formatDate(addedDate) : "Added date unknown";
+    }
+
     function updateCount() {
       var visible = cards.filter(function(card) {
         return card.style.display !== "none";
@@ -616,11 +701,10 @@ permalink: /banners/
       lastFocus = document.activeElement;
       var key = card.dataset.key;
       var src = card.dataset.src;
-      var dimensions = card.querySelector(".dimensions").textContent;
       lightboxImage.src = src;
       lightboxImage.alt = titleText(key) + " banner";
       lightboxTitle.textContent = titleText(key);
-      lightboxMeta.textContent = dimensions + " | " + creditText(key);
+      lightboxMeta.innerHTML = escapeHtml(addedDateText(src)) + " | " + creditHtml(key);
       lightbox.classList.add("is-open");
       close.focus();
     }
@@ -636,17 +720,18 @@ permalink: /banners/
     cards.forEach(function(card) {
       var key = card.dataset.key;
       var image = card.querySelector("img");
-      var dimensions = card.querySelector(".dimensions");
       var credit = bannerCredits[key];
       var creditNode = card.querySelector("[data-credit]");
       var sourceLink = card.querySelector(".source-link");
       var titleNode = card.querySelector(".banner-title");
       var button = card.querySelector(".banner-button");
+      var addedDate = card.querySelector(".added-date");
 
       titleNode.textContent = titleText(key);
       button.setAttribute("aria-label", "Open " + titleText(key));
+      addedDate.textContent = addedDateText(card.dataset.src);
 
-      creditNode.textContent = creditText(key);
+      creditNode.innerHTML = creditHtml(key);
       if (credit && credit.sourceUrl) {
         sourceLink.href = credit.sourceUrl;
         sourceLink.textContent = "Source";
@@ -656,12 +741,10 @@ permalink: /banners/
 
       image.addEventListener("load", function() {
         card.classList.add("is-loaded");
-        dimensions.textContent = image.naturalWidth + " x " + image.naturalHeight;
       });
 
       if (image.complete && image.naturalWidth) {
         card.classList.add("is-loaded");
-        dimensions.textContent = image.naturalWidth + " x " + image.naturalHeight;
       }
 
       button.addEventListener("click", function() {
