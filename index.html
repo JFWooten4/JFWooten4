@@ -945,6 +945,31 @@
       var currentIndex = 0;
       var railPaused = false;
       var lastAnimationTime = 0;
+      var creditByKey = {
+        "climbing-pheonix": { artist: "Riot/Fortiche", sourceUrl: "https://youtu.be/fB8TyLTD7EE?t=69" },
+        "consensys": { artist: "@silence48", sourceUrl: "https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772" },
+        "dash-confident": { artist: "tehnomad", sourceUrl: "https://wallup.net/my-little-pony-rainbow-dash-4" },
+        "deadly-plunge": { artist: "Forest Rain", sourceUrl: "https://youtu.be/MjfCH89sBzs" },
+        "decievingly-cute": { artist: "Krista_21", sourceUrl: "https://x.com/Kristalina_21/status/1843336237266153699" },
+        "explaining-joke": { artist: "Riot/Fortiche", sourceUrl: "https://youtu.be/5FrhtahQiRc?t=134" },
+        "flawless-overlook": { artist: "Tamers12345", sourceUrl: "https://pony.tube/w/2oyQhzsFKc6mkADyfwr1KL?start=33m49s" },
+        "full-form": { artist: "Riot/Fortiche", sourceUrl: "https://youtu.be/tJV_-5nciN0?t=162" },
+        "gatech-inventure": { artist: "Georgia Public Broadcasting/PBS", sourceUrl: "https://youtu.be/S75IvkicWD8?t=66" },
+        "gun-gun": { artist: "Riot/Fortiche", sourceUrl: "https://youtu.be/ZHhqwBwmRkI?t=138" },
+        "hackathon": { artist: "Emir Ayral", sourceUrl: "https://discord.com/channels/761985725453303838/761985725453303841/1245787112515829881" },
+        "inhuman-reactions": { artist: "unknown manufacturer", sourceUrl: "https://www.ubuy.com.ps/en/product/48C6SVCPU-sword-art-a-online-kirito-foam-sword-set-elucidator-dark-repulsor-kirigaya-2-swords-l-40inch-s-32inch" },
+        "magnum-opus": { artist: "Riot/Fortiche", sourceUrl: "https://youtu.be/fB8TyLTD7EE?t=154" },
+        "massie-exposition": { artist: "US Gov, popularized by 6days1week", sourceUrl: "https://youtu.be/Mn6vdsNiaZo?t=10424" },
+        "patrol-line": { artist: "Riot/Fortiche", sourceUrl: "https://youtu.be/OkscEokV238?t=57" },
+        "rails": { artist: "@bobmahalo", sourceUrl: "https://discordapp.com/channels/1102309240145707049/1118990437684875357/1296830496973787196" },
+        "smoking-gun": { artist: "DreamWorks Animation", sourceUrl: "https://youtu.be/7VXrvcc7tL8?t=82" },
+        "soroban": { artist: "John Rubisoff", sourceUrl: "https://discord.com/channels/761985725453303838/761985725453303841/1478765755498762281" },
+        "standing-tall": { artist: "Riot/Fortiche", sourceUrl: "https://youtu.be/HYsz1hP0BFo?t=102" },
+        "universe-game": { artist: "Davy Jones", sourceUrl: "https://www.spriters-resource.com/pc_computer/rpgmakermv/asset/100229" },
+        "what-matters": { artist: "Blizzard Entertainment", sourceUrl: "https://youtu.be/cPRRupAM4DI?t=257" },
+        "whats-right": { artist: "Eric Hunsader", sourceUrl: "http://www.nanex.net/aqck2/4311.html" },
+        "when-ape": { artist: "Riot/Fortiche", sourceUrl: "https://youtu.be/dmDuz0OUNY0?t=65" }
+      };
       var titleByKey = {
         "buffett": "Buffett Receipt",
         "burning-outside": "Burning Outside",
@@ -995,9 +1020,32 @@
         return;
       }
 
-      banners.sort(function (left, right) {
-        return titleFor(left).localeCompare(titleFor(right));
-      });
+      shuffleBanners(banners);
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function formatLink(label, href) {
+        return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noreferrer">' + escapeHtml(label) + "</a>";
+      }
+
+      function shuffleBanners(items) {
+        var index = items.length;
+
+        while (index > 1) {
+          var swapIndex = Math.floor(Math.random() * index);
+          index -= 1;
+          var current = items[index];
+          items[index] = items[swapIndex];
+          items[swapIndex] = current;
+        }
+      }
 
       function titleFor(banner) {
         var key = banner && banner.key ? banner.key : "";
@@ -1009,6 +1057,16 @@
         return key.replace(/-/g, " ").replace(/\b\w/g, function (letter) {
           return letter.toUpperCase();
         });
+      }
+
+      function creditHtmlFor(banner) {
+        var credit = banner && creditByKey[banner.key];
+
+        if (credit && credit.sourceUrl) {
+          return "Source: " + formatLink(credit.artist, credit.sourceUrl);
+        }
+
+        return '<a href="/banners/README.md">Source notes</a>';
       }
 
       function renderBanners() {
@@ -1113,7 +1171,7 @@
 
         lightboxImage.src = banner.src;
         lightboxImage.alt = title;
-        lightboxInfo.textContent = title;
+        lightboxInfo.innerHTML = escapeHtml(title) + " · " + creditHtmlFor(banner);
         lightboxCount.textContent = (currentIndex + 1) + " / " + banners.length;
       }
 
