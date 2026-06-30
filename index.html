@@ -197,11 +197,14 @@
       padding: 6px 0 10px;
       overflow-x: auto;
       overscroll-behavior-inline: contain;
-      scrollbar-width: thin;
+      scrollbar-width: none;
       opacity: 0;
       transform: translateY(4px);
       transition: opacity 700ms ease 180ms, transform 700ms ease 180ms;
       mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    }
+    .banner-rail::-webkit-scrollbar {
+      display: none;
     }
     .banner-rail.is-ready {
       opacity: 1;
