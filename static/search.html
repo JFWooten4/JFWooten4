@@ -394,44 +394,18 @@ permalink: /search/
       });
     }
 
-    function aliasForIndex(index, delimiters, alphabet) {
-      var length = 1;
-      var combinations = alphabet.length;
-      var blockSize = delimiters.length * combinations;
-
-      while (index >= blockSize) {
-        index -= blockSize;
-        length += 1;
-        combinations *= alphabet.length;
-        blockSize = delimiters.length * combinations;
-      }
-
-      var delimiter = delimiters[Math.floor(index / combinations)];
-      var value = index % combinations;
-      var suffix = "";
-
-      while (suffix.length < length) {
-        suffix = alphabet.charAt(value % alphabet.length) + suffix;
-        value = Math.floor(value / alphabet.length);
-      }
-
-      return delimiter + suffix;
-    }
-
     function buildSequentialEntries(config) {
-      var delimiters = Array.isArray(config.delimiters) ? config.delimiters : [];
-      var alphabet = typeof config.alphabet === "string" ? config.alphabet : "";
-      var list = Array.isArray(config.redirects) ? config.redirects : [];
+      var configured = config && config.redirects;
 
-      if (!delimiters.length || !alphabet.length) {
+      if (!configured || Array.isArray(configured)) {
         return [];
       }
 
-      return list.reduce(function(entries, redirect, index) {
+      return Object.keys(configured).reduce(function(entries, key) {
+        var redirect = configured[key];
         var href = typeof redirect === "string" ? redirect : redirect && redirect.url;
 
         if (href) {
-          var key = aliasForIndex(index, delimiters, alphabet);
           var topic = deriveTopicFromHref(href);
           entries.push({
             key: key,
