@@ -207,6 +207,22 @@ permalink: /search/
       font-weight: 600;
       color: #fdda24;
       letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .law-tag {
+      border: 1px solid rgba(253, 218, 36, 0.45);
+      border-radius: 999px;
+      padding: 2px 8px;
+      background: rgba(253, 218, 36, 0.1);
+      color: #fdda24;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+      text-transform: uppercase;
     }
 
     .href {
@@ -441,7 +457,8 @@ permalink: /search/
           key: key,
           href: href,
           topic: topic,
-          searchText: normalizeTopicText(key + " " + href + " " + topic).toLowerCase()
+          type: "law",
+          searchText: normalizeTopicText(key + " " + href + " " + topic + " law").toLowerCase()
         });
 
         return entries;
@@ -524,6 +541,13 @@ permalink: /search/
           var key = document.createElement("div");
           key.className = "key";
           key.textContent = item.key;
+
+          if (item.type === "law") {
+            var lawTag = document.createElement("span");
+            lawTag.className = "law-tag";
+            lawTag.textContent = "Law";
+            key.appendChild(lawTag);
+          }
 
           var actions = document.createElement("div");
           actions.className = "actions";
