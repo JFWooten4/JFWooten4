@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html>
 <head>
@@ -329,11 +331,13 @@
       // END PENDING BLOG POST HERE
     };
   </script>
+  <script type="text/plain" id="law-redirects">
+{% include_relative var/law.toml %}
+  </script>
   <script>
     var path = window.location.pathname.split("/").filter(Boolean)[0];
     path = path ? decodeURIComponent(path).toLowerCase() : path;
     var redirects = window.LINKS || {};
-    var fallback = "https://wooten.link/search";
 
     function parseLawRedirects(toml) {
       var delimiter = null;
@@ -371,31 +375,18 @@
       }, {});
     }
 
+    var lawRedirects = parseLawRedirects(document.getElementById("law-redirects").textContent);
+
     function lawRedirect(path) {
       if (!path || /^[a-z0-9]/i.test(path)) {
-        return Promise.resolve(null);
+        return null;
       }
 
-      return fetch("/var/law.toml", { cache: "no-cache" })
-        .then(function(response) {
-          return response.ok ? response.text() : "";
-        })
-        .then(function(toml) {
-          return parseLawRedirects(toml)[path] || null;
-        });
+      return lawRedirects[path] || null;
     }
 
-    function redirectTo(url) {
-      window.location.replace(url || fallback);
-    }
-
-    var redirect = redirects[path];
-
-    if (redirect) {
-      redirectTo(redirect);
-    } else {
-      lawRedirect(path).then(redirectTo).catch(function() { redirectTo(); });
-    }
+    var redirect = redirects[path] || lawRedirect(path) || "https://wooten.link/search";
+    window.location.replace(redirect);
   </script>
 </body>
 </html>

@@ -1,5 +1,3 @@
-# Replace an empty string with a URL to activate that exact alias.
-
 [redirects."_"]
 "0" = ""
 "1" = ""
