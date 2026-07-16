@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,6 @@
     const LATEST_COMMENT = "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf";
     const CHIEF_AMBITION = "https://github.com/users/JFWooten4/projects/1/views/1?pane=info&statusUpdateId=216825";
     window.LINKS = {
-      "_a": null,
       "1981": "https://www.berkshirehathaway.com/letters/1981.html",
       "database-intro": "https://www.reddit.com/r/Superstonk/comments/tfvmcr/drs_everything_transfer_agents_for_fortune_500",
       "superstonk-mods": "https://www.reddit.com/user/LastResortFriend/comments/1cay67k/ninetyfive_nails_in_the_coffin",
@@ -330,12 +331,59 @@
       // END PENDING BLOG POST HERE
     };
   </script>
+  <script type="text/plain" id="law-redirects">
+{% include_relative var/law.toml %}
+  </script>
   <script>
     var path = window.location.pathname.split("/").filter(Boolean)[0];
     path = path ? decodeURIComponent(path).toLowerCase() : path;
     var redirects = window.LINKS || {};
-    var redirect = redirects[path] || "https://wooten.link/search";
+
+    var redirect = redirects[path] || lawRedirect(path) || "https://wooten.link/search";
     window.location.replace(redirect);
+
+    function lawRedirect(path) {
+      if (!path || /^[a-z0-9]/i.test(path)) {
+        return null;
+      }
+
+      var delimiter = null;
+      var toml = document.getElementById("law-redirects").textContent;
+
+      var lawRedirects = toml.split(/\r?\n/).reduce(function(parsed, line) {
+        var section = line.match(/^\s*\[redirects\.("(?:\\.|[^"\\])*")\]\s*(?:#.*)?$/);
+
+        if (section) {
+          try {
+            delimiter = JSON.parse(section[1]);
+          } catch (error) {
+            delimiter = null;
+          }
+
+          return parsed;
+        }
+
+        if (/^\s*\[/.test(line)) {
+          delimiter = null;
+          return parsed;
+        }
+
+        if (delimiter !== null) {
+          var entry = line.match(/^\s*("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*")\s*(?:#.*)?$/);
+
+          if (entry) {
+            try {
+              var suffix = JSON.parse(entry[1]);
+              parsed[(delimiter + suffix).toLowerCase()] = JSON.parse(entry[2]);
+            } catch (error) {}
+          }
+        }
+
+        return parsed;
+      }, {});
+
+      return lawRedirects[path];
+    }
   </script>
 </body>
 </html>

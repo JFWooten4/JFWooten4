@@ -394,9 +394,75 @@ permalink: /search/
       });
     }
 
+    function parseLawRedirects(toml) {
+      var delimiter = null;
+
+      return toml.split(/\r?\n/).reduce(function(parsed, line) {
+        var section = line.match(/^\s*\[redirects\.("(?:\\.|[^"\\])*")\]\s*(?:#.*)?$/);
+
+        if (section) {
+          try {
+            delimiter = JSON.parse(section[1]);
+          } catch (error) {
+            delimiter = null;
+          }
+
+          return parsed;
+        }
+
+        if (/^\s*\[/.test(line)) {
+          delimiter = null;
+          return parsed;
+        }
+
+        if (delimiter !== null) {
+          var entry = line.match(/^\s*("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*")\s*(?:#.*)?$/);
+
+          if (entry) {
+            try {
+              var suffix = JSON.parse(entry[1]);
+              parsed[(delimiter + suffix).toLowerCase()] = JSON.parse(entry[2]);
+            } catch (error) {}
+          }
+        }
+
+        return parsed;
+      }, {});
+    }
+
+    function buildLawEntries(toml) {
+      var configured = parseLawRedirects(toml);
+
+      return Object.keys(configured).reduce(function(entries, key) {
+        var href = configured[key];
+        var topic = deriveTopicFromHref(href);
+
+        entries.push({
+          key: key,
+          href: href,
+          topic: topic,
+          searchText: normalizeTopicText(key + " " + href + " " + topic).toLowerCase()
+        });
+
+        return entries;
+      }, []);
+    }
+
+    function loadLawRedirects() {
+      return fetch("/var/law.toml", { cache: "no-store" })
+        .then(function(response) { return response.ok ? response.text() : ""; })
+        .then(buildLawEntries)
+        .catch(function() { return []; });
+    }
+
     function loadRedirects() {
       if (window.LINKS) {
-        return Promise.resolve(buildEntriesFromSource("", window.LINKS));
+        return Promise.resolve(buildEntriesFromSource("", window.LINKS))
+          .then(function(entries) {
+            return loadLawRedirects().then(function(lawEntries) {
+              return entries.concat(lawEntries);
+            });
+          });
       }
 
       return fetch("/404.html", { cache: "no-store" })
@@ -415,7 +481,12 @@ permalink: /search/
 
           return buildEntriesFromSource(match[1], window.LINKS || {});
         })
-        .catch(function () { return []; });
+        .catch(function () { return []; })
+        .then(function(entries) {
+          return loadLawRedirects().then(function(lawEntries) {
+            return entries.concat(lawEntries);
+          });
+        });
     }
 
     loadRedirects().then(function (entries) {

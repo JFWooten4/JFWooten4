@@ -1,0 +1,5 @@
+[redirects."_"]
+"0" = "https://example.com/first-law-link"
+
+[redirects."+"]
+"0" = "https://example.com/second-law-link"
