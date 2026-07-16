@@ -106,6 +106,66 @@
       padding: 40px;
       transform: translateY(-20px);
     }
+    .profile-header {
+      width: min(680px, calc(100vw - 36px));
+      margin: 0 auto;
+    }
+    .banner-frame {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 64 / 25;
+      overflow: hidden;
+      border: 1px solid rgba(253, 218, 36, 0.5);
+      border-radius: 22px;
+      background: rgba(8, 14, 10, 0.88);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.42);
+      color: white;
+      text-decoration: none;
+    }
+    .banner-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 56%, rgba(0, 0, 0, 0.76));
+      pointer-events: none;
+    }
+    .banner-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 320ms ease;
+    }
+    .banner-frame:hover img,
+    .banner-frame:focus-visible img {
+      transform: scale(1.02);
+    }
+    .banner-frame:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+    .banner-caption {
+      position: absolute;
+      right: 18px;
+      bottom: 14px;
+      left: 18px;
+      z-index: 1;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      color: white;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .banner-caption strong {
+      color: var(--accent);
+      font-size: 0.68rem;
+    }
     h2 {
       font-family: Verdana, sans-serif;
       margin-top: 24px;
@@ -133,6 +193,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
       gap: 30px;
     }
     .social-links a {
@@ -147,46 +208,8 @@
       width: 20px;
       display: block;
     }
-    .sponsors {
-      margin-top: 36px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    .sponsors h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    .sponsor-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 6px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .sponsor-list a {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border: 1px solid var(--accent-muted);
-      border-radius: 999px;
-      background: rgba(253, 218, 36, 0.12);
-      text-decoration: none;
-      color: white;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 0.92rem;
-      font-weight: 400;
-    }
-    .sponsor-list img {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: block;
-    }
     .group-album {
-      margin-top: 84px;
+      margin-top: 32px;
     }
     .group-label {
       margin: 0 0 4px;
@@ -376,6 +399,26 @@
     @media (max-width: 720px) {
       .content {
         padding: 28px 18px 96px;
+      }
+      .banner-frame {
+        border-radius: 16px;
+      }
+      .banner-caption {
+        right: 12px;
+        bottom: 10px;
+        left: 12px;
+        font-size: 0.65rem;
+      }
+      .banner-caption strong {
+        font-size: 0.58rem;
+      }
+      .social-links {
+        gap: 18px;
+        padding-right: 0;
+        padding-left: 0;
+      }
+      .social-links a {
+        margin: 0 10px;
       }
       .group-thumb {
         width: 92px;
@@ -722,6 +765,11 @@
   </script>
 
   <div class="content">
+    <header class="profile-header">
+      <a class="banner-frame" href="/banners/buffett.png" target="_blank" rel="noopener" aria-label="Open the featured Warren Buffett banner">
+        <img src="/banners/buffett.png" alt="Warren Buffett banner about registering stock in your own name">
+        <span class="banner-caption"><strong>Featured banner</strong><span>1981 Chairman Letter</span></span>
+      </a>
     <h2 style="font-family: 'Courier New', monospace;">John Wooten</h2>
     
     <div class="social-links">
@@ -752,11 +800,8 @@
         </svg>
       </a>
     </div>
+    </header>
 
-    <div class="sponsors">
-      <h3>Sponsors 💜</h3>
-      <ul class="sponsor-list" id="sponsor-list"></ul>
-    </div>
     <div class="group-album">
       <p class="group-label">Friends</p>
       <div class="group-strip" id="group-strip"></div>
@@ -782,59 +827,6 @@
     </div>
   </div>
   <script>
-    (function () {
-      var sponsorList = document.getElementById("sponsor-list");
-
-      if (!sponsorList) {
-        return;
-      }
-
-      fetch("/var/sponsors.json", { cache: "no-store" })
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("Failed to load sponsor feed");
-          }
-          return response.json();
-        })
-        .then(function (data) {
-          var sponsors = Array.isArray(data.sponsors) ? data.sponsors : [];
-
-          sponsors.sort(function (left, right) {
-            var leftLabel = (left.name || left.login || "").toLowerCase();
-            var rightLabel = (right.name || right.login || "").toLowerCase();
-            return leftLabel.localeCompare(rightLabel);
-          });
-
-          sponsorList.innerHTML = "";
-
-          if (!sponsors.length) {
-            return;
-          }
-
-          sponsors.forEach(function (sponsor) {
-            var item = document.createElement("li");
-            var link = document.createElement("a");
-            var avatar = document.createElement("img");
-            var label = document.createElement("span");
-
-            link.href = sponsor.url;
-            link.target = "_blank";
-            link.rel = "noreferrer";
-
-            avatar.src = sponsor.avatar_url;
-            avatar.alt = sponsor.name || sponsor.login;
-
-            label.textContent = sponsor.name || sponsor.login;
-
-            link.appendChild(avatar);
-            link.appendChild(label);
-            item.appendChild(link);
-            sponsorList.appendChild(item);
-          });
-        })
-        .catch(function () {});
-    })();
-
     (function () {
       var groupImageData = document.getElementById("group-image-data");
       var groupCreditData = document.getElementById("group-credit-data");
