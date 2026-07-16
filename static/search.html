@@ -394,16 +394,47 @@ permalink: /search/
       });
     }
 
-    function buildSequentialEntries(config) {
-      var configured = config && config.redirects;
+    function parseLawRedirects(toml) {
+      var delimiter = null;
 
-      if (!configured || Array.isArray(configured)) {
-        return [];
-      }
+      return toml.split(/\r?\n/).reduce(function(parsed, line) {
+        var section = line.match(/^\s*\[redirects\.("(?:\\.|[^"\\])*")\]\s*(?:#.*)?$/);
+
+        if (section) {
+          try {
+            delimiter = JSON.parse(section[1]);
+          } catch (error) {
+            delimiter = null;
+          }
+
+          return parsed;
+        }
+
+        if (/^\s*\[/.test(line)) {
+          delimiter = null;
+          return parsed;
+        }
+
+        if (delimiter !== null) {
+          var entry = line.match(/^\s*("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*")\s*(?:#.*)?$/);
+
+          if (entry) {
+            try {
+              var suffix = JSON.parse(entry[1]);
+              parsed[(delimiter + suffix).toLowerCase()] = JSON.parse(entry[2]);
+            } catch (error) {}
+          }
+        }
+
+        return parsed;
+      }, {});
+    }
+
+    function buildLawEntries(toml) {
+      var configured = parseLawRedirects(toml);
 
       return Object.keys(configured).reduce(function(entries, key) {
-        var redirect = configured[key];
-        var href = typeof redirect === "string" ? redirect : redirect && redirect.url;
+        var href = configured[key];
 
         if (href) {
           var topic = deriveTopicFromHref(href);
@@ -419,10 +450,10 @@ permalink: /search/
       }, []);
     }
 
-    function loadSequentialRedirects() {
-      return fetch("/var/law.json", { cache: "no-store" })
-        .then(function(response) { return response.ok ? response.json() : {}; })
-        .then(buildSequentialEntries)
+    function loadLawRedirects() {
+      return fetch("/var/law.toml", { cache: "no-store" })
+        .then(function(response) { return response.ok ? response.text() : ""; })
+        .then(buildLawEntries)
         .catch(function() { return []; });
     }
 
@@ -430,8 +461,8 @@ permalink: /search/
       if (window.LINKS) {
         return Promise.resolve(buildEntriesFromSource("", window.LINKS))
           .then(function(entries) {
-            return loadSequentialRedirects().then(function(sequentialEntries) {
-              return entries.concat(sequentialEntries);
+            return loadLawRedirects().then(function(lawEntries) {
+              return entries.concat(lawEntries);
             });
           });
       }
@@ -454,8 +485,8 @@ permalink: /search/
         })
         .catch(function () { return []; })
         .then(function(entries) {
-          return loadSequentialRedirects().then(function(sequentialEntries) {
-            return entries.concat(sequentialEntries);
+          return loadLawRedirects().then(function(lawEntries) {
+            return entries.concat(lawEntries);
           });
         });
     }

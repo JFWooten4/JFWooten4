@@ -326,21 +326,53 @@
     var redirects = window.LINKS || {};
     var fallback = "https://wooten.link/search";
 
+    function parseLawRedirects(toml) {
+      var delimiter = null;
+
+      return toml.split(/\r?\n/).reduce(function(parsed, line) {
+        var section = line.match(/^\s*\[redirects\.("(?:\\.|[^"\\])*")\]\s*(?:#.*)?$/);
+
+        if (section) {
+          try {
+            delimiter = JSON.parse(section[1]);
+          } catch (error) {
+            delimiter = null;
+          }
+
+          return parsed;
+        }
+
+        if (/^\s*\[/.test(line)) {
+          delimiter = null;
+          return parsed;
+        }
+
+        if (delimiter !== null) {
+          var entry = line.match(/^\s*("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*")\s*(?:#.*)?$/);
+
+          if (entry) {
+            try {
+              var suffix = JSON.parse(entry[1]);
+              parsed[(delimiter + suffix).toLowerCase()] = JSON.parse(entry[2]);
+            } catch (error) {}
+          }
+        }
+
+        return parsed;
+      }, {});
+    }
+
     function lawRedirect(path) {
       if (!path || /^[a-z0-9]/i.test(path)) {
         return Promise.resolve(null);
       }
 
-      return fetch("/var/law.json", { cache: "no-cache" })
+      return fetch("/var/law.toml", { cache: "no-cache" })
         .then(function(response) {
-          return response.ok ? response.json() : {};
+          return response.ok ? response.text() : "";
         })
-        .then(function(config) {
-          var configured = config && config.redirects;
-          var redirect = configured && !Array.isArray(configured) ? configured[path] : null;
-          var url = typeof redirect === "string" ? redirect : redirect && redirect.url;
-
-          return url || null;
+        .then(function(toml) {
+          return parseLawRedirects(toml)[path] || null;
         });
     }
 
