@@ -339,10 +339,18 @@
     path = path ? decodeURIComponent(path).toLowerCase() : path;
     var redirects = window.LINKS || {};
 
-    function parseLawRedirects(toml) {
-      var delimiter = null;
+    var redirect = redirects[path] || lawRedirect(path) || "https://wooten.link/search";
+    window.location.replace(redirect);
 
-      return toml.split(/\r?\n/).reduce(function(parsed, line) {
+    function lawRedirect(path) {
+      if (!path || /^[a-z0-9]/i.test(path)) {
+        return null;
+      }
+
+      var delimiter = null;
+      var toml = document.getElementById("law-redirects").textContent;
+
+      var lawRedirects = toml.split(/\r?\n/).reduce(function(parsed, line) {
         var section = line.match(/^\s*\[redirects\.("(?:\\.|[^"\\])*")\]\s*(?:#.*)?$/);
 
         if (section) {
@@ -373,20 +381,9 @@
 
         return parsed;
       }, {});
-    }
-
-    var lawRedirects = parseLawRedirects(document.getElementById("law-redirects").textContent);
-
-    function lawRedirect(path) {
-      if (!path || /^[a-z0-9]/i.test(path)) {
-        return null;
-      }
 
       return lawRedirects[path];
     }
-
-    var redirect = redirects[path] || lawRedirect(path) || "https://wooten.link/search";
-    window.location.replace(redirect);
   </script>
 </body>
 </html>
