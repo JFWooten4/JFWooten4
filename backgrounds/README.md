@@ -28,5 +28,6 @@
 - `secret-slash` comes from [Darktailsko (Cody)](https://www.deviantart.com/discourt) ([src](https://derpibooru.org/images/1650702))
 - `distant-engine` comes from [Shino](https://spaceponyos.com) ([src](https://x.com/ShinodaGE/status/1270296149627371521))
 - `flight-time` comes from [Vultraz](https://odysee.com/@vul:0) ([src](https://ponerpics.org/images/6805273))
+- `lose-them` comes from Rambu [et al.](https://docs.google.com/spreadsheets/d/1qIEXn09G4cogluw7qB5B4s1nY9ea7Yo9/view) ([src](https://youtu.be/adwGFGiBdwk?t=575))
 
 [^chatgpt]: Slightly altered for format with DALL-E.

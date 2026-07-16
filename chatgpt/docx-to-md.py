@@ -23,6 +23,8 @@ NS = {
 }
 
 CITATION_RE = re.compile(r"\[(\d+)\]")
+SOURCE_LOCATION_RE = re.compile(r"\u3010(?P<number>\d+)\u2020(?P<location>[^\u3011]+)\u3011")
+CITE_TOKEN_RE = re.compile(r"\ue200cite\ue202[^\ue201]+\ue201")
 BIBLIO_RE = re.compile(r"^(?:\[\d+\]\s+)+.+")
 URL_RE = re.compile(r"^https?://\S+$")
 FOOTNOTE_DEF_RE = re.compile(r"^(\[\^[A-Za-z0-9\-]+\]:)\s+(.*)$")
@@ -58,6 +60,12 @@ GENERIC_FILENAME_CANDIDATES = {
     "timeline",
 }
 TITLE_STYLE_NAMES = {"Title", "Subtitle", "Heading1", "Heading2"}
+MERMAID_START_RE = re.compile(
+    r"^(?:timeline(?:\s|$)|sequenceDiagram\b|graph\s|flowchart\s|classDiagram\b|stateDiagram\b|erDiagram\b|gantt(?:\s|$))"
+)
+TIMELINE_EVENT_RE = re.compile(
+    r"\s(?=(?:\d{4}(?:-\d{2}(?:-\d{2})?)?|[A-Z][A-Za-z]+ \d{1,2}, \d{4})\s*:)"
+)
 
 
 def main() -> int:
@@ -134,6 +142,14 @@ def renderDocx(path: Path) -> str:
 
         text = convertCitations(block["text"], bibliography, usedNotes).strip()
         if not text:
+            continue
+
+        mermaid = normalizeMermaidSource(text)
+        if mermaid is not None:
+            rendered.append("```mermaid")
+            rendered.extend(mermaid.splitlines())
+            rendered.append("```")
+            rendered.append("")
             continue
 
         style = block["style"]
@@ -277,6 +293,7 @@ def parseParagraph(paragraph: ET.Element) -> dict[str, object]:
 
 def parseTable(table: ET.Element) -> str:
     rows: list[list[str]] = []
+    drawingDescriptions = tableDrawingDescriptions(table)
     for row in table.findall("./w:tr", NS):
         cells: list[str] = []
         for cell in row.findall("./w:tc", NS):
@@ -291,6 +308,14 @@ def parseTable(table: ET.Element) -> str:
 
     if not rows:
         return ""
+
+    if isEmptyTable(rows):
+        return "\n".join(f"<!-- {description} -->" for description in drawingDescriptions)
+
+    if len(rows) == 1 and len(rows[0]) == 1:
+        singleCell = rows[0][0].replace("<br>", "\n").strip()
+        if looksLikeCodeBlock(singleCell):
+            return renderCodeBlock(singleCell)
 
     width = max(len(row) for row in rows)
     normalized = [row + [""] * (width - len(row)) for row in rows]
@@ -378,9 +403,141 @@ def convertCitations(
         return f"[^{noteId}]"
 
     text = CITATION_RE.sub(replace, text)
+    text = convertSourceLocationMarkers(text, bibliography, usedNotes)
+    text = stripUnsupportedCitationTokens(text)
     text = re.sub(r"\s+(\[\^[A-Za-z0-9\-]+\])", r"\1", text)
     text = re.sub(r"((?:\[\^[A-Za-z0-9\-]+\])+)([,.;:!?])", r"\2\1", text)
     return text
+
+
+def stripSourceLocationMarkers(text: str) -> str:
+    text = SOURCE_LOCATION_RE.sub("", text)
+    text = stripUnsupportedCitationTokens(text)
+    text = re.sub(r"\s+([,.;:!?])", r"\1", text)
+    text = re.sub(r" {2,}", " ", text)
+    return text.strip()
+
+
+def stripUnsupportedCitationTokens(text: str) -> str:
+    return CITE_TOKEN_RE.sub("", text)
+
+
+def convertSourceLocationMarkers(
+    text: str,
+    bibliography: dict[str, dict[str, str]],
+    usedNotes: OrderedDict[str, str],
+) -> str:
+    def replace(match: re.Match[str]) -> str:
+        number = match.group("number")
+        location = match.group("location")
+        noteId = f"{number}-{slugifyNoteId(location)}"
+        if noteId not in usedNotes:
+            usedNotes[noteId] = formatSourceLocationFootnote(number, location, bibliography.get(number))
+        return f"[^{noteId}]"
+
+    return SOURCE_LOCATION_RE.sub(replace, text)
+
+
+def slugifyNoteId(text: str) -> str:
+    slug = re.sub(r"[^A-Za-z0-9]+", "-", text).strip("-").lower()
+    return slug or "source"
+
+
+def formatSourceLocationFootnote(number: str, location: str, entry: dict[str, str] | None) -> str:
+    locationText = formatSourceLocation(location)
+    fallback = f"Source {number}, {locationText}." if locationText else f"Source {number}."
+    if entry is None:
+        return fallback
+
+    value = formatFootnoteValue(entry["title"], entry["url"])
+    if locationText:
+        return f"{value} {locationText}."
+    return value
+
+
+def formatSourceLocation(location: str) -> str:
+    match = re.fullmatch(r"L(\d+)(?:-L?(\d+))?", location.strip())
+    if not match:
+        return location.strip()
+
+    start, end = match.groups()
+    if end:
+        return f"lines {start}-{end}"
+    return f"line {start}"
+
+
+def isEmptyTable(rows: list[list[str]]) -> bool:
+    return all(not cell.strip() for row in rows for cell in row)
+
+
+def tableDrawingDescriptions(table: ET.Element) -> list[str]:
+    descriptions: list[str] = []
+    for docPr in table.findall(".//{http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing}docPr"):
+        description = (docPr.attrib.get("descr") or docPr.attrib.get("name") or "").strip()
+        if description:
+            descriptions.append(description)
+    return descriptions
+
+
+def looksLikeCodeBlock(text: str) -> bool:
+    stripped = text.strip()
+    return (
+        stripped.startswith("```")
+        or normalizeMermaidSource(stripped) is not None
+    )
+
+
+def renderCodeBlock(text: str) -> str:
+    stripped = text.strip()
+    if stripped.startswith("```"):
+        return stripped
+
+    mermaid = normalizeMermaidSource(stripped)
+    if mermaid is not None:
+        return f"```mermaid\n{mermaid}\n```"
+
+    return f"```text\n{stripped}\n```"
+
+
+def looksLikeMermaid(text: str) -> bool:
+    return normalizeMermaidSource(text) is not None
+
+
+def normalizeMermaidSource(text: str) -> str | None:
+    stripped = stripSourceLocationMarkers(text).strip()
+    if not MERMAID_START_RE.match(stripped):
+        return None
+
+    if stripped.startswith("timeline"):
+        return normalizeTimelineSource(stripped)
+
+    return stripped
+
+
+def normalizeTimelineSource(text: str) -> str:
+    stripped = text.strip()
+    if "\n" in stripped:
+        return stripped
+
+    rest = stripped.removeprefix("timeline").strip()
+    lines = ["timeline"]
+    if rest.startswith("title "):
+        titleAndEvents = rest.removeprefix("title ").strip()
+        eventSplit = TIMELINE_EVENT_RE.split(titleAndEvents, maxsplit=1)
+        if len(eventSplit) == 2:
+            lines.append(f"    title {eventSplit[0].strip()}")
+            rest = eventSplit[1].strip()
+        else:
+            lines.append(f"    title {titleAndEvents}")
+            return "\n".join(lines)
+
+    for event in TIMELINE_EVENT_RE.split(rest):
+        event = event.strip()
+        if event:
+            event = re.sub(r"^(\d{4}(?:-\d{2}(?:-\d{2})?)?|[A-Z][A-Za-z]+ \d{1,2}, \d{4})\s*:", r"\1 :", event)
+            lines.append(f"    {event}")
+
+    return "\n".join(lines)
 
 
 def escapePipes(text: str) -> str:
@@ -432,6 +589,7 @@ def normalizeFootnoteDefinitions(markdown: str) -> str:
 def collapseSpacing(text: str) -> str:
     text = text.replace("\u00a0", " ")
     text = text.replace("\u201c", '"').replace("\u201d", '"')
+    text = text.replace("\u2018", "'").replace("\u2019", "'")
     text = re.sub(r"[ \t]+", " ", text)
     text = re.sub(r" *\n *", " ", text)
     return text.strip()
