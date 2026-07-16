@@ -326,42 +326,34 @@
     var redirects = window.LINKS || {};
     var fallback = "https://wooten.link/search";
 
-    function buildConfiguredRedirects(config) {
-      var configured = config && config.redirects;
-
-      if (!configured || Array.isArray(configured)) {
-        return {};
+    function lawRedirect(path) {
+      if (!path || /^[a-z0-9]/i.test(path)) {
+        return Promise.resolve(null);
       }
 
-      return Object.keys(configured).reduce(function(parsed, alias) {
-        var redirect = configured[alias];
-        var url = typeof redirect === "string" ? redirect : redirect && redirect.url;
+      return fetch("/var/law.json", { cache: "no-cache" })
+        .then(function(response) {
+          return response.ok ? response.json() : {};
+        })
+        .then(function(config) {
+          var configured = config && config.redirects;
+          var redirect = configured && !Array.isArray(configured) ? configured[path] : null;
+          var url = typeof redirect === "string" ? redirect : redirect && redirect.url;
 
-        if (url) {
-          parsed[alias.toLowerCase()] = url;
-        }
-
-        return parsed;
-      }, {});
+          return url || null;
+        });
     }
 
     function redirectTo(url) {
       window.location.replace(url || fallback);
     }
 
-    if (!redirects[path]) {
-      fetch("/var/law.json", { cache: "no-cache" })
-        .then(function(response) {
-          return response.ok ? response.json() : {};
-        })
-        .then(function(config) {
-          redirectTo(buildConfiguredRedirects(config)[path]);
-        })
-        .catch(function() {
-          redirectTo();
-        });
+    var redirect = redirects[path];
+
+    if (redirect) {
+      redirectTo(redirect);
     } else {
-      redirectTo(redirects[path]);
+      lawRedirect(path).then(redirectTo).catch(function() { redirectTo(); });
     }
   </script>
 </body>
