@@ -382,7 +382,7 @@
         return null;
       }
 
-      return lawRedirects[path] || null;
+      return lawRedirects[path];
     }
 
     var redirect = redirects[path] || lawRedirect(path) || "https://wooten.link/search";

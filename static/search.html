@@ -435,16 +435,14 @@ permalink: /search/
 
       return Object.keys(configured).reduce(function(entries, key) {
         var href = configured[key];
+        var topic = deriveTopicFromHref(href);
 
-        if (href) {
-          var topic = deriveTopicFromHref(href);
-          entries.push({
-            key: key,
-            href: href,
-            topic: topic,
-            searchText: normalizeTopicText(key + " " + href + " " + topic).toLowerCase()
-          });
-        }
+        entries.push({
+          key: key,
+          href: href,
+          topic: topic,
+          searchText: normalizeTopicText(key + " " + href + " " + topic).toLowerCase()
+        });
 
         return entries;
       }, []);
