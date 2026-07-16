@@ -16,7 +16,6 @@
     const LATEST_COMMENT = "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf";
     const CHIEF_AMBITION = "https://github.com/WhyDRS/SEC-Comments/pull/25#discussion_r1947830692";
     window.LINKS = {
-      "_a": null,
       "issuer": "https://stellar.expert/explorer/public/account/GDRM3MK6KMHSYIT4E2AG2S2LWTDBJNYXE4H72C7YTTRWOWX5ZBECFWO7",
       "613": "https://www.sec.gov/files/rules/final/2012/34-67457.pdf",
       "v16-downtime": "https://status.stellar.org/incidents/7h0czw6mnjzs",
@@ -327,12 +326,44 @@
     var redirects = window.LINKS || {};
     var fallback = "https://wooten.link/search";
 
-    function parseMarkdownRedirects(markdown) {
-      return markdown.split(/\r?\n/).reduce(function(parsed, line) {
-        var match = line.match(/^\s*\[(_[a-z0-9][a-z0-9-]*)\]:\s*(?:<([^>]+)>|(\S+))/i);
+    function aliasForIndex(index, delimiters, alphabet) {
+      var length = 1;
+      var combinations = alphabet.length;
+      var blockSize = delimiters.length * combinations;
 
-        if (match) {
-          parsed[match[1].toLowerCase()] = match[2] || match[3];
+      while (index >= blockSize) {
+        index -= blockSize;
+        length += 1;
+        combinations *= alphabet.length;
+        blockSize = delimiters.length * combinations;
+      }
+
+      var delimiter = delimiters[Math.floor(index / combinations)];
+      var value = index % combinations;
+      var suffix = "";
+
+      while (suffix.length < length) {
+        suffix = alphabet.charAt(value % alphabet.length) + suffix;
+        value = Math.floor(value / alphabet.length);
+      }
+
+      return delimiter + suffix;
+    }
+
+    function buildSequentialRedirects(config) {
+      var delimiters = Array.isArray(config.delimiters) ? config.delimiters : [];
+      var alphabet = typeof config.alphabet === "string" ? config.alphabet : "";
+      var list = Array.isArray(config.redirects) ? config.redirects : [];
+
+      if (!delimiters.length || !alphabet.length) {
+        return {};
+      }
+
+      return list.reduce(function(parsed, redirect, index) {
+        var url = typeof redirect === "string" ? redirect : redirect && redirect.url;
+
+        if (url) {
+          parsed[aliasForIndex(index, delimiters, alphabet).toLowerCase()] = url;
         }
 
         return parsed;
@@ -343,13 +374,13 @@
       window.location.replace(url || fallback);
     }
 
-    if (path && path.charAt(0) === "_") {
-      fetch("/var/law.md", { cache: "no-cache" })
+    if (!redirects[path]) {
+      fetch("/var/law.json", { cache: "no-cache" })
         .then(function(response) {
-          return response.ok ? response.text() : "";
+          return response.ok ? response.json() : {};
         })
-        .then(function(markdown) {
-          redirectTo(parseMarkdownRedirects(markdown)[path]);
+        .then(function(config) {
+          redirectTo(buildSequentialRedirects(config)[path]);
         })
         .catch(function() {
           redirectTo();

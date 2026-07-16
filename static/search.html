@@ -394,9 +394,72 @@ permalink: /search/
       });
     }
 
+    function aliasForIndex(index, delimiters, alphabet) {
+      var length = 1;
+      var combinations = alphabet.length;
+      var blockSize = delimiters.length * combinations;
+
+      while (index >= blockSize) {
+        index -= blockSize;
+        length += 1;
+        combinations *= alphabet.length;
+        blockSize = delimiters.length * combinations;
+      }
+
+      var delimiter = delimiters[Math.floor(index / combinations)];
+      var value = index % combinations;
+      var suffix = "";
+
+      while (suffix.length < length) {
+        suffix = alphabet.charAt(value % alphabet.length) + suffix;
+        value = Math.floor(value / alphabet.length);
+      }
+
+      return delimiter + suffix;
+    }
+
+    function buildSequentialEntries(config) {
+      var delimiters = Array.isArray(config.delimiters) ? config.delimiters : [];
+      var alphabet = typeof config.alphabet === "string" ? config.alphabet : "";
+      var list = Array.isArray(config.redirects) ? config.redirects : [];
+
+      if (!delimiters.length || !alphabet.length) {
+        return [];
+      }
+
+      return list.reduce(function(entries, redirect, index) {
+        var href = typeof redirect === "string" ? redirect : redirect && redirect.url;
+
+        if (href) {
+          var key = aliasForIndex(index, delimiters, alphabet);
+          var topic = deriveTopicFromHref(href);
+          entries.push({
+            key: key,
+            href: href,
+            topic: topic,
+            searchText: normalizeTopicText(key + " " + href + " " + topic).toLowerCase()
+          });
+        }
+
+        return entries;
+      }, []);
+    }
+
+    function loadSequentialRedirects() {
+      return fetch("/var/law.json", { cache: "no-store" })
+        .then(function(response) { return response.ok ? response.json() : {}; })
+        .then(buildSequentialEntries)
+        .catch(function() { return []; });
+    }
+
     function loadRedirects() {
       if (window.LINKS) {
-        return Promise.resolve(buildEntriesFromSource("", window.LINKS));
+        return Promise.resolve(buildEntriesFromSource("", window.LINKS))
+          .then(function(entries) {
+            return loadSequentialRedirects().then(function(sequentialEntries) {
+              return entries.concat(sequentialEntries);
+            });
+          });
       }
 
       return fetch("/404.html", { cache: "no-store" })
@@ -415,7 +478,12 @@ permalink: /search/
 
           return buildEntriesFromSource(match[1], window.LINKS || {});
         })
-        .catch(function () { return []; });
+        .catch(function () { return []; })
+        .then(function(entries) {
+          return loadSequentialRedirects().then(function(sequentialEntries) {
+            return entries.concat(sequentialEntries);
+          });
+        });
     }
 
     loadRedirects().then(function (entries) {
