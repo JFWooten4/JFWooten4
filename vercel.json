@@ -1,0 +1,47 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "bundle exec jekyll build",
+  "outputDirectory": "_site",
+  "redirects": [
+    {
+      "source": "/scam",
+      "destination": "/btc",
+      "permanent": true
+    },
+    {
+      "source": "/scam/:path*",
+      "destination": "/btc/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/src/:path*",
+      "destination": "/static/src/:path*"
+    },
+    {
+      "source": "/tax",
+      "destination": "/static/tax/index.html"
+    },
+    {
+      "source": "/tax/:path*",
+      "destination": "/static/tax/:path*"
+    },
+    {
+      "source": "/btc",
+      "destination": "/static/btc/index.html"
+    },
+    {
+      "source": "/btc/:path*",
+      "destination": "/static/btc/:path*"
+    },
+    {
+      "source": "/ppt",
+      "destination": "/static/ppt/index.html"
+    },
+    {
+      "source": "/ppt/:path*",
+      "destination": "/static/ppt/:path*"
+    }
+  ]
+}
