@@ -9,6 +9,8 @@
     :root {
       --accent: #fdda24;
       --accent-muted: #6d5b0a;
+      --credit-fade-in: 1.4s;
+      --credit-fade-out: 420ms;
     }
     html, body {
       background-color: black;
@@ -91,10 +93,11 @@
       line-height: 1.45;
       color: #f6f2fb;
       min-height: 1.5em;
+      transition: opacity var(--credit-fade-in) ease;
     }
-    .background-credit-text.is-typing {
-      letter-spacing: 0.015em;
-      opacity: 0.94;
+    .background-credit-text.is-changing {
+      opacity: 0;
+      transition-duration: var(--credit-fade-out);
     }
     .background-credit-text a {
       color: var(--accent);
@@ -118,10 +121,11 @@
       font-size: 0.78rem;
       line-height: 1.4;
       text-align: center;
-      transition: opacity 420ms ease;
+      transition: opacity var(--credit-fade-in) ease;
     }
     .banner-credit-text.is-changing {
       opacity: 0;
+      transition-duration: var(--credit-fade-out);
     }
     .banner-credit-text a {
       color: var(--accent);
@@ -148,7 +152,7 @@
       font-size: clamp(4.4rem, 13vw, 9.5rem);
       font-weight: 900;
       line-height: 0.78;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -732,7 +736,7 @@
       "hackathon": { "artist": "Emir Ayral", "artistUrl": "https://x.com/StellarEmir", "sourceUrl": "https://discord.com/channels/761985725453303838/761985725453303841/1245787112515829881" },
       "inhuman-reactions": { "artist": "unknown manufacturer", "sourceUrl": "https://www.ubuy.com.ps/en/product/48C6SVCPU-sword-art-a-online-kirito-foam-sword-set-elucidator-dark-repulsor-kirigaya-2-swords-l-40inch-s-32inch" },
       "magnum-opus": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/fB8TyLTD7EE?t=154" },
-      "massie-exposition": { "artist": "Thomas Massie, popularized by 6days1week", "sourceUrl": "https://youtu.be/Mn6vdsNiaZo?t=10424" },
+      "massie-exposition": { "artist": "Thomas Massie, popularized by 6days1week", "artistUrl": "https://discord.com/channels/1102309240145707049/1118990437684875357/1418078804412469298", "sourceUrl": "https://youtu.be/Mn6vdsNiaZo?t=10424" },
       "patrol-line": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/OkscEokV238?t=57" },
       "rails": { "artist": "@bobmahalo", "sourceUrl": "https://discordapp.com/channels/1102309240145707049/1118990437684875357/1296830496973787196" },
       "smoking-gun": { "artist": "DreamWorks Animation", "sourceUrl": "https://youtu.be/7VXrvcc7tL8?t=82" },
@@ -1280,9 +1284,9 @@
       var bannerImages = Array.isArray(window.homepageBannerImages) ? window.homepageBannerImages : [];
       var creditsByName = window.homepageBackgroundCredits || {};
       var bannerCreditsByName = window.homepageBannerCredits || {};
-      var creditAnimationTimeout = null;
-      var creditAnimationInterval = null;
+      var backgroundCreditTimeout = null;
       var bannerCreditTimeout = null;
+      var creditFadeOutMs = 420;
 
       function escapeHtml(value) {
         return String(value)
@@ -1328,9 +1332,9 @@
         var credit = bannerCreditsByName[imageEntry.key || getImageKey(imageEntry.src)] || {};
         var artistLabel = credit.artist || "Unknown artist";
         var artistHtml = credit.artistUrl ? formatLink(artistLabel, credit.artistUrl) : escapeHtml(artistLabel);
-        var sourceHtml = credit.sourceUrl ? formatLink("Source", credit.sourceUrl) : "Source";
+        var artHtml = credit.sourceUrl ? formatLink("Art", credit.sourceUrl) : "Art";
 
-        return sourceHtml + " · " + artistHtml;
+        return artHtml + " by " + artistHtml;
       }
 
       function updateBannerCredit(imageEntry, useAnimation) {
@@ -1354,19 +1358,7 @@
           bannerCreditText.innerHTML = buildBannerCreditContent(imageEntry);
           bannerCreditText.classList.remove("is-changing");
           bannerCreditTimeout = null;
-        }, 420);
-      }
-
-      function clearCreditAnimation() {
-        if (creditAnimationTimeout) {
-          window.clearTimeout(creditAnimationTimeout);
-          creditAnimationTimeout = null;
-        }
-
-        if (creditAnimationInterval) {
-          window.clearInterval(creditAnimationInterval);
-          creditAnimationInterval = null;
-        }
+        }, creditFadeOutMs);
       }
 
       function updateCredit(imageEntry, useAnimation) {
@@ -1376,47 +1368,23 @@
 
         var content = buildCreditContent(imageEntry);
 
+        if (backgroundCreditTimeout) {
+          window.clearTimeout(backgroundCreditTimeout);
+          backgroundCreditTimeout = null;
+        }
+
         if (!useAnimation) {
-          clearCreditAnimation();
-          backgroundCreditText.classList.remove("is-typing");
+          backgroundCreditText.classList.remove("is-changing");
           backgroundCreditText.innerHTML = content.html;
           return;
         }
 
-        clearCreditAnimation();
-
-        var currentText = backgroundCreditText.textContent || content.text;
-        var eraseIndex = currentText.length;
-        var writeIndex = 0;
-        var eraseStepMs = 40;
-        var writeStepMs = 42;
-
-        backgroundCreditText.classList.add("is-typing");
-        backgroundCreditText.textContent = currentText;
-
-        creditAnimationInterval = window.setInterval(function () {
-          eraseIndex -= 1;
-          backgroundCreditText.textContent = currentText.slice(0, Math.max(eraseIndex, 0));
-
-          if (eraseIndex <= 0) {
-            window.clearInterval(creditAnimationInterval);
-            creditAnimationInterval = null;
-
-            creditAnimationTimeout = window.setTimeout(function () {
-              creditAnimationInterval = window.setInterval(function () {
-                writeIndex += 1;
-                backgroundCreditText.textContent = content.text.slice(0, writeIndex);
-
-                if (writeIndex >= content.text.length) {
-                  window.clearInterval(creditAnimationInterval);
-                  creditAnimationInterval = null;
-                  backgroundCreditText.classList.remove("is-typing");
-                  backgroundCreditText.innerHTML = content.html;
-                }
-              }, writeStepMs);
-            }, 220);
-          }
-        }, eraseStepMs);
+        backgroundCreditText.classList.add("is-changing");
+        backgroundCreditTimeout = window.setTimeout(function () {
+          backgroundCreditText.innerHTML = content.html;
+          backgroundCreditText.classList.remove("is-changing");
+          backgroundCreditTimeout = null;
+        }, creditFadeOutMs);
       }
 
       var layerA = document.getElementById("bg-layer-a");
