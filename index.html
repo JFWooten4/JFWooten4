@@ -112,6 +112,34 @@
       margin-bottom: 16px;
       font-weight: 600;
     }
+    .banner-name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.015em;
+      margin: 0 0 24px;
+      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+      font-size: clamp(4.4rem, 13vw, 9.5rem);
+      font-weight: 900;
+      line-height: 0.78;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .banner-name-letter {
+      color: transparent;
+      background-image: var(--letter-banner);
+      background-position: center;
+      background-size: cover;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.5))
+              drop-shadow(0 7px 12px rgba(0, 0, 0, 0.72));
+    }
+    .banner-name-space {
+      width: 0.28em;
+    }
     h3 {
       font-family: Georgia, serif;
       margin-top: 45px;
@@ -376,6 +404,10 @@
     @media (max-width: 720px) {
       .content {
         padding: 28px 18px 96px;
+      }
+      .banner-name {
+        font-size: clamp(2.65rem, 13.2vw, 5.5rem);
+        margin-bottom: 20px;
       }
       .group-thumb {
         width: 92px;
@@ -722,7 +754,19 @@
   </script>
 
   <div class="content">
-    <h2 style="font-family: 'Courier New', monospace;">John Wooten</h2>
+    <h1 class="banner-name" aria-label="John Wooten">
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/buffett.png')">J</span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/climbing-pheonix.PNG')">o</span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/consensys.jpg')">h</span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/dash-confident.jpg')">n</span>
+      <span class="banner-name-space" aria-hidden="true"></span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/explaining-joke.jpg')">W</span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/gatech-inventure.png')">o</span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/hackathon.jpeg')">o</span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/magnum-opus.png')">t</span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/origins.jpg')">e</span>
+      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/standing-tall.png')">n</span>
+    </h1>
     
     <div class="social-links">
       <a href="https://github.com/JFWooten4" target="_blank">
