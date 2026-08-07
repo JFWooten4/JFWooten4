@@ -99,6 +99,33 @@
     .background-credit-text a {
       color: var(--accent);
     }
+    .banner-credit {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .banner-credit-label {
+      display: block;
+      margin: 0 0 2px;
+      color: var(--accent);
+      font-size: 0.66rem;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+    .banner-credit-text {
+      margin: 0;
+      color: #f6f2fb;
+      font-size: 0.78rem;
+      line-height: 1.4;
+      text-align: center;
+      transition: opacity 420ms ease;
+    }
+    .banner-credit-text.is-changing {
+      opacity: 0;
+    }
+    .banner-credit-text a {
+      color: var(--accent);
+    }
     .content {
       position: relative;
       z-index: 1;
@@ -113,10 +140,9 @@
       font-weight: 600;
     }
     .banner-name {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.015em;
+      display: grid;
+      place-items: center;
+      width: min(1180px, calc(100vw - 40px));
       margin: 0 0 24px;
       font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
       font-size: clamp(4.4rem, 13vw, 9.5rem);
@@ -126,19 +152,23 @@
       text-transform: uppercase;
       white-space: nowrap;
     }
-    .banner-name-letter {
+    .banner-name-layer {
+      grid-area: 1 / 1;
       color: transparent;
-      background-image: var(--letter-banner);
+      background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      opacity: 0;
       filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.5))
               drop-shadow(0 7px 12px rgba(0, 0, 0, 0.72));
+      transition: opacity 4.2s ease-in-out;
+      will-change: opacity;
     }
-    .banner-name-space {
-      width: 0.28em;
+    .banner-name-layer.is-visible {
+      opacity: 1;
     }
     h3 {
       font-family: Georgia, serif;
@@ -463,6 +493,9 @@
       .background-credit-text {
         font-size: 0.76rem;
       }
+      .banner-credit-text {
+        font-size: 0.72rem;
+      }
     }
   </style>
 </head>
@@ -665,6 +698,52 @@
     };
   </script>
   <script>
+    window.homepageBannerImages = [
+      { "key": "gatech-inventure", "src": "/banners/gatech-inventure.png" },
+      { "key": "climbing-pheonix", "src": "/banners/climbing-pheonix.PNG" },
+      { "key": "dash-confident", "src": "/banners/dash-confident.jpg" },
+      { "key": "deadly-plunge", "src": "/banners/deadly-plunge.PNG" },
+      { "key": "decievingly-cute", "src": "/banners/decievingly-cute.png" },
+      { "key": "explaining-joke", "src": "/banners/explaining-joke.jpg" },
+      { "key": "full-form", "src": "/banners/full-form.PNG" },
+      { "key": "gun-gun", "src": "/banners/gun-gun.png" },
+      { "key": "hackathon", "src": "/banners/hackathon.jpeg" },
+      { "key": "inhuman-reactions", "src": "/banners/inhuman-reactions.jpg" },
+      { "key": "magnum-opus", "src": "/banners/magnum-opus.png" },
+      { "key": "massie-exposition", "src": "/banners/massie-exposition.png" },
+      { "key": "patrol-line", "src": "/banners/patrol-line.png" },
+      { "key": "rails", "src": "/banners/rails.jpg" },
+      { "key": "smoking-gun", "src": "/banners/smoking-gun.jpg" },
+      { "key": "soroban", "src": "/banners/soroban.jpg" },
+      { "key": "standing-tall", "src": "/banners/standing-tall.png" },
+      { "key": "what-matters", "src": "/banners/what-matters.png" },
+      { "key": "when-ape", "src": "/banners/when-ape.png" },
+      { "key": "flawless-overlook", "src": "/banners/flawless-overlook.png" }
+    ];
+    window.homepageBannerCredits = {
+      "gatech-inventure": { "artist": "Georgia Public Broadcasting/PBS", "sourceUrl": "https://youtu.be/S75IvkicWD8?t=66" },
+      "climbing-pheonix": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/fB8TyLTD7EE?t=69" },
+      "dash-confident": { "artist": "tehnomad", "sourceUrl": "https://wallup.net/my-little-pony-rainbow-dash-4" },
+      "deadly-plunge": { "artist": "Forest Rain", "sourceUrl": "https://youtu.be/MjfCH89sBzs" },
+      "decievingly-cute": { "artist": "Krista_21", "artistUrl": "https://x.com/Kristalina_21", "sourceUrl": "https://x.com/Kristalina_21/status/1843336237266153699" },
+      "explaining-joke": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/5FrhtahQiRc?t=134" },
+      "full-form": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/tJV_-5nciN0?t=162" },
+      "gun-gun": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/ZHhqwBwmRkI?t=138" },
+      "hackathon": { "artist": "Emir Ayral", "artistUrl": "https://x.com/StellarEmir", "sourceUrl": "https://discord.com/channels/761985725453303838/761985725453303841/1245787112515829881" },
+      "inhuman-reactions": { "artist": "unknown manufacturer", "sourceUrl": "https://www.ubuy.com.ps/en/product/48C6SVCPU-sword-art-a-online-kirito-foam-sword-set-elucidator-dark-repulsor-kirigaya-2-swords-l-40inch-s-32inch" },
+      "magnum-opus": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/fB8TyLTD7EE?t=154" },
+      "massie-exposition": { "artist": "Thomas Massie, popularized by 6days1week", "sourceUrl": "https://youtu.be/Mn6vdsNiaZo?t=10424" },
+      "patrol-line": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/OkscEokV238?t=57" },
+      "rails": { "artist": "@bobmahalo", "sourceUrl": "https://discordapp.com/channels/1102309240145707049/1118990437684875357/1296830496973787196" },
+      "smoking-gun": { "artist": "DreamWorks Animation", "sourceUrl": "https://youtu.be/7VXrvcc7tL8?t=82" },
+      "soroban": { "artist": "John Rubisoff", "artistUrl": "https://x.com/spintax2", "sourceUrl": "https://discord.com/channels/761985725453303838/761985725453303841/1478765755498762281" },
+      "standing-tall": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/HYsz1hP0BFo?t=102" },
+      "what-matters": { "artist": "Blizzard Entertainment", "sourceUrl": "https://youtu.be/cPRRupAM4DI?t=257" },
+      "when-ape": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/dmDuz0OUNY0?t=65" },
+      "flawless-overlook": { "artist": "Tamers12345", "sourceUrl": "https://pony.tube/w/2oyQhzsFKc6mkADyfwr1KL?start=33m49s" }
+    };
+  </script>
+  <script>
     var redirects = {
       "alpha": "https://github.com/blocktransfer/erc20-deprecated",
       "aspirations": "https://docs.google.com/document/d/1546NL1xCOyKNQ3FjMevaZVhiLUq2hRLyU-GNJHlDDgs/edit",
@@ -755,17 +834,8 @@
 
   <div class="content">
     <h1 class="banner-name" aria-label="John Wooten">
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/buffett.png')">J</span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/climbing-pheonix.PNG')">o</span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/consensys.jpg')">h</span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/dash-confident.jpg')">n</span>
-      <span class="banner-name-space" aria-hidden="true"></span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/explaining-joke.jpg')">W</span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/gatech-inventure.png')">o</span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/hackathon.jpeg')">o</span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/magnum-opus.png')">t</span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/origins.jpg')">e</span>
-      <span class="banner-name-letter" aria-hidden="true" style="--letter-banner: url('/banners/standing-tall.png')">n</span>
+      <span class="banner-name-layer is-visible" id="banner-name-layer-a" aria-hidden="true">John Wooten</span>
+      <span class="banner-name-layer" id="banner-name-layer-b" aria-hidden="true">John Wooten</span>
     </h1>
     
     <div class="social-links">
@@ -810,6 +880,10 @@
     <div class="background-credit-card">
       <p class="background-credit-label">Background</p>
       <p class="background-credit-text" id="background-credit-text">Credit unavailable.</p>
+      <div class="banner-credit">
+        <p class="banner-credit-label">Banner</p>
+        <p class="banner-credit-text" id="banner-credit-text">Credit unavailable.</p>
+      </div>
     </div>
   </div>
   <div class="lightbox" id="group-lightbox" aria-hidden="true">
@@ -1201,10 +1275,14 @@
       // Rotate the available background images through two layers so the
       // landing page gets a slow, low-opacity crossfade instead of a hard swap.
       var backgroundCreditText = document.getElementById("background-credit-text");
+      var bannerCreditText = document.getElementById("banner-credit-text");
       var images = Array.isArray(window.homepageBackgroundImages) ? window.homepageBackgroundImages : [];
+      var bannerImages = Array.isArray(window.homepageBannerImages) ? window.homepageBannerImages : [];
       var creditsByName = window.homepageBackgroundCredits || {};
+      var bannerCreditsByName = window.homepageBannerCredits || {};
       var creditAnimationTimeout = null;
       var creditAnimationInterval = null;
+      var bannerCreditTimeout = null;
 
       function escapeHtml(value) {
         return String(value)
@@ -1244,6 +1322,39 @@
           html: parts.join(" · "),
           text: textParts.join(" · ")
         };
+      }
+
+      function buildBannerCreditContent(imageEntry) {
+        var credit = bannerCreditsByName[imageEntry.key || getImageKey(imageEntry.src)] || {};
+        var artistLabel = credit.artist || "Unknown artist";
+        var artistHtml = credit.artistUrl ? formatLink(artistLabel, credit.artistUrl) : escapeHtml(artistLabel);
+        var sourceHtml = credit.sourceUrl ? formatLink("Source", credit.sourceUrl) : "Source";
+
+        return sourceHtml + " · " + artistHtml;
+      }
+
+      function updateBannerCredit(imageEntry, useAnimation) {
+        if (!bannerCreditText || !imageEntry) {
+          return;
+        }
+
+        if (bannerCreditTimeout) {
+          window.clearTimeout(bannerCreditTimeout);
+          bannerCreditTimeout = null;
+        }
+
+        if (!useAnimation) {
+          bannerCreditText.classList.remove("is-changing");
+          bannerCreditText.innerHTML = buildBannerCreditContent(imageEntry);
+          return;
+        }
+
+        bannerCreditText.classList.add("is-changing");
+        bannerCreditTimeout = window.setTimeout(function () {
+          bannerCreditText.innerHTML = buildBannerCreditContent(imageEntry);
+          bannerCreditText.classList.remove("is-changing");
+          bannerCreditTimeout = null;
+        }, 420);
       }
 
       function clearCreditAnimation() {
@@ -1310,6 +1421,8 @@
 
       var layerA = document.getElementById("bg-layer-a");
       var layerB = document.getElementById("bg-layer-b");
+      var bannerLayerA = document.getElementById("banner-name-layer-a");
+      var bannerLayerB = document.getElementById("banner-name-layer-b");
 
       function markInitialBackgroundReady() {
         window.homepageInitialBackgroundReady = true;
@@ -1324,6 +1437,9 @@
       var activeLayer = layerA;
       var inactiveLayer = layerB;
       var imageIndex = Math.floor(Math.random() * images.length);
+      var activeBannerLayer = bannerLayerA;
+      var inactiveBannerLayer = bannerLayerB;
+      var bannerImageIndex = bannerImages.length ? Math.floor(Math.random() * bannerImages.length) : 0;
       var swapDelayMs = 8000;
       var fadeDurationMs = 4200;
       var creditLeadMs = 1900;
@@ -1377,12 +1493,25 @@
         layer.style.backgroundPosition = imageEntry.position;
       }
 
+      function applyBanner(layer, imageEntry) {
+        if (!layer || !imageEntry) {
+          return;
+        }
+
+        layer.style.backgroundImage = 'url("' + imageEntry.src + '")';
+      }
+
       function scheduleNextFade() {
         window.setTimeout(function () {
           var nextIndex = (imageIndex + 1) % images.length;
+          var nextBannerIndex = bannerImages.length ? (bannerImageIndex + 1) % bannerImages.length : 0;
+          var nextBannerPromise = bannerImages.length ? preload(bannerImages[nextBannerIndex]) : Promise.resolve(null);
 
-          preload(images[nextIndex]).then(function (nextImage) {
+          Promise.all([preload(images[nextIndex]), nextBannerPromise]).then(function (loadedImages) {
+            var nextImage = loadedImages[0];
+            var nextBanner = loadedImages[1];
             applyBackground(inactiveLayer, nextImage);
+            applyBanner(inactiveBannerLayer, nextBanner);
 
             // Force the browser to register the new background before opacity changes.
             inactiveLayer.offsetHeight;
@@ -1396,8 +1525,20 @@
             activeLayer = inactiveLayer;
             inactiveLayer = previous;
 
+            if (nextBanner && activeBannerLayer && inactiveBannerLayer) {
+              inactiveBannerLayer.offsetHeight;
+              inactiveBannerLayer.classList.add("is-visible");
+              activeBannerLayer.classList.remove("is-visible");
+              bannerImageIndex = nextBannerIndex;
+
+              var previousBannerLayer = activeBannerLayer;
+              activeBannerLayer = inactiveBannerLayer;
+              inactiveBannerLayer = previousBannerLayer;
+            }
+
             window.setTimeout(function () {
               updateCredit(nextImage, true);
+              updateBannerCredit(nextBanner, true);
             }, creditLeadMs);
 
             scheduleNextFade();
@@ -1405,9 +1546,18 @@
         }, swapDelayMs);
       }
 
-      preload(images[imageIndex], { decode: false, fetchPriority: "high" }).then(function (initialImage) {
+      var initialBannerPromise = bannerImages.length ? preload(bannerImages[bannerImageIndex], { decode: false, fetchPriority: "high" }) : Promise.resolve(null);
+
+      Promise.all([
+        preload(images[imageIndex], { decode: false, fetchPriority: "high" }),
+        initialBannerPromise
+      ]).then(function (initialImages) {
+        var initialImage = initialImages[0];
+        var initialBanner = initialImages[1];
         applyBackground(activeLayer, initialImage);
+        applyBanner(activeBannerLayer, initialBanner);
         updateCredit(initialImage, false);
+        updateBannerCredit(initialBanner, false);
         markInitialBackgroundReady();
 
         if (images.length < 2) {
@@ -1417,6 +1567,11 @@
         window.setTimeout(function () {
           images.forEach(function (imageEntry, index) {
             if (index !== imageIndex) {
+              preload(imageEntry);
+            }
+          });
+          bannerImages.forEach(function (imageEntry, index) {
+            if (index !== bannerImageIndex) {
               preload(imageEntry);
             }
           });
