@@ -6,8 +6,8 @@ ACCOUNTS = [
 ]
 
 [DOCUMENTATION]
-ORG_NAME = "john.xlm"
-ORG_URL = "https://john.xlm.sh"
+ORG_NAME = "John Wooten"
+ORG_URL = "https://github.com/JFWooten4"
 ORG_DESCRIPTION = "John is a passionate advocate for building an investor-centric market that frees stocks from central bankers. 🕊"
 
 [[PRINCIPALS]]
@@ -18,8 +18,8 @@ id_photo_hash = "0dce43292a7dd2c6ef021cca9f84330ceeec34e8587172453bc2b05f1bd13ed
 verification_photo_hash = "a3b5109c1afb0d7ce22780fc5a656bda0f24b63d4bbddcff35f44f0b8e62ff48"
 
 [[VALIDATORS]]
-ALIAS = "wooten-local"
-DISPLAY_NAME = "John Wooten Local Validator"
+ALIAS = "john-wooten"
+DISPLAY_NAME = "John Wooten Stellar Observer"
 PUBLIC_KEY = "GCORE322LR7WMDHKRXMMHJATAIAFDVBZZHWKR7THMTKDUGPEOUWOOTEN"
 HOST = "wooten.link:11625"
 HISTORY = "https://wooten.link/stellar-history"
