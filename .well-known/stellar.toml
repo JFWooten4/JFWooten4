@@ -19,5 +19,5 @@ verification_photo_hash = "a3b5109c1afb0d7ce22780fc5a656bda0f24b63d4bbddcff35f44
 
 [[VALIDATORS]]
 ALIAS = "john-wooten"
-DISPLAY_NAME = "John Wooten Stellar Observer"
+DISPLAY_NAME = "John Wooten Observer Only"
 PUBLIC_KEY = "GCORE322LR7WMDHKRXMMHJATAIAFDVBZZHWKR7THMTKDUGPEOUWOOTEN"
