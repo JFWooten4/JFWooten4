@@ -7,7 +7,7 @@ ACCOUNTS = [
 
 [DOCUMENTATION]
 ORG_NAME = "John Wooten"
-ORG_URL = "https://github.com/JFWooten4"
+ORG_URL = "https://wooten.link"
 ORG_DESCRIPTION = "John is a passionate advocate for building an investor-centric market that frees stocks from central bankers. 🕊"
 
 [[PRINCIPALS]]
