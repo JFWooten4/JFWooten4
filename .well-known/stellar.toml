@@ -21,5 +21,3 @@ verification_photo_hash = "a3b5109c1afb0d7ce22780fc5a656bda0f24b63d4bbddcff35f44
 ALIAS = "john-wooten"
 DISPLAY_NAME = "John Wooten Stellar Observer"
 PUBLIC_KEY = "GCORE322LR7WMDHKRXMMHJATAIAFDVBZZHWKR7THMTKDUGPEOUWOOTEN"
-HOST = "wooten.link:11625"
-HISTORY = "https://wooten.link/stellar-history"
