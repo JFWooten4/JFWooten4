@@ -35,7 +35,13 @@ struct ImporterTests {
         precondition(readme.contains("- `importer-test` comes from [Example Artist](https://example.com/artist) ([src](https://example.com/art))"))
 
         let index = try String(contentsOf: testRoot.appendingPathComponent("index.html"), encoding: .utf8)
-        precondition(index.contains("lose-them,importer-test\" | split"))
+        let keysMarker = "{% assign background_keys = \""
+        guard let keysStart = index.range(of: keysMarker),
+              let keysEnd = index[keysStart.upperBound...].firstIndex(of: "\"") else {
+            preconditionFailure("Background key registry was not found")
+        }
+        let keys = index[keysStart.upperBound..<keysEnd].split(separator: ",")
+        precondition(keys.last == "importer-test")
         precondition(index.contains("\"importer-test\": {"))
         precondition(index.contains("\"artistUrl\": \"https://example.com/artist\""))
         precondition(index.contains("\"sourceUrl\": \"https://example.com/art\""))
