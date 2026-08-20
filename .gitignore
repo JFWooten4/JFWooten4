@@ -1,4 +1,5 @@
 .DS_Store
+backgrounds/background-importer/Background Importer.app/
 **/__pycache__/
 *.pyc
 *.pyo
