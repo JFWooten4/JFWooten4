@@ -1622,3 +1622,16 @@
   </script>
 </body>
 </html>
+<style id="book-link-polish">
+  .social-links a[href="https://wooten.link/book"] {
+    text-decoration: none;
+  }
+</style>
+<script>
+  (function () {
+    var bookLink = document.querySelector('.social-links a[href="https://wooten.link/book"]');
+    if (bookLink) {
+      bookLink.setAttribute("aria-label", "My Book");
+    }
+  })();
+</script>
