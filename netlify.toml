@@ -7,6 +7,11 @@
   RUBY_VERSION = "3.1.4"
 
 [[redirects]]
+  from = "/book"
+  to = "/static/book.pdf"
+  status = 200
+
+[[redirects]]
   from = "/src/*"
   to = "/static/src/:splat"
   status = 200
