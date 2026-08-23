@@ -1,0 +1,76 @@
+name: Apply Reddit PNG and clean book path once
+
+on:
+  push:
+    branches:
+      - mature-links
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: mature-links
+          fetch-depth: 0
+
+      - name: Add Reddit PNG and clean book URL
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64
+          import json
+
+          reddit_png = '''iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABmJLR0QA/wD/AP+gvaeTAAAS00lE
+QVR4nO2de5wcVZXHv+dWTxIgBiOoCQTIzFR1zzAYWEESl+wi4OIqiAIKkiUfXxtRVNa3C7q6qCwx
+gvtxdddVhBUJsPDxtYArvoiIkUQIgeAk0901Ex4huDyMhr''' 
+          # The full binary payload is written below from a generated base64 file.
+          PY
+          cat > /tmp/reddit.b64 <<'B64'
+iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABmJLR0QA/wD/AP+gvaeTAAAS00lE
+QVR4nO2de5wcVZXHv+dWTxIgBiOoCQTIzFR1zzAYWEESl+wi4OIqiAIKkiUfXxtRVNa3C7q6qCwx
+gvtxdddVhBUJsPDxtYArvoiIkUQIgeAk0901Ex4huDyMhr
+B64
+          base64 -d /tmp/reddit.b64 > static/img/reddit.png
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+
+          index = Path('index.html')
+          text = index.read_text()
+          old = '''      <a href="https://www.reddit.com/user/jfwooten4" target="_blank" aria-label="Reddit">\n        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">\n          <circle cx="12" cy="13" r="7" fill="none" stroke="#fdda24" stroke-width="2"/>\n          <path d="M12 6l1.1-3.5 3.2.7" fill="none" stroke="#fdda24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n          <circle cx="18.1" cy="3.8" r="1.4" fill="#fdda24"/>\n          <path d="M5.6 10.8a2.2 2.2 0 0 0-1.1 4.1M18.4 10.8a2.2 2.2 0 0 1 1.1 4.1" fill="none" stroke="#fdda24" stroke-width="2" stroke-linecap="round"/>\n          <circle cx="9.2" cy="12.7" r="1.1" fill="#fdda24"/>\n          <circle cx="14.8" cy="12.7" r="1.1" fill="#fdda24"/>\n          <path d="M9.3 15.9c1.6 1 3.8 1 5.4 0" fill="none" stroke="#fdda24" stroke-width="2" stroke-linecap="round"/>\n        </svg>\n      </a>'''
+          new = '''      <a href="https://www.reddit.com/user/jfwooten4" target="_blank">\n        <img src="static/img/reddit.png" alt="Reddit">\n      </a>'''
+          if old not in text:
+              raise SystemExit('Reddit SVG block not found')
+          index.write_text(text.replace(old, new, 1))
+
+          redirects = Path('404.html')
+          redirect_text = redirects.read_text()
+          old_book = '"book": "/static/book.pdf"'
+          new_book = '"book": "/book.pdf"'
+          if old_book not in redirect_text:
+              raise SystemExit('book redirect not found')
+          redirects.write_text(redirect_text.replace(old_book, new_book, 1))
+
+          vercel = Path('vercel.json')
+          data = json.loads(vercel.read_text())
+          rewrites = data.setdefault('rewrites', [])
+          rule = {'source': '/book.pdf', 'destination': '/static/book.pdf'}
+          if rule not in rewrites:
+              rewrites.insert(0, rule)
+          vercel.write_text(json.dumps(data, indent=2) + '\n')
+          PY
+
+      - name: Remove one-shot workflow and commit
+        run: |
+          git rm .github/workflows/mature-links-reddit-book-once.yml
+          git add index.html 404.html vercel.json static/img/reddit.png
+          git config user.name "John Wooten"
+          git config user.email "60260750+JFWooten4@users.noreply.github.com"
+          git commit -m "Use Reddit PNG and clean book PDF path" -m "Co-authored-by: Codex Web <noreply@openai.com>"
+          git push origin HEAD:mature-links
