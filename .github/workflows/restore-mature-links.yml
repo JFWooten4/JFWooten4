@@ -1,0 +1,63 @@
+name: Restore mature-links branch changes
+
+on:
+  push:
+    branches:
+      - mature-links
+    paths:
+      - .github/workflows/restore-mature-links.yml
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore pre-existing branch changes
+        shell: bash
+        run: |
+          git checkout da085f9cfde24502d682fc5a401af4ab245136aa -- \
+            static/img/blog.png \
+            static/img/discord.png \
+            static/img/github.png \
+            static/img/linkedin.png \
+            static/img/x.png \
+            static/img/youtube.png
+
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("index.html")
+          text = path.read_text()
+
+          replacements = [
+              ('<img src="https://blocktransfer.com/imgs/email/github.png" alt="GitHub">', '<img src="static/img/github.png" alt="GitHub">'),
+              ('<img src="https://blocktransfer.com/imgs/email/twitter.png" alt="X">', '<img src="static/img/x.png" alt="X">'),
+              ('<a href="https://wooten.link/media" target="_blank">\n        <img src="https://blocktransfer.com/imgs/email/youtube.png" alt="YouTube">', '<a href="https://www.youtube.com/@JFWooten4" target="_blank">\n        <img src="static/img/youtube.png" alt="YouTube">'),
+              ('<img src="https://blocktransfer.com/imgs/email/linkedin.png" alt="LinkedIn">', '<img src="static/img/linkedin.png" alt="LinkedIn">'),
+              ('<img src="https://blocktransfer.com/imgs/email/blog.png" alt="Blog">', '<img src="static/img/blog.png" alt="Blog">'),
+              ('<a href="https://discord.com/users/777758936820219904" target="_blank">\n        <img src="https://blocktransfer.com/imgs/email/discord.png" alt="Discord">', '<a href="https://discord.gg/wPKmTECv3B" target="_blank">\n        <img src="static/img/discord.png" alt="Discord">'),
+              ('<a href="https://wooten.link/origins" target="_blank" aria-label="Listen to Origins">', '<a href="https://lnns.co/afdmuCSU579" target="_blank" aria-label="Listen to Origins">'),
+          ]
+
+          for old, new in replacements:
+              if old not in text:
+                  raise SystemExit(f"Expected text not found: {old}")
+              text = text.replace(old, new, 1)
+
+          path.write_text(text)
+          PY
+
+          git rm .github/workflows/restore-mature-links.yml
+          git add index.html static/img/blog.png static/img/discord.png static/img/github.png static/img/linkedin.png static/img/x.png static/img/youtube.png
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m $'Restore mature-links image and link changes\n\nCo-authored-by: Codex Web <noreply@openai.com>'
+          git push
