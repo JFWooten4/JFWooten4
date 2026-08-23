@@ -4,16 +4,6 @@
   "outputDirectory": "_site",
   "redirects": [
     {
-      "source": "/blog",
-      "destination": "https://tasbd-6iaaa-aaaao-bbfca-cai.icp0.io",
-      "permanent": true
-    },
-    {
-      "source": "/blog/:path*",
-      "destination": "https://tasbd-6iaaa-aaaao-bbfca-cai.icp0.io/:path*",
-      "permanent": true
-    },
-    {
       "source": "/scam",
       "destination": "/btc",
       "permanent": true
@@ -25,10 +15,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/book",
-      "destination": "/static/book.pdf"
-    },
     {
       "source": "/src/:path*",
       "destination": "/static/src/:path*"
