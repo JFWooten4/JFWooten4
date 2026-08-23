@@ -1,0 +1,95 @@
+name: Upgrade mature-links brand PNGs once
+
+on:
+  push:
+    branches:
+      - mature-links
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: mature-links
+          fetch-depth: 0
+
+      - name: Build high-resolution brand PNGs
+        run: |
+          python3 -m pip install --quiet cairosvg
+          mkdir -p /tmp/brand-svg static/img
+          curl -fsSL https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg -o /tmp/brand-svg/github.svg
+          curl -fsSL https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/x.svg -o /tmp/brand-svg/x.svg
+          curl -fsSL https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/reddit.svg -o /tmp/brand-svg/reddit.svg
+          curl -fsSL https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/youtube.svg -o /tmp/brand-svg/youtube.svg
+          curl -fsSL https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/discord.svg -o /tmp/brand-svg/discord.svg
+          curl -fsSL https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg -o /tmp/brand-svg/linkedin.svg
+          python3 - <<'PY'
+          from pathlib import Path
+          import cairosvg
+
+          colors = {
+              'github': '#FFFFFF',
+              'x': '#FFFFFF',
+              'reddit': '#FF4500',
+              'youtube': '#FF0000',
+              'discord': '#5865F2',
+          }
+
+          src = Path('/tmp/brand-svg')
+          dst = Path('static/img')
+          for name, color in colors.items():
+              svg = (src / f'{name}.svg').read_text()
+              svg = svg.replace('<path ', f'<path fill="{color}" ', 1)
+              cairosvg.svg2png(bytestring=svg.encode(), write_to=str(dst / f'{name}.png'), output_width=256, output_height=256)
+
+          cairosvg.svg2png(url=str(src / 'linkedin.svg'), write_to=str(dst / 'linkedin.png'), output_width=256, output_height=256)
+          PY
+
+      - name: Polish book icon link
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text()
+
+          old_book = '<a href="https://wooten.link/book" target="_blank" aria-label="Book PDF">📘</a>'
+          new_book = '<a class="book-link" href="https://wooten.link/book" target="_blank" aria-label="My Book">📘</a>'
+          if old_book in text:
+              text = text.replace(old_book, new_book, 1)
+          elif 'aria-label="My Book">📘</a>' not in text:
+              raise SystemExit('book link not found')
+
+          if '.social-links .book-link {' not in text:
+              needle = '''    .social-links a {
+      margin: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+    }'''
+              replacement = needle + '''
+    .social-links .book-link {
+      text-decoration: none;
+    }'''
+              if needle not in text:
+                  raise SystemExit('social-link CSS block not found')
+              text = text.replace(needle, replacement, 1)
+
+          path.write_text(text)
+          PY
+
+      - name: Remove helpers and commit
+        run: |
+          git rm -f .github/workflows/mature-links-hq-icons-once.yml
+          git rm -f .github/workflows/mature-links-book-icons-once.yml 2>/dev/null || true
+          git add index.html static/img/github.png static/img/x.png static/img/reddit.png static/img/youtube.png static/img/linkedin.png static/img/discord.png
+          git config user.name "John Wooten"
+          git config user.email "60260750+JFWooten4@users.noreply.github.com"
+          git commit -m "Polish book link and upgrade brand PNGs" -m "Co-authored-by: Codex Web <noreply@openai.com>"
+          git push origin HEAD:mature-links
