@@ -1,0 +1,59 @@
+name: Apply mature-links homepage update
+
+on:
+  push:
+    branches:
+      - mature-links
+    paths:
+      - .github/workflows/apply-mature-links-update.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: mature-links
+      - name: Update homepage links
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("index.html")
+          text = path.read_text()
+
+          book = '''      <a href="https://wooten.link/book" target="_blank" aria-label="Book PDF">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="#4da3ff" d="M3 4.5c2.65-.84 5.14-.62 7.5.66V20c-2.36-1.28-4.85-1.5-7.5-.66V4.5Zm18 0v14.84c-2.65-.84-5.14-.62-7.5.66V5.16C15.86 3.88 18.35 3.66 21 4.5ZM12 5.78C11.55 5.42 11.05 5.1 10.5 4.82V19.3c.55.28 1.05.6 1.5.96.45-.36.95-.68 1.5-.96V4.82c-.55.28-1.05.6-1.5.96Z"/>
+        </svg>
+      </a>
+'''
+
+          if text.count(book) != 1:
+              raise SystemExit("Expected exactly one book link block")
+
+          text = text.replace(book, "", 1)
+          marker = '    <div class="social-links">\n'
+          if marker not in text:
+              raise SystemExit("Social links marker not found")
+          text = text.replace(marker, marker + book, 1)
+
+          old_blog = '      <a href="https://john.xlm.sh" target="_blank">\n        <img src="static/img/blog.png" alt="Blog">\n      </a>'
+          new_blog = '      <a href="https://wooten.link/blog" target="_blank">\n        <img src="static/img/blog.png" alt="Blog">\n      </a>'
+          if text.count(old_blog) != 1:
+              raise SystemExit("Expected exactly one old blog link")
+          text = text.replace(old_blog, new_blog, 1)
+
+          path.write_text(text)
+      - name: Remove one-shot workflow and commit
+        shell: bash
+        run: |
+          rm .github/workflows/apply-mature-links-update.yml
+          git config user.name "Codex Web"
+          git config user.email "noreply@openai.com"
+          git add index.html .github/workflows/apply-mature-links-update.yml
+          git commit -m "Reorder book and update blog link" -m "Co-authored-by: Codex Web <noreply@openai.com>"
+          git push origin HEAD:mature-links
