@@ -1,0 +1,96 @@
+name: Compact data trees once
+
+on:
+  push:
+    branches:
+      - compact-data-trees
+
+permissions:
+  contents: write
+
+jobs:
+  compact:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: compact-data-trees
+          fetch-depth: 0
+
+      - name: Condense leaf objects
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path("index.html")
+          text = path.read_text()
+
+          def compact_leaf_objects_in_region(text, start_marker, end_marker):
+              start = text.index(start_marker)
+              end = text.index(end_marker, start)
+              region = text[start:end]
+              lines = region.splitlines()
+              out = []
+              i = 0
+
+              while i < len(lines):
+                  match = re.match(r'^(\s+)"([^"\n]+)": \{$', lines[i])
+                  if not match:
+                      out.append(lines[i])
+                      i += 1
+                      continue
+
+                  indent, key = match.groups()
+                  j = i + 1
+                  properties = []
+
+                  while j < len(lines):
+                      line = lines[j]
+                      if line == indent + "}" or line == indent + "},":
+                          break
+                      if not line.startswith(indent + "  \""):
+                          break
+                      properties.append(line.strip().rstrip(","))
+                      j += 1
+
+                  if properties and j < len(lines) and lines[j] in (indent + "}", indent + "},"):
+                      comma = "," if lines[j].endswith(",") else ""
+                      out.append(f'{indent}"{key}": {{ ' + ", ".join(properties) + f' }}{comma}')
+                      i = j + 1
+                      continue
+
+                  out.append(lines[i])
+                  i += 1
+
+              compacted = "\n".join(out)
+              if region.endswith("\n"):
+                  compacted += "\n"
+              return text[:start] + compacted + text[end:]
+
+          text = compact_leaf_objects_in_region(
+              text,
+              '<script type="application/json" id="group-credit-data">',
+              '</script>'
+          )
+          text = compact_leaf_objects_in_region(
+              text,
+              'window.homepageBackgroundCredits = {',
+              '};'
+          )
+
+          path.write_text(text)
+          PY
+
+      - name: Remove one-shot workflow and commit
+        run: |
+          git rm .github/workflows/compact-data-trees-once.yml
+          git add index.html
+          if git diff --cached --quiet; then
+            exit 1
+          fi
+          git config user.name "John Wooten"
+          git config user.email "60260750+JFWooten4@users.noreply.github.com"
+          git commit -m "Condense homepage data-tree leaf objects" -m "Co-authored-by: Codex Web <noreply@openai.com>"
+          git push origin HEAD:compact-data-trees
