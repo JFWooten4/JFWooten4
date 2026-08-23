@@ -16,6 +16,10 @@
   ],
   "rewrites": [
     {
+      "source": "/book.pdf",
+      "destination": "/static/book.pdf"
+    },
+    {
       "source": "/src/:path*",
       "destination": "/static/src/:path*"
     },
