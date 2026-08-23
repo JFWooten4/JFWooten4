@@ -1,0 +1,74 @@
+name: Lower social icons once
+
+on:
+  push:
+    branches:
+      - compact-data-trees
+
+permissions:
+  contents: write
+
+jobs:
+  adjust:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: compact-data-trees
+          fetch-depth: 0
+
+      - name: Increase name-to-icons spacing
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("index.html")
+          text = path.read_text()
+
+          old_banner = '''    .banner-name {
+      display: grid;
+      place-items: center;
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 0 24px;'''
+          new_banner = '''    .banner-name {
+      display: grid;
+      place-items: center;
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 0 56px;
+      pointer-events: none;'''
+          if old_banner not in text:
+              raise SystemExit("desktop banner block not found")
+          text = text.replace(old_banner, new_banner, 1)
+
+          old_social = '''    .social-links {
+      margin-top: 0;'''
+          new_social = '''    .social-links {
+      margin-top: 12px;'''
+          if old_social not in text:
+              raise SystemExit("social links block not found")
+          text = text.replace(old_social, new_social, 1)
+
+          old_mobile = '''      .banner-name {
+        font-size: clamp(2.65rem, 13.2vw, 5.5rem);
+        margin-bottom: 20px;
+      }'''
+          new_mobile = '''      .banner-name {
+        font-size: clamp(2.65rem, 13.2vw, 5.5rem);
+        margin-bottom: 40px;
+      }'''
+          if old_mobile not in text:
+              raise SystemExit("mobile banner block not found")
+          text = text.replace(old_mobile, new_mobile, 1)
+
+          path.write_text(text)
+          PY
+
+      - name: Remove one-shot workflow and commit
+        run: |
+          git rm .github/workflows/lower-social-icons-once.yml
+          git add index.html
+          git config user.name "John Wooten"
+          git config user.email "60260750+JFWooten4@users.noreply.github.com"
+          git commit -m "Lower social icons below banner name" -m "Co-authored-by: Codex Web <noreply@openai.com>"
+          git push origin HEAD:compact-data-trees
