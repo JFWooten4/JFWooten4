@@ -1,0 +1,45 @@
+name: Upgrade HQ social icons
+
+on:
+  pull_request:
+    branches: [mature-links]
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    if: github.event.pull_request.head.ref == 'hq-social-trigger'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: mature-links
+          fetch-depth: 0
+      - name: Build 256px PNGs
+        run: |
+          python3 -m pip install --quiet cairosvg
+          mkdir -p /tmp/icons
+          curl -fsSL https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg -o /tmp/icons/github.svg
+          curl -fsSL https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/x.svg -o /tmp/icons/x.svg
+          curl -fsSL https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/discord.svg -o /tmp/icons/discord.svg
+          curl -fsSL https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg -o /tmp/icons/linkedin.svg
+          python3 - <<'PY'
+          from pathlib import Path
+          import cairosvg
+          p=Path('/tmp/icons')
+          out=Path('static/img')
+          for name,color in [('github','#FFFFFF'),('x','#FFFFFF'),('discord','#5865F2')]:
+              svg=(p/f'{name}.svg').read_text()
+              svg=svg.replace('<path ', f'<path fill="{color}" ', 1)
+              cairosvg.svg2png(bytestring=svg.encode(), write_to=str(out/f'{name}.png'), output_width=256, output_height=256)
+          cairosvg.svg2png(url=str(p/'linkedin.svg'), write_to=str(out/'linkedin.png'), output_width=256, output_height=256)
+          PY
+      - name: Commit upgraded PNGs
+        run: |
+          git rm .github/workflows/upgrade-hq-social-icons.yml
+          git add static/img/github.png static/img/x.png static/img/discord.png static/img/linkedin.png
+          git config user.name "John Wooten"
+          git config user.email "60260750+JFWooten4@users.noreply.github.com"
+          git commit -m "Upgrade social icon PNG resolution" -m "Co-authored-by: Codex Web <noreply@openai.com>"
+          git push origin HEAD:mature-links
