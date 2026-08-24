@@ -849,9 +849,7 @@
     };
     var subdomain = window.location.host.split(".")[0].toLowerCase();
     var redirect = redirects[subdomain];
-    if (redirect) {
-      window.location.replace(redirect);
-    }
+    if (redirect) { window.location.replace(redirect); }
   </script>
 
   <div class="content">
@@ -929,15 +927,11 @@
     (function () {
       var sponsorList = document.getElementById("sponsor-list");
 
-      if (!sponsorList) {
-        return;
-      }
+      if (!sponsorList) { return; }
 
       fetch("/var/sponsors.json", { cache: "no-store" })
         .then(function (response) {
-          if (!response.ok) {
-            throw new Error("Failed to load sponsor feed");
-          }
+          if (!response.ok) { throw new Error("Failed to load sponsor feed"); }
           return response.json();
         })
         .then(function (data) {
@@ -951,9 +945,7 @@
 
           sponsorList.innerHTML = "";
 
-          if (!sponsors.length) {
-            return;
-          }
+          if (!sponsors.length) { return; }
 
           sponsors.forEach(function (sponsor) {
             var item = document.createElement("li");
@@ -999,9 +991,7 @@
       var activeImageRequest = 0;
       var blankImageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
-      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxDate || !lightboxInfo || !closeButton || !prevButton || !nextButton) {
-        return;
-      }
+      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxDate || !lightboxInfo || !closeButton || !prevButton || !nextButton) { return; }
 
       try {
         images = JSON.parse(groupImageData.textContent);
@@ -1050,9 +1040,7 @@
       var thumbnailsRendered = false;
 
       function renderThumbnails() {
-        if (thumbnailsRendered) {
-          return;
-        }
+        if (thumbnailsRendered) { return; }
 
         thumbnailsRendered = true;
         groupStrip.classList.remove("is-ready");
@@ -1060,16 +1048,12 @@
         var loadedThumbnailCount = 0;
 
         function markThumbnailLoaded(thumbnail) {
-          if (thumbnail.classList.contains("is-loaded")) {
-            return;
-          }
+          if (thumbnail.classList.contains("is-loaded")) { return; }
 
           thumbnail.classList.add("is-loaded");
           loadedThumbnailCount += 1;
 
-          if (loadedThumbnailCount >= images.length) {
-            groupStrip.classList.add("is-ready");
-          }
+          if (loadedThumbnailCount >= images.length) { groupStrip.classList.add("is-ready"); }
         }
 
         images.forEach(function (image, index) {
@@ -1095,9 +1079,7 @@
           });
           thumbnailImage.src = image.smallSrc || image.mediumSrc || image.largeSrc || image.src;
 
-          if (thumbnailImage.complete) {
-            markThumbnailLoaded(thumbnail);
-          }
+          if (thumbnailImage.complete) { markThumbnailLoaded(thumbnail); }
 
           thumbnail.appendChild(thumbnailImage);
           groupStrip.appendChild(thumbnail);
@@ -1112,9 +1094,7 @@
       }
 
       function loadImageSrc(src, cache, options) {
-        if (!src) {
-          return Promise.resolve(null);
-        }
+        if (!src) { return Promise.resolve(null); }
 
         if (!cache[src]) {
           cache[src] = new Promise(function (resolve) {
@@ -1122,9 +1102,7 @@
             var isFinished = false;
 
             function finish() {
-              if (isFinished) {
-                return;
-              }
+              if (isFinished) { return; }
 
               isFinished = true;
 
@@ -1137,9 +1115,7 @@
               }
             }
 
-            if (options && options.fetchPriority) {
-              loadingImage.fetchPriority = options.fetchPriority;
-            }
+            if (options && options.fetchPriority) { loadingImage.fetchPriority = options.fetchPriority; }
 
             loadingImage.decoding = "async";
             loadingImage.onload = finish;
@@ -1148,9 +1124,7 @@
             };
             loadingImage.src = src;
 
-            if (loadingImage.complete) {
-              finish();
-            }
+            if (loadingImage.complete) { finish(); }
           });
         }
 
@@ -1160,14 +1134,10 @@
       function getPreviewSources(image) {
         var sources = [];
 
-        if (!image) {
-          return sources;
-        }
+        if (!image) { return sources; }
 
         [image.smallSrc, image.mediumSrc].forEach(function (src) {
-          if (src && sources.indexOf(src) === -1) {
-            sources.push(src);
-          }
+          if (src && sources.indexOf(src) === -1) { sources.push(src); }
         });
 
         return sources;
@@ -1180,9 +1150,7 @@
       function preloadFullImage(image, options) {
         var fullSrc = image && (image.largeSrc || image.src);
 
-        if (!fullSrc) {
-          return Promise.resolve(null);
-        }
+        if (!fullSrc) { return Promise.resolve(null); }
 
         loadImageSrc(image.mediumSrc || image.smallSrc, previewLoadCache, { fetchPriority: "low" });
 
@@ -1201,9 +1169,7 @@
       function showImage(index) {
         currentIndex = (index + images.length) % images.length;
 
-        if (!images[currentIndex]) {
-          return;
-        }
+        if (!images[currentIndex]) { return; }
 
         var image = images[currentIndex];
         var requestId = activeImageRequest + 1;
@@ -1212,9 +1178,7 @@
         activeImageRequest = requestId;
 
         function displayImage(src, level) {
-          if (requestId !== activeImageRequest || !src || level < displayedLevel) {
-            return;
-          }
+          if (requestId !== activeImageRequest || !src || level < displayedLevel) { return; }
 
           displayedLevel = level;
           lightboxImage.src = src;
@@ -1234,9 +1198,7 @@
         });
 
         preloadFullImage(image, { fetchPriority: "high" }).then(function (loadedSrc) {
-          if (requestId !== activeImageRequest) {
-            return;
-          }
+          if (requestId !== activeImageRequest) { return; }
 
           displayImage(loadedSrc, previewSources.length + 1);
           preloadAdjacentImages(currentIndex);
@@ -1277,15 +1239,11 @@
       closeButton.addEventListener("click", closeLightbox);
 
       lightbox.addEventListener("click", function (event) {
-        if (event.target === lightbox) {
-          closeLightbox();
-        }
+        if (event.target === lightbox) { closeLightbox(); }
       });
 
       document.addEventListener("keydown", function (event) {
-        if (!lightbox.classList.contains("is-open")) {
-          return;
-        }
+        if (!lightbox.classList.contains("is-open")) { return; }
 
         if (event.key === "Escape") {
           closeLightbox();
@@ -1316,22 +1274,16 @@
       var creditCardResizeTimeout = null;
 
       function beginCreditCardResize() {
-        if (!creditCard || creditCardStartHeight !== null) {
-          return;
-        }
+        if (!creditCard || creditCardStartHeight !== null) { return; }
 
         creditCardStartHeight = creditCard.getBoundingClientRect().height;
         creditCard.classList.add("is-resizing");
       }
 
       function finishCreditCardResize() {
-        if (!creditCard || creditCardStartHeight === null) {
-          return;
-        }
+        if (!creditCard || creditCardStartHeight === null) { return; }
 
-        if (creditCardResizeFrame) {
-          window.cancelAnimationFrame(creditCardResizeFrame);
-        }
+        if (creditCardResizeFrame) { window.cancelAnimationFrame(creditCardResizeFrame); }
 
         creditCardResizeFrame = window.requestAnimationFrame(function () {
           var startHeight = creditCardStartHeight;
@@ -1345,9 +1297,7 @@
           creditCardStartHeight = null;
           creditCardResizeFrame = null;
 
-          if (creditCardResizeTimeout) {
-            window.clearTimeout(creditCardResizeTimeout);
-          }
+          if (creditCardResizeTimeout) { window.clearTimeout(creditCardResizeTimeout); }
 
           creditCardResizeTimeout = window.setTimeout(function () {
             creditCard.style.height = "auto";
@@ -1367,9 +1317,7 @@
       }
 
       function getImageKey(src) {
-        if (!src) {
-          return "";
-        }
+        if (!src) { return ""; }
 
         var filename = src.split("/").pop() || "";
         return filename.replace(/\.[^.]+$/, "");
@@ -1387,9 +1335,7 @@
         var parts = [artHtml + " by " + artistHtml];
         var textParts = ["Art by " + artistLabel];
 
-        if (credit.sourceUrl) {
-          textParts[0] = "Art by " + artistLabel;
-        }
+        if (credit.sourceUrl) { textParts[0] = "Art by " + artistLabel; }
 
         return {
           html: parts.join(" · "),
@@ -1407,9 +1353,7 @@
       }
 
       function updateBannerCredit(imageEntry, useAnimation) {
-        if (!bannerCreditText || !imageEntry) {
-          return;
-        }
+        if (!bannerCreditText || !imageEntry) { return; }
 
         if (bannerCreditTimeout) {
           window.clearTimeout(bannerCreditTimeout);
@@ -1433,9 +1377,7 @@
       }
 
       function updateCredit(imageEntry, useAnimation) {
-        if (!backgroundCreditText || !imageEntry) {
-          return;
-        }
+        if (!backgroundCreditText || !imageEntry) { return; }
 
         var content = buildCreditContent(imageEntry);
 
@@ -1491,9 +1433,7 @@
         var shouldDecode = !options || options.decode !== false;
         var fetchPriority = options && options.fetchPriority;
 
-        if (imageCache[imageEntry.src]) {
-          return imageCache[imageEntry.src];
-        }
+        if (imageCache[imageEntry.src]) { return imageCache[imageEntry.src]; }
 
         imageCache[imageEntry.src] = new Promise(function (resolve) {
           var image = new Image();
@@ -1511,9 +1451,7 @@
             resolve(imageEntry);
           }
 
-          if (fetchPriority) {
-            image.fetchPriority = fetchPriority;
-          }
+          if (fetchPriority) { image.fetchPriority = fetchPriority; }
 
           image.onload = finish;
           image.onerror = function () {
@@ -1521,9 +1459,7 @@
           };
           image.src = imageEntry.src;
 
-          if (image.complete) {
-            finish();
-          }
+          if (image.complete) { finish(); }
         });
 
         return imageCache[imageEntry.src];
@@ -1535,9 +1471,7 @@
       }
 
       function applyBanner(layer, imageEntry) {
-        if (!layer || !imageEntry) {
-          return;
-        }
+        if (!layer || !imageEntry) { return; }
 
         layer.style.backgroundImage = 'url("' + imageEntry.src + '")';
       }
@@ -1601,20 +1535,14 @@
         updateBannerCredit(initialBanner, false);
         markInitialBackgroundReady();
 
-        if (images.length < 2) {
-          return;
-        }
+        if (images.length < 2) { return; }
 
         window.setTimeout(function () {
           images.forEach(function (imageEntry, index) {
-            if (index !== imageIndex) {
-              preload(imageEntry);
-            }
+            if (index !== imageIndex) { preload(imageEntry); }
           });
           bannerImages.forEach(function (imageEntry, index) {
-            if (index !== bannerImageIndex) {
-              preload(imageEntry);
-            }
+            if (index !== bannerImageIndex) { preload(imageEntry); }
           });
         }, preloadDelayMs);
 
@@ -1624,6 +1552,22 @@
   </script>
 </body>
 </html>
+<style id="banner-social-spacing-fix">
+  .banner-name {
+    margin-bottom: 56px !important;
+    pointer-events: none;
+  }
+  .social-links {
+    margin-top: 12px !important;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 720px) {
+    .banner-name {
+      margin-bottom: 40px !important;
+    }
+  }
+</style>
 <style id="book-link-polish">
   .social-links a[href="https://wooten.link/book"] {
     text-decoration: none;
@@ -1634,8 +1578,6 @@
 <script>
   (function () {
     var bookLink = document.querySelector('.social-links a[href="https://wooten.link/book"]');
-    if (bookLink) {
-      bookLink.setAttribute("aria-label", "My Book");
-    }
+    if (bookLink) { bookLink.setAttribute("aria-label", "My Book"); }
   })();
 </script>
