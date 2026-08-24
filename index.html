@@ -1558,13 +1558,27 @@
     pointer-events: none;
   }
   .social-links {
+    width: min(100%, calc(100vw - 40px));
     margin-top: 12px !important;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     z-index: 2;
+    flex-wrap: wrap;
+    box-sizing: border-box;
   }
   @media (max-width: 720px) {
     .banner-name {
       margin-bottom: 40px !important;
+    }
+    .social-links {
+      width: calc(100vw - 32px);
+      gap: 18px 20px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .social-links a {
+      margin: 0 8px;
     }
   }
 </style>
