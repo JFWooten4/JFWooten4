@@ -218,7 +218,9 @@
     }
     .social-links img,
     .social-links svg {
-      width: 20px;
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
       display: block;
     }
     .sponsors {
@@ -859,25 +861,29 @@
     </h1>
     
     <div class="social-links">
+      <a href="https://wooten.link/book" target="_blank" aria-label="Book PDF">📘</a>
       <a href="https://github.com/JFWooten4" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/github.png" alt="GitHub">
+        <img src="static/img/github.png" alt="GitHub">
       </a>
       <a href="https://x.com/JFWooten4" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/twitter.png" alt="X">
+        <img src="static/img/x.png" alt="X">
       </a>
-      <a href="https://wooten.link/media" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/youtube.png" alt="YouTube">
+      <a href="https://www.reddit.com/user/jfwooten4" target="_blank">
+        <img src="static/img/reddit.png" alt="Reddit">
+      </a>
+      <a href="https://www.youtube.com/@JFWooten4" target="_blank">
+        <img src="static/img/youtube.png" alt="YouTube">
       </a>
       <a href="https://www.linkedin.com/in/jfwooten4/" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/linkedin.png" alt="LinkedIn">
+        <img src="static/img/linkedin.png" alt="LinkedIn">
       </a>
-      <a href="https://jfwooten4.com" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/blog.png" alt="Blog">
+      <a href="https://wooten.link/blog" target="_blank">
+        <img src="static/img/blog.png" alt="Blog">
       </a>
-      <a href="https://discord.com/users/777758936820219904" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/discord.png" alt="Discord">
+      <a href="https://discord.gg/wPKmTECv3B" target="_blank">
+        <img src="static/img/discord.png" alt="Discord">
       </a>
-      <a href="https://wooten.link/origins" target="_blank" aria-label="Listen to Origins">
+      <a href="https://lnns.co/afdmuCSU579" target="_blank" aria-label="Listen to Origins">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="9" y="3" width="6" height="11" rx="3" ry="3" fill="none" stroke="#fdda24" stroke-width="2"/>
           <path d="M5 10v1a7 7 0 0 0 14 0v-1" fill="none" stroke="#fdda24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1618,3 +1624,18 @@
   </script>
 </body>
 </html>
+<style id="book-link-polish">
+  .social-links a[href="https://wooten.link/book"] {
+    text-decoration: none;
+    font-size: 32px;
+    line-height: 1;
+  }
+</style>
+<script>
+  (function () {
+    var bookLink = document.querySelector('.social-links a[href="https://wooten.link/book"]');
+    if (bookLink) {
+      bookLink.setAttribute("aria-label", "My Book");
+    }
+  })();
+</script>
