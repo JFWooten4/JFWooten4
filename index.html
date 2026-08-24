@@ -4,6 +4,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>John Wooten</title>
   <style>
     :root {
@@ -27,6 +28,8 @@
     }
     body {
       position: relative;
+      width: 100%;
+      min-width: 0;
       overflow: hidden;
     }
     /* Slow crossfading group-photo background behind the landing page content. */
@@ -145,6 +148,9 @@
     .content {
       position: relative;
       z-index: 1;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
       text-align: center;
       padding: 40px;
       transform: translateY(-20px);
@@ -158,8 +164,11 @@
     .banner-name {
       display: grid;
       place-items: center;
-      width: min(1180px, calc(100vw - 40px));
-      margin: 0 0 24px;
+      grid-template-columns: minmax(0, 1fr);
+      width: min(1180px, 100%);
+      max-width: 100%;
+      min-width: 0;
+      margin: 0 auto 24px;
       font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
       font-size: clamp(4.4rem, 13vw, 9.5rem);
       font-weight: 900;
