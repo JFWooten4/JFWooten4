@@ -38,3 +38,5 @@ jobs:
           git add index.html banners/README.md
           git commit -m "🔗 Normalize Discord links" -m "Replace legacy discordapp.com source links with discord.com." -m "Co-authored-by: Codex Web <noreply@openai.com>"
           git push origin HEAD:issue-70-neutral-banner-reference
+
+# Trigger after workflow creation.
