@@ -4,6 +4,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>John Wooten</title>
   <style>
     :root {
@@ -26,6 +27,8 @@
     }
     body {
       position: relative;
+      width: 100%;
+      min-width: 0;
       overflow: hidden;
     }
     /* Slow crossfading group-photo background behind the landing page content. */
@@ -76,12 +79,15 @@
       backdrop-filter: blur(14px);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
       text-align: left;
-      pointer-events: auto;
+      pointer-events: none;
       overflow: hidden;
       transition:
         height var(--credit-box-resize) ease,
         background-color var(--credit-box-resize) ease,
         border-color var(--credit-box-resize) ease;
+    }
+    .background-credit-card a {
+      pointer-events: auto;
     }
     .background-credit-card.is-resizing {
       border-color: rgba(255, 255, 255, 0.08);
@@ -144,6 +150,9 @@
     .content {
       position: relative;
       z-index: 1;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
       text-align: center;
       padding: 40px;
       transform: translateY(-20px);
@@ -157,8 +166,11 @@
     .banner-name {
       display: grid;
       place-items: center;
-      width: min(1180px, calc(100vw - 40px));
-      margin: 0 0 24px;
+      grid-template-columns: minmax(0, 1fr);
+      width: min(1180px, 100%);
+      max-width: 100%;
+      min-width: 0;
+      margin: 0 auto 24px;
       font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
       font-size: clamp(4.4rem, 13vw, 9.5rem);
       font-weight: 900;
@@ -214,10 +226,13 @@
       align-items: center;
       justify-content: center;
       line-height: 0;
+      cursor: pointer;
     }
     .social-links img,
     .social-links svg {
-      width: 20px;
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
       display: block;
     }
     .group-album {
@@ -597,7 +612,7 @@
       },
       "galaxy-bananas": {
         "artist": "GoneNannurs",
-        "artistUrl": "https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site",
+        "artistUrl": "https://nannurs.carrd.co",
         "sourceUrl": "https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site"
       },
       "honing-in": {
@@ -680,7 +695,7 @@
   </script>
   <script>
     window.homepageBannerImages = [
-      { "key": "gatech-inventure", "src": "/banners/gatech-inventure.png" },
+      { "key": "gatech-inventure", "src": "/banners/gatech-inventure.jpg" },
       { "key": "climbing-pheonix", "src": "/banners/climbing-pheonix.PNG" },
       { "key": "dash-confident", "src": "/banners/dash-confident.jpg" },
       { "key": "deadly-plunge", "src": "/banners/deadly-plunge.PNG" },
@@ -702,7 +717,7 @@
       { "key": "flawless-overlook", "src": "/banners/flawless-overlook.png" }
     ];
     window.homepageBannerCredits = {
-      "gatech-inventure": { "artist": "Georgia Public Broadcasting/PBS", "sourceUrl": "https://youtu.be/S75IvkicWD8?t=66" },
+      "gatech-inventure": { "artist": "Georgia Tech Student Innovation & PBS", "artistUrl": "https://www.flickr.com/photos/studentinnovation/51012920545/in/album-72157718813923003", "sourceUrl": "https://youtu.be/S75IvkicWD8?t=66" },
       "climbing-pheonix": { "artist": "Riot/Fortiche", "sourceUrl": "https://youtu.be/fB8TyLTD7EE?t=69" },
       "dash-confident": { "artist": "tehnomad", "sourceUrl": "https://wallup.net/my-little-pony-rainbow-dash-4" },
       "deadly-plunge": { "artist": "Forest Rain", "sourceUrl": "https://youtu.be/MjfCH89sBzs" },
@@ -808,9 +823,7 @@
     };
     var subdomain = window.location.host.split(".")[0].toLowerCase();
     var redirect = redirects[subdomain];
-    if (redirect) {
-      window.location.replace(redirect);
-    }
+    if (redirect) { window.location.replace(redirect); }
   </script>
 
   <div class="content">
@@ -820,25 +833,29 @@
     </h1>
     
     <div class="social-links">
+      <a href="/book.pdf" target="_blank" aria-label="Book PDF">📘</a>
       <a href="https://github.com/JFWooten4" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/github.png" alt="GitHub">
+        <img src="static/img/github.png" alt="GitHub">
       </a>
       <a href="https://x.com/JFWooten4" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/twitter.png" alt="X">
+        <img src="static/img/x.png" alt="X">
       </a>
-      <a href="https://wooten.link/media" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/youtube.png" alt="YouTube">
+      <a href="https://www.reddit.com/user/jfwooten4" target="_blank">
+        <img src="static/img/reddit.png" alt="Reddit">
+      </a>
+      <a href="https://www.youtube.com/@JFWooten4" target="_blank">
+        <img src="static/img/youtube.png" alt="YouTube">
       </a>
       <a href="https://www.linkedin.com/in/jfwooten4/" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/linkedin.png" alt="LinkedIn">
+        <img src="static/img/linkedin.png" alt="LinkedIn">
       </a>
-      <a href="https://jfwooten4.com" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/blog.png" alt="Blog">
+      <a href="https://john.xlm.domains" target="_blank">
+        <img src="static/img/blog.png" alt="Blog">
       </a>
-      <a href="https://discord.com/users/777758936820219904" target="_blank">
-        <img src="https://blocktransfer.com/imgs/email/discord.png" alt="Discord">
+      <a href="https://discord.gg/wPKmTECv3B" target="_blank">
+        <img src="static/img/discord.png" alt="Discord">
       </a>
-      <a href="https://wooten.link/origins" target="_blank" aria-label="Listen to Origins">
+      <a href="https://lnns.co/afdmuCSU579" target="_blank" aria-label="Listen to Origins">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="9" y="3" width="6" height="11" rx="3" ry="3" fill="none" stroke="#fdda24" stroke-width="2"/>
           <path d="M5 10v1a7 7 0 0 0 14 0v-1" fill="none" stroke="#fdda24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -897,9 +914,7 @@
       var activeImageRequest = 0;
       var blankImageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
-      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxDate || !lightboxInfo || !closeButton || !prevButton || !nextButton) {
-        return;
-      }
+      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxDate || !lightboxInfo || !closeButton || !prevButton || !nextButton) { return; }
 
       try {
         images = JSON.parse(groupImageData.textContent);
@@ -948,9 +963,7 @@
       var thumbnailsRendered = false;
 
       function renderThumbnails() {
-        if (thumbnailsRendered) {
-          return;
-        }
+        if (thumbnailsRendered) { return; }
 
         thumbnailsRendered = true;
         groupStrip.classList.remove("is-ready");
@@ -958,16 +971,12 @@
         var loadedThumbnailCount = 0;
 
         function markThumbnailLoaded(thumbnail) {
-          if (thumbnail.classList.contains("is-loaded")) {
-            return;
-          }
+          if (thumbnail.classList.contains("is-loaded")) { return; }
 
           thumbnail.classList.add("is-loaded");
           loadedThumbnailCount += 1;
 
-          if (loadedThumbnailCount >= images.length) {
-            groupStrip.classList.add("is-ready");
-          }
+          if (loadedThumbnailCount >= images.length) { groupStrip.classList.add("is-ready"); }
         }
 
         images.forEach(function (image, index) {
@@ -993,9 +1002,7 @@
           });
           thumbnailImage.src = image.smallSrc || image.mediumSrc || image.largeSrc || image.src;
 
-          if (thumbnailImage.complete) {
-            markThumbnailLoaded(thumbnail);
-          }
+          if (thumbnailImage.complete) { markThumbnailLoaded(thumbnail); }
 
           thumbnail.appendChild(thumbnailImage);
           groupStrip.appendChild(thumbnail);
@@ -1010,9 +1017,7 @@
       }
 
       function loadImageSrc(src, cache, options) {
-        if (!src) {
-          return Promise.resolve(null);
-        }
+        if (!src) { return Promise.resolve(null); }
 
         if (!cache[src]) {
           cache[src] = new Promise(function (resolve) {
@@ -1020,9 +1025,7 @@
             var isFinished = false;
 
             function finish() {
-              if (isFinished) {
-                return;
-              }
+              if (isFinished) { return; }
 
               isFinished = true;
 
@@ -1035,9 +1038,7 @@
               }
             }
 
-            if (options && options.fetchPriority) {
-              loadingImage.fetchPriority = options.fetchPriority;
-            }
+            if (options && options.fetchPriority) { loadingImage.fetchPriority = options.fetchPriority; }
 
             loadingImage.decoding = "async";
             loadingImage.onload = finish;
@@ -1046,9 +1047,7 @@
             };
             loadingImage.src = src;
 
-            if (loadingImage.complete) {
-              finish();
-            }
+            if (loadingImage.complete) { finish(); }
           });
         }
 
@@ -1058,14 +1057,10 @@
       function getPreviewSources(image) {
         var sources = [];
 
-        if (!image) {
-          return sources;
-        }
+        if (!image) { return sources; }
 
         [image.smallSrc, image.mediumSrc].forEach(function (src) {
-          if (src && sources.indexOf(src) === -1) {
-            sources.push(src);
-          }
+          if (src && sources.indexOf(src) === -1) { sources.push(src); }
         });
 
         return sources;
@@ -1078,9 +1073,7 @@
       function preloadFullImage(image, options) {
         var fullSrc = image && (image.largeSrc || image.src);
 
-        if (!fullSrc) {
-          return Promise.resolve(null);
-        }
+        if (!fullSrc) { return Promise.resolve(null); }
 
         loadImageSrc(image.mediumSrc || image.smallSrc, previewLoadCache, { fetchPriority: "low" });
 
@@ -1099,9 +1092,7 @@
       function showImage(index) {
         currentIndex = (index + images.length) % images.length;
 
-        if (!images[currentIndex]) {
-          return;
-        }
+        if (!images[currentIndex]) { return; }
 
         var image = images[currentIndex];
         var requestId = activeImageRequest + 1;
@@ -1110,9 +1101,7 @@
         activeImageRequest = requestId;
 
         function displayImage(src, level) {
-          if (requestId !== activeImageRequest || !src || level < displayedLevel) {
-            return;
-          }
+          if (requestId !== activeImageRequest || !src || level < displayedLevel) { return; }
 
           displayedLevel = level;
           lightboxImage.src = src;
@@ -1132,9 +1121,7 @@
         });
 
         preloadFullImage(image, { fetchPriority: "high" }).then(function (loadedSrc) {
-          if (requestId !== activeImageRequest) {
-            return;
-          }
+          if (requestId !== activeImageRequest) { return; }
 
           displayImage(loadedSrc, previewSources.length + 1);
           preloadAdjacentImages(currentIndex);
@@ -1175,15 +1162,11 @@
       closeButton.addEventListener("click", closeLightbox);
 
       lightbox.addEventListener("click", function (event) {
-        if (event.target === lightbox) {
-          closeLightbox();
-        }
+        if (event.target === lightbox) { closeLightbox(); }
       });
 
       document.addEventListener("keydown", function (event) {
-        if (!lightbox.classList.contains("is-open")) {
-          return;
-        }
+        if (!lightbox.classList.contains("is-open")) { return; }
 
         if (event.key === "Escape") {
           closeLightbox();
@@ -1214,22 +1197,16 @@
       var creditCardResizeTimeout = null;
 
       function beginCreditCardResize() {
-        if (!creditCard || creditCardStartHeight !== null) {
-          return;
-        }
+        if (!creditCard || creditCardStartHeight !== null) { return; }
 
         creditCardStartHeight = creditCard.getBoundingClientRect().height;
         creditCard.classList.add("is-resizing");
       }
 
       function finishCreditCardResize() {
-        if (!creditCard || creditCardStartHeight === null) {
-          return;
-        }
+        if (!creditCard || creditCardStartHeight === null) { return; }
 
-        if (creditCardResizeFrame) {
-          window.cancelAnimationFrame(creditCardResizeFrame);
-        }
+        if (creditCardResizeFrame) { window.cancelAnimationFrame(creditCardResizeFrame); }
 
         creditCardResizeFrame = window.requestAnimationFrame(function () {
           var startHeight = creditCardStartHeight;
@@ -1243,9 +1220,7 @@
           creditCardStartHeight = null;
           creditCardResizeFrame = null;
 
-          if (creditCardResizeTimeout) {
-            window.clearTimeout(creditCardResizeTimeout);
-          }
+          if (creditCardResizeTimeout) { window.clearTimeout(creditCardResizeTimeout); }
 
           creditCardResizeTimeout = window.setTimeout(function () {
             creditCard.style.height = "auto";
@@ -1265,9 +1240,7 @@
       }
 
       function getImageKey(src) {
-        if (!src) {
-          return "";
-        }
+        if (!src) { return ""; }
 
         var filename = src.split("/").pop() || "";
         return filename.replace(/\.[^.]+$/, "");
@@ -1285,9 +1258,7 @@
         var parts = [artHtml + " by " + artistHtml];
         var textParts = ["Art by " + artistLabel];
 
-        if (credit.sourceUrl) {
-          textParts[0] = "Art by " + artistLabel;
-        }
+        if (credit.sourceUrl) { textParts[0] = "Art by " + artistLabel; }
 
         return {
           html: parts.join(" · "),
@@ -1305,9 +1276,7 @@
       }
 
       function updateBannerCredit(imageEntry, useAnimation) {
-        if (!bannerCreditText || !imageEntry) {
-          return;
-        }
+        if (!bannerCreditText || !imageEntry) { return; }
 
         if (bannerCreditTimeout) {
           window.clearTimeout(bannerCreditTimeout);
@@ -1331,9 +1300,7 @@
       }
 
       function updateCredit(imageEntry, useAnimation) {
-        if (!backgroundCreditText || !imageEntry) {
-          return;
-        }
+        if (!backgroundCreditText || !imageEntry) { return; }
 
         var content = buildCreditContent(imageEntry);
 
@@ -1389,9 +1356,7 @@
         var shouldDecode = !options || options.decode !== false;
         var fetchPriority = options && options.fetchPriority;
 
-        if (imageCache[imageEntry.src]) {
-          return imageCache[imageEntry.src];
-        }
+        if (imageCache[imageEntry.src]) { return imageCache[imageEntry.src]; }
 
         imageCache[imageEntry.src] = new Promise(function (resolve) {
           var image = new Image();
@@ -1409,9 +1374,7 @@
             resolve(imageEntry);
           }
 
-          if (fetchPriority) {
-            image.fetchPriority = fetchPriority;
-          }
+          if (fetchPriority) { image.fetchPriority = fetchPriority; }
 
           image.onload = finish;
           image.onerror = function () {
@@ -1419,9 +1382,7 @@
           };
           image.src = imageEntry.src;
 
-          if (image.complete) {
-            finish();
-          }
+          if (image.complete) { finish(); }
         });
 
         return imageCache[imageEntry.src];
@@ -1433,9 +1394,7 @@
       }
 
       function applyBanner(layer, imageEntry) {
-        if (!layer || !imageEntry) {
-          return;
-        }
+        if (!layer || !imageEntry) { return; }
 
         layer.style.backgroundImage = 'url("' + imageEntry.src + '")';
       }
@@ -1499,20 +1458,14 @@
         updateBannerCredit(initialBanner, false);
         markInitialBackgroundReady();
 
-        if (images.length < 2) {
-          return;
-        }
+        if (images.length < 2) { return; }
 
         window.setTimeout(function () {
           images.forEach(function (imageEntry, index) {
-            if (index !== imageIndex) {
-              preload(imageEntry);
-            }
+            if (index !== imageIndex) { preload(imageEntry); }
           });
           bannerImages.forEach(function (imageEntry, index) {
-            if (index !== bannerImageIndex) {
-              preload(imageEntry);
-            }
+            if (index !== bannerImageIndex) { preload(imageEntry); }
           });
         }, preloadDelayMs);
 
@@ -1522,3 +1475,46 @@
   </script>
 </body>
 </html>
+<style id="banner-social-spacing-fix">
+  .banner-name {
+    margin-bottom: 56px !important;
+    pointer-events: none;
+  }
+  .social-links {
+    width: min(100%, calc(100vw - 40px));
+    margin-top: 12px !important;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+  @media (max-width: 720px) {
+    .banner-name {
+      margin-bottom: 40px !important;
+    }
+    .social-links {
+      width: calc(100vw - 32px);
+      gap: 18px 20px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .social-links a {
+      margin: 0 8px;
+    }
+  }
+</style>
+<style id="book-link-polish">
+  .social-links a[href="/book.pdf"] {
+    text-decoration: none;
+    font-size: 32px;
+    line-height: 1;
+  }
+</style>
+<script>
+  (function () {
+    var bookLink = document.querySelector('.social-links a[href="/book.pdf"]');
+    if (bookLink) { bookLink.setAttribute("aria-label", "My Book"); }
+  })();
+</script>

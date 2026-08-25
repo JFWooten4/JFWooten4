@@ -6,7 +6,7 @@
 - `floating-forward` comes from CallmeMH, NightmareMoonLuna ([src](https://www.mylittlewallpaper.com/c/my-little-pony/download/504598b34a9d15.99902250))
 - `relaxing-wait` comes from MLPWallpaperz ([src](https://www.deviantart.com/mlpwallpaperz/art/Starlight-Glimmer-Wallpaper-575667853))
 - `soaring-together` comes from Stun-dash-99 ([src](https://trixiebooru.org/images/599332)); related thread ([src](https://mlpforums.com/topic/104596-pinkiedash-fan-club/?do=findComment&comment=2924227))[^chatgpt]
-- `galaxy-bananas` comes from GoneNannurs ([src](https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site))[^chatgpt]
+- `galaxy-bananas` comes from [GoneNannurs](https://nannurs.carrd.co) ([src](https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site))[^chatgpt]
 - `hunting-hour` comes from RysunkowaSucharia ([src](https://www.deviantart.com/rysunkowasucharia/art/Das-kleine-lila-Pferd-814065716))
 - `mad-time` comes from [Vylet Pony](https://www.vyletpony.com) ([src](https://youtu.be/-iOr0WZRoI4?t=249))
 - `mad-split` comes from Blizzard Entertainment ([src](https://youtu.be/oJ09xdxzIJQ?t=264))

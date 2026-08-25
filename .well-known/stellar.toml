@@ -18,6 +18,6 @@ id_photo_hash = "0dce43292a7dd2c6ef021cca9f84330ceeec34e8587172453bc2b05f1bd13ed
 verification_photo_hash = "a3b5109c1afb0d7ce22780fc5a656bda0f24b63d4bbddcff35f44f0b8e62ff48"
 
 [[VALIDATORS]]
-ALIAS = "john-wooten"
-DISPLAY_NAME = "John Wooten Observer Only"
+ALIAS = "observer-only"
+DISPLAY_NAME = "John Wooten"
 PUBLIC_KEY = "GCORE322LR7WMDHKRXMMHJATAIAFDVBZZHWKR7THMTKDUGPEOUWOOTEN"
