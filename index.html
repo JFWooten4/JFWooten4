@@ -31,7 +31,7 @@
       min-width: 0;
       overflow: hidden;
     }
-    /* Slow crossfading group-photo background behind the landing page content. */
+    /* Slow crossfading friend-photo background behind the landing page content. */
     .background-stage {
       position: fixed;
       inset: 0;
@@ -235,7 +235,7 @@
       object-fit: contain;
       display: block;
     }
-    .group-strip {
+    .friend-strip {
       margin-top: 84px;
       display: flex;
       justify-content: center;
@@ -245,11 +245,11 @@
       transform: translateY(4px);
       transition: opacity 900ms ease 160ms, transform 900ms ease 160ms;
     }
-    .group-strip.is-ready {
+    .friend-strip.is-ready {
       opacity: 1;
       transform: translateY(0);
     }
-    .group-thumb {
+    .friend-thumb {
       appearance: none;
       border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(19, 16, 25, 0.84);
@@ -262,8 +262,8 @@
       transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, width 220ms ease, height 220ms ease;
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
     }
-    .group-thumb:hover,
-    .group-thumb:focus-visible {
+    .friend-thumb:hover,
+    .friend-thumb:focus-visible {
       width: 152px;
       height: 102px;
       transform: translateY(-3px);
@@ -271,7 +271,7 @@
       box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
       outline: none;
     }
-    .group-thumb img {
+    .friend-thumb img {
       width: 100%;
       height: 100%;
       display: block;
@@ -279,7 +279,7 @@
       opacity: 0;
       transition: opacity 260ms ease;
     }
-    .group-thumb.is-loaded img {
+    .friend-thumb.is-loaded img {
       opacity: 1;
     }
     .lightbox {
@@ -421,12 +421,12 @@
         font-size: clamp(2.65rem, 13.2vw, 5.5rem);
         margin-bottom: 20px;
       }
-      .group-thumb {
+      .friend-thumb {
         width: 92px;
         height: 62px;
       }
-      .group-thumb:hover,
-      .group-thumb:focus-visible {
+      .friend-thumb:hover,
+      .friend-thumb:focus-visible {
         width: 122px;
         height: 82px;
       }
@@ -487,31 +487,31 @@
     <div class="background-layer" id="bg-layer-b"></div>
     <div class="background-shade"></div>
   </div>
-  <script type="application/json" id="group-image-data">
+  <script type="application/json" id="friend-image-data">
     [
-      {% assign group_keys = "stellar-consensus,original-whydrs,marketing-consensus" | split: "," %}
-      {% assign group_index = 0 %}
-      {% for group_key in group_keys %}
+      {% assign friend_keys = "stellar-consensus,original-whydrs,marketing-consensus" | split: "," %}
+      {% assign friend_index = 0 %}
+      {% for friend_key in friend_keys %}
       {% for file in site.static_files %}
       {% assign file_key = file.name | split: '.' | first %}
-      {% if file.path contains '/groups/large/' and file_key == group_key %}
-      {% if group_index > 0 %},{% endif %}
+      {% if file.path contains '/friends/large/' and file_key == friend_key %}
+      {% if friend_index > 0 %},{% endif %}
       {
-        "key": "{{ group_key }}",
+        "key": "{{ friend_key }}",
         "largeSrc": "{{ file.path }}",
-        "mediumSrc": "/groups/medium/{{ group_key }}.webp",
-        "smallSrc": "/groups/small/{{ group_key }}.webp",
-        "alt": "Group photo {{ group_index | plus: 1 }}",
+        "mediumSrc": "/friends/medium/{{ friend_key }}.webp",
+        "smallSrc": "/friends/small/{{ friend_key }}.webp",
+        "alt": "Friend photo {{ friend_index | plus: 1 }}",
         "position": "center 54%"
       }
-      {% assign group_index = group_index | plus: 1 %}
+      {% assign friend_index = friend_index | plus: 1 %}
       {% break %}
       {% endif %}
       {% endfor %}
       {% endfor %}
     ]
   </script>
-  <script type="application/json" id="group-credit-data">
+  <script type="application/json" id="friend-credit-data">
     {
       "stellar-consensus": {
         "date": "29 May 2024",
@@ -855,7 +855,7 @@
       </a>
     </div>
 
-    <div class="group-strip" id="group-strip"></div>
+    <div class="friend-strip" id="friend-strip"></div>
   </div>
   <div class="background-credit" id="background-credit">
     <div class="background-credit-card" id="art-credit-card">
@@ -867,10 +867,10 @@
       </div>
     </div>
   </div>
-  <div class="lightbox" id="group-lightbox" aria-hidden="true">
+  <div class="lightbox" id="friend-lightbox" aria-hidden="true">
     <div class="lightbox-frame">
       <button class="lightbox-nav prev" type="button" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
-      <img class="lightbox-image" id="lightbox-image" alt="Expanded group photo">
+      <img class="lightbox-image" id="lightbox-image" alt="Expanded friend photo">
       <div class="lightbox-loading" id="lightbox-loading" aria-live="polite">Loading full-resolution image...</div>
       <div class="lightbox-meta">
         <div class="lightbox-info" id="lightbox-info">Credit unavailable.</div>
@@ -882,10 +882,10 @@
   </div>
   <script>
     (function () {
-      var groupImageData = document.getElementById("group-image-data");
-      var groupCreditData = document.getElementById("group-credit-data");
-      var groupStrip = document.getElementById("group-strip");
-      var lightbox = document.getElementById("group-lightbox");
+      var friendImageData = document.getElementById("friend-image-data");
+      var friendCreditData = document.getElementById("friend-credit-data");
+      var friendStrip = document.getElementById("friend-strip");
+      var lightbox = document.getElementById("friend-lightbox");
       var lightboxImage = document.getElementById("lightbox-image");
       var lightboxLoading = document.getElementById("lightbox-loading");
       var lightboxDate = document.getElementById("lightbox-date");
@@ -901,17 +901,17 @@
       var activeImageRequest = 0;
       var blankImageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
-      if (!groupImageData || !groupStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxDate || !lightboxInfo || !closeButton || !prevButton || !nextButton) { return; }
+      if (!friendImageData || !friendStrip || !lightbox || !lightboxImage || !lightboxLoading || !lightboxDate || !lightboxInfo || !closeButton || !prevButton || !nextButton) { return; }
 
       try {
-        images = JSON.parse(groupImageData.textContent);
+        images = JSON.parse(friendImageData.textContent);
       } catch (error) {
         images = [];
       }
 
-      if (groupCreditData) {
+      if (friendCreditData) {
         try {
-          creditsByKey = JSON.parse(groupCreditData.textContent);
+          creditsByKey = JSON.parse(friendCreditData.textContent);
         } catch (error) {
           creditsByKey = {};
         }
@@ -921,26 +921,26 @@
         images = [
           {
             key: "stellar-consensus",
-            largeSrc: "/groups/large/stellar-consensus.jpg",
-            mediumSrc: "/groups/medium/stellar-consensus.webp",
-            smallSrc: "/groups/small/stellar-consensus.webp",
-            alt: "Group photo 1",
+            largeSrc: "/friends/large/stellar-consensus.jpg",
+            mediumSrc: "/friends/medium/stellar-consensus.webp",
+            smallSrc: "/friends/small/stellar-consensus.webp",
+            alt: "Friend photo 1",
             position: "center 54%"
           },
           {
             key: "original-whydrs",
-            largeSrc: "/groups/large/original-whydrs.png",
-            mediumSrc: "/groups/medium/original-whydrs.webp",
-            smallSrc: "/groups/small/original-whydrs.webp",
-            alt: "Group photo 2",
+            largeSrc: "/friends/large/original-whydrs.png",
+            mediumSrc: "/friends/medium/original-whydrs.webp",
+            smallSrc: "/friends/small/original-whydrs.webp",
+            alt: "Friend photo 2",
             position: "center 54%"
           },
           {
             key: "marketing-consensus",
-            largeSrc: "/groups/large/marketing-consensus.jpg",
-            mediumSrc: "/groups/medium/marketing-consensus.webp",
-            smallSrc: "/groups/small/marketing-consensus.webp",
-            alt: "Group photo 3",
+            largeSrc: "/friends/large/marketing-consensus.jpg",
+            mediumSrc: "/friends/medium/marketing-consensus.webp",
+            smallSrc: "/friends/small/marketing-consensus.webp",
+            alt: "Friend photo 3",
             position: "center 54%"
           }
         ];
@@ -978,8 +978,8 @@
         if (thumbnailsRendered) { return; }
 
         thumbnailsRendered = true;
-        groupStrip.classList.remove("is-ready");
-        groupStrip.innerHTML = "";
+        friendStrip.classList.remove("is-ready");
+        friendStrip.innerHTML = "";
         var loadedThumbnailCount = 0;
 
         function markThumbnailLoaded(thumbnail) {
@@ -988,14 +988,14 @@
           thumbnail.classList.add("is-loaded");
           loadedThumbnailCount += 1;
 
-          if (loadedThumbnailCount >= images.length) { groupStrip.classList.add("is-ready"); }
+          if (loadedThumbnailCount >= images.length) { friendStrip.classList.add("is-ready"); }
         }
 
         images.forEach(function (image, index) {
           var thumbnail = document.createElement("a");
           var thumbnailImage = document.createElement("img");
 
-          thumbnail.className = "group-thumb";
+          thumbnail.className = "friend-thumb";
           thumbnail.href = "/friends/" + String(index + 1);
           thumbnail.setAttribute("data-lightbox-index", String(index));
           thumbnail.setAttribute("aria-label", "Open " + image.alt.toLowerCase());
@@ -1017,7 +1017,7 @@
           if (thumbnailImage.complete) { markThumbnailLoaded(thumbnail); }
 
           thumbnail.appendChild(thumbnailImage);
-          groupStrip.appendChild(thumbnail);
+          friendStrip.appendChild(thumbnail);
         });
 
         thumbnails = Array.prototype.slice.call(document.querySelectorAll("[data-lightbox-index]"));
