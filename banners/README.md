@@ -11,7 +11,7 @@
 - `hackathon` comes from [Emir Ayral](https://x.com/StellarEmir) ([src](https://discord.com/channels/761985725453303838/761985725453303841/1245787112515829881))
 - `inhuman-reactions` comes from an unknown manufacturer ([src](https://www.ubuy.com.ps/en/product/48C6SVCPU-sword-art-a-online-kirito-foam-sword-set-elucidator-dark-repulsor-kirigaya-2-swords-l-40inch-s-32inch))
 - `magnum-opus` comes from Riot/Fortiche ([src](https://youtu.be/fB8TyLTD7EE?t=154))
-- `massie-exposition` is Thomas Massie from US Gov, [popularized by 6days1week](https://discord.com/channels/1102309240145707049/1118990437684875357/1418078804412469298) ([src](https://youtu.be/Mn6vdsNiaZo?t=10424))
+- `massie-exposition` is [Thomas Massie](https://massie.house.gov) from US Gov, [popularized by 6days1week](https://discord.com/channels/1102309240145707049/1118990437684875357/1418078804412469298) ([src](https://youtu.be/Mn6vdsNiaZo?t=10424))
 - `patrol-line` comes from Riot/Fortiche ([src](https://youtu.be/OkscEokV238?t=57))
 - `rails` comes from [bobmahalo](https://discord.com/users/730093005792346124) ([src](https://discordapp.com/channels/1102309240145707049/1118990437684875357/1296830496973787196))
 - `smoking-gun` comes from DreamWorks Animation ([src](https://youtu.be/7VXrvcc7tL8?t=82))
