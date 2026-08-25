@@ -80,12 +80,15 @@
       backdrop-filter: blur(14px);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
       text-align: left;
-      pointer-events: auto;
+      pointer-events: none;
       overflow: hidden;
       transition:
         height var(--credit-box-resize) ease,
         background-color var(--credit-box-resize) ease,
         border-color var(--credit-box-resize) ease;
+    }
+    .background-credit-card a {
+      pointer-events: auto;
     }
     .background-credit-card.is-resizing {
       border-color: rgba(255, 255, 255, 0.08);
