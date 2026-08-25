@@ -2,6 +2,17 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "bundle exec jekyll build",
   "outputDirectory": "_site",
+  "headers": [
+    {
+      "source": "/.well-known/stellar.toml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/scam",
