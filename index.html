@@ -515,11 +515,11 @@
     {
       "capstone-award": {
         "date": "5 Dec 2022",
-        "html": "<a href=\"https://www.linkedin.com/posts/jfwooten4_blockchain-bank-technology-share-7010432986814824448-QJ4p\" target=\"_blank\" rel=\"noreferrer\">Taken</a> at the <a href=\"https://expo.gatech.edu/prod1/portal/portal.jsp?c=17462&amp;p=413142918&amp;g=413665329&amp;id=416518489\" target=\"_blank\" rel=\"noreferrer\">Fall 2022 Capstone Design Expo</a> (<a href=\"https://ece.gatech.edu/news/2023/12/ece-teams-earn-top-spots-fall-capstone-design-expo-including-best-overall-project\" target=\"_blank\" rel=\"noreferrer\">src</a>)"
+        "html": "<a href=\"https://www.linkedin.com/posts/jfwooten4_blockchain-bank-technology-share-7010432986814824448-QJ4p\" target=\"_blank\" rel=\"noopener\">Taken</a> at the <a href=\"https://expo.gatech.edu/prod1/portal/portal.jsp?c=17462&amp;p=413142918&amp;g=413665329&amp;id=416518489\" target=\"_blank\" rel=\"noopener\">Fall 2022 Capstone Design Expo</a> (<a href=\"https://ece.gatech.edu/news/2023/12/ece-teams-earn-top-spots-fall-capstone-design-expo-including-best-overall-project\" target=\"_blank\" rel=\"noopener\">src</a>)"
       },
       "stellar-consensus": {
         "date": "29 May 2024",
-        "html": "<a href=\"https://x.com/JFWooten4/status/1796309242116239745\" target=\"_blank\" rel=\"noreferrer\">Taken</a> at Stellar's hacker house for <a href=\"https://stellar.org/community/events/consensus\" target=\"_blank\" rel=\"noreferrer\">this</a> (<a href=\"https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772\" target=\"_blank\" rel=\"noreferrer\">src</a>)"
+        "html": "<a href=\"https://x.com/JFWooten4/status/1796309242116239745\" target=\"_blank\" rel=\"noreferrer\">Taken</a> at Stellar's hacker house for <a href=\"https://stellar.org/community/events/consensus\" target=\"_blank\" rel=\"noopener\">this</a> (<a href=\"https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772\" target=\"_blank\" rel=\"noopener\">src</a>)"
       },
       "original-whydrs": {
         "date": "21 Feb 2026",
@@ -527,7 +527,7 @@
       },
       "marketing-consensus": {
         "date": "4 May 2026",
-        "html": "<a href=\"https://x.com/StellarEmir/status/2051336376491102227\" target=\"_blank\" rel=\"noreferrer\">Taken</a> at <a href=\"https://luma.com/sfbkbfqb\" target=\"_blank\" rel=\"noreferrer\">this event</a> for <a href=\"https://stellar.org/community/events/consensus-miami\" target=\"_blank\" rel=\"noreferrer\">Consensus Miami</a> (<a href=\"https://x.com/JFWooten4/status/2054318783573999799\" target=\"_blank\" rel=\"noreferrer\">src</a>)"
+        "html": "<a href=\"https://x.com/StellarEmir/status/2051336376491102227\" target=\"_blank\" rel=\"noreferrer\">Taken</a> at <a href=\"https://luma.com/sfbkbfqb\" target=\"_blank\" rel=\"noopener\">this event</a> for <a href=\"https://stellar.org/community/events/consensus-miami\" target=\"_blank\" rel=\"noopener\">Consensus Miami</a> (<a href=\"https://x.com/JFWooten4/status/2054318783573999799\" target=\"_blank\" rel=\"noreferrer\">src</a>)"
       }
     }
   </script>
@@ -1298,7 +1298,8 @@
       }
 
       function formatLink(label, href) {
-        return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noreferrer">' + escapeHtml(label) + "</a>";
+        var rel = /^https?:\/\/(?:www\.)?x\.com(?:\/|$)/i.test(href) ? "noreferrer" : "noopener";
+        return '<a href="' + escapeHtml(href) + '" target="_blank" rel="' + rel + '">' + escapeHtml(label) + "</a>";
       }
 
       function buildCreditContent(imageEntry) {
