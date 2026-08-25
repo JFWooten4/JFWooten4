@@ -4,16 +4,6 @@
   "outputDirectory": "_site",
   "redirects": [
     {
-      "source": "/blog",
-      "destination": "https://john.xlm.domains",
-      "permanent": true
-    },
-    {
-      "source": "/book",
-      "destination": "/book.pdf",
-      "permanent": true
-    },
-    {
       "source": "/scam",
       "destination": "/btc",
       "permanent": true
