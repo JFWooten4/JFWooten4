@@ -9,7 +9,6 @@
   <style>
     :root {
       --accent: #fdda24;
-      --accent-muted: #6d5b0a;
       --credit-fade-in: 1.8s;
       --credit-fade-out: 420ms;
       --credit-box-resize: 1.1s;
@@ -234,44 +233,6 @@
       width: 32px;
       height: 32px;
       object-fit: contain;
-      display: block;
-    }
-    .sponsors {
-      margin-top: 36px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    .sponsors h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    .sponsor-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 6px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .sponsor-list a {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border: 1px solid var(--accent-muted);
-      border-radius: 999px;
-      background: rgba(253, 218, 36, 0.12);
-      text-decoration: none;
-      color: white;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 0.92rem;
-      font-weight: 400;
-    }
-    .sponsor-list img {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
       display: block;
     }
     .group-album {
@@ -904,10 +865,6 @@
       </a>
     </div>
 
-    <div class="sponsors">
-      <h3>Sponsors 💜</h3>
-      <ul class="sponsor-list" id="sponsor-list"></ul>
-    </div>
     <div class="group-album">
       <p class="group-label">Friends</p>
       <div class="group-strip" id="group-strip"></div>
@@ -937,53 +894,6 @@
     </div>
   </div>
   <script>
-    (function () {
-      var sponsorList = document.getElementById("sponsor-list");
-
-      if (!sponsorList) { return; }
-
-      fetch("/var/sponsors.json", { cache: "no-store" })
-        .then(function (response) {
-          if (!response.ok) { throw new Error("Failed to load sponsor feed"); }
-          return response.json();
-        })
-        .then(function (data) {
-          var sponsors = Array.isArray(data.sponsors) ? data.sponsors : [];
-
-          sponsors.sort(function (left, right) {
-            var leftLabel = (left.name || left.login || "").toLowerCase();
-            var rightLabel = (right.name || right.login || "").toLowerCase();
-            return leftLabel.localeCompare(rightLabel);
-          });
-
-          sponsorList.innerHTML = "";
-
-          if (!sponsors.length) { return; }
-
-          sponsors.forEach(function (sponsor) {
-            var item = document.createElement("li");
-            var link = document.createElement("a");
-            var avatar = document.createElement("img");
-            var label = document.createElement("span");
-
-            link.href = sponsor.url;
-            link.target = "_blank";
-            link.rel = "noreferrer";
-
-            avatar.src = sponsor.avatar_url;
-            avatar.alt = sponsor.name || sponsor.login;
-
-            label.textContent = sponsor.name || sponsor.login;
-
-            link.appendChild(avatar);
-            link.appendChild(label);
-            item.appendChild(link);
-            sponsorList.appendChild(item);
-          });
-        })
-        .catch(function () {});
-    })();
-
     (function () {
       var groupImageData = document.getElementById("group-image-data");
       var groupCreditData = document.getElementById("group-credit-data");
