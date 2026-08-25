@@ -1,1 +1,0 @@
-rup out all old pages and schsred :) 

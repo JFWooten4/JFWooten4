@@ -1,1 +1,0 @@
-https://x.com/naiivememe/status/1885437902278340860

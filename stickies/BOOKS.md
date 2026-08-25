@@ -1,3 +1,0 @@
-- [Manna: Two Views of Humanity’s Future](https://marshallbrain.com/manna1)
-- [Business as Unusual: The Team Fortress 2 virtual econ](https://a.co/d/04F3T3CG)
-- [Hock's One From Many v2](https://www.amazon.com/One-Many-VISA-Chaordic-Organization/dp/1576753328)

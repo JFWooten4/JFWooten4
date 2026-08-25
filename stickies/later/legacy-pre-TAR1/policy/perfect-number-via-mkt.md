@@ -1,1 +1,0 @@
-Intro selltar inflation around the "ideal" genie ratios

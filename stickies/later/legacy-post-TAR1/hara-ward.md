@@ -1,1 +1,0 @@
-K was investigated as lobby.t / attonrey in DC with crypto who wroties 20-30pg comments for 50k as poor basis 

@@ -1,1 +1,0 @@
-donna hinted at another exam when we hit 10 issuers, & I commited to a mortatium on new clients until dec

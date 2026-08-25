@@ -1,8 +1,12 @@
+---
+---
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>Wooten.link Redirect</title>
+  <meta name="description" content="Wooten.link redirect page. JavaScript redirects known shortlinks; automated clients may inspect the redirect map in this document.">
+  <meta name="robots" content="noindex, follow">
   <style>
     html, body {
       background-color: black;
@@ -12,11 +16,35 @@
 <body>
   <script id="all-redirects">
     const LATEST_COMMENT = "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf";
-    const CHIEF_AMBITION = "https://github.com/WhyDRS/SEC-Comments/pull/25#discussion_r1947830692";
+    const CHIEF_AMBITION = "https://github.com/users/JFWooten4/projects/1/views/1?pane=info&statusUpdateId=216825";
     window.LINKS = {
-      "_a": null,
+      "tansu": "https://radicle.network/nodes/radicle.consulting-manao.com/rad%3AzssaAF91kxuquZmZCV2SiK2FNX6s",
+      "1997-246": "https://www.sec.gov/about/reports-publications/aboutoigaudit246finhtm",
+      "1981": "https://www.berkshirehathaway.com/letters/1981.html",
+      "database-intro": "https://www.reddit.com/r/Superstonk/comments/tfvmcr/drs_everything_transfer_agents_for_fortune_500",
+      "superstonk-mods": "https://www.reddit.com/user/LastResortFriend/comments/1cay67k/ninetyfive_nails_in_the_coffin",
+      "gh-sponsors": "https://www.fordfoundation.org/wp-content/uploads/2016/07/roads-and-bridges-the-unseen-labor-behind-our-digital-infrastructure.pdf",
+      "fuse": "https://groups.google.com/g/osxfuse-group/c/BPIHlQMq6Gk/m/iVrud_gEKQAJ",
+      "eating": "https://doi.org/10.1371/journal.pone.0221937",
+      "sro": "https://github.com/JFWooten4/JFWooten4/blob/7a14fd2233ee5937890efdcffc8f52eac3cf24ed/decisions/TAD-SRO-collab.md",
+      "three-step": "https://www.sec.gov/divisions/marketreg/mr-noaction/2020/finra-ats-role-in-settlement-of-digital-asset-security-trades-09252020.pdf",
+      "cat-plan": "https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/4-698",
+      "issuer": "https://stellar.expert/explorer/public/account/GDRM3MK6KMHSYIT4E2AG2S2LWTDBJNYXE4H72C7YTTRWOWX5ZBECFWO7",
+      "613": "https://www.sec.gov/files/rules/final/2012/34-67457.pdf",
+      "v16-downtime": "https://status.stellar.org/incidents/7h0czw6mnjzs",
+      "sdf-reports": "https://stellar.org/quarterly-reports",
+      "sec-agenda": "https://www.reginfo.gov/public/do/eAgendaMain?operation=OPERATION_GET_AGENCY_RULE_LIST&currentPub=true&agencyCode=&showStage=active&agencyCd=3235",
+      "sec-calendar": "https://www.sec.gov/foia/frequently-requested-documents/chairmans-calendar",
+      "cat-files": "https://drive.proton.me/urls/MZAGCGBWAR#HFHLcBWhdlgc",
+      "wd-migrate": "https://workdrive.zoho.com/b83hmf05972c82a1c4790990d79265601bc26/teams/b83hmf05972c82a1c4790990d79265601bc26/ws",
+      "ww-chat": "https://www.youtube.com/playlist?list=PLD_o9ntBnmGaSraKlePO35JwWLvr2dl0r",
+      "amzn-review": "https://www.amazon.com/review/create-review?asin=1794566856&linkCode=sl2&tag=wootenwealth-20&linkId=b54b1d5277156889531d361596b57faa",
+      "the": "https://github.com/stellar/stellar-docs/pull/1043#discussion_r1811060899",
+      "notes": "https://notes.jfwooten4.com",
+      "brand": "https://workdrive.zoho.com/folder/o5swv1e06144f179046fcaffebcf19c1955db",
+      "sdf-brand": "https://cdn.sanity.io/files/e2r40yh6/production-i18n/3755e548a02b9c26c9cca9b30021fc3fdd43e20b.pdf",
       "benjamin": "https://mega.nz/file/ZngUFIqJ#qda7W4cmfAL2-waLkHU0QgG4jXf1ISFVccIl3rLkIMo",
-      "cf": "todo Dashbord SCF pub profile from PGF",
+      "cf": "https://github.com/orgs/SCF-Public-Goods-Maintenance/discussions/15",
       "anon": "https://anonfilly.horse",
       "yanis": "https://web.archive.org/web/20190219073940/http://blogs.valvesoftware.com/economics",
       "yye": "https://forums.yoyoexpert.com/u/n64retro/summary",
@@ -24,11 +52,8 @@
       "logo": "https://www.canva.com/design/DAEW-cFzRA4/YLM9sfMf5u0GrlGwo38N3Q/view",
       "burn": "https://stellar.expert/explorer/public/tx/fc66377172cfeb1c464ddf6f316feee565d4cb2e8c7b14e75adb301524b40e8b",
       "duopoly": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2782692",
-      "search": "https://wooten.link/static/search.html",
       "foia": "https://www.muckrock.com/foi/list/?q=&status=&agency=240&has_embargo=&has_crowdfund=&minimum_pages=&date_range_min=&date_range_max=&file_types=",
       "jake": "https://www.youtube.com/watch?v=yBP2yjKILrw&list=PLWUFvhKuc_5sLV0dxk2L0LyBRLVSXuTEo",
-      "blue": "http://placeholder.com/hard-to-find-rip",
-      "sleepi": "https://x.com/JFWooten4/status/2002816451376496754",
       "bottleneck": CHIEF_AMBITION,
       "typo": "https://github.com/Taking-Stock/RSSfeed/commit/bec14c0ae7eaf177f8240ed97597b7f3122f2fe8",
       "berrow": "https://www.amazon.com/dp/B081HZ9QMN",
@@ -113,9 +138,12 @@
       "slip": "https://github.com/satoshilabs/slips/commit/5f494a0d05dbd191dd757ec8ef640881ebc7f295",
       "advertising": "https://www.benjacoin.com/s/benjacoin_EN_072917compressed.pdf",
       "tad3": "https://web.archive.org/web/20250210013223/https://www.blocktransfer.com/blog/post/introducing-transfer-agent-depository", // ? dev link ? or cong.
+      "tad2": "https://github.com/blocktransfer/TAD2",
+      "tad1": "https://www.google.com/books/edition/Final_Report_of_the_Securities_and_Excha/J33QAAAAMAAJ",
+      "tad": "https://github.com/blocktransfer/TAD3-core",
       "xlm": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5u1sQsz-FAmRgFf9HEhyqj-",
       "goal": "https://www.youtube.com/watch?v=6sqCilpMjOE&list=PLWUFvhKuc_5uYBfAiK62sfhZkDw-151NX&t=455s",
-      "trading-sell-error": "https://jfwooten4.com/static/srcs/2019-trading-failure.pdf",
+      "trading-sell-error": "https://wooten.link/src/2019-trading-failure.pdf",
       "instinet": "https://www.reddit.com/r/Superstonk/comments/17en1cf/instinet_except_this_time_uploaded_directly_to",
       "listen": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5sDW-0Elb1tc-TffW1xbpMh",
       "f3": "https://www.sec.gov/files/litigation/admin/2016/34-76899.pdf#page=4",
@@ -160,6 +188,7 @@
       "emojis": "https://github.com/github/.github/pull/447",
       "dark": "https://truedark.com?ref=mgnkmje", // + use code "wooten" for 10% off
       "rand": "https://x.com/JFWooten4/status/1802485912355365280",
+      "rand-sec": "https://www.rand.org/content/dam/rand/pubs/reports/2007/R552.pdf",
       "agenda": "https://github.com/users/JFWooten4/projects/1",
       "bad": "https://stellar.expert/explorer/public/tx/2d32c9f6ea1baf2bf3fbe051346a42d8d1917c911aa4f4c171915cb0eebf910a",
       "1558": "https://github.com/stellar/stellar-protocol/discussions/1558",
@@ -207,7 +236,7 @@
       "background": "https://docs.google.com/document/d/1fyAFz72vLSRXShduTagX46P0Sb5qbjeZMdbViNUywHs/edit",
       "bitcoin": "https://drive.google.com/drive/folders/1tyoGcZEu5upv7stiKLfYy3TgzyTeC08Y",
       "blockchain": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5sf6xhDONTEPOyrDtEn3wwm",
-      "book": "https://ninetonoonsecrets.com/free-book",
+      "book": "/book.pdf",
       "build": "https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
       "career": "https://docs.google.com/document/d/1LDfTWCFmX-0GfnFv2L43OLs7w0xZ4aKsoCrQM_x9REI/edit",
       "carnegie": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5ta4kKhg8ttDHE0Ojqf_5O4",
@@ -230,7 +259,7 @@
       "github": "https://github.com/JFWooten4",
       "gme": "https://www.linkedin.com/pulse/gamestop-first-successful-short-squeeze-john-wooten-xvyne",
       "intro": "https://www.youtube.com/watch?v=2mh-sLXJBNQ&list=PLWUFvhKuc_5vycN0giWpgWIBbL4vuK88t",
-      "join": "https://discord.gg/pn3GcVKJ6j", // DRS server
+      "join": "https://mee6.xyz/i/xyGz2buGJR", // DRS server
       "chat": "https://discord.gg/pn3GcVKJ6j",
       "journal": "https://amzn.to/441h6mQ",
       "kit": "https://github.com/users/JFWooten4/projects/1?pane=issue&itemId=76689921",
@@ -266,10 +295,11 @@
       "riches": "https://discord.gg/4gca9VU4vs",
       "s7-15-23": "https://www.sec.gov/comments/s7-15-23/s71523-301019-767522.pdf",
       "securrency": "https://www.linkedin.com/posts/jfwooten4_blockchain-dtcc-projectwhitney-activity-7122584214130036736-9vKi",
-      "scam": "https://jfwooten4.com/static/scam/index.html",
+      "scam": "https://wooten.link/btc/",
       "sponsor": "https://github.com/sponsors/JFWooten4?frequency=recurring",
       "subway": "https://docs.google.com/document/d/1Tt3yKK4Q11i1X42enVvVO5PD3S-BxHyJRsp2oVwS-XY/edit",
-      "taxes": "https://www.jfwooten4.com/static/taxes",
+      "sugar": "https://amzn.to/3I6KOMX",
+      "taxes": "https://wooten.link/tax/",
       "thesis": "https://blocktransfer.com/.well-known/thesis.pdf",
       "thiel": "https://drive.google.com/drive/folders/1kb6T-YzL-tOXdx4otD-EIQi83M1mEYxp",
       "tfs": "https://www.amazon.com/dp/B07M9HFLV6",
@@ -278,7 +308,10 @@
       "twitter": "https://twitter.com/jfwooten4",
       "watch": "https://playondemand.tgrlegacymovie.com/wbA4Tp",
       "webinar": "https://quest.stellar.org",
+      "resources": "https://quest.stellar.org",
+      "vegetable": "https://youtu.be/rQmqVVmMB3k",
       "wf": "https://www.wealthfront.com/c/affiliates/invited/AFFB-ABDU-3EIX-SAZ4",
+      "wheat": "https://amzn.to/3OTv7MV",
       "xbt": "https://primexbt.com?signup=999884",
       "yellow": "https://blocktransfer.com/.well-known/yellowpaper.pdf",
       "yellowpaper": "https://blocktransfer.com/.well-known/yellowpaper.pdf",
@@ -292,7 +325,7 @@
       "secrets": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5u5CR31Nr-dArLS1U_namsc",
       "exposed": "https://www.youtube.com/playlist?list=PLWUFvhKuc_5u5CR31Nr-dArLS1U_namsc",
       "gnu": "https://github.com/orgs/WhyDRS/discussions/1",
-      "blog": "https://www.blocktransfer.com/blog/author/wooten",
+      "blog": "https://john.xlm.domains",
       "free": "https://jfwooten4.com/info",
       "abcd": "https://www.youtube.com/watch?v=jxOiBqYtekQ&list=PLWUFvhKuc_5u5CR31Nr-dArLS1U_namsc",
       // START PENDING BLOG POST HERE
@@ -303,11 +336,59 @@
       // END PENDING BLOG POST HERE
     };
   </script>
+  <script type="text/plain" id="law-redirects">
+{% include_relative var/law.toml %}
+  </script>
   <script>
-    var path = window.location.pathname.split("/")[1].toLowerCase();
+    var path = window.location.pathname.split("/").filter(Boolean)[0];
+    path = path ? decodeURIComponent(path).toLowerCase() : path;
     var redirects = window.LINKS || {};
-    var redirect = redirects[path] || "https://www.vyletpony.com/my-love-is-a-quickscope";
-    window.location.href = redirect;
+
+    var redirect = redirects[path] || lawRedirect(path) || "https://wooten.link/search";
+    window.location.replace(redirect);
+
+    function lawRedirect(path) {
+      if (!path || /^[a-z0-9]/i.test(path)) {
+        return null;
+      }
+
+      var delimiter = null;
+      var toml = document.getElementById("law-redirects").textContent;
+
+      var lawRedirects = toml.split(/\r?\n/).reduce(function(parsed, line) {
+        var section = line.match(/^\s*\[redirects\.("(?:\\.|[^"\\])*")\]\s*(?:#.*)?$/);
+
+        if (section) {
+          try {
+            delimiter = JSON.parse(section[1]);
+          } catch (error) {
+            delimiter = null;
+          }
+
+          return parsed;
+        }
+
+        if (/^\s*\[/.test(line)) {
+          delimiter = null;
+          return parsed;
+        }
+
+        if (delimiter !== null) {
+          var entry = line.match(/^\s*("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*")\s*(?:#.*)?$/);
+
+          if (entry) {
+            try {
+              var suffix = JSON.parse(entry[1]);
+              parsed[(delimiter + suffix).toLowerCase()] = JSON.parse(entry[2]);
+            } catch (error) {}
+          }
+        }
+
+        return parsed;
+      }, {});
+
+      return lawRedirects[path];
+    }
   </script>
 </body>
 </html>

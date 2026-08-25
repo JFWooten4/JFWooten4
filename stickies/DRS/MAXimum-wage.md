@@ -1,1 +1,0 @@
-if we want to go with the market cap/max, then whether or not ou can vote for yourself / own proposla matters a lot 

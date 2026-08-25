@@ -1,1 +1,0 @@
-We believe in the power of community. By open-sourcing TAD3, we are inviting developers, innovators, and visionaries to join us in this transformative journey. Your contributions will help shape a fairer and more efficient financial future.

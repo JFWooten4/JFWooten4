@@ -1,1 +1,0 @@
-- https://www.opensecrets.org/donor-lookup/results?name=Kenneth+Griffin&order=desc&page=7

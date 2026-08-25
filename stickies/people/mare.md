@@ -1,4 +1,0 @@
-### reqs
-
-- [] secure independent 
-- () mlunde

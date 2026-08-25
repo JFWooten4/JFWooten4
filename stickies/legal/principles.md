@@ -1,2 +1,0 @@
-- https://doortofreedom.org/
-- FINRA drop at HR 2689

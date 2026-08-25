@@ -1,2 +1,0 @@
-- [Genesis](https://github.com/TruthOrigin/TruthGate-IPFS/pull/2)
-- [Announcement](https://www.reddit.com/r/ipfs/comments/1mwaex9/truthgate_the_secure_selfhosted_edge_gateway_open)

@@ -1,1 +1,0 @@
-a government run in the dark for a select few is no government at all

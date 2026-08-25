@@ -1,0 +1,66 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "bundle exec jekyll build",
+  "outputDirectory": "_site",
+  "headers": [
+    {
+      "source": "/.well-known/stellar.toml",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/scam",
+      "destination": "/btc",
+      "permanent": true
+    },
+    {
+      "source": "/scam/:path*",
+      "destination": "/btc/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/book.pdf",
+      "destination": "/static/book.pdf"
+    },
+    {
+      "source": "/src/:path*",
+      "destination": "/static/src/:path*"
+    },
+    {
+      "source": "/tax",
+      "destination": "/static/tax/index.html"
+    },
+    {
+      "source": "/tax/:path*",
+      "destination": "/static/tax/:path*"
+    },
+    {
+      "source": "/btc",
+      "destination": "/static/btc/index.html"
+    },
+    {
+      "source": "/btc/:path*",
+      "destination": "/static/btc/:path*"
+    },
+    {
+      "source": "/ppt",
+      "destination": "/static/ppt/index.html"
+    },
+    {
+      "source": "/ppt/:path*",
+      "destination": "/static/ppt/:path*"
+    }
+  ]
+}

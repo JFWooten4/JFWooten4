@@ -1,16 +1,3 @@
-Practically none of this was made by me. I have no rights to the art. The addition commit tries its best to attribute the original source.
-
-I'm inspired to create this because:
-
-- I've lost art sources in [past work](https://youtu.be/Myumx8wLo6Y),
-- I believe my local desktop environment reflects material internal ideas,[^a] and
-- I'd like to disclose the present state of my psyche, as [attempted](https://github.com/JFWooten4/dreams).
-
-If you're an artist, please don't hate me for posting here! 💜 Generally I do not like duplicating past mental states with the same backgrounds, since innovation requires constant reinvention. 🧠 I hope everyone [discovers](https://wooten.link/lead) unique inspirations, art, and ethos. 🚀
-
-
-[^a]: For instance, I just had it as the [mission](../banners/mission.png) for the longest time. While that's my distilled public-facing goal and an introduction to my ideals, it is sorta boring lol. And that's perfectly fine, since financial markets are supposed to be boring (_see_ BT logo colors)!
-
 ## Credits
 
 - `writing-TAR1` comes from an unknown artist ([src](https://www.peakpx.com/en/hd-wallpaper-desktop-gwurm))
@@ -19,7 +6,7 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 - `floating-forward` comes from CallmeMH, NightmareMoonLuna ([src](https://www.mylittlewallpaper.com/c/my-little-pony/download/504598b34a9d15.99902250))
 - `relaxing-wait` comes from MLPWallpaperz ([src](https://www.deviantart.com/mlpwallpaperz/art/Starlight-Glimmer-Wallpaper-575667853))
 - `soaring-together` comes from Stun-dash-99 ([src](https://trixiebooru.org/images/599332)); related thread ([src](https://mlpforums.com/topic/104596-pinkiedash-fan-club/?do=findComment&comment=2924227))[^chatgpt]
-- `galaxy-bananas` comes from GoneNannurs ([src](https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site))[^chatgpt]
+- `galaxy-bananas` comes from [GoneNannurs](https://nannurs.carrd.co) ([src](https://gonenannurs.tumblr.com/post/752677836446466049/curious-cat-twitter-da-ko-fi-site))[^chatgpt]
 - `hunting-hour` comes from RysunkowaSucharia ([src](https://www.deviantart.com/rysunkowasucharia/art/Das-kleine-lila-Pferd-814065716))
 - `mad-time` comes from [Vylet Pony](https://www.vyletpony.com) ([src](https://youtu.be/-iOr0WZRoI4?t=249))
 - `mad-split` comes from Blizzard Entertainment ([src](https://youtu.be/oJ09xdxzIJQ?t=264))
@@ -37,7 +24,11 @@ If you're an artist, please don't hate me for posting here! 💜 Generally I do 
 - `red-heart` comes from PrinceWhateverer ([src](https://youtu.be/UEVuJcs4FWs))
 - `doin-it` comes from [Shino](https://x.com/shinodage) ([src](https://spaceponyos.com/art))
 - `market-calling` comes from [DinoHorse](https://linktr.ee/DinoHorse) ([src](https://dinohorse.tumblr.com/post/784820587947229184/11-x-17-rarity-pin-up-prints-link-to-buy))
+- `not-hero` comes from Tamers12345 ([src](https://youtu.be/kzL9b92BELw?t=213))
 - `secret-slash` comes from [Darktailsko (Cody)](https://www.deviantart.com/discourt) ([src](https://derpibooru.org/images/1650702))
 - `distant-engine` comes from [Shino](https://spaceponyos.com) ([src](https://x.com/ShinodaGE/status/1270296149627371521))
+- `flight-time` comes from [Vultraz](https://odysee.com/@vul:0) ([src](https://ponerpics.org/images/6805273))
+- `lose-them` comes from Rambu [et al.](https://docs.google.com/spreadsheets/d/1qIEXn09G4cogluw7qB5B4s1nY9ea7Yo9/view) ([src](https://youtu.be/adwGFGiBdwk?t=575))
+- `honing-in` comes from Riot Games ([src](https://youtu.be/fmI_Ndrxy14?t=18))
 
 [^chatgpt]: Slightly altered for format with DALL-E.

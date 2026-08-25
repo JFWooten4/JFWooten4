@@ -1,1 +1,0 @@
-the birkdale Pinnacle story makes a very strong basis
