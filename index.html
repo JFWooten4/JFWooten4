@@ -147,10 +147,6 @@
     .banner-credit-text a {
       color: var(--accent);
     }
-    .banner-credit-text a[href="https://discord.com/channels/1102309240145707049/1118990437684875357/1418078804412469298"] {
-      color: inherit;
-      font-weight: inherit;
-    }
     .content {
       position: relative;
       z-index: 1;
@@ -1272,14 +1268,9 @@
 
       function buildBannerCreditContent(imageEntry) {
         var credit = bannerCreditsByName[imageEntry.key || getImageKey(imageEntry.src)] || {};
-        var imageKey = imageEntry.key || getImageKey(imageEntry.src);
         var artistLabel = credit.artist || "Unknown artist";
         var artistHtml = credit.artistUrl ? formatLink(artistLabel, credit.artistUrl) : escapeHtml(artistLabel);
         var artHtml = credit.sourceUrl ? formatLink("Art", credit.sourceUrl) : "Art";
-
-        if (imageKey === "massie-exposition") {
-          artistHtml += ', <a href="https://discord.com/channels/1102309240145707049/1118990437684875357/1418078804412469298" target="_blank" rel="noreferrer">popularized by 6days1week</a>';
-        }
 
         return artHtml + " by " + artistHtml;
       }
