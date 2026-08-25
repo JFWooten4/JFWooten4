@@ -31,6 +31,18 @@
   ],
   "rewrites": [
     {
+      "source": "/friends/1",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/friends/2",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/friends/3",
+      "destination": "/index.html"
+    },
+    {
       "source": "/book.pdf",
       "destination": "/static/book.pdf"
     },
