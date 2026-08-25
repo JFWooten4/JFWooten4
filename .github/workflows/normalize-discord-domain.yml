@@ -1,0 +1,40 @@
+name: Normalize Discord domain
+
+on:
+  push:
+    branches:
+      - issue-70-neutral-banner-reference
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: issue-70-neutral-banner-reference
+
+      - name: Replace discordapp.com
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in ("index.html", "banners/README.md"):
+              path = Path(name)
+              data = path.read_bytes()
+              old = b"https://discordapp.com/"
+              new = b"https://discord.com/"
+              if old not in data:
+                  raise SystemExit(f"Expected discordapp.com URL not found in {name}")
+              path.write_bytes(data.replace(old, new))
+          PY
+
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html banners/README.md
+          git commit -m "🔗 Normalize Discord links" -m "Replace legacy discordapp.com source links with discord.com." -m "Co-authored-by: Codex Web <noreply@openai.com>"
+          git push origin HEAD:issue-70-neutral-banner-reference
