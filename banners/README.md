@@ -2,7 +2,7 @@ I keep losing all the social profile banners I use across different centralized 
 
 ## Credits
 
-- `gatech-inventure` comes from Georgia Tech Student Innovation ([src](https://www.flickr.com/photos/studentinnovation/51012920545/in/album-72157718813923003))
+- `gatech-inventure` comes from [Georgia Tech Student Innovation](https://www.flickr.com/photos/studentinnovation/51012920545/in/album-72157718813923003) & PBS
 - `climbing-pheonix` comes from Riot/Fortiche ([src](https://youtu.be/fB8TyLTD7EE?t=69))
 - `consensys` comes from @silence48 ([src](https://discord.com/channels/897514728459468821/1204467898391724084/1245547345651957772))
 - `dash-confident` comes from tehnomad ([src](https://wallup.net/my-little-pony-rainbow-dash-4))
