@@ -1,8 +1,4 @@
-I keep losing all the social profile banners I use across different centralized platforms, so I'm starting up an archive of them here.
-
-## Credits
-
-- `gatech-inventure` comes from [Georgia Tech Student Innovation](https://www.flickr.com/photos/studentinnovation/51012920545/in/album-72157718813923003) & PBS ([src](https://www.flickr.com/photos/studentinnovation/51012920545/in/album-72157718813923003))
+- `gatech-inventure` comes from [Georgia Tech Student Innovation](https://www.flickr.com/photos/studentinnovation/51012920545/in/album-72157718813923003) & PBS ([src](https://youtu.be/S75IvkicWD8?t=66))
 - `climbing-pheonix` comes from Riot/Fortiche ([src](https://youtu.be/fB8TyLTD7EE?t=69))
 - `dash-confident` comes from tehnomad ([src](https://wallup.net/my-little-pony-rainbow-dash-4))
 - `deadly-plunge` comes from Forest Rain ([src](https://youtu.be/MjfCH89sBzs))
