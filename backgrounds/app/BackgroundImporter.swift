@@ -32,7 +32,7 @@ private enum ImportError: LocalizedError {
         case .duplicate(let name):
             return "A background named \(name) is already registered."
         case .repositoryNotFound:
-            return "The app could not find backgrounds/README.md and index.html. Keep the app in backgrounds/background-importer."
+            return "The app could not find backgrounds/README.md and index.html. Keep the app in backgrounds/app."
         case .unexpectedFormat(let file):
             return "The expected background registry was not found in \(file)."
         }
@@ -302,6 +302,7 @@ private struct ContentView: View {
         }
         .padding(24)
         .frame(width: 620)
+        .frame(minHeight: 523)
         .fileImporter(isPresented: $isChoosingFile, allowedContentTypes: [.image]) { result in
             if case .success(let url) = result { select(url) }
         }

@@ -12,6 +12,6 @@ A small native macOS utility for adding a background image to the site without m
 
 The app copies the image into `backgrounds/`, adds its credit to `backgrounds/README.md`, and registers both the image and its credit in `index.html`. It refuses duplicate names and restores the original files if an update fails.
 
-Keep the built app in this directory so it can locate the repository. Build output is ignored by Git.
+The build script replaces the tracked app at `backgrounds/app/Background Importer.app`. Keep the app in `backgrounds/app/` so it can locate the repository.
 
 Run `./test.sh` to compile the importer and validate its full write path against a temporary repository copy.
