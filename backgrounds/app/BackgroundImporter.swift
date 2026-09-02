@@ -16,6 +16,9 @@ private enum ImportError: LocalizedError {
     case invalidArtist
     case invalidURL(String)
     case duplicate(String)
+    case existingRegistryChanges
+    case existingStagedChanges
+    case gitCommandFailed(String, String)
     case repositoryNotFound
     case unexpectedFormat(String)
 
@@ -31,6 +34,12 @@ private enum ImportError: LocalizedError {
             return "Enter a valid http or https URL for \(field)."
         case .duplicate(let name):
             return "A background named \(name) is already registered."
+        case .existingRegistryChanges:
+            return "Commit or stash the existing changes to backgrounds/README.md and index.html before importing."
+        case .existingStagedChanges:
+            return "Commit or unstage the existing staged changes before importing."
+        case .gitCommandFailed(let command, let message):
+            return "git \(command) failed: \(message)"
         case .repositoryNotFound:
             return "The app could not find backgrounds/README.md and index.html. Keep the app in backgrounds/app."
         case .unexpectedFormat(let file):
@@ -42,6 +51,11 @@ private enum ImportError: LocalizedError {
 enum BackgroundRepository {
     private static let supportedExtensions = Set(["png", "jpg", "jpeg", "webp"])
 
+    private struct GitResult {
+        let status: Int32
+        let output: String
+    }
+
     static func normalizedKey(_ value: String) -> String {
         value.lowercased()
             .components(separatedBy: CharacterSet.alphanumerics.inverted)
@@ -51,6 +65,59 @@ enum BackgroundRepository {
 
     static func validateImage(_ url: URL) -> Bool {
         supportedExtensions.contains(url.pathExtension.lowercased()) && NSImage(contentsOf: url) != nil
+    }
+
+    static func prepareForAutomaticPublish() throws {
+        let repository = try locateBackgroundsDirectory().deletingLastPathComponent()
+
+        let repositoryCheck = try git(["rev-parse", "--is-inside-work-tree"], in: repository)
+        guard repositoryCheck.status == 0, repositoryCheck.output == "true" else {
+            throw ImportError.gitCommandFailed("rev-parse", repositoryCheck.output)
+        }
+
+        let stagedCheck = try git(["diff", "--cached", "--quiet"], in: repository)
+        if stagedCheck.status == 1 { throw ImportError.existingStagedChanges }
+        try requireSuccess(stagedCheck, command: "diff --cached --quiet")
+
+        let registryCheck = try git(
+            ["status", "--porcelain", "--", "backgrounds/README.md", "index.html"],
+            in: repository
+        )
+        try requireSuccess(registryCheck, command: "status")
+        guard registryCheck.output.isEmpty else { throw ImportError.existingRegistryChanges }
+
+        let branchCheck = try git(["symbolic-ref", "--quiet", "--short", "HEAD"], in: repository)
+        try requireSuccess(branchCheck, command: "symbolic-ref HEAD")
+
+        let upstreamCheck = try git(
+            ["rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{upstream}"],
+            in: repository
+        )
+        try requireSuccess(upstreamCheck, command: "rev-parse @{upstream}")
+    }
+
+    static func publish(_ filename: String) throws -> String {
+        let repository = try locateBackgroundsDirectory().deletingLastPathComponent()
+        let key = URL(fileURLWithPath: filename).deletingPathExtension().lastPathComponent
+        let paths = ["backgrounds/\(filename)", "backgrounds/README.md", "index.html"]
+
+        let addResult = try git(["add", "--"] + paths, in: repository)
+        try requireSuccess(addResult, command: "add")
+
+        let commitResult = try git([
+            "commit", "--no-verify", "--only",
+            "-m", "🖼️ Add \(key) background",
+            "-m", "Register the new background image and its artwork credit across the homepage and background catalog.",
+            "--"
+        ] + paths, in: repository)
+        try requireSuccess(commitResult, command: "commit")
+
+        let pushResult = try git(["push"], in: repository)
+        try requireSuccess(pushResult, command: "push")
+
+        let revisionResult = try git(["rev-parse", "--short", "HEAD"], in: repository)
+        try requireSuccess(revisionResult, command: "rev-parse HEAD")
+        return revisionResult.output
     }
 
     static func add(_ details: BackgroundDetails) throws -> String {
@@ -149,6 +216,34 @@ enum BackgroundRepository {
         }
 
         throw ImportError.repositoryNotFound
+    }
+
+    private static func git(_ arguments: [String], in repository: URL) throws -> GitResult {
+        let process = Process()
+        let output = Pipe()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/git")
+        process.arguments = arguments
+        process.currentDirectoryURL = repository
+        process.standardOutput = output
+        process.standardError = output
+
+        do {
+            try process.run()
+        } catch {
+            throw ImportError.gitCommandFailed(arguments.first ?? "command", error.localizedDescription)
+        }
+
+        let data = output.fileHandleForReading.readDataToEndOfFile()
+        process.waitUntilExit()
+        let message = String(data: data, encoding: .utf8)?
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        return GitResult(status: process.terminationStatus, output: message)
+    }
+
+    private static func requireSuccess(_ result: GitResult, command: String) throws {
+        guard result.status == 0 else {
+            throw ImportError.gitCommandFailed(command, result.output.isEmpty ? "exit status \(result.status)" : result.output)
+        }
     }
 
     private static func registeredKeys(in index: String) -> Set<String> {
@@ -359,6 +454,7 @@ private struct ContentView: View {
     private func addBackground() {
         guard let selectedFile else { return }
         do {
+            try BackgroundRepository.prepareForAutomaticPublish()
             let added = try BackgroundRepository.add(BackgroundDetails(
                 sourceFile: selectedFile,
                 filename: filename,
@@ -366,7 +462,8 @@ private struct ContentView: View {
                 artistURL: artistURL,
                 sourceURL: sourceURL
             ))
-            status = "Added \(added), its README credit, and homepage registration."
+            let revision = try BackgroundRepository.publish(added)
+            status = "Added \(added), committed \(revision), and pushed."
             statusIsError = false
         } catch {
             status = error.localizedDescription
