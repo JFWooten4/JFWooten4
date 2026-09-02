@@ -302,6 +302,7 @@ private struct ContentView: View {
         }
         .padding(24)
         .frame(width: 620)
+        .frame(minHeight: 523)
         .fileImporter(isPresented: $isChoosingFile, allowedContentTypes: [.image]) { result in
             if case .success(let url) = result { select(url) }
         }
