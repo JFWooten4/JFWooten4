@@ -32,7 +32,7 @@ private enum ImportError: LocalizedError {
         case .duplicate(let name):
             return "A background named \(name) is already registered."
         case .repositoryNotFound:
-            return "The app could not find backgrounds/README.md and index.html. Keep the app in the backgrounds folder."
+            return "The app could not find backgrounds/README.md and index.html. Keep the app in backgrounds/app."
         case .unexpectedFormat(let file):
             return "The expected background registry was not found in \(file)."
         }
@@ -131,7 +131,7 @@ enum BackgroundRepository {
 
         let bundle = Bundle.main.bundleURL
         if bundle.pathExtension == "app" {
-            let candidate = bundle.deletingLastPathComponent()
+            let candidate = bundle.deletingLastPathComponent().deletingLastPathComponent()
             if FileManager.default.fileExists(atPath: candidate.appendingPathComponent("README.md").path) {
                 return candidate
             }

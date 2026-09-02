@@ -21,7 +21,7 @@ struct ImporterTests {
 
         setenv("BACKGROUND_REPOSITORY", testRoot.path, 1)
         let added = try BackgroundRepository.add(BackgroundDetails(
-            sourceFile: fixtureRoot.appendingPathComponent("backgrounds/background-importer/AppIcon.png"),
+            sourceFile: fixtureRoot.appendingPathComponent("backgrounds/app/AppIcon.png"),
             filename: "Importer Test",
             artist: "Example Artist",
             artistURL: "https://example.com/artist",

@@ -2,8 +2,7 @@
 set -euo pipefail
 
 script_dir=${0:A:h}
-repository_dir=${script_dir:h:h}
-app_dir="$repository_dir/backgrounds/Background Importer.app"
+app_dir="$script_dir/Background Importer.app"
 contents_dir="$app_dir/Contents"
 
 rm -rf "$app_dir"
