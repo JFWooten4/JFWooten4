@@ -1,0 +1,60 @@
+name: Apply relative 404 links
+
+on:
+  push:
+    branches:
+      - relative-404-links
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make same-origin redirects relative
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("404.html")
+          original = path.read_text()
+          needle = "https://wooten.link/"
+          count = original.count(needle)
+          if count == 0:
+              raise SystemExit("No absolute wooten.link redirects found")
+
+          updated = original.replace(needle, "/")
+          if updated == original:
+              raise SystemExit("404.html was unchanged")
+          if needle in updated:
+              raise SystemExit("An absolute wooten.link redirect remains")
+
+          path.write_text(updated)
+          print(f"Converted {count} wooten.link redirects to relative paths")
+          PY
+
+          if git diff --quiet -- 404.html; then
+            echo "Expected 404.html to change"
+            exit 1
+          fi
+
+      - name: Commit change
+        shell: bash
+        run: |
+          git config user.name "Codex Web"
+          git config user.email "noreply@openai.com"
+          git add 404.html
+          cat > /tmp/commit-message <<'EOF'
+          🐞 Make Wooten.link 404 redirects relative
+
+          Convert same-origin Wooten.link redirect targets in 404.html to root-relative paths.
+
+          Co-authored-by: Codex Web <noreply@openai.com>
+          EOF
+          git commit -F /tmp/commit-message
+          git push origin HEAD:relative-404-links
