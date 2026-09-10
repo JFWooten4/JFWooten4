@@ -31,5 +31,6 @@
 - `lose-them` comes from Rambu [et al.](https://docs.google.com/spreadsheets/d/1qIEXn09G4cogluw7qB5B4s1nY9ea7Yo9/view) ([src](https://youtu.be/adwGFGiBdwk?t=575))
 - `honing-in` comes from Riot Games ([src](https://youtu.be/fmI_Ndrxy14?t=18))
 - `the-script` comes from Rambu [et al.](https://docs.google.com/spreadsheets/d/1qIEXn09G4cogluw7qB5B4s1nY9ea7Yo9/view) ([src](https://youtu.be/fmI_Ndrxy14?t=738))
+- `no-politics` comes from Hasbro Studios ([src](https://youtu.be/B81vN2359fo?t=1097))
 
 [^chatgpt]: Slightly altered for format with DALL-E.
