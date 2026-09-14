@@ -1493,3 +1493,187 @@
     if (bookLink) { bookLink.setAttribute("aria-label", "My Book"); }
   })();
 </script>
+<style id="rotating-headshot-icon-style">
+  .rotating-headshot-icon {
+    position: relative;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    margin: 0 20px;
+    overflow: visible;
+    isolation: isolate;
+  }
+  .rotating-headshot-icon-frame {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #000;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+    z-index: 1;
+  }
+  .social-links .rotating-headshot-icon-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 4.2s ease-in-out;
+    will-change: opacity;
+  }
+  .social-links .rotating-headshot-icon-layer.is-visible {
+    opacity: 1;
+  }
+  .social-links .rotating-headshot-icon-prop {
+    position: absolute;
+    left: -27px;
+    top: -34px;
+    width: 72px;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.32));
+  }
+  @media (max-width: 720px) {
+    .rotating-headshot-icon {
+      margin: 0 8px;
+    }
+    .social-links .rotating-headshot-icon-prop {
+      left: -25px;
+      top: -31px;
+      width: 68px;
+    }
+  }
+</style>
+<script>
+  (function () {
+    var headshots = [
+      "/headshots/gatech/author.jpg",
+      "/headshots/final-form/flawless-mare.png",
+      "/headshots/final-form/flying-on.jpg",
+      "/headshots/final-form/horizon-horse.png",
+      "/headshots/final-form/love-weapon.jpg",
+      "/headshots/gatech/author.png",
+      "/headshots/gatech/speaker.jpg",
+      "/headshots/gatech/syndicate.png",
+      "/headshots/n64retro/overwatch.png",
+      "/headshots/n64retro/steam.png",
+      "/headshots/n64retro/youtube.jpg",
+      "/headshots/n64retro/yoyoexpert.png",
+      "/headshots/near-line/genesis-heart.jpg",
+      "/headshots/near-line/linear-threshold.png",
+      "/headshots/near-line/stellar-distance.jpg",
+      "/headshots/near-line/watch-out.webp",
+      "/headshots/politicking/dreamer-shoulders.png",
+      "/headshots/politicking/fire-pieces.jpg",
+      "/headshots/politicking/local-forum.jpg",
+      "/headshots/politicking/regulatory-reform.png",
+      "/headshots/ponies/alt-intro.PNG",
+      "/headshots/ponies/final-act.png",
+      "/headshots/ponies/light-embrace.PNG",
+      "/headshots/ponies/steel-wings.png",
+      "/headshots/setup/hudson-yards.jpg",
+      "/headshots/setup/monkey-circle.jpg",
+      "/headshots/setup/pilot-engage.jpg",
+      "/headshots/setup/robertson-scholars.jpg"
+    ];
+    var socialLinks = document.querySelector(".social-links");
+
+    if (!socialLinks || !headshots.length) { return; }
+
+    var icon = document.createElement("span");
+    var frame = document.createElement("span");
+    var layerA = document.createElement("img");
+    var layerB = document.createElement("img");
+    var prop = document.createElement("img");
+    var activeLayer = layerA;
+    var inactiveLayer = layerB;
+    var currentIndex = 0;
+    var transitionInProgress = false;
+
+    icon.className = "rotating-headshot-icon";
+    icon.setAttribute("role", "img");
+    icon.setAttribute("aria-label", "John Wooten headshot");
+    frame.className = "rotating-headshot-icon-frame";
+
+    layerA.className = "rotating-headshot-icon-layer is-visible";
+    layerA.src = headshots[0];
+    layerA.alt = "";
+    layerA.decoding = "async";
+    layerA.fetchPriority = "high";
+
+    layerB.className = "rotating-headshot-icon-layer";
+    layerB.alt = "";
+    layerB.decoding = "async";
+
+    prop.className = "rotating-headshot-icon-prop";
+    prop.src = "/props/mlp/smirk.png";
+    prop.alt = "";
+    prop.setAttribute("aria-hidden", "true");
+    prop.decoding = "async";
+    prop.fetchPriority = "high";
+    prop.draggable = false;
+
+    frame.appendChild(layerA);
+    frame.appendChild(layerB);
+    icon.appendChild(frame);
+    icon.appendChild(prop);
+    socialLinks.insertBefore(icon, socialLinks.firstChild);
+
+    headshots.slice(1).forEach(function (src) {
+      var image = new Image();
+      image.decoding = "async";
+      image.src = src;
+    });
+
+    function advanceHeadshot() {
+      if (transitionInProgress || headshots.length < 2) { return; }
+
+      transitionInProgress = true;
+      currentIndex = (currentIndex + 1) % headshots.length;
+      inactiveLayer.src = headshots[currentIndex];
+
+      var finish = function () {
+        inactiveLayer.onload = null;
+        inactiveLayer.onerror = null;
+        inactiveLayer.offsetHeight;
+        inactiveLayer.classList.add("is-visible");
+        activeLayer.classList.remove("is-visible");
+
+        var previousLayer = activeLayer;
+        activeLayer = inactiveLayer;
+        inactiveLayer = previousLayer;
+        transitionInProgress = false;
+      };
+
+      inactiveLayer.onload = finish;
+      inactiveLayer.onerror = finish;
+      if (inactiveLayer.complete) { finish(); }
+    }
+
+    var backgroundLayers = [
+      document.getElementById("bg-layer-a"),
+      document.getElementById("bg-layer-b")
+    ].filter(Boolean);
+
+    if (backgroundLayers.length && "MutationObserver" in window) {
+      var observer = new MutationObserver(function (mutations) {
+        var startedFade = mutations.some(function (mutation) {
+          return mutation.target.classList.contains("is-visible");
+        });
+
+        if (startedFade) { advanceHeadshot(); }
+      });
+
+      backgroundLayers.forEach(function (layer) {
+        observer.observe(layer, { attributes: true, attributeFilter: ["class"] });
+      });
+    } else {
+      window.setInterval(advanceHeadshot, 8000);
+    }
+  })();
+</script>
