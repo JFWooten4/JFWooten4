@@ -580,24 +580,6 @@
       "doin-it": {
         "artist": "Shino",
         "artistUrl": "https://x.com/shinodage",
-        "sourceUrl": "https://spaceponyos.com/art"
-      },
-      "embracing-art": {
-        "artist": "Krista",
-        "sourceUrl": "https://x.com/Kristalina_21/status/1720914062496919652"
-      },
-      "finding-love": {
-        "artist": "Evrlasting_Stations",
-        "artistUrl": "https://everlastingstations.straw.page",
-        "sourceUrl": "https://discord.com/channels/370605707965235200/509869543875805185/1376782644439945296"
-      },
-      "flawless-ocean": {
-        "artist": "Dowa",
-        "sourceUrl": "https://x.com/DowaPone/status/1845056649192522231"
-      },
-      "flight-time": {
-        "artist": "Vultraz",
-        "artistUrl": "https://odysee.com/@vul:0",
         "sourceUrl": "https://ponerpics.org/images/6805273"
       },
       "floating-forward": {
@@ -1500,9 +1482,17 @@
     width: 32px;
     height: 32px;
     margin: 0 20px;
-    border-radius: 50%;
+    overflow: visible;
+    isolation: isolate;
+  }
+  .rotating-headshot-icon-frame {
+    position: absolute;
+    inset: 0;
     overflow: hidden;
+    border-radius: 50%;
+    background: #000;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+    z-index: 1;
   }
   .social-links .rotating-headshot-icon-layer {
     position: absolute;
@@ -1517,9 +1507,27 @@
   .social-links .rotating-headshot-icon-layer.is-visible {
     opacity: 1;
   }
+  .social-links .rotating-headshot-icon-prop {
+    position: absolute;
+    left: -27px;
+    top: -34px;
+    width: 72px;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.32));
+  }
   @media (max-width: 720px) {
     .rotating-headshot-icon {
       margin: 0 8px;
+    }
+    .social-links .rotating-headshot-icon-prop {
+      left: -25px;
+      top: -31px;
+      width: 68px;
     }
   }
 </style>
@@ -1560,8 +1568,10 @@
     if (!socialLinks || !headshots.length) { return; }
 
     var icon = document.createElement("span");
+    var frame = document.createElement("span");
     var layerA = document.createElement("img");
     var layerB = document.createElement("img");
+    var prop = document.createElement("img");
     var activeLayer = layerA;
     var inactiveLayer = layerB;
     var currentIndex = 0;
@@ -1570,6 +1580,7 @@
     icon.className = "rotating-headshot-icon";
     icon.setAttribute("role", "img");
     icon.setAttribute("aria-label", "John Wooten headshot");
+    frame.className = "rotating-headshot-icon-frame";
 
     layerA.className = "rotating-headshot-icon-layer is-visible";
     layerA.src = headshots[0];
@@ -1581,8 +1592,18 @@
     layerB.alt = "";
     layerB.decoding = "async";
 
-    icon.appendChild(layerA);
-    icon.appendChild(layerB);
+    prop.className = "rotating-headshot-icon-prop";
+    prop.src = "/props/mlp/smirk.png";
+    prop.alt = "";
+    prop.setAttribute("aria-hidden", "true");
+    prop.decoding = "async";
+    prop.fetchPriority = "high";
+    prop.draggable = false;
+
+    frame.appendChild(layerA);
+    frame.appendChild(layerB);
+    icon.appendChild(frame);
+    icon.appendChild(prop);
     socialLinks.insertBefore(icon, socialLinks.firstChild);
 
     headshots.slice(1).forEach(function (src) {
