@@ -1495,12 +1495,13 @@
 </script>
 <style id="rotating-headshot-icon-style">
   .banner-name.has-rotating-headshot {
-    grid-template-columns: auto auto;
-    justify-content: center;
-    column-gap: clamp(10px, 1.5vw, 22px);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    row-gap: clamp(10px, 1.5vw, 18px);
+    margin-top: clamp(56px, 8vw, 96px);
   }
   .banner-name.has-rotating-headshot .banner-name-layer {
-    grid-area: 1 / 2;
+    grid-area: 2 / 1;
   }
   .rotating-headshot-icon {
     position: relative;
@@ -1517,7 +1518,7 @@
     border-radius: 50%;
     background: #000;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
-    z-index: 1;
+    z-index: 2;
   }
   .rotating-headshot-icon-layer {
     position: absolute;
@@ -1542,14 +1543,12 @@
     object-fit: contain;
     pointer-events: none;
     user-select: none;
-    z-index: 2;
+    z-index: 1;
     filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.32));
   }
   @media (max-width: 720px) {
     .banner-name.has-rotating-headshot {
-      padding-left: 22px;
-      font-size: clamp(2.2rem, 10.5vw, 5.5rem);
-      column-gap: 8px;
+      row-gap: 8px;
     }
     .rotating-headshot-icon {
       width: clamp(38px, 11vw, 52px);
