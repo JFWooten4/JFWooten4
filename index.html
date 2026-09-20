@@ -1614,7 +1614,7 @@
     var propLeftForeground;
     var activeLayer = layerA;
     var inactiveLayer = layerB;
-    var currentIndex = 0;
+    var currentIndex = Math.floor(Math.random() * headshots.length);
     var transitionInProgress = false;
 
     icon.className = "rotating-headshot-icon";
@@ -1622,7 +1622,7 @@
     frame.className = "rotating-headshot-icon-frame";
 
     layerA.className = "rotating-headshot-icon-layer is-visible";
-    layerA.src = headshots[0];
+    layerA.src = headshots[currentIndex];
     layerA.alt = "";
     layerA.decoding = "async";
     layerA.fetchPriority = "high";
@@ -1652,7 +1652,8 @@
     bannerName.classList.add("has-rotating-headshot");
     bannerName.insertBefore(icon, bannerName.firstChild);
 
-    headshots.slice(1).forEach(function (src) {
+    headshots.forEach(function (src, index) {
+      if (index === currentIndex) { return; }
       var image = new Image();
       image.decoding = "async";
       image.src = src;
