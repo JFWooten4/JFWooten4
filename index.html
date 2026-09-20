@@ -1548,7 +1548,7 @@
     grid-area: 1 / 1;
     width: clamp(52px, 7vw, 88px);
     height: clamp(52px, 7vw, 88px);
-    transform: translateY(-90%);
+    transform: translateY(-110%);
     overflow: visible;
     isolation: isolate;
   }
@@ -1610,7 +1610,7 @@
     .rotating-headshot-icon {
       width: clamp(38px, 11vw, 52px);
       height: clamp(38px, 11vw, 52px);
-      transform: translateY(-135%);
+      transform: translateY(-155%);
     }
   }
 </style>
@@ -1646,6 +1646,34 @@
       "/headshots/setup/pilot-engage.jpg",
       "/headshots/setup/robertson-scholars.jpg"
     ];
+
+    function shuffleHeadshots(entries) {
+      var shuffled = entries.slice();
+
+      for (var index = shuffled.length - 1; index > 0; index -= 1) {
+        var randomIndex = Math.floor(Math.random() * (index + 1));
+        var entry = shuffled[index];
+
+        shuffled[index] = shuffled[randomIndex];
+        shuffled[randomIndex] = entry;
+      }
+
+      return shuffled;
+    }
+
+    function reshuffleHeadshotsAfter(entries, previousHeadshot) {
+      var shuffled = shuffleHeadshots(entries);
+
+      if (shuffled.length > 1 && shuffled[0] === previousHeadshot) {
+        var entry = shuffled[0];
+        shuffled[0] = shuffled[1];
+        shuffled[1] = entry;
+      }
+
+      return shuffled;
+    }
+
+    headshots = shuffleHeadshots(headshots);
     var bannerName = document.querySelector(".banner-name");
 
     if (!bannerName || !headshots.length) { return; }
@@ -1660,7 +1688,7 @@
     var propLeftForeground;
     var activeLayer = layerA;
     var inactiveLayer = layerB;
-    var currentIndex = Math.floor(Math.random() * headshots.length);
+    var currentIndex = 0;
     var transitionInProgress = false;
 
     icon.className = "rotating-headshot-icon";
@@ -1712,7 +1740,13 @@
       if (transitionInProgress || headshots.length < 2) { return; }
 
       transitionInProgress = true;
-      currentIndex = (currentIndex + 1) % headshots.length;
+      currentIndex += 1;
+
+      if (currentIndex >= headshots.length) {
+        headshots = reshuffleHeadshotsAfter(headshots, headshots[currentIndex - 1]);
+        currentIndex = 0;
+      }
+
       inactiveLayer.src = headshots[currentIndex];
 
       var finish = function () {
