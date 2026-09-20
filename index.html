@@ -1170,6 +1170,35 @@
       var creditCardResizeFrame = null;
       var creditCardResizeTimeout = null;
 
+      function shuffleEntries(entries) {
+        var shuffled = entries.slice();
+
+        for (var index = shuffled.length - 1; index > 0; index -= 1) {
+          var randomIndex = Math.floor(Math.random() * (index + 1));
+          var entry = shuffled[index];
+
+          shuffled[index] = shuffled[randomIndex];
+          shuffled[randomIndex] = entry;
+        }
+
+        return shuffled;
+      }
+
+      function reshuffleAfter(entries, previousEntry) {
+        var shuffled = shuffleEntries(entries);
+
+        if (shuffled.length > 1 && shuffled[0] === previousEntry) {
+          var entry = shuffled[0];
+          shuffled[0] = shuffled[1];
+          shuffled[1] = entry;
+        }
+
+        return shuffled;
+      }
+
+      images = shuffleEntries(images);
+      bannerImages = shuffleEntries(bannerImages);
+
       function beginCreditCardResize() {
         if (!creditCard || creditCardStartHeight !== null) { return; }
 
@@ -1317,10 +1346,10 @@
 
       var activeLayer = layerA;
       var inactiveLayer = layerB;
-      var imageIndex = Math.floor(Math.random() * images.length);
+      var imageIndex = 0;
       var activeBannerLayer = bannerLayerA;
       var inactiveBannerLayer = bannerLayerB;
-      var bannerImageIndex = bannerImages.length ? Math.floor(Math.random() * bannerImages.length) : 0;
+      var bannerImageIndex = 0;
       var swapDelayMs = 8000;
       var fadeDurationMs = 4200;
       var creditLeadMs = 1900;
@@ -1376,8 +1405,19 @@
 
       function scheduleNextFade() {
         window.setTimeout(function () {
-          var nextIndex = (imageIndex + 1) % images.length;
-          var nextBannerIndex = bannerImages.length ? (bannerImageIndex + 1) % bannerImages.length : 0;
+          var nextIndex = imageIndex + 1;
+          var nextBannerIndex = bannerImages.length ? bannerImageIndex + 1 : 0;
+
+          if (nextIndex >= images.length) {
+            images = reshuffleAfter(images, images[imageIndex]);
+            nextIndex = 0;
+          }
+
+          if (bannerImages.length && nextBannerIndex >= bannerImages.length) {
+            bannerImages = reshuffleAfter(bannerImages, bannerImages[bannerImageIndex]);
+            nextBannerIndex = 0;
+          }
+
           var nextBannerPromise = bannerImages.length ? preload(bannerImages[nextBannerIndex]) : Promise.resolve(null);
 
           Promise.all([preload(images[nextIndex]), nextBannerPromise]).then(function (loadedImages) {
