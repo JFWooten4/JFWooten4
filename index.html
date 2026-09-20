@@ -1494,12 +1494,19 @@
   })();
 </script>
 <style id="rotating-headshot-icon-style">
+  .banner-name.has-rotating-headshot {
+    grid-template-columns: auto auto;
+    justify-content: center;
+    column-gap: clamp(10px, 1.5vw, 22px);
+  }
+  .banner-name.has-rotating-headshot .banner-name-layer {
+    grid-area: 1 / 2;
+  }
   .rotating-headshot-icon {
     position: relative;
-    flex: 0 0 32px;
-    width: 32px;
-    height: 32px;
-    margin: 0 20px;
+    grid-area: 1 / 1;
+    width: clamp(52px, 7vw, 88px);
+    height: clamp(52px, 7vw, 88px);
     overflow: visible;
     isolation: isolate;
   }
@@ -1512,7 +1519,7 @@
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
     z-index: 1;
   }
-  .social-links .rotating-headshot-icon-layer {
+  .rotating-headshot-icon-layer {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -1522,14 +1529,14 @@
     transition: opacity 4.2s ease-in-out;
     will-change: opacity;
   }
-  .social-links .rotating-headshot-icon-layer.is-visible {
+  .rotating-headshot-icon-layer.is-visible {
     opacity: 1;
   }
-  .social-links .rotating-headshot-icon-prop {
+  .rotating-headshot-icon-prop {
     position: absolute;
-    left: -27px;
-    top: -34px;
-    width: 72px;
+    left: -84%;
+    top: -106%;
+    width: 225%;
     height: auto;
     max-width: none;
     object-fit: contain;
@@ -1539,13 +1546,14 @@
     filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.32));
   }
   @media (max-width: 720px) {
-    .rotating-headshot-icon {
-      margin: 0 8px;
+    .banner-name.has-rotating-headshot {
+      padding-left: 22px;
+      font-size: clamp(2.2rem, 10.5vw, 5.5rem);
+      column-gap: 8px;
     }
-    .social-links .rotating-headshot-icon-prop {
-      left: -25px;
-      top: -31px;
-      width: 68px;
+    .rotating-headshot-icon {
+      width: clamp(38px, 11vw, 52px);
+      height: clamp(38px, 11vw, 52px);
     }
   }
 </style>
@@ -1581,9 +1589,9 @@
       "/headshots/setup/pilot-engage.jpg",
       "/headshots/setup/robertson-scholars.jpg"
     ];
-    var socialLinks = document.querySelector(".social-links");
+    var bannerName = document.querySelector(".banner-name");
 
-    if (!socialLinks || !headshots.length) { return; }
+    if (!bannerName || !headshots.length) { return; }
 
     var icon = document.createElement("span");
     var frame = document.createElement("span");
@@ -1596,8 +1604,7 @@
     var transitionInProgress = false;
 
     icon.className = "rotating-headshot-icon";
-    icon.setAttribute("role", "img");
-    icon.setAttribute("aria-label", "John Wooten headshot");
+    icon.setAttribute("aria-hidden", "true");
     frame.className = "rotating-headshot-icon-frame";
 
     layerA.className = "rotating-headshot-icon-layer is-visible";
@@ -1622,7 +1629,8 @@
     frame.appendChild(layerB);
     icon.appendChild(frame);
     icon.appendChild(prop);
-    socialLinks.insertBefore(icon, socialLinks.firstChild);
+    bannerName.classList.add("has-rotating-headshot");
+    bannerName.insertBefore(icon, bannerName.firstChild);
 
     headshots.slice(1).forEach(function (src) {
       var image = new Image();
