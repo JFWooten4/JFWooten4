@@ -1551,6 +1551,10 @@
     z-index: 1;
     filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.32));
   }
+  .rotating-headshot-icon-prop-foreground {
+    z-index: 3;
+    clip-path: polygon(52% 55%, 100% 55%, 100% 77%, 84% 77%, 77% 72%, 74% 66%, 52% 64%);
+  }
   @media (max-width: 720px) {
     .banner-name.has-rotating-headshot {
       row-gap: 8px;
@@ -1602,6 +1606,7 @@
     var layerA = document.createElement("img");
     var layerB = document.createElement("img");
     var prop = document.createElement("img");
+    var propForeground;
     var activeLayer = layerA;
     var inactiveLayer = layerB;
     var currentIndex = 0;
@@ -1628,11 +1633,14 @@
     prop.decoding = "async";
     prop.fetchPriority = "high";
     prop.draggable = false;
+    propForeground = prop.cloneNode(false);
+    propForeground.className = "rotating-headshot-icon-prop rotating-headshot-icon-prop-foreground";
 
     frame.appendChild(layerA);
     frame.appendChild(layerB);
     icon.appendChild(frame);
     icon.appendChild(prop);
+    icon.appendChild(propForeground);
     bannerName.classList.add("has-rotating-headshot");
     bannerName.insertBefore(icon, bannerName.firstChild);
 
