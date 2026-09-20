@@ -1345,6 +1345,7 @@
       var inactiveBannerLayer = bannerLayerB;
       var bannerImageIndex = 0;
       var swapDelayMs = 8000;
+      var firstSwapDeadline = Date.now() + swapDelayMs;
       var fadeDurationMs = 4200;
       var creditLeadMs = 1900;
       var preloadDelayMs = 600;
@@ -1397,7 +1398,7 @@
         layer.style.backgroundImage = 'url("' + imageEntry.src + '")';
       }
 
-      function scheduleNextFade() {
+      function scheduleNextFade(delayMs) {
         window.setTimeout(function () {
           var nextIndex = imageIndex + 1;
           var nextBannerIndex = bannerImages.length ? bannerImageIndex + 1 : 0;
@@ -1450,7 +1451,7 @@
 
             scheduleNextFade();
           });
-        }, swapDelayMs);
+        }, typeof delayMs === "number" ? delayMs : swapDelayMs);
       }
 
       var initialBannerPromise = bannerImages.length ? preload(bannerImages[bannerImageIndex], { decode: false, fetchPriority: "high" }) : Promise.resolve(null);
@@ -1478,7 +1479,7 @@
           });
         }, preloadDelayMs);
 
-        scheduleNextFade();
+        scheduleNextFade(Math.max(0, firstSwapDeadline - Date.now()));
       });
     })();
   </script>
