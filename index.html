@@ -1547,6 +1547,18 @@
     overflow: visible;
     isolation: isolate;
   }
+  .rotating-headshot-icon::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 95%;
+    width: 135%;
+    height: 135%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--accent);
+    z-index: 0;
+  }
   .rotating-headshot-icon-frame {
     position: absolute;
     left: 50%;
@@ -1557,7 +1569,6 @@
     overflow: hidden;
     border-radius: 50%;
     background: transparent;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
     z-index: 2;
   }
   .rotating-headshot-icon-layer {
