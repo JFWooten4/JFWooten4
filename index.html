@@ -1548,29 +1548,24 @@
     overflow: visible;
     isolation: isolate;
   }
-  .rotating-headshot-icon::before {
-    content: "";
+  .rotating-headshot-icon-ring {
     position: absolute;
     left: 50%;
     top: 95%;
-    width: var(--rotating-headshot-size);
-    height: var(--rotating-headshot-size);
+    width: calc(var(--rotating-headshot-size) + 2px);
+    height: calc(var(--rotating-headshot-size) + 2px);
     transform: translate(-50%, -50%);
-    border-radius: 50%;
-    box-shadow: 0 0 0 2px var(--accent);
+    overflow: visible;
+    pointer-events: none;
     z-index: 0;
   }
-  .rotating-headshot-icon::after {
-    content: "";
-    position: absolute;
-    left: calc(116.5% + 1px);
-    top: 83.1%;
-    width: 3px;
-    height: 3px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: var(--accent);
-    z-index: 4;
+  .rotating-headshot-icon-ring circle {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-dasharray: 275.76 38.40;
+    vector-effect: non-scaling-stroke;
   }
   .rotating-headshot-icon-frame {
     position: absolute;
@@ -1671,6 +1666,8 @@
     var frame = document.createElement("span");
     var layerA = document.createElement("img");
     var layerB = document.createElement("img");
+    var ring = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    var ringCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     var prop = document.createElement("img");
     var propForeground;
     var propHoofForeground;
@@ -1693,6 +1690,17 @@
     layerB.alt = "";
     layerB.decoding = "async";
 
+    ring.classList.add("rotating-headshot-icon-ring");
+    ring.setAttribute("viewBox", "0 0 100 100");
+    ring.setAttribute("aria-hidden", "true");
+    ring.setAttribute("focusable", "false");
+    ringCircle.setAttribute("cx", "50");
+    ringCircle.setAttribute("cy", "50");
+    ringCircle.setAttribute("r", "50");
+    ringCircle.setAttribute("pathLength", "100");
+    ringCircle.setAttribute("transform", "rotate(4 50 50)");
+    ring.appendChild(ringCircle);
+
     prop.className = "rotating-headshot-icon-prop";
     prop.src = "/props/mlp/smirk.png";
     prop.alt = "";
@@ -1706,6 +1714,7 @@
     propHoofForeground.className = "rotating-headshot-icon-prop rotating-headshot-icon-prop-hoof-foreground";
     frame.appendChild(layerA);
     frame.appendChild(layerB);
+    icon.appendChild(ring);
     icon.appendChild(frame);
     icon.appendChild(prop);
     icon.appendChild(propForeground);
