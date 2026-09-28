@@ -1,0 +1,52 @@
+name: Stage Mt. Gox legal PDFs
+
+on:
+  push:
+    branches:
+      - legal-mtgox-documents
+
+permissions:
+  contents: write
+
+jobs:
+  stage:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: legal-mtgox-documents
+
+      - name: Fetch historical source PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p legal
+          curl --fail --location --silent --show-error \
+            "https://raw.githubusercontent.com/WhyDRS/DUNA-docs/9db732cd09b62d0105b44a8f359b6c9bca705f38/comments/S7-27-15/refs/mtgox-business-plan-2013.pdf" \
+            --output legal/mtgox-business-plan-2013.pdf
+          curl --fail --location --silent --show-error \
+            "https://raw.githubusercontent.com/WhyDRS/DUNA-docs/9db732cd09b62d0105b44a8f359b6c9bca705f38/comments/S7-27-15/refs/mtgox-situation-draft-2014.pdf" \
+            --output legal/mtgox-situation-draft-2014.pdf
+
+          test "$(git hash-object legal/mtgox-business-plan-2013.pdf)" = "91f7b1724a5e9bd750d464099ff5b35d31a56e79"
+          test "$(git hash-object legal/mtgox-situation-draft-2014.pdf)" = "077c883af9b1b7731cf251063f8359be565907e5"
+
+      - name: Commit staged PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/stage-mtgox-legal.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add legal/mtgox-business-plan-2013.pdf \
+                  legal/mtgox-situation-draft-2014.pdf \
+                  .github/workflows/stage-mtgox-legal.yml
+          git diff --cached --quiet && {
+            echo "No staged changes; refusing a no-op commit."
+            exit 1
+          }
+          git commit -m "📂 Add Mt. Gox legal source PDFs" \
+            -m "Stage the exact historical source documents for attribution-header replacement before merge." \
+            -m "Co-authored-by: Codex Web <noreply@openai.com>"
+          git push origin HEAD:legal-mtgox-documents
