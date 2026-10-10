@@ -2,6 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "bundle exec jekyll build",
   "outputDirectory": "_site",
+  "functions": {
+    "api/redirect.js": {
+      "includeFiles": "{404.html,var/law.toml}"
+    }
+  },
   "headers": [
     {
       "source": "/.well-known/stellar.toml",
@@ -77,6 +82,10 @@
     {
       "source": "/ppt/:path*",
       "destination": "/static/ppt/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/api/redirect"
     }
   ]
 }
