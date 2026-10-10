@@ -359,6 +359,7 @@ private struct ContentView: View {
     @State private var isChoosingFile = false
     @State private var status = "Drop an image to begin."
     @State private var statusIsError = false
+    @State private var isCommitting = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -386,12 +387,14 @@ private struct ContentView: View {
             HStack {
                 Text(status)
                     .font(.callout)
-                    .foregroundStyle(statusIsError ? Color.red : Color.secondary)
+                    .foregroundStyle(statusIsError ? Color.red : (isCommitting ? Color.green : Color.secondary))
                     .lineLimit(2)
                 Spacer()
-                Button("Add Background", action: addBackground)
+                Button(isCommitting ? "Committing…" : "Add Background", action: addBackground)
                     .buttonStyle(.borderedProminent)
+                    .tint(isCommitting ? Color.green : Color.accentColor)
                     .disabled(selectedFile == nil)
+                    .allowsHitTesting(!isCommitting)
                     .keyboardShortcut(.defaultAction)
             }
         }
@@ -452,22 +455,43 @@ private struct ContentView: View {
     }
 
     private func addBackground() {
-        guard let selectedFile else { return }
-        do {
-            try BackgroundRepository.prepareForAutomaticPublish()
-            let added = try BackgroundRepository.add(BackgroundDetails(
-                sourceFile: selectedFile,
-                filename: filename,
-                artist: artist,
-                artistURL: artistURL,
-                sourceURL: sourceURL
-            ))
-            let revision = try BackgroundRepository.publish(added)
-            status = "Added \(added), committed \(revision), and pushed."
-            statusIsError = false
-        } catch {
-            status = error.localizedDescription
-            statusIsError = true
+        guard let selectedFile, !isCommitting else { return }
+
+        let details = BackgroundDetails(
+            sourceFile: selectedFile,
+            filename: filename,
+            artist: artist,
+            artistURL: artistURL,
+            sourceURL: sourceURL
+        )
+        isCommitting = true
+        status = "Committing \(selectedFile.lastPathComponent)…"
+        statusIsError = false
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            let result: Result<(String, String), Error>
+
+            do {
+                try BackgroundRepository.prepareForAutomaticPublish()
+                let added = try BackgroundRepository.add(details)
+                let revision = try BackgroundRepository.publish(added)
+                result = .success((added, revision))
+            } catch {
+                result = .failure(error)
+            }
+
+            DispatchQueue.main.async {
+                isCommitting = false
+
+                switch result {
+                case .success(let (added, revision)):
+                    status = "Added \(added), committed \(revision), and pushed."
+                    statusIsError = false
+                case .failure(let error):
+                    status = error.localizedDescription
+                    statusIsError = true
+                }
+            }
         }
     }
 }
