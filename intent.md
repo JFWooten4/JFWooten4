@@ -1,0 +1,9 @@
+- Chapter Title metadata
+  - each ch.
+  - the 2 section 'Parts'
+  - extras like preface and endnotes
+- inline the bibliography
+- change the photo on the rear to the orginal one, in teh same crop styel
+  - something iwththe rear copy maybe based on how the orgignal looke
+- preface doest really need to say 'to the Second Edition' since all that cahnged was the Preface and Disclamire
+- get rid of old links like wootenwealth onthe back cover or any n2n s refs like the imgs likn (i still like the doc but the host is dead)
