@@ -88,6 +88,14 @@
       "destination": "/static/ppt/:path*"
     },
     {
+      "source": "/reviews",
+      "destination": "/reviews/index.html"
+    },
+    {
+      "source": "/reviews/",
+      "destination": "/reviews/index.html"
+    },
+    {
       "source": "/:path*",
       "destination": "/api/redirect"
     }

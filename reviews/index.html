@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Share an honest reader review of John Wooten's free investing book.">
+  <title>Reader Reviews | John Wooten</title>
+  <style>
+    :root { color-scheme: dark; --bg:#080a10; --panel:#151924; --line:#303645; --ink:#f6f7fa; --muted:#b2bbc9; --gold:#fdda24; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink);
+      background:radial-gradient(circle at 80% 4%,#292311 0,transparent 36%),radial-gradient(circle at 0 65%,#192338 0,transparent 42%),var(--bg); }
+    a { color:var(--gold); }
+    .wrap { width:min(980px,calc(100% - 32px)); margin:0 auto; padding:40px 0 96px; }
+    nav { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center; margin-bottom:72px; }
+    nav a { text-decoration:none; font-weight:650; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.16em; color:var(--gold); font-size:.8rem; font-weight:750; }
+    h1 { font-size:clamp(2.7rem,6vw,4.8rem); letter-spacing:-.055em; line-height:1.05; margin:12px 0 20px; }
+    h2 { font-size:1.45rem; line-height:1.25; margin:0 0 14px; }
+    .lead { color:var(--muted); max-width:680px; font-size:1.15rem; margin-bottom:34px; }
+    .layout { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:26px; align-items:start; }
+    .card { border:1px solid var(--line); border-radius:20px; background:rgba(21,25,36,.94); padding:clamp(20px,3vw,32px); }
+    label { display:block; margin:20px 0 8px; font-weight:650; }
+    label:first-of-type { margin-top:0; }
+    label span { color:var(--muted); font-weight:400; font-size:.9rem; }
+    input,select,textarea { width:100%; border:1px solid #596272; border-radius:10px; padding:12px 14px; color:var(--ink); background:#0e121c; font:inherit; }
+    textarea { min-height:170px; resize:vertical; }
+    input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible {
+      outline:3px solid var(--gold); outline-offset:3px;
+    }
+    button { appearance:none; background:var(--gold); border:0; color:#14120b; font:inherit; font-weight:750; border-radius:12px; padding:12px 20px; cursor:pointer; }
+    button:disabled { opacity:.55; cursor:not-allowed; }
+    .help,.small { color:var(--muted); font-size:.87rem; }
+    .help { margin:16px 0 0; }
+    .status { min-height:1.5em; margin:16px 0 0; color:var(--gold); }
+    .captcha { margin:18px 0; min-height:65px; }
+    .trap { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+    .review-list { display:grid; gap:16px; margin-top:18px; }
+    .review { border-top:1px solid var(--line); padding-top:18px; overflow-wrap:anywhere; }
+    .review:first-child { border-top:0; padding-top:0; }
+    .review header { display:flex; gap:8px; justify-content:space-between; flex-wrap:wrap; margin-bottom:8px; }
+    .stars { color:var(--gold); letter-spacing:.09em; }
+    .date { color:var(--muted); font-size:.86rem; }
+    .review p { white-space:pre-wrap; margin:0; }
+    .empty { color:var(--muted); }
+    @media (max-width:740px) { nav { margin-bottom:42px; } .layout { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav aria-label="Page navigation"><a href="/">← John Wooten</a><a href="/book.pdf">Read the free book ↗</a></nav>
+    <main>
+      <div class="eyebrow">A note to readers</div>
+      <h1>What did you think?</h1>
+      <p class="lead">If the book helped you understand investing—or if you see something it could do better—share your experience. Honest reviews help future readers decide whether this book is for them.</p>
+      <div class="layout">
+        <section class="card" aria-labelledby="form-heading">
+          <h2 id="form-heading">Write a review</h2>
+          <p class="small">No account or email required. Your name or pseudonym and review will appear publicly if approved. Reviews are moderated for spam and abuse, not for whether they're positive.</p>
+          <form id="review-form">
+            <label for="reviewer">Display name <span>(optional)</span></label>
+            <input id="reviewer" name="name" maxlength="60" placeholder="Anonymous reader" autocomplete="nickname">
+            <label for="rating">Your rating <span>(optional)</span></label>
+            <select id="rating" name="rating">
+              <option value="">No star rating</option>
+              <option value="5">★★★★★ — 5 stars</option>
+              <option value="4">★★★★☆ — 4 stars</option>
+              <option value="3">★★★☆☆ — 3 stars</option>
+              <option value="2">★★☆☆☆ — 2 stars</option>
+              <option value="1">★☆☆☆☆ — 1 star</option>
+            </select>
+            <label for="review">Your review</label>
+            <textarea id="review" name="review" minlength="20" maxlength="2000" required placeholder="What stood out? What could be improved?"></textarea>
+            <div class="trap" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+            <div id="turnstile" class="captcha" aria-label="Spam verification"></div>
+            <button id="send" type="submit" disabled>Submit review</button>
+            <p id="form-status" class="status" role="status" aria-live="polite">Loading review form…</p>
+            <p class="help">A review submission doesn't guarantee publication. Please don't include private contact details or financial account information.</p>
+          </form>
+        </section>
+        <section class="card" aria-labelledby="community-heading">
+          <h2 id="community-heading">Reader reviews</h2>
+          <p class="small">Reader opinions are their own and are not endorsements or financial advice.</p>
+          <div id="reviews-status" class="empty" role="status" aria-live="polite">Loading reviews…</div>
+          <div id="reviews" class="review-list"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script>
+    (function () {
+      "use strict";
+      const form = document.getElementById("review-form");
+      const button = document.getElementById("send");
+      const formStatus = document.getElementById("form-status");
+      const reviewsStatus = document.getElementById("reviews-status");
+      const reviewsEl = document.getElementById("reviews");
+      let captchaToken = "";
+      let widgetId = null;
+
+      function showReviews(reviews) {
+        reviewsEl.replaceChildren();
+        reviewsStatus.textContent = reviews.length ? "" : "No published reviews yet. Be the first to share your thoughts.";
+        reviews.forEach((review) => {
+          const entry = document.createElement("article");
+          entry.className = "review";
+          const header = document.createElement("header");
+          const name = document.createElement("strong");
+          name.textContent = review.name;
+          header.appendChild(name);
+          if (review.rating !== null) {
+            const stars = document.createElement("span");
+            stars.className = "stars";
+            stars.textContent = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+            stars.setAttribute("aria-label", review.rating + " out of 5 stars");
+            header.appendChild(stars);
+          }
+          const date = document.createElement("div");
+          date.className = "date";
+          date.textContent = review.date;
+          const body = document.createElement("p");
+          body.textContent = review.review;
+          entry.append(header, date, body);
+          reviewsEl.appendChild(entry);
+        });
+      }
+
+      function enableTurnstile(siteKey) {
+        const script = document.createElement("script");
+        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+        script.async = true;
+        script.onload = function () {
+          if (!window.turnstile) {
+            formStatus.textContent = "Spam verification is unavailable.";
+            return;
+          }
+          widgetId = window.turnstile.render("#turnstile", {
+            sitekey: siteKey,
+            theme: "dark",
+            callback: function (token) {
+              captchaToken = token;
+              button.disabled = false;
+              formStatus.textContent = "";
+            },
+            "expired-callback": function () {
+              captchaToken = "";
+              button.disabled = true;
+              formStatus.textContent = "Please verify again.";
+            },
+            "error-callback": function () {
+              captchaToken = "";
+              button.disabled = true;
+              formStatus.textContent = "Spam verification failed to load.";
+            }
+          });
+          formStatus.textContent = "Complete spam verification to submit.";
+        };
+        script.onerror = function () {
+          formStatus.textContent = "Spam verification could not be loaded.";
+        };
+        document.head.appendChild(script);
+      }
+
+      async function loadReviews() {
+        try {
+          const response = await fetch("/api/reviews", { cache: "no-store" });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.error || "Reviews are unavailable.");
+          showReviews(Array.isArray(data.reviews) ? data.reviews : []);
+          if (data.submissionsEnabled && data.siteKey) {
+            enableTurnstile(data.siteKey);
+          } else {
+            formStatus.textContent = "New review submissions are not enabled yet.";
+          }
+        } catch (error) {
+          reviewsStatus.textContent = "Reviews are temporarily unavailable.";
+          formStatus.textContent = error.message || "Submission is temporarily unavailable.";
+        }
+      }
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        if (!form.reportValidity() || !captchaToken || button.disabled) return;
+        button.disabled = true;
+        formStatus.textContent = "Submitting your review…";
+        try {
+          const response = await fetch("/api/reviews", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: form.elements.name.value,
+              rating: form.elements.rating.value,
+              review: form.elements.review.value,
+              website: form.elements.website.value,
+              captcha: captchaToken,
+            }),
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.error || "Submission failed.");
+          form.reset();
+          formStatus.textContent = data.message || "Submitted for moderation. Thank you!";
+        } catch (error) {
+          formStatus.textContent = error.message || "Could not submit review.";
+        } finally {
+          captchaToken = "";
+          if (window.turnstile && widgetId !== null) window.turnstile.reset(widgetId);
+        }
+      });
+      loadReviews();
+    })();
+  </script>
+</body>
+</html>
