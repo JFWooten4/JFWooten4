@@ -71,13 +71,13 @@
 - [Premeditated Failure (Central Clearing)](https://www.youtube.com/clip/Ugkx_yGx5hgPG7flPbRy0B4Ct6NRqteXgUEr)
 - [Austin Campbell on TAD](https://www.youtube.com/clip/UgkxGM96APdTXta-w-s19FEyWpNkAWiDDYHG)
 
-### systemic bailout req.
+### Systemic Bailout Requirements
 
 - [DTCC Bailout Needed (Conn)](https://www.youtube.com/clip/UgkxV1YeRljQHPcN4NO5aBdj1HPS7apnbNrC)
 - [DTCC Bailout Needed (Premeditation)](https://www.youtube.com/clip/UgkxZbukKuQRCsLzfmFKDD9QkkHzXi-aVyU7)
 
 - [🧠 Something's Wrong 📉](https://www.youtube.com/clip/Ugkx_V1DjK4hfuqgfPeARudw1_efek9tyx-e)
 
-### Removed Videos
+## Removed Videos
 
 - [DTCC Bailout Needed](https://www.youtube.com/clip/Ugkxd0_I3EmB6m2oRNnJ2kTku32HTsIleI34)
