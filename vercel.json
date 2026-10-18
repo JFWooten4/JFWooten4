@@ -24,6 +24,21 @@
   ],
   "redirects": [
     {
+      "source": "/static/book/1879%20-%20The%20Law%20of%20Money%20Securities%20-%20Christopher%20Cavanagh.pdf",
+      "destination": "/static/book/law-of-money-securities.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/static/book/Railroad%20Capitalization%20-%20James%20Cummings%20Bonbright%20-%201920.pdf",
+      "destination": "/static/book/railroad-capitalization.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/static/book/Short%20Term%20Securities%20-%20Guaranty%20Trust%20Company%20of%20New%20York%20-%201918.pdf",
+      "destination": "/static/book/short-term-securities.pdf",
+      "permanent": true
+    },
+    {
       "source": "/scam",
       "destination": "/btc",
       "permanent": true
