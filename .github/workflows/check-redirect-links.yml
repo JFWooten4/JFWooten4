@@ -1,0 +1,32 @@
+name: Check redirect destinations
+
+on:
+  schedule:
+    - cron: "27 7 * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "404.html"
+      - "var/law.toml"
+      - "api/_redirects.js"
+      - "scripts/check-redirect-links.js"
+      - "test/check-redirect-links.test.js"
+      - ".github/workflows/check-redirect-links.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  redirect-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Test redirect parsing and link checker
+        run: node --test test/redirects.test.js test/check-redirect-links.test.js
+      - name: Check live redirect destinations
+        if: github.event_name != 'pull_request'
+        run: node scripts/check-redirect-links.js
