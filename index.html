@@ -6,6 +6,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>John Wooten</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
       --accent: #fdda24;
@@ -419,7 +422,11 @@
         padding: 28px 18px 96px;
       }
       .banner-name {
-        font-size: clamp(2.65rem, 13.2vw, 5.5rem);
+        /* Teko keeps the mobile O's squared off instead of falling back to round Arial Black. */
+        font-family: "Teko", Impact, Haettenschweiler, "Arial Narrow", sans-serif-condensed, sans-serif;
+        font-size: clamp(3rem, 16vw, 6rem);
+        font-weight: 700;
+        letter-spacing: 0;
         margin-bottom: 20px;
       }
       .friend-thumb {
