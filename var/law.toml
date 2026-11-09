@@ -1,5 +1,6 @@
 [redirects."_"]
 "0" = "https://github.com/blocktransfer/org-docs/pull/3/changes/a8d9f89f29a364ee5f869ca87685e020fd7d4272"
+"1" = "https://github.com/blocktransfer/org-docs/pulls"
 
 [redirects."+"]
-"0" = "https://example.com/second-law-link"
+"0" = "https://example.com/OPINION-law-link"
