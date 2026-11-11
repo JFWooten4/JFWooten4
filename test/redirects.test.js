@@ -51,7 +51,9 @@ test("loads every current redirect directly from the 404 sources", () => {
     redirects.tar1,
     "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf"
   );
-  assert.equal(Object.keys(redirects).length, configuredKeys.length + 2);
+  const lawRedirects = parseLawRedirects(fs.readFileSync(path.join(__dirname, "..", "var/law.toml"), "utf8"));
+  assert.equal(Object.keys(redirects).length, configuredKeys.length + Object.keys(lawRedirects).length);
+  assert.equal(redirects._3, "https://www.issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
 });
 
 test("normalizes the first path segment like the browser redirect", () => {
