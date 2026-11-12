@@ -3,6 +3,7 @@
 "1" = "https://blocktransfer.org/ref/taxes/2025/transcript.pdf"
 "2" = "https://blocktransfer.org/ref/taxes/2025/notice.pdf"
 "3" = "https://www.issuers.info/1846058/PNL/2025-12-31_Annual.pdf"
+"4" = "https://blocktransfer.org/ref/taxes/2025/return.pdf"
 
 [redirects."+"]
 "0" = "https://example.com/OPINION-law-link"
