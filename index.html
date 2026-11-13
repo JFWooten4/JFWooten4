@@ -1680,6 +1680,25 @@
       "/headshots/setup/robertson-scholars.jpg"
     ];
 
+    // Only headshots with an explicit [src] credit in their folder README open an artwork source.
+    var headshotSources = {
+      "/headshots/final-form/flawless-mare.png": "https://pony.tube/w/2oyQhzsFKc6mkADyfwr1KL?start=33m49s",
+      "/headshots/final-form/love-weapon.jpg": "https://x.com/fcolumnare/status/1952740544443998252",
+      "/headshots/n64retro/overwatch.png": "https://overwatch.fandom.com/wiki/Player_Icons?file=PI_Siege_Mode.png",
+      "/headshots/n64retro/steam.png": "https://www.deviantart.com/kp-shadowsquirrel/art/Cadance-Portrait-329151870",
+      "/headshots/near-line/genesis-heart.jpg": "https://wooten.link/heart",
+      "/headshots/near-line/linear-threshold.png": "https://bgmponydegeneracy.bandcamp.com/track/perfection-incarnate",
+      "/headshots/near-line/watch-out.webp": "https://www.reddit.com/r/ekkomains/comments/1gzgyww/s1_arcane_ekko_profile_icon",
+      "/headshots/politicking/dreamer-shoulders.png": "https://www.monstercat.com/release/MCS871",
+      "/headshots/politicking/fire-pieces.jpg": "https://youtu.be/i1IKnWDecwA?t=125",
+      "/headshots/politicking/local-forum.jpg": "https://derpibooru.org/images/1129719",
+      "/headshots/politicking/regulatory-reform.png": "https://youtu.be/Egzz5L1ZUZ0?t=66",
+      "/headshots/ponies/alt-intro.PNG": "https://pony.tube/w/3R8Hat8bzyhNXgCELcDnxq",
+      "/headshots/ponies/final-act.png": "https://youtu.be/Ru0_6FtBzTQ?t=192",
+      "/headshots/ponies/light-embrace.PNG": "https://pony.tube/w/3R8Hat8bzyhNXgCELcDnxq",
+      "/headshots/ponies/steel-wings.png": "https://bgmponydegeneracy.bandcamp.com/track/steel-wings"
+    };
+
     headshots = window.shuffleHomepageEntries(headshots);
     var bannerName = document.querySelector(".banner-name");
 
@@ -1742,6 +1761,17 @@
     icon.appendChild(prop);
     icon.appendChild(propForeground);
     icon.appendChild(propHoofForeground);
+    // The headshot sits inside the wordmark's /search/ link. Intercept clicks on
+    // its circular image only when the currently displayed headshot has a source.
+    // Otherwise preserve the enclosing wordmark link's normal navigation.
+    frame.addEventListener("click", function (event) {
+      var sourceUrl = headshotSources[activeLayer.getAttribute("src")];
+      if (!sourceUrl) { return; }
+      event.preventDefault();
+      event.stopPropagation();
+      window.open(sourceUrl, "_blank", "noopener,noreferrer");
+    });
+
     bannerName.classList.add("has-rotating-headshot");
     bannerName.insertBefore(icon, bannerName.firstChild);
 
