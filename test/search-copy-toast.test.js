@@ -5,13 +5,13 @@ const assert = require("node:assert/strict");
 const vm = require("node:vm");
 
 const page = fs.readFileSync(path.join(__dirname, "..", "static/search.html"), "utf8");
-const script = page.match(/<script>([\\s\\S]*?)<\\/script>/)[1];
+const script = page.match(/<script>([\s\S]*?)<\/script>/)[1];
 
 test("search page preserves valid JavaScript and accessible copy feedback", () => {
   assert.doesNotThrow(() => new vm.Script(script));
   assert.match(page, /id="copy-toast"[^>]*role="status"[^>]*aria-live="polite"/);
-  assert.match(script, /navigator\\.clipboard\\.writeText\\(item\\.href\\)/);
-  assert.match(script, /if \\(document\\.execCommand\\("copy"\\)\\)/);
+  assert.match(script, /navigator\.clipboard\.writeText\(item\.href\)/);
+  assert.match(script, /if \(document\.execCommand\("copy"\)\)/);
 });
 
 test("copy toast shows success or failure, resets its timer, and dismisses", () => {
