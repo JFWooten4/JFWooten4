@@ -276,6 +276,40 @@ permalink: /search/
       border-radius: 8px;
     }
 
+    .copy-toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 20;
+      max-width: min(340px, calc(100vw - 48px));
+      padding: 12px 18px;
+      border: 1px solid rgba(109, 214, 200, 0.5);
+      border-radius: 14px;
+      background: #18352f;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+      color: var(--ink);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 180ms ease, transform 180ms ease;
+      pointer-events: none;
+    }
+
+    .copy-toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .copy-toast[data-result="error"] {
+      border-color: rgba(244, 180, 60, 0.6);
+      background: #382b20;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .copy-toast {
+        transition: none;
+      }
+    }
+
     .empty {
       text-align: center;
       padding: 24px 12px;
@@ -333,6 +367,7 @@ permalink: /search/
       <div id="empty" class="empty" hidden>No matches. Try a different query.</div>
     </section>
   </main>
+  <div id="copy-toast" class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <script>
     function normalizeTopicText(value) {
@@ -496,6 +531,8 @@ permalink: /search/
       var countEl = document.getElementById("count");
       var emptyEl = document.getElementById("empty");
       var statusEl = document.getElementById("status");
+      var copyToastEl = document.getElementById("copy-toast");
+      var copyToastTimer = null;
       var visibleEntries = entries.slice();
 
       function setStatus(message) {
@@ -505,6 +542,16 @@ permalink: /search/
             statusEl.textContent = "";
           }, 1600);
         }
+      }
+
+      function showCopyToast(message, isSuccess) {
+        clearTimeout(copyToastTimer);
+        copyToastEl.textContent = message;
+        copyToastEl.dataset.result = isSuccess ? "success" : "error";
+        copyToastEl.classList.add("is-visible");
+        copyToastTimer = setTimeout(function () {
+          copyToastEl.classList.remove("is-visible");
+        }, 2200);
       }
 
       function renderList(list) {
@@ -544,8 +591,10 @@ permalink: /search/
             if (navigator.clipboard && navigator.clipboard.writeText) {
               navigator.clipboard.writeText(item.href).then(function () {
                 setStatus("Copied " + item.key);
+                showCopyToast("Copied to clipboard", true);
               }).catch(function () {
                 setStatus("Copy failed");
+                showCopyToast("Copy failed", false);
               });
               return;
             }
@@ -554,12 +603,19 @@ permalink: /search/
             document.body.appendChild(temp);
             temp.select();
             try {
-              document.execCommand("copy");
-              setStatus("Copied " + item.key);
+              if (document.execCommand("copy")) {
+                setStatus("Copied " + item.key);
+                showCopyToast("Copied to clipboard", true);
+              } else {
+                setStatus("Copy failed");
+                showCopyToast("Copy failed", false);
+              }
             } catch (err) {
               setStatus("Copy failed");
+              showCopyToast("Copy failed", false);
+            } finally {
+              document.body.removeChild(temp);
             }
-            document.body.removeChild(temp);
           });
 
           actions.appendChild(openLink);
