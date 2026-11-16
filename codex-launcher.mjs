@@ -25,7 +25,7 @@ export function codexDestination(pageUrl) {
   }
 }
 
-export function initLauncher(pageUrl, dom, launch) {
+export function initLauncher(pageUrl, dom, launch, closeTab = () => {}) {
   const status = dom.getElementById("status");
   const open = dom.getElementById("open");
   const copy = dom.getElementById("copy");
@@ -43,6 +43,17 @@ export function initLauncher(pageUrl, dom, launch) {
   nativeText.hidden = false;
   help.hidden = false;
   status.textContent = "Opening Codex Desktop… If nothing happens, use the button below.";
+  // Browsers cannot confirm external app launches. Attempt to close only when
+  // the page becomes hidden shortly after a native-protocol handoff.
+  let handoffAt = 0;
+  const armClose = () => { handoffAt = Date.now(); };
+  dom.addEventListener?.("visibilitychange", () => {
+    if (dom.visibilityState === "hidden" && handoffAt && Date.now() - handoffAt < 15000) {
+      handoffAt = 0;
+      closeTab();
+    }
+  });
+  open.addEventListener("click", armClose);
   copy.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(destination);
@@ -51,10 +62,12 @@ export function initLauncher(pageUrl, dom, launch) {
       copy.textContent = "Select and copy the link below";
     }
   });
+  armClose();
   launch(destination);
   return true;
 }
 
 if (typeof window !== "undefined" && typeof document !== "undefined") {
-  initLauncher(window.location.href, document, destination => window.location.assign(destination));
+  initLauncher(window.location.href, document,
+    destination => window.location.assign(destination), () => window.close());
 }

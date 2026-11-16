@@ -49,3 +49,47 @@ test("shows an actionable fallback and launches only validated URLs", () => {
   assert.equal(initLauncher(root + "?url=https://example.com", dom, url => launched.push(url)), false);
   assert.deepEqual(launched, [native]);
 });
+
+test("attempts tab closure only after a recent native handoff hides the page", () => {
+  const elements = Object.fromEntries(["status", "open", "copy", "native", "help"].map(name => [name, {
+    textContent: "", hidden: true, href: "",
+    addEventListener(type, handler) { this.listeners ??= {}; this.listeners[type] = handler; },
+  }]));
+  const events = {};
+  const dom = {
+    visibilityState: "visible",
+    getElementById: name => elements[name],
+    addEventListener(type, handler) { events[type] = handler; },
+  };
+  const launched = [];
+  let closed = 0;
+  assert.equal(initLauncher(root, dom, url => launched.push(url), () => { closed++; }), true);
+  assert.deepEqual(launched, [native]);
+  events.visibilitychange();
+  assert.equal(closed, 0, "Do not close while the browser remains visible");
+  dom.visibilityState = "hidden";
+  events.visibilitychange();
+  assert.equal(closed, 1, "Attempt to close after the native-app handoff hides the tab");
+  events.visibilitychange();
+  assert.equal(closed, 1, "Do not repeatedly request closure for one handoff");
+  dom.visibilityState = "visible";
+  elements.open.listeners.click();
+  dom.visibilityState = "hidden";
+  events.visibilitychange();
+  assert.equal(closed, 2, "Re-arm close handling when the user retries with the Open button");
+});
+
+test("invalid native URLs never register automatic tab-close handling", () => {
+  const status = { textContent: "" };
+  let registered = false, closed = false, launched = false;
+  const dom = {
+    getElementById: () => status,
+    addEventListener: () => { registered = true; },
+    visibilityState: "hidden",
+  };
+  assert.equal(initLauncher(root + "?url=https://example.com", dom,
+    () => { launched = true; }, () => { closed = true; }), false);
+  assert.equal(registered, false);
+  assert.equal(closed, false);
+  assert.equal(launched, false);
+});
