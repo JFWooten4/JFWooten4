@@ -36,6 +36,14 @@
   ],
   "rewrites": [
     {
+      "source": "/codex",
+      "destination": "/codex/index.html"
+    },
+    {
+      "source": "/codex/:thread",
+      "destination": "/codex/index.html"
+    },
+    {
       "source": "/friends/0",
       "destination": "/index.html"
     },

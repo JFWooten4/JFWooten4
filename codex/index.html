@@ -1,0 +1,67 @@
+---
+permalink: /codex/
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>Open Codex Desktop | Wooten.link</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      background: #0c111e;
+      color: #f3f5fa;
+      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main {
+      width: min(100%, 540px);
+      padding: clamp(24px, 5vw, 40px);
+      border: 1px solid #35425b;
+      border-radius: 18px;
+      background: #151e30;
+    }
+    .eyebrow { color: #f4c35a; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin: 12px 0; }
+    p { color: #c1ccdb; }
+    a, button { color: inherit; }
+    .action {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 10px;
+      background: #f4c35a;
+      color: #161b27;
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .secondary { background: transparent; border: 1px solid #677793; color: #f3f5fa; }
+    .url { overflow-wrap: anywhere; font-size: 0.85rem; color: #adbdd4; }
+    :focus-visible { outline: 3px solid #ffe1a0; outline-offset: 3px; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Wooten.link · Conversation source</div>
+    <h1>Open in Codex Desktop</h1>
+    <p id="status" role="status">Checking the conversation link…</p>
+    <a id="open" class="action" hidden>Open Codex Desktop</a>
+    <button id="copy" class="action secondary" type="button" hidden>Copy native link</button>
+    <p id="native" class="url" hidden></p>
+    <p id="help" hidden>Codex Desktop must be installed and registered to open <code>codex://</code> links. Your browser may ask for permission to launch the app.</p>
+  </main>
+  <script type="module" src="/codex/launcher.mjs"></script>
+</body>
+</html>
