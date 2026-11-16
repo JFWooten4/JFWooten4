@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import { codexDestination, initLauncher } from "../codex/launcher.mjs";
+import { codexDestination, initLauncher } from "../codex-launcher.mjs";
 
 const id = "019c56c3-06fc-7db3-a928-9c3607e17129";
 const root = `https://wooten.link/codex/${id}`;
