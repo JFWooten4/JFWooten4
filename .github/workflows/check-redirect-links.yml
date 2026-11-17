@@ -7,7 +7,7 @@ on:
   pull_request:
     paths:
       - "codex/**"
-      - "codex-launcher.mjs"
+      - "scripts/codex-launcher.mjs"
       - "vercel.json"
       - "test/codex-launcher.test.mjs"
       - "404.html"
