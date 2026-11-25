@@ -29,8 +29,8 @@ fi
 
 # Custem Rules
 
-if printf '%s\n' "$changed_files" | grep -Fx 'var/law.toml' >/dev/null; then
-  echo "Law redirects changed; running build."
+if printf '%s\n' "$changed_files" | grep -Ex 'var/(main|law)\.toml' >/dev/null; then
+  echo "Redirect maps changed; running build."
   exit 1
 fi
 

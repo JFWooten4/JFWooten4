@@ -5,27 +5,18 @@ const assert = require("node:assert/strict");
 
 const handler = require("../api/redirect");
 const vm = require("node:vm");
-const { normalizePath, resolveRedirect, mergeRedirects } = require("../api/_redirect-core");
+const { normalizePath, resolveRedirect, mergeRedirects, parseRedirects, parseRedirectEntries } = require("../_includes/redirect-core");
 const { isPdfDestination, pdfPageDestination } = require("../api/_pdf-pages");
-const {
-  loadRedirects,
-  parseLawRedirects,
-  parseStandardRedirects,
-} = require("../api/_redirects");
+const { loadRedirects } = require("../api/_redirects");
 
-test("parses literal and constant redirects from the existing 404 map", () => {
-  const source = `
-    const LATEST = "https://example.com/latest";
-    window.LINKS = {
-      "literal": "https://example.com/literal",
-      "constant": LATEST
-    };
-  `;
-
-  assert.deepEqual(parseStandardRedirects(source), {
-    literal: "https://example.com/literal",
-    constant: "https://example.com/latest",
+test("parses ordinary redirects and preserves inline search comments", () => {
+  const source = '[redirects]\n"One" = "https://example.com/file.pdf#page=3" # filing notes\n"two" = "/book.pdf"';
+  assert.deepEqual(parseRedirects(source), { one: "https://example.com/file.pdf#page=3", two: "/book.pdf" });
+  assert.deepEqual(parseRedirectEntries(source)[0], {
+    key: "one", href: "https://example.com/file.pdf#page=3", comment: "filing notes",
   });
+  assert.throws(() => parseRedirects('[redirects]\n"one" = ""'));
+  assert.throws(() => parseRedirects('[redirects]\n"one" = "/a"\n"ONE" = "/b"'));
 });
 
 test("parses law redirects with their punctuation prefixes", () => {
@@ -36,27 +27,23 @@ test("parses law redirects with their punctuation prefixes", () => {
     "17" = "https://www.ecfr.gov/current/title-17"
   `;
 
-  assert.deepEqual(parseLawRedirects(source), {
+  assert.deepEqual(parseRedirects(source), {
     "_15": "https://www.law.cornell.edu/uscode/text/15",
     "+17": "https://www.ecfr.gov/current/title-17",
   });
 });
 
-test("loads every current redirect directly from the 404 sources", () => {
-  const html = fs.readFileSync(path.join(__dirname, "..", "404.html"), "utf8");
-  const linksBlock = html.match(/window\.LINKS\s*=\s*\{([\s\S]*?)\n\s*\};/);
-  const configuredKeys = [...linksBlock[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map((match) => match[1]);
-  const standardRedirects = parseStandardRedirects(html);
+test("loads every configured redirect from both TOML maps", () => {
+  const main = parseRedirects(fs.readFileSync(path.join(__dirname, "..", "var/main.toml"), "utf8"));
+  const law = parseRedirects(fs.readFileSync(path.join(__dirname, "..", "var/law.toml"), "utf8"));
   const redirects = loadRedirects();
-
-  assert.equal(Object.keys(standardRedirects).length, configuredKeys.length);
-  assert.equal(
-    redirects.tar1,
-    "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf"
-  );
-  const lawRedirects = parseLawRedirects(fs.readFileSync(path.join(__dirname, "..", "var/law.toml"), "utf8"));
-  assert.equal(Object.keys(redirects).length, configuredKeys.length + Object.keys(lawRedirects).length);
+  assert.deepEqual(redirects, { ...main, ...law });
+  assert.ok(Object.keys(main).length > 0);
+  assert.ok(Object.keys(law).length > 0);
+  assert.equal(redirects.tar1, "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf");
   assert.equal(redirects._3, "https://www.issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
+  assert.equal(redirects._5, redirects._3);
+  assert.equal(redirects.book, "/book.pdf");
 });
 
 test("normalizes the first path segment like the browser redirect", () => {
@@ -159,7 +146,7 @@ test("non-PDF browser navigation retains the HTTP redirect", () => {
 test("Jekyll fallback shares the PDF fragment transformation", () => {
   const html = fs.readFileSync(path.join(__dirname, "..", "404.html"), "utf8");
   assert.ok(html.includes("{% include_relative api/_pdf-pages.js %}"));
-  assert.ok(html.includes("{% include_relative api/_redirect-core.js %}"));
+  assert.ok(html.includes("{% include redirect-core.js %}"));
   assert.ok(html.includes("navigateToDestination(destination, window.location);"));
 });
 
@@ -181,19 +168,21 @@ test("shared resolution rejects inherited properties and retains law precedence"
 
 test("browser fallback can skip a malformed law entry without losing other entries", () => {
   const source = '[redirects."_"]\n"bad" = "\\q"\n"5" = "https://example.com/a.pdf"';
-  assert.throws(() => parseLawRedirects(source));
-  assert.deepEqual(parseLawRedirects(source, false), { _5: "https://example.com/a.pdf" });
+  assert.throws(() => parseRedirects(source));
+  assert.deepEqual(parseRedirects(source, false), { _5: "https://example.com/a.pdf" });
 });
 
 test("executes actual Jekyll fallback scripts with the shared helpers", () => {
   const root = path.join(__dirname, "..");
   const html = fs.readFileSync(path.join(root, "404.html"), "utf8");
-  const toml = fs.readFileSync(path.join(root, "var/law.toml"), "utf8");
+  const main = fs.readFileSync(path.join(root, "var/main.toml"), "utf8");
+  const law = fs.readFileSync(path.join(root, "var/law.toml"), "utf8");
   const rendered = html.replace(/{% include_relative (api\/[^ ]+) %}/g, (_, file) =>
     fs.readFileSync(path.join(root, file), "utf8")
   );
-  const mapScript = rendered.match(/<script id="all-redirects">([\s\S]*?)<\/script>/)[1];
-  const redirectScript = rendered.match(/<script>([\s\S]*?)<\/script>/)[1];
+
+  const redirectScript = rendered.match(/<script>([\s\S]*?)<\/script>/)[1]
+    .replace("{% include redirect-core.js %}", fs.readFileSync(path.join(root, "_includes/redirect-core.js"), "utf8"));
   const redirects = loadRedirects();
   for (const [pathname, hash, expected] of [
     ["/_5", "#3", redirects._5 + "#page=3"],
@@ -207,10 +196,9 @@ test("executes actual Jekyll fallback scripts with the shared helpers", () => {
   ]) {
     let actual;
     const context = vm.createContext({
-      document: { getElementById() { return { textContent: toml }; } },
+      document: { getElementById(id) { return { textContent: id === "main-redirects" ? main : law }; } },
       window: { location: { pathname, hash, replace(value) { actual = value; } } },
     });
-    vm.runInContext(mapScript, context);
     vm.runInContext(redirectScript, context);
     assert.equal(actual, expected, pathname);
   }

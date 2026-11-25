@@ -1,38 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { parseLawRedirects, mergeRedirects } = require("./_redirect-core");
-
-function parseStandardRedirects(source) {
-  const constants = {};
-  const constantPattern = /const\s+([A-Z0-9_]+)\s*=\s*("(?:\\.|[^"\\])*");/g;
-  let match;
-
-  while ((match = constantPattern.exec(source))) {
-    constants[match[1]] = JSON.parse(match[2]);
-  }
-
-  const linksBlock = source.match(/window\.LINKS\s*=\s*\{([\s\S]*?)\n\s*\};/);
-  if (!linksBlock) {
-    throw new Error("Could not find window.LINKS in 404.html");
-  }
-
-  const redirects = {};
-  const entryPattern = /^\s*("(?:\\.|[^"\\])*")\s*:\s*("(?:\\.|[^"\\])*"|[A-Z][A-Z0-9_]*)\s*,?\s*(?:\/\/.*)?$/gm;
-
-  while ((match = entryPattern.exec(linksBlock[1]))) {
-    const key = JSON.parse(match[1]).toLowerCase();
-    const rawValue = match[2];
-    const destination = rawValue.startsWith('"') ? JSON.parse(rawValue) : constants[rawValue];
-
-    if (!destination) {
-      throw new Error(`Unknown redirect constant ${rawValue} for ${key}`);
-    }
-
-    redirects[key] = destination;
-  }
-
-  return redirects;
-}
+const { parseRedirects, mergeRedirects } = require("../_includes/redirect-core");
 
 function readProjectFile(relativePath) {
   const candidates = [
@@ -51,13 +19,9 @@ function readProjectFile(relativePath) {
 
 function loadRedirects() {
   return mergeRedirects(
-    parseStandardRedirects(readProjectFile("404.html")),
-    parseLawRedirects(readProjectFile(path.join("var", "law.toml"))),
+    parseRedirects(readProjectFile(path.join("var", "main.toml"))),
+    parseRedirects(readProjectFile(path.join("var", "law.toml"))),
   );
 }
 
-module.exports = {
-  loadRedirects,
-  parseLawRedirects,
-  parseStandardRedirects,
-};
+module.exports = { loadRedirects };

@@ -56,3 +56,36 @@ test("copy toast shows success or failure, resets its timer, and dismisses", () 
   scheduled.values().next().value();
   assert.ok(!classes.has("is-visible"));
 });
+
+test("search loads both TOML maps using the shared parser and preserves topics", async () => {
+  const core = fs.readFileSync(path.join(__dirname, "..", "_includes/redirect-core.js"), "utf8");
+  const requested = [];
+  const context = vm.createContext({
+    URL,
+    fetch: async (url) => {
+      requested.push(url);
+      return { ok: true, text: async () => fs.readFileSync(path.join(__dirname, "..", url.slice(1)), "utf8") };
+    },
+  });
+  assert.ok(page.includes("{% include redirect-core.js %}"));
+  vm.runInContext(core, context);
+  vm.runInContext(script.slice(0, script.indexOf("    loadRedirects().then(")), context);
+  const results = await context.loadRedirects();
+  assert.deepEqual(requested.sort(), ["/var/law.toml", "/var/main.toml"]);
+  const configured = require("../api/_redirects").loadRedirects();
+  assert.equal(results.length, Object.keys(configured).length);
+  for (const entry of results) assert.equal(entry.href, configured[entry.key], entry.key);
+  const tagged = results.find(entry => entry.key === "scf-1");
+  assert.ok(tagged.searchText.includes("round 11"));
+  assert.equal(results.find(entry => entry.key === "_5").href, configured._5);
+  assert.ok(!script.includes("new Function("));
+  assert.equal(context.searchEntries(results, "").length, results.length);
+  assert.equal(context.searchEntries(results, "_").every(entry =>
+    entry.key.includes("_") || entry.href.includes("_")), true);
+  assert.ok(context.searchEntries(results, "round 11").some(entry => entry.key === "scf-1"));
+  assert.ok(context.searchEntries(results, "_5").some(entry => entry.key === "_5"));
+  assert.ok(context.searchEntries(results, "+0").some(entry => entry.key === "+0"));
+  assert.equal(context.searchEntries(results, "https://no-match.invalid/").length, 0);
+  assert.equal(context.searchEntries(results, "https://github.com/JFWooten4").every(entry =>
+    entry.href.toLowerCase().includes("https://github.com/jfwooten4")), true);
+});

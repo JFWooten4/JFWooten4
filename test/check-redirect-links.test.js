@@ -15,14 +15,14 @@ function mockFetch(statuses) {
 
 test("reads redirects from both source maps", () => {
   const targets = collectTargets();
-  assert.ok(targets.some((target) => target.source === "404.html" && target.key === "tar1"));
+  assert.ok(targets.some((target) => target.source === "var/main.toml" && target.key === "tar1"));
   assert.ok(targets.some((target) => target.source === "var/law.toml" && target.key === "_0"));
 });
 
 test("deduplicates destinations and resolves relative links", () => {
   const groups = groupTargets([
-    { source: "404.html", key: "one", destination: "/tax/" },
-    { source: "404.html", key: "two", destination: "https://wooten.link/tax/" },
+    { source: "var/main.toml", key: "one", destination: "/tax/" },
+    { source: "var/main.toml", key: "two", destination: "https://wooten.link/tax/" },
   ]);
   assert.equal(groups.length, 1);
   assert.equal(groups[0].url, "https://wooten.link/tax/");
