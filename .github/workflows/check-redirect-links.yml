@@ -9,6 +9,11 @@ on:
       - "codex/**"
       - "scripts/codex-launcher.mjs"
       - "vercel.json"
+      - "Gemfile"
+      - "Gemfile.lock"
+      - "_config.yml"
+      - "build-ignore"
+      - "test/site-redirects.test.js"
       - "test/codex-launcher.test.mjs"
       - "404.html"
       - "var/law.toml"
@@ -38,6 +43,14 @@ jobs:
           node-version: "22"
       - name: Test redirects, Codex launcher, and link checker
         run: node --test test/redirects.test.js test/codex-launcher.test.mjs test/check-redirect-links.test.js test/search-copy-toast.test.js
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Build the Jekyll site
+        run: bundle exec jekyll build
+      - name: Verify published redirect registries and behavior
+        run: node --test test/site-redirects.test.js
       - name: Check live redirect destinations
         if: github.event_name != 'pull_request'
         run: node scripts/check-redirect-links.js

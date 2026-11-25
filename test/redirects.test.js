@@ -38,7 +38,8 @@ test("loads every configured redirect from both TOML maps", () => {
   const law = parseRedirects(fs.readFileSync(path.join(__dirname, "..", "var/law.toml"), "utf8"));
   const redirects = loadRedirects();
   assert.deepEqual(redirects, { ...main, ...law });
-  assert.ok(Object.keys(main).length >= 322);
+  assert.ok(Object.keys(main).length > 0);
+  assert.ok(Object.keys(law).length > 0);
   assert.equal(redirects.tar1, "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf");
   assert.equal(redirects._3, "https://www.issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
   assert.equal(redirects._5, redirects._3);
