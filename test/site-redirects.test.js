@@ -150,4 +150,16 @@ test("rendered search indexes every configured shortlink from the published file
   assert.equal(entries.length, Object.keys(expected).length);
   assert.deepEqual(Object.fromEntries(entries.map(entry => [entry.key, entry.href])), expected);
   assert.ok(entries.find(entry => entry.key === "scf-1").searchText.includes("round 11"));
+  for (const [key, destination] of Object.entries(expected)) {
+    assert.ok(context.searchEntries(entries, key.toUpperCase()).some(entry => entry.key === key), key);
+    assert.ok(context.searchEntries(entries, destination).some(entry => entry.key === key), destination);
+  }
+  assert.equal(context.searchEntries(entries, " ").length, entries.length);
+  assert.equal(context.searchEntries(entries, "https://no-match.invalid/").length, 0);
+  assert.ok(context.searchEntries(entries, "+0").some(entry => entry.key === "+0"));
+  assert.ok(context.searchEntries(entries, "round 11").some(entry => entry.key === "scf-1"));
+  assert.ok(context.searchEntries(entries, "_").length < entries.length);
+  assert.match(script, /renderList\(searchEntries\(entries, queryInput\.value\)\)/);
+  assert.match(script, /queryInput\.addEventListener\("input", filterResults\)/);
+  assert.match(script, /params\.get\("q"\)/);
 });

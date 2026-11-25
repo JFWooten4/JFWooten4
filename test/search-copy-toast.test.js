@@ -79,4 +79,13 @@ test("search loads both TOML maps using the shared parser and preserves topics",
   assert.ok(tagged.searchText.includes("round 11"));
   assert.equal(results.find(entry => entry.key === "_5").href, configured._5);
   assert.ok(!script.includes("new Function("));
+  assert.equal(context.searchEntries(results, "").length, results.length);
+  assert.equal(context.searchEntries(results, "_").every(entry =>
+    entry.key.includes("_") || entry.href.includes("_")), true);
+  assert.ok(context.searchEntries(results, "round 11").some(entry => entry.key === "scf-1"));
+  assert.ok(context.searchEntries(results, "_5").some(entry => entry.key === "_5"));
+  assert.ok(context.searchEntries(results, "+0").some(entry => entry.key === "+0"));
+  assert.equal(context.searchEntries(results, "https://no-match.invalid/").length, 0);
+  assert.equal(context.searchEntries(results, "https://github.com/JFWooten4").every(entry =>
+    entry.href.toLowerCase().includes("https://github.com/jfwooten4")), true);
 });
