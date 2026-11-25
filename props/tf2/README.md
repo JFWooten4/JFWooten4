@@ -1,1 +1,0 @@
-- `artifacts` and `fannign` are generic TF2 item photos

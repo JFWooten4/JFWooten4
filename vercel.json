@@ -24,6 +24,31 @@
   ],
   "redirects": [
     {
+      "source": "/props/tf2/fannign.png",
+      "destination": "/backgrounds/props/tf2/fanning.png",
+      "permanent": true
+    },
+    {
+      "source": "/props/:path*",
+      "destination": "/backgrounds/props/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/backgrounds/power-mountian.jpg",
+      "destination": "/backgrounds/power-mountain.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/banners/climbing-pheonix.PNG",
+      "destination": "/banners/climbing-phoenix.PNG",
+      "permanent": true
+    },
+    {
+      "source": "/banners/decievingly-cute.png",
+      "destination": "/banners/deceivingly-cute.png",
+      "permanent": true
+    },
+    {
       "source": "/scam",
       "destination": "/btc",
       "permanent": true

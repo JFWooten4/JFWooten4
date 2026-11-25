@@ -19,7 +19,7 @@
 - `dash-view` comes from Reggie ([src](https://x.com/NG16_REGGIE/status/1947036884292497783))
 - `finding-love` comes from [Evrlasting_Stations](https://everlastingstations.straw.page) ([src](https://discord.com/channels/370605707965235200/509869543875805185/1376782644439945296))
 - `dash-ahead` comes from HauntedTuba, Oomles, and DrDinosaur ([src](https://youtu.be/SMAPk2oRVik?t=4999))
-- `power-mountian` comes from me ([src](https://x.com/JFWooten4/status/2001291683024007262))
+- `power-mountain` comes from me ([src](https://x.com/JFWooten4/status/2001291683024007262))
 - `shaking-hands` comes from AnimatedJames ([src](https://www.youtube.com/watch?v=UOueMzKYbP0&t=180s))
 - `red-heart` comes from PrinceWhateverer ([src](https://youtu.be/UEVuJcs4FWs))
 - `doin-it` comes from [Shino](https://x.com/shinodage) ([src](https://spaceponyos.com/art))

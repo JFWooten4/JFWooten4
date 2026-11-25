@@ -1,10 +1,10 @@
 ## Credits
 
 - `gatech-inventure` comes from [Georgia Tech Student Innovation](https://www.flickr.com/photos/studentinnovation/51012920545/in/album-72157718813923003) & PBS ([src](https://youtu.be/S75IvkicWD8?t=66))
-- `climbing-pheonix` comes from Riot/Fortiche ([src](https://youtu.be/fB8TyLTD7EE?t=69))
+- `climbing-phoenix` comes from Riot/Fortiche ([src](https://youtu.be/fB8TyLTD7EE?t=69))
 - `dash-confident` comes from tehnomad ([src](https://wallup.net/my-little-pony-rainbow-dash-4))
 - `deadly-plunge` comes from Forest Rain ([src](https://youtu.be/MjfCH89sBzs))
-- `decievingly-cute` comes from `Krista_21` ([src](https://x.com/Kristalina_21/status/1843336237266153699))
+- `deceivingly-cute` comes from `Krista_21` ([src](https://x.com/Kristalina_21/status/1843336237266153699))
 - `explaining-joke` comes from Riot/Fortiche ([src](https://youtu.be/5FrhtahQiRc?t=134))
 - `full-form` comes from Riot/Fortiche ([src](https://youtu.be/tJV_-5nciN0?t=162))
 - `gun-gun` comes from Riot/Fortiche ([src](https://youtu.be/ZHhqwBwmRkI?t=138))

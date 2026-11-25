@@ -171,3 +171,26 @@ test("rendered search indexes every configured shortlink without registry reques
   assert.match(script, /queryInput\.addEventListener\("input", filterResults\)/);
   assert.match(script, /params\.get\("q"\)/);
 });
+
+test("homepage media paths and legacy redirects use the corrected filenames", () => {
+  const html = readSite("index.html");
+  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+  const expectedMoves = [
+    ["/props/mlp/smirk.png", "/backgrounds/props/mlp/smirk.png"],
+    ["/props/tf2/fannign.png", "/backgrounds/props/tf2/fanning.png"],
+    ["/backgrounds/power-mountian.jpg", "/backgrounds/power-mountain.jpg"],
+    ["/banners/climbing-pheonix.PNG", "/banners/climbing-phoenix.PNG"],
+    ["/banners/decievingly-cute.png", "/banners/deceivingly-cute.png"],
+  ];
+  for (const [oldPath, newPath] of expectedMoves) {
+    assert.equal(fs.existsSync(path.join(site, newPath.slice(1))), true, newPath);
+    const rule = config.redirects.find(entry => entry.source === oldPath) ||
+      config.redirects.find(entry => entry.source === "/props/:path*" && oldPath.startsWith("/props/"));
+    assert.ok(rule, oldPath);
+    assert.equal(rule.destination.replace(":path*", oldPath.slice("/props/".length)), newPath);
+    assert.equal(rule.permanent, true);
+    assert.ok(!html.includes('"' + oldPath + '"'), oldPath);
+  }
+  assert.match(html, /\/backgrounds\/props\/mlp\/smirk\.png/);
+  assert.doesNotMatch(html, /power-mountian|climbing-pheonix|decievingly-cute/);
+});
