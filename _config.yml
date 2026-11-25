@@ -7,6 +7,10 @@ includes_dir: site
 exclude:
   - site
   - api
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
 plugins:
   - jekyll-feed
 include:
