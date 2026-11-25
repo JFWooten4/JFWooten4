@@ -50,7 +50,7 @@ test("loads every discovered redirect registry", () => {
     parseRedirects(fs.readFileSync(path.join(root, file), "utf8")))));
   assert.equal(redirects.tar1, "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf");
   assert.equal(redirects._3, "https://www.issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
-  assert.equal(redirects._5, redirects._3);
+  assert.equal(Object.hasOwn(redirects, "_5"), false);
   assert.equal(redirects.book, "/book.pdf");
   const priority = loadRedirectEntries(root).filter(entry => entry.source === "redirects/priority.toml");
   assert.ok(priority.some(entry => entry.key === "bottleneck"));
@@ -119,7 +119,7 @@ test("translates positive PDF page shorthand without losing the query", () => {
   assert.equal(isPdfDestination("/book.pdf#page=2"), true);
 });
 
-test("browser PDF navigation runs the page redirect for _5", () => {
+test("browser PDF navigation runs the page redirect for _3", () => {
   const headers = {};
   let body;
   const response = {
@@ -128,11 +128,11 @@ test("browser PDF navigation runs the page redirect for _5", () => {
     send(html) { body = html; },
     redirect() { assert.fail("Browser must receive the PDF page bridge"); },
   };
-  handler({ method: "GET", headers: { accept: "text/html,application/xhtml+xml" }, query: { path: "_5" } }, response);
+  handler({ method: "GET", headers: { accept: "text/html,application/xhtml+xml" }, query: { path: "_3" } }, response);
   assert.equal(headers["Content-Type"], "text/html; charset=utf-8");
   assert.equal(headers["Cache-Control"], "no-store");
   assert.equal(headers.Vary, "Accept");
-  const destination = loadRedirects()._5;
+  const destination = loadRedirects()._3;
   assert.ok(isPdfDestination(destination));
   assert.ok(body.includes('href="' + destination + '"'));
   const script = body.match(/<script>([\s\S]*?)<\/script>/)[1];
@@ -244,7 +244,8 @@ test("executes actual Jekyll fallback scripts with the shared helpers", () => {
     .replace("{% include _redirect-lookup.generated.js %}", renderLookup(loadRedirectEntries()));
   const redirects = loadRedirects();
   for (const [pathname, hash, expected] of [
-    ["/_5", "#3", redirects._5 + "#page=3"],
+    ["/_3", "#3", redirects._3 + "#page=3"],
+    ["/_5", "", "/search"],
     ["/TAR1/extra", "", redirects.tar1],
     ["/%2B0", "", redirects["+0"]],
     ["/github", "#3", redirects.github],

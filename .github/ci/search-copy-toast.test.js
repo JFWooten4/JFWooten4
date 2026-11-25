@@ -71,13 +71,14 @@ test("search indexes generated registries without fetching data and preserves to
   for (const entry of results) assert.equal(entry.href, configured[entry.key], entry.key);
   const tagged = results.find(entry => entry.key === "scf-1");
   assert.ok(tagged.searchText.includes("round 11"));
-  assert.equal(results.find(entry => entry.key === "_5").href, configured._5);
+  assert.equal(results.find(entry => entry.key === "_3").href, configured._3);
+  assert.ok(!results.some(entry => entry.key === "_5"));
   assert.ok(!script.includes("new Function("));
   assert.equal(context.searchEntries(results, "").length, results.length);
   assert.equal(context.searchEntries(results, "_").every(entry =>
     entry.key.includes("_") || entry.href.includes("_")), true);
   assert.ok(context.searchEntries(results, "round 11").some(entry => entry.key === "scf-1"));
-  assert.ok(context.searchEntries(results, "_5").some(entry => entry.key === "_5"));
+  assert.ok(context.searchEntries(results, "_3").some(entry => entry.key === "_3"));
   assert.ok(context.searchEntries(results, "+0").some(entry => entry.key === "+0"));
   assert.equal(context.searchEntries(results, "https://no-match.invalid/").length, 0);
   assert.equal(context.searchEntries(results, "https://github.com/JFWooten4").every(entry =>
