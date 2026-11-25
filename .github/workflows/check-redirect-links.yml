@@ -7,26 +7,16 @@ on:
   pull_request:
     paths:
       - "codex/**"
-      - "scripts/codex-launcher.mjs"
       - "vercel.json"
       - "Gemfile"
       - "Gemfile.lock"
       - "_config.yml"
       - "build-ignore"
-      - "test/site-redirects.test.js"
-      - "test/codex-launcher.test.mjs"
       - "404.html"
-      - "var/law.toml"
-      - "var/main.toml"
+      - "redirects/*.toml"
+      - ".github/ci/**"
+      - "api/**"
       - "static/search.html"
-      - "test/search-copy-toast.test.js"
-      - "api/_redirects.js"
-      - "_includes/redirect-core.js"
-      - "api/redirect.js"
-      - "api/_pdf-pages.js"
-      - "test/redirects.test.js"
-      - "scripts/check-redirect-links.js"
-      - "test/check-redirect-links.test.js"
       - ".github/workflows/check-redirect-links.yml"
 
 permissions:
@@ -42,15 +32,15 @@ jobs:
         with:
           node-version: "22"
       - name: Test redirects, Codex launcher, and link checker
-        run: node --test test/redirects.test.js test/codex-launcher.test.mjs test/check-redirect-links.test.js test/search-copy-toast.test.js
+        run: node --test .github/ci/redirects.test.js .github/ci/codex-launcher.test.mjs .github/ci/check-redirect-links.test.js .github/ci/search-copy-toast.test.js
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
           bundler-cache: true
       - name: Build the Jekyll site
-        run: bundle exec jekyll build
+        run: node api/_generate-redirects.js && bundle exec jekyll build
       - name: Verify published redirect registries and behavior
-        run: node --test test/site-redirects.test.js
+        run: node --test .github/ci/site-redirects.test.js
       - name: Check live redirect destinations
         if: github.event_name != 'pull_request'
-        run: node scripts/check-redirect-links.js
+        run: node api/_check-redirect-links.js

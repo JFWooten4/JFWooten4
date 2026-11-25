@@ -2,18 +2,13 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-const { parseRedirects } = require("../_includes/redirect-core");
+const { loadRedirectEntries } = require("./_redirects");
 
 const root = path.resolve(__dirname, "..");
 const baseUrl = "https://wooten.link";
 
 function collectTargets() {
-  const standard = parseRedirects(fs.readFileSync(path.join(root, "var/main.toml"), "utf8"));
-  const law = parseRedirects(fs.readFileSync(path.join(root, "var/law.toml"), "utf8"));
-  return [
-    ...Object.entries(standard).map(([key, destination]) => ({ source: "var/main.toml", key, destination })),
-    ...Object.entries(law).map(([key, destination]) => ({ source: "var/law.toml", key, destination })),
-  ];
+  return loadRedirectEntries(root).map(({ source, key, href }) => ({ source, key, destination: href }));
 }
 
 function groupTargets(targets) {

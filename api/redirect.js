@@ -1,5 +1,5 @@
 const { loadRedirects } = require("./_redirects");
-const { normalizePath, resolveRedirect } = require("../_includes/redirect-core");
+const { normalizePath, resolveRedirect } = require("./_redirect-core");
 const { isPdfDestination, pdfPageDestination, navigateToDestination } = require("./_pdf-pages");
 
 const redirects = loadRedirects();

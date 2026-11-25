@@ -2,7 +2,7 @@
 
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { checkUrl, collectTargets, groupTargets } = require("../scripts/check-redirect-links");
+const { checkUrl, collectTargets, groupTargets } = require("../../api/_check-redirect-links");
 
 function mockFetch(statuses) {
   const methods = [];
@@ -13,16 +13,18 @@ function mockFetch(statuses) {
   return { fetchImpl, methods };
 }
 
-test("reads redirects from both source maps", () => {
+test("reads redirects from discovered registries", () => {
   const targets = collectTargets();
-  assert.ok(targets.some((target) => target.source === "var/main.toml" && target.key === "tar1"));
-  assert.ok(targets.some((target) => target.source === "var/law.toml" && target.key === "_0"));
+  assert.ok(targets.some((target) => target.source === "redirects/main.toml" && target.key === "tar1"));
+  assert.ok(targets.some((target) => target.source === "redirects/law.toml" && target.key === "_0"));
+  assert.ok(targets.some((target) => target.source === "redirects/priority.toml" && target.key === "bottleneck"));
+  assert.ok(targets.some((target) => target.source === "redirects/priority.toml" && target.key === "latest"));
 });
 
 test("deduplicates destinations and resolves relative links", () => {
   const groups = groupTargets([
-    { source: "var/main.toml", key: "one", destination: "/tax/" },
-    { source: "var/main.toml", key: "two", destination: "https://wooten.link/tax/" },
+    { source: "redirects/main.toml", key: "one", destination: "/tax/" },
+    { source: "redirects/main.toml", key: "two", destination: "https://wooten.link/tax/" },
   ]);
   assert.equal(groups.length, 1);
   assert.equal(groups[0].url, "https://wooten.link/tax/");
