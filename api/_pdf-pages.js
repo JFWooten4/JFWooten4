@@ -17,6 +17,10 @@ function pdfPageDestination(destination, fragment) {
   return destination.includes("#") ? destination : destination + fragment;
 }
 
+function navigateToDestination(destination, location) {
+  location.replace(pdfPageDestination(destination, location.hash));
+}
+
 if (typeof module !== "undefined") {
-  module.exports = { isPdfDestination, pdfPageDestination };
+  module.exports = { isPdfDestination, pdfPageDestination, navigateToDestination };
 }
