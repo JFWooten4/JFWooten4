@@ -350,56 +350,14 @@
 {% include_relative var/law.toml %}
   </script>
   <script>
+{% include_relative api/_redirect-core.js %}
 {% include_relative api/_pdf-pages.js %}
-    var path = window.location.pathname.split("/").filter(Boolean)[0];
-    path = path ? decodeURIComponent(path).toLowerCase() : path;
-    var redirects = window.LINKS || {};
-
-    var redirect = redirects[path] || lawRedirect(path) || "/search";
-    window.location.replace(pdfPageDestination(redirect, window.location.hash));
-
-    function lawRedirect(path) {
-      if (!path || /^[a-z0-9]/i.test(path)) {
-        return null;
-      }
-
-      var delimiter = null;
-      var toml = document.getElementById("law-redirects").textContent;
-
-      var lawRedirects = toml.split(/\r?\n/).reduce(function(parsed, line) {
-        var section = line.match(/^\s*\[redirects\.("(?:\\.|[^"\\])*")\]\s*(?:#.*)?$/);
-
-        if (section) {
-          try {
-            delimiter = JSON.parse(section[1]);
-          } catch (error) {
-            delimiter = null;
-          }
-
-          return parsed;
-        }
-
-        if (/^\s*\[/.test(line)) {
-          delimiter = null;
-          return parsed;
-        }
-
-        if (delimiter !== null) {
-          var entry = line.match(/^\s*("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*")\s*(?:#.*)?$/);
-
-          if (entry) {
-            try {
-              var suffix = JSON.parse(entry[1]);
-              parsed[(delimiter + suffix).toLowerCase()] = JSON.parse(entry[2]);
-            } catch (error) {}
-          }
-        }
-
-        return parsed;
-      }, {});
-
-      return lawRedirects[path];
-    }
+    const redirects = mergeRedirects(
+      window.LINKS || {},
+      parseLawRedirects(document.getElementById("law-redirects").textContent, false)
+    );
+    const destination = resolveRedirect(redirects, window.location.pathname, "/search");
+    navigateToDestination(destination, window.location);
   </script>
 </body>
 </html>

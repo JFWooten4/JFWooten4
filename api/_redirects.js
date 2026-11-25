@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const { parseLawRedirects, mergeRedirects } = require("./_redirect-core");
 
 function parseStandardRedirects(source) {
   const constants = {};
@@ -33,39 +34,6 @@ function parseStandardRedirects(source) {
   return redirects;
 }
 
-function parseLawRedirects(source) {
-  let delimiter = null;
-
-  return source.split(/\r?\n/).reduce((redirects, line) => {
-    const section = line.match(/^\s*\[redirects\.("(?:\\.|[^"\\])*")\]\s*(?:#.*)?$/);
-
-    if (section) {
-      try {
-        delimiter = JSON.parse(section[1]);
-      } catch (_error) {
-        delimiter = null;
-      }
-
-      return redirects;
-    }
-
-    if (/^\s*\[/.test(line)) {
-      delimiter = null;
-      return redirects;
-    }
-
-    if (delimiter !== null) {
-      const entry = line.match(/^\s*("(?:\\.|[^"\\])*")\s*=\s*("(?:\\.|[^"\\])*")\s*(?:#.*)?$/);
-
-      if (entry) {
-        redirects[(delimiter + JSON.parse(entry[1])).toLowerCase()] = JSON.parse(entry[2]);
-      }
-    }
-
-    return redirects;
-  }, {});
-}
-
 function readProjectFile(relativePath) {
   const candidates = [
     path.join(process.cwd(), relativePath),
@@ -82,10 +50,10 @@ function readProjectFile(relativePath) {
 }
 
 function loadRedirects() {
-  return {
-    ...parseStandardRedirects(readProjectFile("404.html")),
-    ...parseLawRedirects(readProjectFile(path.join("var", "law.toml"))),
-  };
+  return mergeRedirects(
+    parseStandardRedirects(readProjectFile("404.html")),
+    parseLawRedirects(readProjectFile(path.join("var", "law.toml"))),
+  );
 }
 
 module.exports = {

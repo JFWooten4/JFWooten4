@@ -5,6 +5,7 @@ const assert = require("node:assert/strict");
 
 const handler = require("../api/redirect");
 const vm = require("node:vm");
+const { normalizePath, resolveRedirect, mergeRedirects } = require("../api/_redirect-core");
 const { isPdfDestination, pdfPageDestination } = require("../api/_pdf-pages");
 const {
   loadRedirects,
@@ -59,7 +60,9 @@ test("loads every current redirect directly from the 404 sources", () => {
 });
 
 test("normalizes the first path segment like the browser redirect", () => {
+  assert.equal(handler.normalizePath, normalizePath);
   assert.equal(handler.normalizePath("TAR1/more"), "tar1");
+  assert.equal(normalizePath("/%ZZ"), "%zz");
   assert.equal(handler.normalizePath("%2B17"), "+17");
   assert.equal(handler.normalizePath(["Latest", "ignored"]), "latest");
 });
@@ -156,5 +159,59 @@ test("non-PDF browser navigation retains the HTTP redirect", () => {
 test("Jekyll fallback shares the PDF fragment transformation", () => {
   const html = fs.readFileSync(path.join(__dirname, "..", "404.html"), "utf8");
   assert.ok(html.includes("{% include_relative api/_pdf-pages.js %}"));
-  assert.ok(html.includes("window.location.replace(pdfPageDestination(redirect, window.location.hash));"));
+  assert.ok(html.includes("{% include_relative api/_redirect-core.js %}"));
+  assert.ok(html.includes("navigateToDestination(destination, window.location);"));
+});
+
+test("shared resolution rejects inherited properties and retains law precedence", () => {
+  const redirects = mergeRedirects({ same: "/first", known: "/known" }, { same: "/second" });
+  assert.equal(resolveRedirect(redirects, "/SAME", "/search"), "/second");
+  assert.equal(resolveRedirect(redirects, "constructor", "/search"), "/search");
+  assert.equal(resolveRedirect(redirects, "__proto__", "/search"), "/search");
+  assert.equal(resolveRedirect(redirects, "/%ZZ", "/search"), "/search");
+  assert.equal(resolveRedirect(redirects, "known", "/search"), "/known");
+  handler({ query: { path: "constructor" } }, {
+    setHeader() {},
+    redirect(status, destination) {
+      assert.equal(status, 307);
+      assert.equal(destination, "https://wooten.link/search");
+    },
+  });
+});
+
+test("browser fallback can skip a malformed law entry without losing other entries", () => {
+  const source = '[redirects."_"]\n"bad" = "\\q"\n"5" = "https://example.com/a.pdf"';
+  assert.throws(() => parseLawRedirects(source));
+  assert.deepEqual(parseLawRedirects(source, false), { _5: "https://example.com/a.pdf" });
+});
+
+test("executes actual Jekyll fallback scripts with the shared helpers", () => {
+  const root = path.join(__dirname, "..");
+  const html = fs.readFileSync(path.join(root, "404.html"), "utf8");
+  const toml = fs.readFileSync(path.join(root, "var/law.toml"), "utf8");
+  const rendered = html.replace(/{% include_relative (api\/[^ ]+) %}/g, (_, file) =>
+    fs.readFileSync(path.join(root, file), "utf8")
+  );
+  const mapScript = rendered.match(/<script id="all-redirects">([\s\S]*?)<\/script>/)[1];
+  const redirectScript = rendered.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const redirects = loadRedirects();
+  for (const [pathname, hash, expected] of [
+    ["/_5", "#3", redirects._5 + "#page=3"],
+    ["/TAR1/extra", "", redirects.tar1],
+    ["/%2B17", "", redirects["+17"]],
+    ["/github", "#3", redirects.github],
+    ["/%ZZ", "", "/search"],
+    ["/constructor", "", "/search"],
+    ["/__proto__", "", "/search"],
+    ["/", "", "/search"],
+  ]) {
+    let actual;
+    const context = vm.createContext({
+      document: { getElementById() { return { textContent: toml }; } },
+      window: { location: { pathname, hash, replace(value) { actual = value; } } },
+    });
+    vm.runInContext(mapScript, context);
+    vm.runInContext(redirectScript, context);
+    assert.equal(actual, expected, pathname);
+  }
 });

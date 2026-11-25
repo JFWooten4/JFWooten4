@@ -13,6 +13,7 @@ on:
       - "404.html"
       - "var/law.toml"
       - "api/_redirects.js"
+      - "api/_redirect-core.js"
       - "api/redirect.js"
       - "api/_pdf-pages.js"
       - "test/redirects.test.js"
