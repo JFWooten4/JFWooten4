@@ -172,25 +172,39 @@ test("rendered search indexes every configured shortlink without registry reques
   assert.match(script, /params\.get\("q"\)/);
 });
 
-test("homepage media paths and legacy redirects use the corrected filenames", () => {
+test("published homepage references existing media and matching credits directly", () => {
   const html = readSite("index.html");
-  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
-  const expectedMoves = [
-    ["/props/mlp/smirk.png", "/backgrounds/props/mlp/smirk.png"],
-    ["/props/tf2/fannign.png", "/backgrounds/props/tf2/fanning.png"],
-    ["/backgrounds/power-mountian.jpg", "/backgrounds/power-mountain.jpg"],
-    ["/banners/climbing-pheonix.PNG", "/banners/climbing-phoenix.PNG"],
-    ["/banners/decievingly-cute.png", "/banners/deceivingly-cute.png"],
-  ];
-  for (const [oldPath, newPath] of expectedMoves) {
-    assert.equal(fs.existsSync(path.join(site, newPath.slice(1))), true, newPath);
-    const rule = config.redirects.find(entry => entry.source === oldPath) ||
-      config.redirects.find(entry => entry.source === "/props/:path*" && oldPath.startsWith("/props/"));
-    assert.ok(rule, oldPath);
-    assert.equal(rule.destination.replace(":path*", oldPath.slice("/props/".length)), newPath);
-    assert.equal(rule.permanent, true);
-    assert.ok(!html.includes('"' + oldPath + '"'), oldPath);
+  const images = [];
+  for (const type of ["Background", "Banner"]) {
+    const imageMatch = html.match(new RegExp("window\\.homepage" + type + "Images\\s*=\\s*(\\[[\\s\\S]*?\\]);"));
+    const creditMatch = html.match(new RegExp("window\\.homepage" + type + "Credits\\s*=\\s*(\\{[\\s\\S]*?\\});"));
+    assert.ok(imageMatch && creditMatch, type);
+    const records = JSON.parse(imageMatch[1]);
+    const credits = JSON.parse(creditMatch[1]);
+    assert.ok(records.length > 0, type);
+    for (const record of records) {
+      assert.ok(fs.statSync(path.join(site, record.src.slice(1))).isFile(), record.src);
+      assert.equal(path.parse(record.src).name, record.key, record.src);
+      assert.ok(Object.hasOwn(credits, record.key), record.key);
+      images.push(record.src);
+    }
   }
-  assert.match(html, /\/backgrounds\/props\/mlp\/smirk\.png/);
-  assert.doesNotMatch(html, /power-mountian|climbing-pheonix|decievingly-cute/);
+  for (const image of [
+    "/backgrounds/power-mountain.jpg",
+    "/banners/climbing-phoenix.PNG",
+    "/banners/deceivingly-cute.png",
+  ]) assert.ok(images.includes(image), image);
+
+  assert.match(html, /prop\.src = "\/backgrounds\/props\/mlp\/smirk\.png"/);
+  for (const image of [
+    "backgrounds/props/mlp/insignia.png",
+    "backgrounds/props/mlp/smirk.png",
+    "backgrounds/props/mlp/tsparks.png",
+    "backgrounds/props/tf2/artifacts.png",
+    "backgrounds/props/tf2/fanning.png",
+  ]) assert.ok(fs.statSync(path.join(site, image)).isFile(), image);
+
+  assert.doesNotMatch(html, /["']\/props\/|power-mountian|climbing-pheonix|decievingly-cute|fannign|twiggl/);
+  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+  assert.ok(!config.redirects.some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
 });
