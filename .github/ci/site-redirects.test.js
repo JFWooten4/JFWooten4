@@ -171,3 +171,40 @@ test("rendered search indexes every configured shortlink without registry reques
   assert.match(script, /queryInput\.addEventListener\("input", filterResults\)/);
   assert.match(script, /params\.get\("q"\)/);
 });
+
+test("published homepage references existing media and matching credits directly", () => {
+  const html = readSite("index.html");
+  const images = [];
+  for (const type of ["Background", "Banner"]) {
+    const imageMatch = html.match(new RegExp("window\\.homepage" + type + "Images\\s*=\\s*(\\[[\\s\\S]*?\\]);"));
+    const creditMatch = html.match(new RegExp("window\\.homepage" + type + "Credits\\s*=\\s*(\\{[\\s\\S]*?\\});"));
+    assert.ok(imageMatch && creditMatch, type);
+    const records = JSON.parse(imageMatch[1]);
+    const credits = JSON.parse(creditMatch[1]);
+    assert.ok(records.length > 0, type);
+    for (const record of records) {
+      assert.ok(fs.statSync(path.join(site, record.src.slice(1))).isFile(), record.src);
+      assert.equal(path.parse(record.src).name, record.key, record.src);
+      assert.ok(Object.hasOwn(credits, record.key), record.key);
+      images.push(record.src);
+    }
+  }
+  for (const image of [
+    "/backgrounds/power-mountain.jpg",
+    "/banners/climbing-phoenix.PNG",
+    "/banners/deceivingly-cute.png",
+  ]) assert.ok(images.includes(image), image);
+
+  assert.match(html, /prop\.src = "\/backgrounds\/props\/mlp\/smirk\.png"/);
+  for (const image of [
+    "backgrounds/props/mlp/insignia.png",
+    "backgrounds/props/mlp/smirk.png",
+    "backgrounds/props/mlp/tsparks.png",
+    "backgrounds/props/tf2/artifacts.png",
+    "backgrounds/props/tf2/fanning.png",
+  ]) assert.ok(fs.statSync(path.join(site, image)).isFile(), image);
+
+  assert.doesNotMatch(html, /["']\/props\/|power-mountian|climbing-pheonix|decievingly-cute|fannign|twiggl/);
+  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+  assert.ok(!config.redirects.some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
+});

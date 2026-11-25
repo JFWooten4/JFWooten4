@@ -1,0 +1,1 @@
+- `artifacts` and `fanning` are generic TF2 item photos
