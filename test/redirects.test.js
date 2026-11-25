@@ -198,7 +198,7 @@ test("executes actual Jekyll fallback scripts with the shared helpers", () => {
   for (const [pathname, hash, expected] of [
     ["/_5", "#3", redirects._5 + "#page=3"],
     ["/TAR1/extra", "", redirects.tar1],
-    ["/%2B17", "", redirects["+17"]],
+    ["/%2B0", "", redirects["+0"]],
     ["/github", "#3", redirects.github],
     ["/%ZZ", "", "/search"],
     ["/constructor", "", "/search"],
