@@ -5,9 +5,11 @@ const assert = require("node:assert/strict");
 
 const handler = require("../api/redirect");
 const vm = require("node:vm");
-const { normalizePath, resolveRedirect, mergeRedirects, parseRedirects, parseRedirectEntries } = require("../_includes/redirect-core");
+const { normalizePath, resolveRedirect } = require("../_includes/redirect-core");
 const { isPdfDestination, pdfPageDestination } = require("../api/_pdf-pages");
-const { loadRedirects } = require("../api/_redirects");
+const { loadRedirects, loadRedirectEntries, discoverRedirectFiles, parseRedirects, parseRedirectEntries } = require("../api/_redirects");
+const { generateRedirects, renderLookup, renderComments } = require("../scripts/generate-redirects");
+const os = require("node:os");
 
 test("parses ordinary redirects and preserves inline search comments", () => {
   const source = '[redirects]\n"One" = "https://example.com/file.pdf#page=3" # filing notes\n"two" = "/book.pdf"';
@@ -33,13 +35,12 @@ test("parses law redirects with their punctuation prefixes", () => {
   });
 });
 
-test("loads every configured redirect from both TOML maps", () => {
-  const main = parseRedirects(fs.readFileSync(path.join(__dirname, "..", "var/main.toml"), "utf8"));
-  const law = parseRedirects(fs.readFileSync(path.join(__dirname, "..", "var/law.toml"), "utf8"));
+test("loads every discovered redirect registry", () => {
+  const root = path.join(__dirname, "..");
+  const files = discoverRedirectFiles(root);
   const redirects = loadRedirects();
-  assert.deepEqual(redirects, { ...main, ...law });
-  assert.ok(Object.keys(main).length > 0);
-  assert.ok(Object.keys(law).length > 0);
+  assert.deepEqual(redirects, Object.assign({}, ...files.map(file =>
+    parseRedirects(fs.readFileSync(path.join(root, file), "utf8")))));
   assert.equal(redirects.tar1, "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf");
   assert.equal(redirects._3, "https://www.issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
   assert.equal(redirects._5, redirects._3);
@@ -150,9 +151,8 @@ test("Jekyll fallback shares the PDF fragment transformation", () => {
   assert.ok(html.includes("navigateToDestination(destination, window.location);"));
 });
 
-test("shared resolution rejects inherited properties and retains law precedence", () => {
-  const redirects = mergeRedirects({ same: "/first", known: "/known" }, { same: "/second" });
-  assert.equal(resolveRedirect(redirects, "/SAME", "/search"), "/second");
+test("shared resolution rejects inherited properties", () => {
+  const redirects = { known: "/known" };
   assert.equal(resolveRedirect(redirects, "constructor", "/search"), "/search");
   assert.equal(resolveRedirect(redirects, "__proto__", "/search"), "/search");
   assert.equal(resolveRedirect(redirects, "/%ZZ", "/search"), "/search");
@@ -166,23 +166,49 @@ test("shared resolution rejects inherited properties and retains law precedence"
   });
 });
 
-test("browser fallback can skip a malformed law entry without losing other entries", () => {
-  const source = '[redirects."_"]\n"bad" = "\\q"\n"5" = "https://example.com/a.pdf"';
-  assert.throws(() => parseRedirects(source));
-  assert.deepEqual(parseRedirects(source, false), { _5: "https://example.com/a.pdf" });
+test("registry discovery includes added files, rejects duplicates, and regenerates removed links", t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "redirect-registry-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const dir = path.join(root, "redirects");
+  fs.mkdirSync(dir);
+  const put = (name, contents) => fs.writeFileSync(path.join(dir, name), contents);
+  put("main.toml", '[redirects]\n"one" = "/one"');
+  put("notes.txt", "ignored");
+  assert.equal(generateRedirects(root), 1);
+  put("new.toml", '[redirects."+"]\n"42" = "/two" # new topic');
+  assert.deepEqual(discoverRedirectFiles(root), ["redirects/main.toml", "redirects/new.toml"]);
+  assert.equal(generateRedirects(root), 2);
+  assert.deepEqual(loadRedirects(root), { one: "/one", "+42": "/two" });
+  const generated = fs.readFileSync(path.join(root, "_includes/redirect-lookup.generated.js"), "utf8");
+  assert.equal(vm.runInNewContext(generated + '\nredirects["+42"]'), "/two");
+  assert.equal(generateRedirects(root), 2);
+  assert.equal(fs.readFileSync(path.join(root, "_includes/redirect-lookup.generated.js"), "utf8"), generated);
+  put("duplicate.toml", '[redirects]\n"ONE" = "/other"');
+  assert.throws(() => loadRedirects(root), /Duplicate redirect one.*duplicate\.toml.*main\.toml/);
+  fs.unlinkSync(path.join(dir, "duplicate.toml"));
+  fs.unlinkSync(path.join(dir, "new.toml"));
+  assert.equal(generateRedirects(root), 1);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, "_includes/redirect-lookup.generated.js"), "utf8"), /\+42/);
+});
+
+test("generated literals preserve values without permitting script or Liquid injection", () => {
+  const entries = [{ key: "__proto__", href: "/</script>{{ unsafe }}", comment: "{% unsafe %}" }];
+  const code = renderLookup(entries) + renderComments(entries);
+  assert.doesNotMatch(code, /<\/script|{{|{%/);
+  assert.equal(vm.runInNewContext(code + '\nredirects["__proto__"]'), entries[0].href);
+  assert.equal(vm.runInNewContext(code + '\nredirectComments["__proto__"]'), entries[0].comment);
 });
 
 test("executes actual Jekyll fallback scripts with the shared helpers", () => {
   const root = path.join(__dirname, "..");
   const html = fs.readFileSync(path.join(root, "404.html"), "utf8");
-  const main = fs.readFileSync(path.join(root, "var/main.toml"), "utf8");
-  const law = fs.readFileSync(path.join(root, "var/law.toml"), "utf8");
   const rendered = html.replace(/{% include_relative (api\/[^ ]+) %}/g, (_, file) =>
     fs.readFileSync(path.join(root, file), "utf8")
   );
 
   const redirectScript = rendered.match(/<script>([\s\S]*?)<\/script>/)[1]
-    .replace("{% include redirect-core.js %}", fs.readFileSync(path.join(root, "_includes/redirect-core.js"), "utf8"));
+    .replace("{% include redirect-core.js %}", fs.readFileSync(path.join(root, "_includes/redirect-core.js"), "utf8"))
+    .replace("{% include redirect-lookup.generated.js %}", renderLookup(loadRedirectEntries()));
   const redirects = loadRedirects();
   for (const [pathname, hash, expected] of [
     ["/_5", "#3", redirects._5 + "#page=3"],
@@ -196,7 +222,6 @@ test("executes actual Jekyll fallback scripts with the shared helpers", () => {
   ]) {
     let actual;
     const context = vm.createContext({
-      document: { getElementById(id) { return { textContent: id === "main-redirects" ? main : law }; } },
       window: { location: { pathname, hash, replace(value) { actual = value; } } },
     });
     vm.runInContext(redirectScript, context);

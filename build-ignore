@@ -29,12 +29,7 @@ fi
 
 # Custem Rules
 
-if printf '%s\n' "$changed_files" | grep -Ex 'var/(main|law)\.toml' >/dev/null; then
-  echo "Redirect maps changed; running build."
-  exit 1
-fi
-
-if printf '%s\n' "$changed_files" | grep -Ev '^(stickies/|banners/|backgrounds/|presentations/|headshots/|props/|var/|$)' >/dev/null; then
+if printf '%s\n' "$changed_files" | grep -Ev '^(stickies/|banners/|backgrounds/|presentations/|headshots/|props/|$)' >/dev/null; then
   echo "Changes outside media folders detected; running build."
   exit 1
 else

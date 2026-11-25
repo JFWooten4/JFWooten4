@@ -7,5 +7,5 @@ plugins:
   - jekyll-feed
 include:
   - imgs
-  - var
+  - redirects
   - .well-known

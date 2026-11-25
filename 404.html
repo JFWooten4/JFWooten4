@@ -14,19 +14,10 @@
   </style>
 </head>
 <body>
-  <script type="text/plain" id="main-redirects">
-{% include_relative var/main.toml %}
-  </script>
-  <script type="text/plain" id="law-redirects">
-{% include_relative var/law.toml %}
-  </script>
   <script>
 {% include redirect-core.js %}
 {% include_relative api/_pdf-pages.js %}
-    const redirects = mergeRedirects(
-      parseRedirects(document.getElementById("main-redirects").textContent, false),
-      parseRedirects(document.getElementById("law-redirects").textContent, false)
-    );
+{% include redirect-lookup.generated.js %}
     const destination = resolveRedirect(redirects, window.location.pathname, "/search");
     navigateToDestination(destination, window.location);
   </script>

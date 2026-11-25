@@ -9,7 +9,9 @@ const handler = require("../api/redirect");
 const { loadRedirects } = require("../api/_redirects");
 const root = path.join(__dirname, "..");
 const site = path.join(root, "_site");
-const registryFiles = ["var/main.toml", "var/law.toml"];
+const registryFiles = fs.readdirSync(path.join(root, "redirects"), { withFileTypes: true })
+  .filter(entry => entry.isFile() && entry.name.endsWith(".toml"))
+  .map(entry => "redirects/" + entry.name).sort();
 
 // Use a standards-compliant parser independent of the application's restricted
 // parser, so a shared parser bug cannot make all the assertions pass.
@@ -30,7 +32,8 @@ function referenceRegistry(file) {
   ].join("\n"), path.join(root, file)], { encoding: "utf8" }));
 }
 
-const expected = Object.assign({}, ...registryFiles.map(referenceRegistry));
+const expected = Object.fromEntries(registryFiles.flatMap(file => Object.entries(referenceRegistry(file))));
+assert.equal(Object.keys(expected).length, registryFiles.reduce((count, file) => count + Object.keys(referenceRegistry(file)).length, 0));
 
 function readSite(file) {
   return fs.readFileSync(path.join(site, file), "utf8");
@@ -67,11 +70,12 @@ function runPdfBridge(body, destination, hash) {
   return actual;
 }
 
-test("Jekyll publishes both TOML registries without alteration", () => {
+test("Jekyll publishes every TOML registry and the Minima stylesheet", () => {
   for (const file of registryFiles) {
     assert.deepEqual(fs.readFileSync(path.join(site, file)), fs.readFileSync(path.join(root, file)), file);
   }
   assert.deepEqual(loadRedirects(), expected);
+  assert.match(readSite("assets/main.css"), /#fdda24/);
 });
 
 test("every configured shortlink returns its exact HTTP destination", () => {
@@ -107,15 +111,11 @@ test("every configured browser shortlink preserves its destination and PDF short
 
 test("rendered 404 fallback resolves every configured shortlink", () => {
   const html = readSite("404.html");
-  const scripts = new Map([
-    ["main-redirects", findScript(html, "main-redirects")],
-    ["law-redirects", findScript(html, "law-redirects")],
-  ]);
+  assert.doesNotMatch(html, /parseRedirectEntries|parseRedirects\(|fetch\(/);
   const redirect = new vm.Script(findScript(html));
   function resolve(pathname, hash = "") {
     let actual;
     redirect.runInNewContext({
-      document: { getElementById(id) { return { textContent: scripts.get(id) }; } },
       window: { location: { pathname, hash, replace(url) { actual = url; } } },
     });
     return actual;
@@ -130,23 +130,16 @@ test("rendered 404 fallback resolves every configured shortlink", () => {
   assert.equal(resolve("/constructor"), "/search");
 });
 
-test("rendered search indexes every configured shortlink from the published files", async () => {
+test("rendered search indexes every configured shortlink without registry requests", () => {
   const html = readSite("search/index.html");
-  const requested = [];
-  const context = vm.createContext({
-    URL,
-    fetch: async (url) => {
-      requested.push(url);
-      return { ok: true, text: async () => readSite(url.slice(1)) };
-    },
-  });
-  vm.runInContext(findScript(html, "redirect-core"), context);
+  const context = vm.createContext({ URL, fetch() { assert.fail("Unexpected search fetch"); } });
+  vm.runInContext(findScript(html, "redirect-registry"), context);
   const script = findScript(html);
-  const boundary = script.indexOf("    loadRedirects().then(");
+  assert.doesNotMatch(script, /parseRedirectEntries|parseRedirects\(|fetch\(/);
+  const boundary = script.indexOf("    function initializeSearch(");
   assert.ok(boundary >= 0);
   vm.runInContext(script.slice(0, boundary), context);
-  const entries = await context.loadRedirects();
-  assert.deepEqual(requested.sort(), registryFiles.map(file => "/" + file).sort());
+  const entries = context.buildEntries();
   assert.equal(entries.length, Object.keys(expected).length);
   assert.deepEqual(Object.fromEntries(entries.map(entry => [entry.key, entry.href])), expected);
   assert.ok(entries.find(entry => entry.key === "scf-1").searchText.includes("round 11"));

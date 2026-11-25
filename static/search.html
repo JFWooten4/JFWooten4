@@ -369,7 +369,10 @@ permalink: /search/
   </main>
   <div id="copy-toast" class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
-  <script id="redirect-core">{% include redirect-core.js %}</script>
+  <script id="redirect-registry">
+{% include redirect-lookup.generated.js %}
+{% include redirect-comments.generated.js %}
+  </script>
   <script>
     function normalizeTopicText(value) {
       return String(value || "")
@@ -390,32 +393,18 @@ permalink: /search/
       }
     }
 
-    function buildEntries(toml) {
-      return parseRedirectEntries(toml, false).map(function (entry) {
-        var topic = normalizeTopicText(entry.comment + " " + deriveTopicFromHref(entry.href));
-        return {
-          key: entry.key,
-          href: entry.href,
-          topic: topic,
-          searchText: normalizeTopicText(entry.key + " " + entry.href + " " + topic).toLowerCase()
-        };
-      });
-    }
-
-    function loadEntries(url) {
-      return fetch(url, { cache: "no-store" })
-        .then(function(response) { return response.ok ? response.text() : ""; })
-        .then(buildEntries)
-        .catch(function() { return []; });
-    }
-
-    function loadRedirects() {
-      return Promise.all([loadEntries("/var/main.toml"), loadEntries("/var/law.toml")])
-        .then(function(results) {
-          var main = results[0].sort(function(a, b) { return a.key.localeCompare(b.key); });
-          var entries = new Map(main.map(function(entry) { return [entry.key, entry]; }));
-          results[1].forEach(function(entry) { entries.set(entry.key, entry); });
-          return Array.from(entries.values());
+    function buildEntries() {
+      return Object.keys(redirects).sort(function(a, b) { return a.localeCompare(b); })
+        .map(function(key) {
+          var href = redirects[key];
+          var comment = Object.prototype.hasOwnProperty.call(redirectComments, key) ? redirectComments[key] : "";
+          var topic = normalizeTopicText(comment + " " + deriveTopicFromHref(href));
+          return {
+            key: key,
+            href: href,
+            topic: topic,
+            searchText: normalizeTopicText(key + " " + href + " " + topic).toLowerCase()
+          };
         });
     }
 
@@ -430,7 +419,7 @@ permalink: /search/
       });
     }
 
-    loadRedirects().then(function (entries) {
+    function initializeSearch(entries) {
       var queryInput = document.getElementById("query");
       var openAllBtn = document.getElementById("open-all");
       var resultsEl = document.getElementById("results");
@@ -635,7 +624,9 @@ permalink: /search/
       if (queryInput.value) {
         filterResults();
       }
-    });
+    }
+
+    initializeSearch(buildEntries());
   </script>
 </body>
 </html>
