@@ -58,7 +58,7 @@ test("copy toast shows success or failure, resets its timer, and dismisses", () 
 });
 
 test("search indexes generated registries without fetching data and preserves topics", () => {
-  const { loadRedirectEntries } = require("../api/_redirects");
+  const { loadRedirectEntries } = require("../site/_redirects");
   const { renderLookup, renderComments } = require("../scripts/generate-redirects");
   const entries = loadRedirectEntries();
   const context = vm.createContext({ URL, fetch() { assert.fail("Unexpected search fetch"); } });
@@ -66,7 +66,7 @@ test("search indexes generated registries without fetching data and preserves to
   vm.runInContext(renderLookup(entries) + renderComments(entries), context);
   vm.runInContext(script.slice(0, script.indexOf("    function initializeSearch(")), context);
   const results = context.buildEntries();
-  const configured = require("../api/_redirects").loadRedirects();
+  const configured = require("../site/_redirects").loadRedirects();
   assert.equal(results.length, Object.keys(configured).length);
   for (const entry of results) assert.equal(entry.href, configured[entry.key], entry.key);
   const tagged = results.find(entry => entry.key === "scf-1");

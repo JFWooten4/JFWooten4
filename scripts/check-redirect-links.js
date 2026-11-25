@@ -2,7 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-const { loadRedirectEntries } = require("../api/_redirects");
+const { loadRedirectEntries } = require("../site/_redirects");
 
 const root = path.resolve(__dirname, "..");
 const baseUrl = "https://wooten.link";

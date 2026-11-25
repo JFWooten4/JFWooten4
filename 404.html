@@ -16,7 +16,7 @@
 <body>
   <script>
 {% include redirect-core.js %}
-{% include_relative api/_pdf-pages.js %}
+{% include _pdf-pages.js %}
 {% include redirect-lookup.generated.js %}
     const destination = resolveRedirect(redirects, window.location.pathname, "/search");
     navigateToDestination(destination, window.location);

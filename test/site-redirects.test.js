@@ -6,7 +6,7 @@ const vm = require("node:vm");
 const { execFileSync } = require("node:child_process");
 
 const handler = require("../api/redirect");
-const { loadRedirects } = require("../api/_redirects");
+const { loadRedirects } = require("../site/_redirects");
 const root = path.join(__dirname, "..");
 const site = path.join(root, "_site");
 const registryFiles = fs.readdirSync(path.join(root, "redirects"), { withFileTypes: true })
@@ -80,7 +80,8 @@ test("Jekyll publishes every TOML registry and the Minima stylesheet", () => {
   assert.match(css, /radial-gradient\(/);
   assert.match(css, /#080b12/i);
   assert.doesNotMatch(css, /{%\s*include\b/);
-  assert.equal(fs.existsSync(path.join(site, "_includes/main.scss")), false);
+  assert.equal(fs.existsSync(path.join(site, "site")), false);
+  assert.equal(fs.existsSync(path.join(site, "api")), false);
 });
 
 test("every configured shortlink returns its exact HTTP destination", () => {

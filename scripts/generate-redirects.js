@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { loadRedirectEntries } = require("../api/_redirects");
+const { loadRedirectEntries } = require("../site/_redirects");
 
 // Escape HTML script delimiters and Liquid syntax inside generated string literals.
 function safeString(value) {
@@ -25,7 +25,7 @@ function renderComments(entries) {
 
 function generateRedirects(root = path.resolve(__dirname, "..")) {
   const entries = loadRedirectEntries(root);
-  const includes = path.join(root, "_includes");
+  const includes = path.join(root, "site");
   fs.mkdirSync(includes, { recursive: true });
   fs.writeFileSync(path.join(includes, "redirect-lookup.generated.js"), renderLookup(entries));
   fs.writeFileSync(path.join(includes, "redirect-comments.generated.js"), renderComments(entries));
