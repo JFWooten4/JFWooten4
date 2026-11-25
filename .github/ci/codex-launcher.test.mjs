@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import { codexDestination, initLauncher } from "../../scripts/codex-launcher.mjs";
+import { codexDestination, initLauncher } from "../../api/_codex-launcher.mjs";
 
 const id = "019c56c3-06fc-7db3-a928-9c3607e17129";
 const root = `https://wooten.link/codex/${id}`;
@@ -99,8 +99,8 @@ test("Codex Desktop installation guidance links to the official download", () =>
   assert.match(html, /href="https:\/\/chatgpt\.com\/download\/".*?>Codex Desktop<\/a>/);
 });
 
-test("loads the launcher asset from the scripts directory", () => {
+test("loads the launcher at its existing public URL from a generated asset", () => {
   const html = fs.readFileSync(new URL("../../codex/index.html", import.meta.url), "utf8");
   assert.match(html, /src="\/scripts\/codex-launcher\.mjs"/);
-  assert.ok(fs.statSync(new URL("../../scripts/codex-launcher.mjs", import.meta.url)).isFile());
+  assert.ok(fs.statSync(new URL("../../api/_codex-launcher.mjs", import.meta.url)).isFile());
 });

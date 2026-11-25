@@ -2,7 +2,7 @@
 
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { checkUrl, collectTargets, groupTargets } = require("../../scripts/check-redirect-links");
+const { checkUrl, collectTargets, groupTargets } = require("../../api/_check-redirect-links");
 
 function mockFetch(statuses) {
   const methods = [];

@@ -59,7 +59,7 @@ test("copy toast shows success or failure, resets its timer, and dismisses", () 
 
 test("search indexes generated registries without fetching data and preserves topics", () => {
   const { loadRedirectEntries } = require("../../api/_redirects");
-  const { renderLookup, renderComments } = require("../../scripts/generate-redirects");
+  const { renderLookup, renderComments } = require("../../api/_generate-redirects");
   const entries = loadRedirectEntries();
   const context = vm.createContext({ URL, fetch() { assert.fail("Unexpected search fetch"); } });
   assert.ok(page.includes("{% include _redirect-lookup.generated.js %}"));

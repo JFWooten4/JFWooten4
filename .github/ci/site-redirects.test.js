@@ -82,6 +82,8 @@ test("Jekyll publishes every TOML registry and the Minima stylesheet", () => {
     assert.deepEqual(fs.readFileSync(path.join(site, file)), fs.readFileSync(path.join(root, file)), file);
   }
   assert.deepEqual(loadRedirects(), expected);
+  assert.deepEqual(fs.readFileSync(path.join(site, "scripts/codex-launcher.mjs")), fs.readFileSync(path.join(root, "api/_codex-launcher.mjs")));
+  assert.match(readSite("codex/index.html"), /src="\/scripts\/codex-launcher\.mjs"/);
   const css = readSite("assets/main.css");
   assert.match(css, /#fdda24/i);
   assert.match(css, /radial-gradient\(/);

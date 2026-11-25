@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { loadRedirectEntries } = require("../api/_redirects");
+const { loadRedirectEntries } = require("./_redirects");
 
 // Escape HTML script delimiters and Liquid syntax inside generated string literals.
 function safeString(value) {
@@ -39,9 +39,17 @@ function generateStylesheet(root = path.resolve(__dirname, "..")) {
   fs.writeFileSync(path.join(assets, "main.scss"), "---\n---\n\n" + source);
 }
 
+// Preserve the public launcher URL while keeping its only tracked source in api/.
+function generateLauncher(root = path.resolve(__dirname, "..")) {
+  const output = path.join(root, "scripts");
+  fs.mkdirSync(output, { recursive: true });
+  fs.copyFileSync(path.join(root, "api", "_codex-launcher.mjs"), path.join(output, "codex-launcher.mjs"));
+}
+
 if (require.main === module) {
   console.log("Generated browser lookup for " + generateRedirects() + " redirects");
   generateStylesheet();
+  generateLauncher();
 }
 
-module.exports = { generateRedirects, generateStylesheet, renderLookup, renderComments };
+module.exports = { generateRedirects, generateStylesheet, generateLauncher, renderLookup, renderComments };

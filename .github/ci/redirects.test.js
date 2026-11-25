@@ -8,7 +8,7 @@ const vm = require("node:vm");
 const { normalizePath, resolveRedirect } = require("../../api/_redirect-core");
 const { isPdfDestination, pdfPageDestination } = require("../../api/_pdf-pages");
 const { loadRedirects, loadRedirectEntries, discoverRedirectFiles, parseRedirects, parseRedirectEntries } = require("../../api/_redirects");
-const { generateRedirects, generateStylesheet, renderLookup, renderComments } = require("../../scripts/generate-redirects");
+const { generateRedirects, generateStylesheet, generateLauncher, renderLookup, renderComments } = require("../../api/_generate-redirects");
 const os = require("node:os");
 
 test("parses ordinary redirects and preserves inline search comments", () => {
@@ -212,6 +212,16 @@ test("stylesheet preparation preserves source and produces the conventional Jeky
   generateStylesheet(root);
   assert.equal(fs.readFileSync(path.join(root, "assets/main.scss"), "utf8"), "---\n---\n\n" + source);
   assert.equal(fs.readFileSync(path.join(root, "api/_main.scss"), "utf8"), source);
+});
+
+test("launcher preparation preserves the public asset byte for byte", t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "site-launcher-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(root, "api"));
+  const source = 'export const launcher = true;\n';
+  fs.writeFileSync(path.join(root, "api", "_codex-launcher.mjs"), source);
+  generateLauncher(root);
+  assert.equal(fs.readFileSync(path.join(root, "scripts/codex-launcher.mjs"), "utf8"), source);
 });
 
 test("generated literals preserve values without permitting script or Liquid injection", () => {

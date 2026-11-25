@@ -7,7 +7,6 @@ on:
   pull_request:
     paths:
       - "codex/**"
-      - "scripts/codex-launcher.mjs"
       - "vercel.json"
       - "Gemfile"
       - "Gemfile.lock"
@@ -17,9 +16,7 @@ on:
       - "redirects/*.toml"
       - ".github/ci/**"
       - "api/**"
-      - "scripts/generate-redirects.js"
       - "static/search.html"
-      - "scripts/check-redirect-links.js"
       - ".github/workflows/check-redirect-links.yml"
 
 permissions:
@@ -41,9 +38,9 @@ jobs:
           ruby-version: "3.3"
           bundler-cache: true
       - name: Build the Jekyll site
-        run: node scripts/generate-redirects.js && bundle exec jekyll build
+        run: node api/_generate-redirects.js && bundle exec jekyll build
       - name: Verify published redirect registries and behavior
         run: node --test .github/ci/site-redirects.test.js
       - name: Check live redirect destinations
         if: github.event_name != 'pull_request'
-        run: node scripts/check-redirect-links.js
+        run: node api/_check-redirect-links.js
