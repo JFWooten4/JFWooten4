@@ -56,3 +56,27 @@ test("copy toast shows success or failure, resets its timer, and dismisses", () 
   scheduled.values().next().value();
   assert.ok(!classes.has("is-visible"));
 });
+
+test("search loads both TOML maps using the shared parser and preserves topics", async () => {
+  const core = fs.readFileSync(path.join(__dirname, "..", "_includes/redirect-core.js"), "utf8");
+  const requested = [];
+  const context = vm.createContext({
+    URL,
+    fetch: async (url) => {
+      requested.push(url);
+      return { ok: true, text: async () => fs.readFileSync(path.join(__dirname, "..", url.slice(1)), "utf8") };
+    },
+  });
+  assert.ok(page.includes("{% include redirect-core.js %}"));
+  vm.runInContext(core, context);
+  vm.runInContext(script.slice(0, script.indexOf("    loadRedirects().then(")), context);
+  const results = await context.loadRedirects();
+  assert.deepEqual(requested.sort(), ["/var/law.toml", "/var/main.toml"]);
+  const configured = require("../api/_redirects").loadRedirects();
+  assert.equal(results.length, Object.keys(configured).length);
+  for (const entry of results) assert.equal(entry.href, configured[entry.key], entry.key);
+  const tagged = results.find(entry => entry.key === "scf-1");
+  assert.ok(tagged.searchText.includes("round 11"));
+  assert.equal(results.find(entry => entry.key === "_5").href, configured._5);
+  assert.ok(!script.includes("new Function("));
+});

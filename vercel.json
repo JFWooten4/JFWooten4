@@ -4,7 +4,7 @@
   "outputDirectory": "_site",
   "functions": {
     "api/redirect.js": {
-      "includeFiles": "{404.html,var/law.toml}"
+      "includeFiles": "{var/main.toml,var/law.toml}"
     }
   },
   "headers": [
