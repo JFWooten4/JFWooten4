@@ -18,6 +18,7 @@ on:
       - "404.html"
       - "redirects/*.toml"
       - "assets/main.scss"
+      - "_includes/main.scss"
       - "scripts/generate-redirects.js"
       - "static/search.html"
       - "test/search-copy-toast.test.js"
