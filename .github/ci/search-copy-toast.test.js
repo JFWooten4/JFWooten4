@@ -4,7 +4,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const vm = require("node:vm");
 
-const page = fs.readFileSync(path.join(__dirname, "..", "static/search.html"), "utf8");
+const page = fs.readFileSync(path.join(__dirname, "..", "..", "static/search.html"), "utf8");
 const script = page.match(/<script>([\s\S]*?)<\/script>/)[1];
 
 test("search page preserves valid JavaScript and accessible copy feedback", () => {
@@ -58,15 +58,15 @@ test("copy toast shows success or failure, resets its timer, and dismisses", () 
 });
 
 test("search indexes generated registries without fetching data and preserves topics", () => {
-  const { loadRedirectEntries } = require("../site/_redirects");
-  const { renderLookup, renderComments } = require("../scripts/generate-redirects");
+  const { loadRedirectEntries } = require("../../api/_redirects");
+  const { renderLookup, renderComments } = require("../../scripts/generate-redirects");
   const entries = loadRedirectEntries();
   const context = vm.createContext({ URL, fetch() { assert.fail("Unexpected search fetch"); } });
-  assert.ok(page.includes("{% include redirect-lookup.generated.js %}"));
+  assert.ok(page.includes("{% include _redirect-lookup.generated.js %}"));
   vm.runInContext(renderLookup(entries) + renderComments(entries), context);
   vm.runInContext(script.slice(0, script.indexOf("    function initializeSearch(")), context);
   const results = context.buildEntries();
-  const configured = require("../site/_redirects").loadRedirects();
+  const configured = require("../../api/_redirects").loadRedirects();
   assert.equal(results.length, Object.keys(configured).length);
   for (const entry of results) assert.equal(entry.href, configured[entry.key], entry.key);
   const tagged = results.find(entry => entry.key === "scf-1");

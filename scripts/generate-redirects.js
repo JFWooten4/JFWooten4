@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { loadRedirectEntries } = require("../site/_redirects");
+const { loadRedirectEntries } = require("../api/_redirects");
 
 // Escape HTML script delimiters and Liquid syntax inside generated string literals.
 function safeString(value) {
@@ -25,15 +25,23 @@ function renderComments(entries) {
 
 function generateRedirects(root = path.resolve(__dirname, "..")) {
   const entries = loadRedirectEntries(root);
-  const includes = path.join(root, "site");
+  const includes = path.join(root, "api");
   fs.mkdirSync(includes, { recursive: true });
-  fs.writeFileSync(path.join(includes, "redirect-lookup.generated.js"), renderLookup(entries));
-  fs.writeFileSync(path.join(includes, "redirect-comments.generated.js"), renderComments(entries));
+  fs.writeFileSync(path.join(includes, "_redirect-lookup.generated.js"), renderLookup(entries));
+  fs.writeFileSync(path.join(includes, "_redirect-comments.generated.js"), renderComments(entries));
   return entries.length;
+}
+
+function generateStylesheet(root = path.resolve(__dirname, "..")) {
+  const source = fs.readFileSync(path.join(root, "api", "_main.scss"), "utf8");
+  const assets = path.join(root, "assets");
+  fs.mkdirSync(assets, { recursive: true });
+  fs.writeFileSync(path.join(assets, "main.scss"), "---\n---\n\n" + source);
 }
 
 if (require.main === module) {
   console.log("Generated browser lookup for " + generateRedirects() + " redirects");
+  generateStylesheet();
 }
 
-module.exports = { generateRedirects, renderLookup, renderComments };
+module.exports = { generateRedirects, generateStylesheet, renderLookup, renderComments };

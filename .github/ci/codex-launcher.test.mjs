@@ -1,14 +1,14 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import { codexDestination, initLauncher } from "../scripts/codex-launcher.mjs";
+import { codexDestination, initLauncher } from "../../scripts/codex-launcher.mjs";
 
 const id = "019c56c3-06fc-7db3-a928-9c3607e17129";
 const root = `https://wooten.link/codex/${id}`;
 const native = `codex://threads/${id}`;
 
 test("serves the Codex launcher before the generic redirect", () => {
-  const routes = JSON.parse(fs.readFileSync(new URL("../vercel.json", import.meta.url), "utf8")).rewrites;
+  const routes = JSON.parse(fs.readFileSync(new URL("../../vercel.json", import.meta.url), "utf8")).rewrites;
   assert.deepEqual(routes.slice(0, 2), [
     { source: "/codex", destination: "/codex/index.html" },
     { source: "/codex/:thread", destination: "/codex/index.html" },
@@ -95,12 +95,12 @@ test("invalid native URLs never register automatic tab-close handling", () => {
 });
 
 test("Codex Desktop installation guidance links to the official download", () => {
-  const html = fs.readFileSync(new URL("../codex/index.html", import.meta.url), "utf8");
+  const html = fs.readFileSync(new URL("../../codex/index.html", import.meta.url), "utf8");
   assert.match(html, /href="https:\/\/chatgpt\.com\/download\/".*?>Codex Desktop<\/a>/);
 });
 
 test("loads the launcher asset from the scripts directory", () => {
-  const html = fs.readFileSync(new URL("../codex/index.html", import.meta.url), "utf8");
+  const html = fs.readFileSync(new URL("../../codex/index.html", import.meta.url), "utf8");
   assert.match(html, /src="\/scripts\/codex-launcher\.mjs"/);
-  assert.ok(fs.statSync(new URL("../scripts/codex-launcher.mjs", import.meta.url)).isFile());
+  assert.ok(fs.statSync(new URL("../../scripts/codex-launcher.mjs", import.meta.url)).isFile());
 });

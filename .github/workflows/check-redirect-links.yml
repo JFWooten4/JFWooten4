@@ -13,19 +13,13 @@ on:
       - "Gemfile.lock"
       - "_config.yml"
       - "build-ignore"
-      - "test/site-redirects.test.js"
-      - "test/codex-launcher.test.mjs"
       - "404.html"
       - "redirects/*.toml"
-      - "assets/main.scss"
-      - "site/**"
+      - ".github/ci/**"
+      - "api/**"
       - "scripts/generate-redirects.js"
       - "static/search.html"
-      - "test/search-copy-toast.test.js"
-      - "api/redirect.js"
-      - "test/redirects.test.js"
       - "scripts/check-redirect-links.js"
-      - "test/check-redirect-links.test.js"
       - ".github/workflows/check-redirect-links.yml"
 
 permissions:
@@ -41,7 +35,7 @@ jobs:
         with:
           node-version: "22"
       - name: Test redirects, Codex launcher, and link checker
-        run: node --test test/redirects.test.js test/codex-launcher.test.mjs test/check-redirect-links.test.js test/search-copy-toast.test.js
+        run: node --test .github/ci/redirects.test.js .github/ci/codex-launcher.test.mjs .github/ci/check-redirect-links.test.js .github/ci/search-copy-toast.test.js
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
@@ -49,7 +43,7 @@ jobs:
       - name: Build the Jekyll site
         run: node scripts/generate-redirects.js && bundle exec jekyll build
       - name: Verify published redirect registries and behavior
-        run: node --test test/site-redirects.test.js
+        run: node --test .github/ci/site-redirects.test.js
       - name: Check live redirect destinations
         if: github.event_name != 'pull_request'
         run: node scripts/check-redirect-links.js

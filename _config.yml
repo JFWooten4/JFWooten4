@@ -3,9 +3,8 @@ description: "Decentralizing Capitalism 🌐"
 url: "wooten.link"
 github_username: JFWooten4
 theme: minima
-includes_dir: site
+includes_dir: api
 exclude:
-  - site
   - api
   - Gemfile
   - Gemfile.lock

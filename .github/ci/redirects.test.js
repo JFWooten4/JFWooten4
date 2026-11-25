@@ -3,12 +3,12 @@ const path = require("node:path");
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
-const handler = require("../api/redirect");
+const handler = require("../../api/redirect");
 const vm = require("node:vm");
-const { normalizePath, resolveRedirect } = require("../site/redirect-core");
-const { isPdfDestination, pdfPageDestination } = require("../site/_pdf-pages");
-const { loadRedirects, loadRedirectEntries, discoverRedirectFiles, parseRedirects, parseRedirectEntries } = require("../site/_redirects");
-const { generateRedirects, renderLookup, renderComments } = require("../scripts/generate-redirects");
+const { normalizePath, resolveRedirect } = require("../../api/_redirect-core");
+const { isPdfDestination, pdfPageDestination } = require("../../api/_pdf-pages");
+const { loadRedirects, loadRedirectEntries, discoverRedirectFiles, parseRedirects, parseRedirectEntries } = require("../../api/_redirects");
+const { generateRedirects, generateStylesheet, renderLookup, renderComments } = require("../../scripts/generate-redirects");
 const os = require("node:os");
 
 test("parses ordinary redirects and preserves inline search comments", () => {
@@ -43,7 +43,7 @@ test("named priority tables preserve unprefixed shortlinks", () => {
 });
 
 test("loads every discovered redirect registry", () => {
-  const root = path.join(__dirname, "..");
+  const root = path.join(__dirname, "..", "..");
   const files = discoverRedirectFiles(root);
   const redirects = loadRedirects();
   assert.deepEqual(redirects, Object.assign({}, ...files.map(file =>
@@ -60,7 +60,6 @@ test("loads every discovered redirect registry", () => {
 });
 
 test("normalizes the first path segment like the browser redirect", () => {
-  assert.equal(handler, require("../site/redirect"));
   assert.equal(handler.normalizePath, normalizePath);
   assert.equal(handler.normalizePath("TAR1/more"), "tar1");
   assert.equal(normalizePath("/%ZZ"), "%zz");
@@ -158,9 +157,9 @@ test("non-PDF browser navigation retains the HTTP redirect", () => {
 });
 
 test("Jekyll fallback shares the PDF fragment transformation", () => {
-  const html = fs.readFileSync(path.join(__dirname, "..", "404.html"), "utf8");
+  const html = fs.readFileSync(path.join(__dirname, "..", "..", "404.html"), "utf8");
   assert.ok(html.includes("{% include _pdf-pages.js %}"));
-  assert.ok(html.includes("{% include redirect-core.js %}"));
+  assert.ok(html.includes("{% include _redirect-core.js %}"));
   assert.ok(html.includes("navigateToDestination(destination, window.location);"));
 });
 
@@ -192,16 +191,27 @@ test("registry discovery includes added files, rejects duplicates, and regenerat
   assert.deepEqual(discoverRedirectFiles(root), ["redirects/main.toml", "redirects/new.toml"]);
   assert.equal(generateRedirects(root), 2);
   assert.deepEqual(loadRedirects(root), { one: "/one", "+42": "/two" });
-  const generated = fs.readFileSync(path.join(root, "site/redirect-lookup.generated.js"), "utf8");
+  const generated = fs.readFileSync(path.join(root, "api/_redirect-lookup.generated.js"), "utf8");
   assert.equal(vm.runInNewContext(generated + '\nredirects["+42"]'), "/two");
   assert.equal(generateRedirects(root), 2);
-  assert.equal(fs.readFileSync(path.join(root, "site/redirect-lookup.generated.js"), "utf8"), generated);
+  assert.equal(fs.readFileSync(path.join(root, "api/_redirect-lookup.generated.js"), "utf8"), generated);
   put("duplicate.toml", '[redirects]\n"ONE" = "/other"');
   assert.throws(() => loadRedirects(root), /Duplicate redirect one.*duplicate\.toml.*main\.toml/);
   fs.unlinkSync(path.join(dir, "duplicate.toml"));
   fs.unlinkSync(path.join(dir, "new.toml"));
   assert.equal(generateRedirects(root), 1);
-  assert.doesNotMatch(fs.readFileSync(path.join(root, "site/redirect-lookup.generated.js"), "utf8"), /\+42/);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, "api/_redirect-lookup.generated.js"), "utf8"), /\+42/);
+});
+
+test("stylesheet preparation preserves source and produces the conventional Jekyll entry", t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "site-stylesheet-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(root, "api"));
+  const source = '$brand-color: #fdda24;\n@import "minima";\n';
+  fs.writeFileSync(path.join(root, "api", "_main.scss"), source);
+  generateStylesheet(root);
+  assert.equal(fs.readFileSync(path.join(root, "assets/main.scss"), "utf8"), "---\n---\n\n" + source);
+  assert.equal(fs.readFileSync(path.join(root, "api/_main.scss"), "utf8"), source);
 });
 
 test("generated literals preserve values without permitting script or Liquid injection", () => {
@@ -213,15 +223,15 @@ test("generated literals preserve values without permitting script or Liquid inj
 });
 
 test("executes actual Jekyll fallback scripts with the shared helpers", () => {
-  const root = path.join(__dirname, "..");
+  const root = path.join(__dirname, "..", "..");
   const html = fs.readFileSync(path.join(root, "404.html"), "utf8");
   const rendered = html.replace(/{% include (_pdf-pages\.js) %}/g, (_, file) =>
-    fs.readFileSync(path.join(root, "site", file), "utf8")
+    fs.readFileSync(path.join(root, "api", file), "utf8")
   );
 
   const redirectScript = rendered.match(/<script>([\s\S]*?)<\/script>/)[1]
-    .replace("{% include redirect-core.js %}", fs.readFileSync(path.join(root, "site/redirect-core.js"), "utf8"))
-    .replace("{% include redirect-lookup.generated.js %}", renderLookup(loadRedirectEntries()));
+    .replace("{% include _redirect-core.js %}", fs.readFileSync(path.join(root, "api/_redirect-core.js"), "utf8"))
+    .replace("{% include _redirect-lookup.generated.js %}", renderLookup(loadRedirectEntries()));
   const redirects = loadRedirects();
   for (const [pathname, hash, expected] of [
     ["/_5", "#3", redirects._5 + "#page=3"],

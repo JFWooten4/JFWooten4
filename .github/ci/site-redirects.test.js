@@ -5,9 +5,9 @@ const test = require("node:test");
 const vm = require("node:vm");
 const { execFileSync } = require("node:child_process");
 
-const handler = require("../api/redirect");
-const { loadRedirects } = require("../site/_redirects");
-const root = path.join(__dirname, "..");
+const handler = require("../../api/redirect");
+const { loadRedirects } = require("../../api/_redirects");
+const root = path.join(__dirname, "..", "..");
 const site = path.join(root, "_site");
 const registryFiles = fs.readdirSync(path.join(root, "redirects"), { withFileTypes: true })
   .filter(entry => entry.isFile() && entry.name.endsWith(".toml"))
