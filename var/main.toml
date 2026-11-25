@@ -1,4 +1,3 @@
-# Ordinary shortlinks. Prefixed links are configured in law.toml.
 [redirects]
 "scotus-dockets" = "https://catalog.archives.gov/id/1524561"
 "sdf-kelly" = "https://www.sec.gov/comments/S7-2026-27/s7202627-1103179-3882886.pdf"
