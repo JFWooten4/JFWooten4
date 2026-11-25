@@ -4,6 +4,8 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 
 const handler = require("../api/redirect");
+const vm = require("node:vm");
+const { isPdfDestination, pdfPageDestination } = require("../api/_pdf-pages");
 const {
   loadRedirects,
   parseLawRedirects,
@@ -78,7 +80,7 @@ test("returns an uncached temporary redirect for a configured shortlink", () => 
   handler({ query: { path: "tar1" } }, response);
 
   assert.deepEqual(result, {
-    headers: { "Cache-Control": "no-store" },
+    headers: { "Cache-Control": "no-store", Vary: "Accept" },
     status: 307,
     destination: "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf",
   });
@@ -100,4 +102,59 @@ test("sends unknown paths to search without exposing an open redirect", () => {
     status: 307,
     destination: "https://wooten.link/search",
   });
+});
+
+test("translates positive PDF page shorthand without losing the query", () => {
+  assert.equal(pdfPageDestination("https://example.com/report.PDF?download=1", "#3"), "https://example.com/report.PDF?download=1#page=3");
+  assert.equal(pdfPageDestination("/book.pdf#page=20", "#003"), "/book.pdf#page=3");
+  assert.equal(pdfPageDestination("/book.pdf#page=20", ""), "/book.pdf#page=20");
+  assert.equal(pdfPageDestination("/book.pdf", "#page=7"), "/book.pdf#page=7");
+  assert.equal(pdfPageDestination("/book.pdf", "#0"), "/book.pdf#0");
+  assert.equal(pdfPageDestination("/book.pdf", "#-3"), "/book.pdf#-3");
+  assert.equal(pdfPageDestination("/book.pdf", "#3.5"), "/book.pdf#3.5");
+  assert.equal(pdfPageDestination("https://example.com/?file=report.pdf", "#3"), "https://example.com/?file=report.pdf");
+  assert.equal(isPdfDestination("/book.pdf#page=2"), true);
+});
+
+test("browser PDF navigation runs the page redirect for _5", () => {
+  const headers = {};
+  let body;
+  const response = {
+    setHeader(name, value) { headers[name] = value; },
+    status(code) { assert.equal(code, 200); return this; },
+    send(html) { body = html; },
+    redirect() { assert.fail("Browser must receive the PDF page bridge"); },
+  };
+  handler({ method: "GET", headers: { accept: "text/html,application/xhtml+xml" }, query: { path: "_5" } }, response);
+  assert.equal(headers["Content-Type"], "text/html; charset=utf-8");
+  assert.equal(headers["Cache-Control"], "no-store");
+  assert.equal(headers.Vary, "Accept");
+  const destination = loadRedirects()._5;
+  assert.ok(isPdfDestination(destination));
+  assert.ok(body.includes('href="' + destination + '"'));
+  const script = body.match(/<script>([\s\S]*?)<\/script>/)[1];
+  for (const [hash, expected] of [["#3", destination + "#page=3"], ["", destination], ["#page=4", destination + "#page=4"]]) {
+    let actual;
+    vm.runInNewContext(script, {
+      document: { getElementById() { return { getAttribute() { return destination; } }; } },
+      window: { location: { hash, replace(value) { actual = value; } } },
+    });
+    assert.equal(actual, expected);
+  }
+});
+
+test("non-PDF browser navigation retains the HTTP redirect", () => {
+  handler({ method: "GET", headers: { accept: "text/html" }, query: { path: "github" } }, {
+    setHeader() {},
+    redirect(status, destination) {
+      assert.equal(status, 307);
+      assert.equal(destination, "https://github.com/JFWooten4");
+    },
+  });
+});
+
+test("Jekyll fallback shares the PDF fragment transformation", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "404.html"), "utf8");
+  assert.ok(html.includes("{% include_relative api/_pdf-pages.js %}"));
+  assert.ok(html.includes("window.location.replace(pdfPageDestination(redirect, window.location.hash));"));
 });

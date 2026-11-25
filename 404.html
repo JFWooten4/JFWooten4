@@ -350,12 +350,13 @@
 {% include_relative var/law.toml %}
   </script>
   <script>
+{% include_relative api/_pdf-pages.js %}
     var path = window.location.pathname.split("/").filter(Boolean)[0];
     path = path ? decodeURIComponent(path).toLowerCase() : path;
     var redirects = window.LINKS || {};
 
     var redirect = redirects[path] || lawRedirect(path) || "/search";
-    window.location.replace(redirect);
+    window.location.replace(pdfPageDestination(redirect, window.location.hash));
 
     function lawRedirect(path) {
       if (!path || /^[a-z0-9]/i.test(path)) {
