@@ -7,6 +7,7 @@ const projectRoot = fs.existsSync(path.join(__dirname, "..", "redirects"))
 
 // The redirect files use quoted, single-line string entries. The optional
 // table suffix is a literal prefix, not part of the stored key.
+// Uppercase named tables group priority links without prefixing their keys.
 function parseRedirectEntries(source) {
   let prefix = null;
   const entries = new Map();
@@ -18,9 +19,13 @@ function parseRedirectEntries(source) {
       continue;
     }
 
-    if (/^\s*\[/.test(line)) {
-      prefix = null;
+    if (/^\s*\[[A-Z][A-Z0-9_]*\]\s*(?:#.*)?$/.test(line)) {
+      prefix = "";
       continue;
+    }
+
+    if (/^\s*\[/.test(line)) {
+      throw new Error("Unsupported redirect table: " + line);
     }
 
     if (prefix === null || /^\s*(?:#.*)?$/.test(line)) continue;

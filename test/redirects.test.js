@@ -35,6 +35,13 @@ test("parses law redirects with their punctuation prefixes", () => {
   });
 });
 
+test("named priority tables preserve unprefixed shortlinks", () => {
+  const source = '[CHIEF_AMBITION]\n"bottleneck" = "/project"\n[LATEST_COMMENT]\n"latest" = "/comment.pdf"';
+  assert.deepEqual(parseRedirects(source), { bottleneck: "/project", latest: "/comment.pdf" });
+  assert.throws(() => parseRedirects(source + '\n[OTHER_PRIORITY]\n"BOTTLENECK" = "/other"'), /Duplicate redirect/);
+  assert.throws(() => parseRedirects('[unknown]\n"link" = "/wrong"'), /Unsupported redirect table/);
+});
+
 test("loads every discovered redirect registry", () => {
   const root = path.join(__dirname, "..");
   const files = discoverRedirectFiles(root);
@@ -45,6 +52,11 @@ test("loads every discovered redirect registry", () => {
   assert.equal(redirects._3, "https://www.issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
   assert.equal(redirects._5, redirects._3);
   assert.equal(redirects.book, "/book.pdf");
+  const priority = loadRedirectEntries(root).filter(entry => entry.source === "redirects/priority.toml");
+  assert.ok(priority.some(entry => entry.key === "bottleneck"));
+  assert.ok(priority.some(entry => entry.key === "latest"));
+  assert.equal(redirects.latest, priority.find(entry => entry.key === "latest").href);
+  assert.equal(redirects.bottleneck, priority.find(entry => entry.key === "bottleneck").href);
 });
 
 test("normalizes the first path segment like the browser redirect", () => {

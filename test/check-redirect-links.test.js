@@ -17,6 +17,8 @@ test("reads redirects from discovered registries", () => {
   const targets = collectTargets();
   assert.ok(targets.some((target) => target.source === "redirects/main.toml" && target.key === "tar1"));
   assert.ok(targets.some((target) => target.source === "redirects/law.toml" && target.key === "_0"));
+  assert.ok(targets.some((target) => target.source === "redirects/priority.toml" && target.key === "bottleneck"));
+  assert.ok(targets.some((target) => target.source === "redirects/priority.toml" && target.key === "latest"));
 });
 
 test("deduplicates destinations and resolves relative links", () => {
