@@ -219,3 +219,36 @@ test("published homepage references existing media and matching credits directly
   const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
   assert.ok(!config.redirects.some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
 });
+
+test("Mt. Gox shortlinks and legacy PDF URLs resolve to published law PDFs", () => {
+  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+  const lawRule = config.rewrites.find(rule => rule.source === "/law/:path*");
+  assert.deepEqual(lawRule, { source: "/law/:path*", destination: "/static/law/:path*" });
+  const fallback = config.rewrites.findIndex(rule => rule.source === "/:path*");
+  assert.ok(fallback > config.rewrites.indexOf(lawRule));
+  const legacyRule = config.redirects.find(rule => rule.source === "/legal/:path*");
+  assert.deepEqual(legacyRule, { source: "/legal/:path*", destination: "/law/:path*", permanent: true });
+  assert.equal(config.redirects.filter(rule => rule.source.startsWith("/legal/")).length, 1);
+  assert.ok(!config.rewrites.some(rule => rule.source === "/legal/:path*"));
+  for (const [key, filename] of [
+    ["mount-gox-problems", "mtgox-business-plan-2013.pdf"],
+    ["mount-gox-explosion", "mtgox-situation-draft-2014.pdf"],
+  ]) {
+    const publicPath = "/law/" + filename;
+    const destination = "https://wooten.link" + publicPath;
+    assert.equal(legacyRule.destination.replace(":path*", filename), publicPath);
+    assert.equal(expected[key], destination);
+    for (const method of ["GET", "HEAD"]) {
+      const result = request(key, method);
+      assert.equal(result.status, 307);
+      assert.equal(result.destination, destination);
+    }
+    const browser = request(key, "GET", "text/html");
+    assert.equal(browser.status, 200);
+    assert.equal(runPdfBridge(browser.body, destination, "#3"), destination + "#page=3");
+    const built = fs.readFileSync(path.join(site, lawRule.destination.replace(":path*", filename)));
+    const source = fs.readFileSync(path.join(root, "static/law", filename));
+    assert.equal(built.subarray(0, 5).toString(), "%PDF-");
+    assert.deepEqual(built, source, filename);
+  }
+});

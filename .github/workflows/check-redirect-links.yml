@@ -20,6 +20,8 @@ on:
       - ".github/ci/**"
       - "api/**"
       - "static/search.html"
+      - "static/law/**"
+      - "static/legal/**"
       - ".github/workflows/check-redirect-links.yml"
 
 permissions:

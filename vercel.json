@@ -45,6 +45,11 @@
       "source": "/scam/:path*",
       "destination": "/btc/:path*",
       "permanent": true
+    },
+    {
+      "source": "/legal/:path*",
+      "destination": "/law/:path*",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -77,8 +82,8 @@
       "destination": "/static/book.pdf"
     },
     {
-      "source": "/legal/:path*",
-      "destination": "/static/legal/:path*"
+      "source": "/law/:path*",
+      "destination": "/static/law/:path*"
     },
     {
       "source": "/src/:path*",
