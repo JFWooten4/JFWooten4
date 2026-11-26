@@ -35,30 +35,9 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/scam",
-      "destination": "/btc",
-      "permanent": true
-    },
-    {
-      "source": "/scam/:path*",
-      "destination": "/btc/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/legal/:path*",
-      "destination": "/law/:path*",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
-      "source": "/codex",
-      "destination": "/codex/index.html"
-    },
-    {
-      "source": "/codex/:thread",
+      "source": "/codex/:thread*",
       "destination": "/codex/index.html"
     },
     {

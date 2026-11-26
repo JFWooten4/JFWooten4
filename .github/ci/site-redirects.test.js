@@ -83,6 +83,8 @@ test("Jekyll publishes every TOML registry and the Minima stylesheet", () => {
   }
   assert.deepEqual(loadRedirects(), expected);
   assert.deepEqual(fs.readFileSync(path.join(site, "scripts/codex-launcher.mjs")), fs.readFileSync(path.join(root, "api/_codex-launcher.mjs")));
+  assert.deepEqual(fs.readFileSync(path.join(root, "codex/index.html")), fs.readFileSync(path.join(root, "api/_codex.html")));
+  assert.doesNotMatch(readSite("codex/index.html"), /^---\r?\n/);
   assert.match(readSite("codex/index.html"), /src="\/scripts\/codex-launcher\.mjs"/);
   const css = readSite("assets/main.css");
   assert.match(css, /#fdda24/i);
@@ -217,7 +219,7 @@ test("published homepage references existing media and matching credits directly
 
   assert.doesNotMatch(html, /["']\/props\/|power-mountian|climbing-pheonix|decievingly-cute|fannign|twiggl/);
   const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
-  assert.ok(!config.redirects.some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
+  assert.ok(!(config.redirects ?? []).some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
 });
 
 test("all published static assets have identical root aliases", () => {
@@ -225,9 +227,6 @@ test("all published static assets have identical root aliases", () => {
   assert.ok(!config.rewrites.some(rule => rule.destination.startsWith("/static/")));
   const fallback = config.rewrites.at(-1);
   assert.deepEqual(fallback, { source: "/:path*", destination: "/api/redirect" });
-  assert.deepEqual(config.redirects.find(rule => rule.source === "/legal/:path*"), {
-    source: "/legal/:path*", destination: "/law/:path*", permanent: true,
-  });
 
   const staticOutput = path.join(site, "static");
   function checkAliases(dir) {

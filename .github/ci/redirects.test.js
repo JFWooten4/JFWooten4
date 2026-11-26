@@ -214,14 +214,20 @@ test("stylesheet preparation preserves source and produces the conventional Jeky
   assert.equal(fs.readFileSync(path.join(root, "api/_main.scss"), "utf8"), source);
 });
 
-test("launcher preparation preserves the public asset byte for byte", t => {
+test("launcher preparation preserves the public page and script byte for byte", t => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "site-launcher-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   fs.mkdirSync(path.join(root, "api"));
   const source = 'export const launcher = true;\n';
   fs.writeFileSync(path.join(root, "api", "_codex-launcher.mjs"), source);
+  const html = "---\npermalink: /codex/\n---\n<!doctype html>\n";
+  fs.writeFileSync(path.join(root, "api", "_codex.html"), html);
   generateLauncher(root);
   assert.equal(fs.readFileSync(path.join(root, "scripts/codex-launcher.mjs"), "utf8"), source);
+  assert.equal(fs.readFileSync(path.join(root, "codex/index.html"), "utf8"), html);
+  fs.writeFileSync(path.join(root, "api", "_codex.html"), html + "<title>Updated</title>\n");
+  generateLauncher(root);
+  assert.equal(fs.readFileSync(path.join(root, "codex/index.html"), "utf8"), html + "<title>Updated</title>\n");
 });
 
 test("generated literals preserve values without permitting script or Liquid injection", () => {
