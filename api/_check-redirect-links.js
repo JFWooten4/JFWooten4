@@ -106,7 +106,7 @@ async function main() {
     lines.push(`### ${label}`, "", "| Source / shortlink | HTTP result | Destination |", "| --- | --- | --- |");
     for (const entry of entries) {
       const refs = entry.references.map((item) => `${item.source}: ${item.key}`).join(", ");
-      lines.push(`| ${escapeSummary(refs)} | ${escapeSummary(entry.status ?? entry.reason)} | ${escapeSummary(entry.url)} |`);
+      lines.push(`| ${escapeSummary(refs)} | ${escapeSummary([entry.status, entry.reason].filter(value => value !== undefined).join(" — "))} | ${escapeSummary(entry.url)} |`);
       if (entry.state === "dead") {
         console.error(`::error title=Dead redirect::${escapeSummary(refs)} -> ${entry.url} (HTTP ${entry.status})`);
       }
@@ -117,6 +117,10 @@ async function main() {
   const summary = lines.join("\n") + "\n";
   console.log(summary);
   if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+  // Write only a completed audit; never synchronize an issue from a partial run.
+  if (process.env.LINK_CHECK_RESULTS) {
+    fs.writeFileSync(process.env.LINK_CHECK_RESULTS, JSON.stringify(results) + "\n");
+  }
   if (dead.length) process.exitCode = 1;
 }
 

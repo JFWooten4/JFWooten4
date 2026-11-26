@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: "22"
       - name: Test redirects, Codex launcher, and link checker
-        run: node --test .github/ci/redirects.test.js .github/ci/codex-launcher.test.mjs .github/ci/check-redirect-links.test.js .github/ci/search-copy-toast.test.js
+        run: node --test .github/ci/redirects.test.js .github/ci/codex-launcher.test.mjs .github/ci/check-redirect-links.test.js .github/ci/search-copy-toast.test.js .github/ci/redirect-link-issues.test.js
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
@@ -45,6 +45,33 @@ jobs:
         run: node api/_generate-redirects.js && bundle exec ruby api/_publish-static.rb
       - name: Verify published redirect registries and behavior
         run: node --test .github/ci/site-redirects.test.js
+  live-redirect-links:
+    if: github.event_name != 'pull_request'
+    needs: redirect-links
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      issues: write
+    concurrency:
+      group: redirect-link-audit-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - name: Check live redirect destinations
-        if: github.event_name != 'pull_request'
+        id: audit
+        env:
+          LINK_CHECK_RESULTS: ${{ runner.temp }}/redirect-link-results.json
         run: node api/_check-redirect-links.js
+      - name: Synchronize broken-link issue
+        if: >-
+          ${{ !cancelled() &&
+          (steps.audit.outcome == 'success' || steps.audit.outcome == 'failure') &&
+          github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          LINK_CHECK_RESULTS: ${{ runner.temp }}/redirect-link-results.json
+        run: node .github/ci/redirect-link-issues.js
