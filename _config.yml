@@ -6,7 +6,6 @@ theme: minima
 includes_dir: api
 exclude:
   - _pdf-parts
-  - _scripts
   - api
   - Gemfile
   - Gemfile.lock

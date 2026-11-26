@@ -3,7 +3,7 @@
 From the repository root, split a local original into 25 MiB binary chunks:
 
 ```sh
-node _scripts/pdf-parts.mjs split "/path/to/The Transfer of Stock.pdf" static/book/transfer-of-stock.pdf
+node api/_pdf-parts.mjs split "/path/to/The Transfer of Stock.pdf" static/book/transfer-of-stock.pdf
 git add _pdf-parts/static/book/transfer-of-stock.pdf
 ```
 
@@ -14,7 +14,7 @@ Vercel runs the reconstruction after Jekyll has built the site. Each manifest re
 To verify locally:
 
 ```sh
-node _scripts/pdf-parts.mjs build
+node api/_pdf-parts.mjs build
 shasum -a 256 "/path/to/The Transfer of Stock.pdf" _site/static/book/transfer-of-stock.pdf
 ```
 

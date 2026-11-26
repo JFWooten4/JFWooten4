@@ -109,5 +109,5 @@ if (command === "split" && source && target && !extra.length) {
 } else if (command === "build" && !target && !extra.length) {
   if (await exists(partsRoot)) await walk(partsRoot, resolve(root, source || "_site"));
 } else {
-  throw new Error("Usage: node _scripts/pdf-parts.mjs split <input.pdf> <static/path.pdf> | build [output-directory]");
+  throw new Error("Usage: node api/_pdf-parts.mjs split <input.pdf> <static/path.pdf> | build [output-directory]");
 }
