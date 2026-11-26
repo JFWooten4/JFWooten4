@@ -49,7 +49,7 @@ test("loads every discovered redirect registry", () => {
   assert.deepEqual(redirects, Object.assign({}, ...files.map(file =>
     parseRedirects(fs.readFileSync(path.join(root, file), "utf8")))));
   assert.equal(redirects.tar1, "https://www.sec.gov/comments/sr-occ-2025-801/srocc2025801-598095-1737722.pdf");
-  assert.equal(redirects._3, "https://www.issuers.info/1846058/PNL/2025-12-31_Annual.pdf");
+  assert.equal(redirects._3, "https://www.issuers.info/1846058/pnl/2025-12-31_annual.pdf");
   assert.equal(Object.hasOwn(redirects, "_5"), false);
   assert.equal(redirects.book, "/book.pdf");
   const priority = loadRedirectEntries(root).filter(entry => entry.source === "redirects/priority.toml");
