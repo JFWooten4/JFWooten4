@@ -83,6 +83,8 @@ test("Jekyll publishes every TOML registry and the Minima stylesheet", () => {
   }
   assert.deepEqual(loadRedirects(), expected);
   assert.deepEqual(fs.readFileSync(path.join(site, "scripts/codex-launcher.mjs")), fs.readFileSync(path.join(root, "api/_codex-launcher.mjs")));
+  assert.deepEqual(fs.readFileSync(path.join(root, "codex/index.html")), fs.readFileSync(path.join(root, "api/_codex.html")));
+  assert.doesNotMatch(readSite("codex/index.html"), /^---\r?\n/);
   assert.match(readSite("codex/index.html"), /src="\/scripts\/codex-launcher\.mjs"/);
   const css = readSite("assets/main.css");
   assert.match(css, /#fdda24/i);
@@ -217,5 +219,78 @@ test("published homepage references existing media and matching credits directly
 
   assert.doesNotMatch(html, /["']\/props\/|power-mountian|climbing-pheonix|decievingly-cute|fannign|twiggl/);
   const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
-  assert.ok(!config.redirects.some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
+  assert.ok(!(config.redirects ?? []).some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
+});
+
+test("all published static assets have identical root aliases", () => {
+  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+  assert.ok(!config.rewrites.some(rule => rule.destination.startsWith("/static/")));
+  const fallback = config.rewrites.at(-1);
+  assert.deepEqual(fallback, { source: "/:path*", destination: "/api/redirect" });
+
+  const staticOutput = path.join(site, "static");
+  function checkAliases(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const file = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        checkAliases(file);
+      } else {
+        const relative = path.relative(staticOutput, file);
+        const built = fs.readFileSync(file);
+        assert.deepEqual(fs.readFileSync(path.join(site, relative)), built, relative);
+        if (relative.endsWith(".pdf")) {
+          assert.equal(built.subarray(0, 5).toString(), "%PDF-", relative);
+          assert.deepEqual(built, fs.readFileSync(path.join(root, "static", relative)), relative);
+        }
+      }
+    }
+  }
+  checkAliases(staticOutput);
+  for (const file of ["book.pdf", "btc/index.html", "tax/index.html", "ppt/index.html", "ref/worthless-security-form.pdf"]) {
+    assert.ok(fs.statSync(path.join(site, file)).isFile(), file);
+  }
+  assert.equal(readSite("ppt/index.html"), readSite("slides/index.html"));
+  assert.equal(readSite("search.html"), readSite("search/index.html"));
+});
+
+test("friend gallery routes accept any numeric index without matching image paths", () => {
+  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+  const routes = config.rewrites.filter(rule => rule.source.startsWith("/friends/"));
+  assert.deepEqual(routes, [{ source: "/friends/:index([0-9]+)", destination: "/index.html" }]);
+  assert.ok(config.rewrites.indexOf(routes[0]) < config.rewrites.findIndex(rule => rule.source === "/:path*"));
+  const route = new RegExp("^" + routes[0].source.replace(":index", "") + "/?$");
+  const parser = readSite("index.html").match(/function getFriendIndexFromPath\(\) \{[\s\S]*?\n      \}/);
+  assert.ok(parser);
+  function parse(pathname) {
+    return vm.runInNewContext(parser[0] + "\ngetFriendIndexFromPath()", { window: { location: { pathname } } });
+  }
+  for (const value of [0, 3, 4, 12, 123]) {
+    const pathname = "/friends/" + value;
+    assert.ok(route.test(pathname));
+    assert.equal(parse(pathname), value);
+    assert.equal(parse(pathname + "/"), value);
+  }
+  for (const pathname of ["/friends/large/photo.jpg", "/friends/medium/photo.webp", "/friends/small/photo.webp", "/friends/-1", "/friends/1.5", "/friends/12/extra"]) {
+    assert.ok(!route.test(pathname), pathname);
+    assert.equal(parse(pathname), -1, pathname);
+  }
+});
+
+test("reconstructed PDFs publish identical static and root aliases", () => {
+  const temporary = fs.mkdtempSync(path.join(require("node:os").tmpdir(), "pdf-alias-"));
+  try {
+    const script = path.join(root, "api/_pdf-parts.mjs");
+    const original = path.join(temporary, "original.pdf");
+    const bytes = Buffer.from("%PDF-1.4\nfixture\n");
+    fs.writeFileSync(original, bytes);
+    execFileSync(process.execPath, [script, "split", original, "static/book/fixture.pdf"], { cwd: temporary });
+    execFileSync(process.execPath, [script, "build"], { cwd: temporary });
+    for (const file of ["static/book/fixture.pdf", "book/fixture.pdf"]) {
+      assert.deepEqual(fs.readFileSync(path.join(temporary, "_site", file)), bytes);
+    }
+    execFileSync(process.execPath, [script, "build"], { cwd: temporary });
+    assert.deepEqual(fs.readFileSync(path.join(temporary, "_site/book/fixture.pdf")), bytes);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
 });

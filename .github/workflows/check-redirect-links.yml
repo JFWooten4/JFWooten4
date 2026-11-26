@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - "codex/**"
       - "vercel.json"
       - "Gemfile"
       - "Gemfile.lock"
@@ -19,7 +18,7 @@ on:
       - "redirects/*.toml"
       - ".github/ci/**"
       - "api/**"
-      - "static/search.html"
+      - "static/**"
       - ".github/workflows/check-redirect-links.yml"
 
 permissions:
@@ -40,8 +39,10 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: true
+      - name: Test static publishing
+        run: bundle exec ruby .github/ci/publish-static.test.rb
       - name: Build the Jekyll site
-        run: node api/_generate-redirects.js && bundle exec jekyll build
+        run: node api/_generate-redirects.js && bundle exec ruby api/_publish-static.rb
       - name: Verify published redirect registries and behavior
         run: node --test .github/ci/site-redirects.test.js
       - name: Check live redirect destinations

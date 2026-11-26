@@ -41,11 +41,14 @@ function generateStylesheet(root = path.resolve(__dirname, "..")) {
   fs.writeFileSync(path.join(assets, "main.scss"), "---\n---\n\n" + source);
 }
 
-// Preserve the public launcher URL while keeping its only tracked source in api/.
+// Publish the launcher page and script from their tracked sources in api/.
 function generateLauncher(root = path.resolve(__dirname, "..")) {
   const output = path.join(root, "scripts");
   fs.mkdirSync(output, { recursive: true });
   fs.copyFileSync(path.join(root, "api", "_codex-launcher.mjs"), path.join(output, "codex-launcher.mjs"));
+  const page = path.join(root, "codex");
+  fs.mkdirSync(page, { recursive: true });
+  fs.copyFileSync(path.join(root, "api", "_codex.html"), path.join(page, "index.html"));
 }
 
 if (require.main === module) {

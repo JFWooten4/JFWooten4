@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
+import { constants, createReadStream } from "node:fs";
 import { spawnSync } from "node:child_process";
-import { mkdir, readFile, readdir, rename, rm, writeFile, open, stat } from "node:fs/promises";
+import { copyFile, mkdir, readFile, readdir, rename, rm, writeFile, open, stat } from "node:fs/promises";
 import { dirname, join, resolve, relative, sep } from "node:path";
 
 const root = process.cwd();
@@ -22,6 +22,22 @@ async function exists(path) {
     if (error.code === "ENOENT") return false;
     throw error;
   });
+}
+
+// Reconstructed PDFs are created after Jekyll's static alias hook.
+async function publishPdf(temporary, outputRoot, target) {
+  const output = join(outputRoot, target);
+  const alias = join(outputRoot, target.slice("static/".length));
+  const aliasTemporary = alias + ".tmp-" + process.pid;
+  await mkdir(dirname(alias), { recursive: true });
+  if (await exists(alias) && !(await exists(output))) throw new Error("Static publishing collision: " + alias);
+  await copyFile(temporary, aliasTemporary, constants.COPYFILE_EXCL);
+  try {
+    await rename(temporary, output);
+    await rename(aliasTemporary, alias);
+  } finally {
+    await rm(aliasTemporary, { force: true });
+  }
 }
 
 async function split(source, target) {
@@ -87,7 +103,7 @@ async function assemble(directory, outputRoot) {
     }
     if (size !== manifest.size || wholeHash.digest("hex") !== manifest.sha256) throw new Error("PDF checksum mismatch: " + target);
     await file.close();
-    await rename(temporary, output);
+    await publishPdf(temporary, outputRoot, target);
     console.log("Assembled " + target + " (" + size + " bytes)");
   } finally {
     await file.close();
@@ -158,10 +174,12 @@ async function mergeBook(directory, outputRoot) {
     run("qpdf", ["--empty", "--stream-data=preserve", "--pages", ...inputs.flatMap(path => [path, "1-z"]), "--", temporary]);
     run("qpdf", ["--check", temporary]);
     if (pageCount(temporary) !== expectedPages) throw new Error("Merged page count mismatch: " + target);
-    await rename(temporary, output);
+    await publishPdf(temporary, outputRoot, target);
     // Jekyll may copy source parts for additional books not explicitly excluded.
     const publishedParts = join(outputRoot, relative(root, directory));
     if (resolve(publishedParts) !== resolve(directory)) await rm(publishedParts, { recursive: true, force: true });
+    const aliasParts = join(outputRoot, relative(root, directory).slice("static/".length));
+    await rm(aliasParts, { recursive: true, force: true });
     console.log("Merged " + inputs.length + " PDFs into " + target + " (" + expectedPages + " pages)");
   } finally {
     await rm(temporary, { force: true });

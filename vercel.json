@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "node api/_generate-redirects.js && bundle exec jekyll build && node api/_pdf-parts.mjs build",
+  "buildCommand": "node api/_generate-redirects.js && bundle exec ruby api/_publish-static.rb && node api/_pdf-parts.mjs build",
   "outputDirectory": "_site",
   "functions": {
     "api/redirect.js": {
@@ -35,78 +35,14 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/scam",
-      "destination": "/btc",
-      "permanent": true
-    },
-    {
-      "source": "/scam/:path*",
-      "destination": "/btc/:path*",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
-      "source": "/codex",
+      "source": "/codex/:thread*",
       "destination": "/codex/index.html"
     },
     {
-      "source": "/codex/:thread",
-      "destination": "/codex/index.html"
-    },
-    {
-      "source": "/friends/0",
+      "source": "/friends/:index([0-9]+)",
       "destination": "/index.html"
-    },
-    {
-      "source": "/friends/1",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/friends/2",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/friends/3",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/book.pdf",
-      "destination": "/static/book.pdf"
-    },
-    {
-      "source": "/legal/:path*",
-      "destination": "/static/legal/:path*"
-    },
-    {
-      "source": "/src/:path*",
-      "destination": "/static/src/:path*"
-    },
-    {
-      "source": "/tax",
-      "destination": "/static/tax/index.html"
-    },
-    {
-      "source": "/tax/:path*",
-      "destination": "/static/tax/:path*"
-    },
-    {
-      "source": "/btc",
-      "destination": "/static/btc/index.html"
-    },
-    {
-      "source": "/btc/:path*",
-      "destination": "/static/btc/:path*"
-    },
-    {
-      "source": "/ppt",
-      "destination": "/static/ppt/index.html"
-    },
-    {
-      "source": "/ppt/:path*",
-      "destination": "/static/ppt/:path*"
     },
     {
       "source": "/:path*",
