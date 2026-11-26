@@ -59,3 +59,11 @@ test("falls back to HEAD if a server rejects GET", async () => {
   assert.deepEqual(await checkUrl("https://example.com", mock.fetchImpl), { state: "ok", status: 200 });
   assert.deepEqual(mock.methods, ["GET", "HEAD"]);
 });
+
+test("applies the same 404 rule to all destinations", async () => {
+  for (const url of ["https://github.com/example/repository", "https://github.com/example/repository/issues/7", "https://example.com/missing"]) {
+    const mock = mockFetch([404, 404]);
+    assert.deepEqual(await checkUrl(url, mock.fetchImpl), { state: "dead", status: 404 });
+    assert.deepEqual(mock.methods, ["GET", "GET"]);
+  }
+});
