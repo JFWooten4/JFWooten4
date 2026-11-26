@@ -220,35 +220,59 @@ test("published homepage references existing media and matching credits directly
   assert.ok(!config.redirects.some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
 });
 
-test("Mt. Gox shortlinks and legacy PDF URLs resolve to published law PDFs", () => {
+test("all published static assets have identical root aliases", () => {
   const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
-  const lawRule = config.rewrites.find(rule => rule.source === "/law/:path*");
-  assert.deepEqual(lawRule, { source: "/law/:path*", destination: "/static/law/:path*" });
-  const fallback = config.rewrites.findIndex(rule => rule.source === "/:path*");
-  assert.ok(fallback > config.rewrites.indexOf(lawRule));
-  const legacyRule = config.redirects.find(rule => rule.source === "/legal/:path*");
-  assert.deepEqual(legacyRule, { source: "/legal/:path*", destination: "/law/:path*", permanent: true });
-  assert.equal(config.redirects.filter(rule => rule.source.startsWith("/legal/")).length, 1);
-  assert.ok(!config.rewrites.some(rule => rule.source === "/legal/:path*"));
-  for (const [key, filename] of [
-    ["mount-gox-problems", "mtgox-business-plan-2013.pdf"],
-    ["mount-gox-explosion", "mtgox-situation-draft-2014.pdf"],
-  ]) {
-    const publicPath = "/law/" + filename;
-    const destination = "https://wooten.link" + publicPath;
-    assert.equal(legacyRule.destination.replace(":path*", filename), publicPath);
-    assert.equal(expected[key], destination);
-    for (const method of ["GET", "HEAD"]) {
-      const result = request(key, method);
-      assert.equal(result.status, 307);
-      assert.equal(result.destination, destination);
+  assert.ok(!config.rewrites.some(rule => rule.destination.startsWith("/static/")));
+  const fallback = config.rewrites.at(-1);
+  assert.deepEqual(fallback, { source: "/:path*", destination: "/api/redirect" });
+  assert.deepEqual(config.redirects.find(rule => rule.source === "/legal/:path*"), {
+    source: "/legal/:path*", destination: "/law/:path*", permanent: true,
+  });
+
+  const staticOutput = path.join(site, "static");
+  function checkAliases(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const file = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        checkAliases(file);
+      } else {
+        const relative = path.relative(staticOutput, file);
+        const built = fs.readFileSync(file);
+        assert.deepEqual(fs.readFileSync(path.join(site, relative)), built, relative);
+        if (relative.endsWith(".pdf")) {
+          assert.equal(built.subarray(0, 5).toString(), "%PDF-", relative);
+          assert.deepEqual(built, fs.readFileSync(path.join(root, "static", relative)), relative);
+        }
+      }
     }
-    const browser = request(key, "GET", "text/html");
-    assert.equal(browser.status, 200);
-    assert.equal(runPdfBridge(browser.body, destination, "#3"), destination + "#page=3");
-    const built = fs.readFileSync(path.join(site, lawRule.destination.replace(":path*", filename)));
-    const source = fs.readFileSync(path.join(root, "static/law", filename));
-    assert.equal(built.subarray(0, 5).toString(), "%PDF-");
-    assert.deepEqual(built, source, filename);
+  }
+  checkAliases(staticOutput);
+  for (const file of ["book.pdf", "btc/index.html", "tax/index.html", "ppt/index.html", "ref/worthless-security-form.pdf"]) {
+    assert.ok(fs.statSync(path.join(site, file)).isFile(), file);
+  }
+  assert.equal(readSite("ppt/index.html"), readSite("slides/index.html"));
+  assert.equal(readSite("search.html"), readSite("search/index.html"));
+});
+
+test("friend gallery routes accept any numeric index without matching image paths", () => {
+  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+  const routes = config.rewrites.filter(rule => rule.source.startsWith("/friends/"));
+  assert.deepEqual(routes, [{ source: "/friends/:index([0-9]+)", destination: "/index.html" }]);
+  assert.ok(config.rewrites.indexOf(routes[0]) < config.rewrites.findIndex(rule => rule.source === "/:path*"));
+  const route = new RegExp("^" + routes[0].source.replace(":index", "") + "/?$");
+  const parser = readSite("index.html").match(/function getFriendIndexFromPath\(\) \{[\s\S]*?\n      \}/);
+  assert.ok(parser);
+  function parse(pathname) {
+    return vm.runInNewContext(parser[0] + "\ngetFriendIndexFromPath()", { window: { location: { pathname } } });
+  }
+  for (const value of [0, 3, 4, 12, 123]) {
+    const pathname = "/friends/" + value;
+    assert.ok(route.test(pathname));
+    assert.equal(parse(pathname), value);
+    assert.equal(parse(pathname + "/"), value);
+  }
+  for (const pathname of ["/friends/large/photo.jpg", "/friends/medium/photo.webp", "/friends/small/photo.webp", "/friends/-1", "/friends/1.5", "/friends/12/extra"]) {
+    assert.ok(!route.test(pathname), pathname);
+    assert.equal(parse(pathname), -1, pathname);
   }
 });

@@ -930,7 +930,7 @@
       var routeNavigationInProgress = false;
 
       function getFriendIndexFromPath() {
-        var match = window.location.pathname.match(/^\/friends\/([0-3])\/?$/);
+        var match = window.location.pathname.match(/^\/friends\/([0-9]+)\/?$/);
         return match ? Number(match[1]) : -1;
       }
 
