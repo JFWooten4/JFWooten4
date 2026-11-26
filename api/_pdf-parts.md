@@ -19,3 +19,11 @@ shasum -a 256 "/path/to/The Transfer of Stock.pdf" _site/static/book/transfer-of
 ```
 
 The two hashes must match. The chunk storage and scripts are excluded from Jekyll's published site. The generated _site directory is ignored by Git.
+
+## Separate, complete PDF volumes
+
+Place independently readable PDFs in `static/book/<book-name>/part-1.pdf`, `part-2.pdf`, and so on, with a `manifest.json` containing `format: "pdf-pages"` and a `parts` array in numeric order. Each entry contains `name`, `size` (bytes) and `gitBlobSha1` (from `git hash-object <file>`).
+
+The build verifies the source blobs, uses qpdf to merge the pages without recompressing image streams, and verifies the resulting PDF structure and total page count. It publishes `static/book/<book-name>.pdf`, not the volume directory. This is a page merge rather than byte-identical reconstruction of an original unsplit PDF; document-level metadata and bookmarks may differ.
+
+Vercel installs qpdf using dnf if it is missing. For local builds install qpdf first (for example, `brew install qpdf` on macOS).

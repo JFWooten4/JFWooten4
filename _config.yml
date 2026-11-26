@@ -6,6 +6,7 @@ theme: minima
 includes_dir: api
 exclude:
   - _pdf-parts
+  - static/book/transfer-of-stock
   - api
   - Gemfile
   - Gemfile.lock

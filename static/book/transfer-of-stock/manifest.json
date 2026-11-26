@@ -1,0 +1,30 @@
+{
+  "format": "pdf-pages",
+  "parts": [
+    {
+      "name": "part-1.pdf",
+      "size": 101266121,
+      "gitBlobSha1": "44951b1b515f898cb263a15a044f1bcb04674b10"
+    },
+    {
+      "name": "part-2.pdf",
+      "size": 93035152,
+      "gitBlobSha1": "e38abbace486e90cdccc794968c42a5cebfaa197"
+    },
+    {
+      "name": "part-3.pdf",
+      "size": 100744622,
+      "gitBlobSha1": "18781a29809f2dd5ad95c8a499e12965e3e3b91e"
+    },
+    {
+      "name": "part-4.pdf",
+      "size": 89177400,
+      "gitBlobSha1": "0cff26a6fcb0e2da0ccef4c34c915ec657812951"
+    },
+    {
+      "name": "part-5.pdf",
+      "size": 81231108,
+      "gitBlobSha1": "f2f862f6a4adda372b8bb64ed2ef8efed035d8ec"
+    }
+  ]
+}

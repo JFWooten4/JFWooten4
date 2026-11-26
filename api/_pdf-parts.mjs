@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { createReadStream } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { mkdir, readFile, readdir, rename, rm, writeFile, open, stat } from "node:fs/promises";
 import { dirname, join, resolve, relative, sep } from "node:path";
 
@@ -103,11 +105,90 @@ async function walk(directory, outputRoot) {
   if (!entries.length) throw new Error("Empty chunk directory: " + directory);
 }
 
+
+function run(command, args, capture = false) {
+  const result = spawnSync(command, args, { encoding: "utf8", stdio: capture ? ["ignore", "pipe", "inherit"] : "inherit" });
+  if (result.error) throw result.error;
+  if (result.status !== 0) throw new Error(command + " failed (exit " + result.status + ")");
+  return result.stdout;
+}
+
+let qpdfReady = false;
+function ensureQpdf() {
+  if (qpdfReady) return;
+  const probe = spawnSync("qpdf", ["--version"], { stdio: "ignore" });
+  if (probe.error?.code === "ENOENT" && process.env.VERCEL === "1") {
+    run("dnf", ["install", "-y", "qpdf"]);
+  }
+  run("qpdf", ["--version"]);
+  qpdfReady = true;
+}
+
+function pageCount(path) {
+  const count = Number(run("qpdf", ["--show-npages", path], true).trim());
+  if (!Number.isSafeInteger(count) || count < 1) throw new Error("Invalid page count: " + path);
+  return count;
+}
+
+async function mergeBook(directory, outputRoot) {
+  const manifest = JSON.parse(await readFile(join(directory, "manifest.json"), "utf8"));
+  if (manifest.format !== "pdf-pages" || !Array.isArray(manifest.parts) || !manifest.parts.length) throw new Error("Invalid page-part manifest: " + directory);
+  const names = new Set(["manifest.json"]);
+  const inputs = [];
+  for (const [index, part] of manifest.parts.entries()) {
+    if (part.name !== "part-" + (index + 1) + ".pdf" || !Number.isSafeInteger(part.size) || part.size < 1 || !/^[a-f0-9]{40}$/.test(part.gitBlobSha1)) throw new Error("Invalid PDF part entry: " + directory);
+    names.add(part.name);
+    const path = join(directory, part.name);
+    const info = await stat(path);
+    if (info.size !== part.size) throw new Error("PDF part size mismatch: " + path);
+    const digest = createHash("sha1").update("blob " + info.size + "\0");
+    for await (const bytes of createReadStream(path)) digest.update(bytes);
+    if (digest.digest("hex") !== part.gitBlobSha1) throw new Error("PDF part checksum mismatch: " + path);
+    inputs.push(path);
+  }
+  const entries = await readdir(directory, { withFileTypes: true });
+  if (entries.length !== names.size || entries.some(entry => !entry.isFile() || !names.has(entry.name))) throw new Error("Unexpected or missing PDF parts: " + directory);
+  ensureQpdf();
+  const expectedPages = inputs.reduce((total, path) => total + pageCount(path), 0);
+  const target = pdfPath(relative(root, directory).split(sep).join("/") + ".pdf");
+  const output = join(outputRoot, target);
+  const temporary = output + ".tmp-" + process.pid;
+  await mkdir(dirname(output), { recursive: true });
+  try {
+    run("qpdf", ["--empty", "--stream-data=preserve", "--pages", ...inputs.flatMap(path => [path, "1-z"]), "--", temporary]);
+    run("qpdf", ["--check", temporary]);
+    if (pageCount(temporary) !== expectedPages) throw new Error("Merged page count mismatch: " + target);
+    await rename(temporary, output);
+    // Jekyll may copy source parts for additional books not explicitly excluded.
+    const publishedParts = join(outputRoot, relative(root, directory));
+    if (resolve(publishedParts) !== resolve(directory)) await rm(publishedParts, { recursive: true, force: true });
+    console.log("Merged " + inputs.length + " PDFs into " + target + " (" + expectedPages + " pages)");
+  } finally {
+    await rm(temporary, { force: true });
+  }
+}
+
+async function mergeBooks(outputRoot) {
+  const books = join(root, "static", "book");
+  if (!(await exists(books))) return;
+  for (const entry of await readdir(books, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const directory = join(books, entry.name);
+    const files = await readdir(directory);
+    if (files.includes("manifest.json") || files.some(name => /^part-\d+\.pdf$/.test(name))) {
+      await mergeBook(directory, outputRoot);
+    }
+  }
+}
+
 const [command, source, target, ...extra] = process.argv.slice(2);
 if (command === "split" && source && target && !extra.length) {
   await split(source, target);
 } else if (command === "build" && !target && !extra.length) {
-  if (await exists(partsRoot)) await walk(partsRoot, resolve(root, source || "_site"));
+  const outputRoot = resolve(root, source || "_site");
+  if (outputRoot === root) throw new Error("Build output must not be the source directory");
+  if (await exists(partsRoot)) await walk(partsRoot, outputRoot);
+  await mergeBooks(outputRoot);
 } else {
   throw new Error("Usage: node api/_pdf-parts.mjs split <input.pdf> <static/path.pdf> | build [output-directory]");
 }
