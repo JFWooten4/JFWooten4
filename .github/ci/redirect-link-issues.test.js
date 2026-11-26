@@ -22,80 +22,126 @@ function mockApi(issues = [], labelExists = true) {
   return { api, calls };
 }
 
-function managed(rows) {
-  return { number: 42, title: "🔗 Repair broken shortlinks", body: issueBody(rows, run),
+function managed(row, number = 42, state = "open") {
+  return { number, state, title: "🔗 Repair broken shortlink /" + row.key, body: issueBody([row], run),
     assignees: [{ login: "JFWooten4" }], labels: [{ name: "broken-links" }] };
 }
 
-test("opens an assigned, labeled issue for confirmed failures only", async () => {
+const row = key => reconcile([entry(key, "dead", 404)], [])[0];
+const creates = calls => calls.filter(call => call.method === "POST" && call.route === "/issues");
+const updates = calls => calls.filter(call => call.method === "PATCH");
+
+test("creates exactly one assigned issue per broken shortlink, including aliases", async () => {
   const { api, calls } = mockApi([], false);
-  const results = [entry("missing", "dead", 404), entry("gone", "dead", 410), entry("blocked", "inconclusive", 403)];
-  assert.equal(await synchronize(results, api, run), "created");
-  const create = calls.find(call => call.method === "POST" && call.route === "/issues");
-  assert.deepEqual(create.data.assignees, ["JFWooten4"]);
-  assert.deepEqual(create.data.labels, ["broken-links"]);
-  assert.equal(create.data.title, "🔗 Repair broken shortlinks");
-  assert.match(create.data.body, /@JFWooten4/);
-  assert.match(create.data.body, /actions\/runs\/123/);
-  assert.deepEqual(readState(create.data.body).map(row => row.key), ["gone", "missing"]);
-  assert.ok(calls.some(call => call.method === "POST" && call.route === "/labels"));
+  const shared = entry("missing", "dead", 404);
+  shared.references.push(ref("alias"));
+  const result = await synchronize([shared, entry("gone", "dead", 410), entry("blocked", "inconclusive", 403)], api, run);
+  assert.equal(result.created, 3);
+  assert.deepEqual(creates(calls).map(call => call.data.title), [
+    "🔗 Repair broken shortlink /alias", "🔗 Repair broken shortlink /gone", "🔗 Repair broken shortlink /missing",
+  ]);
+  for (const create of creates(calls)) {
+    assert.deepEqual(create.data.assignees, ["JFWooten4"]);
+    assert.deepEqual(create.data.labels, ["broken-links"]);
+    assert.match(create.data.body, /@JFWooten4/);
+    assert.match(create.data.body, /actions\/runs\/123/);
+    assert.equal(readState(create.data.body).length, 1);
+  }
+  assert.equal(calls.filter(call => call.route === "/labels" && call.method === "POST").length, 1);
 });
 
-test("does not open an issue for only access-blocked or rate-limited destinations", async () => {
+test("does not open an issue for access-blocked or rate-limited destinations", async () => {
   const { api, calls } = mockApi();
-  assert.equal(await synchronize([entry("blocked", "inconclusive", 403), entry("rate", "inconclusive", 429)], api, run), "clear");
+  assert.equal((await synchronize([entry("blocked", "inconclusive", 403), entry("rate", "inconclusive", 429)], api, run)).created, 0);
   assert.ok(calls.every(call => call.method === "GET"));
 });
 
-test("does not edit or duplicate an unchanged issue", async () => {
-  const results = [entry("missing", "dead", 404)];
-  const { api, calls } = mockApi([managed(reconcile(results, []))]);
-  assert.equal(await synchronize(results, api, run + "4"), "unchanged");
+test("repeated failures do not edit or duplicate the existing issue", async () => {
+  const { api, calls } = mockApi([managed(row("missing"))]);
+  assert.equal((await synchronize([entry("missing", "dead", 404)], api, run + "4")).unchanged, 1);
   assert.ok(calls.every(call => call.method === "GET"));
 });
 
-test("updates the same issue for changes and retains other labels and assignees", async () => {
-  const existing = managed(reconcile([entry("missing", "dead", 404)], []));
+test("updates a changed failure and opens a separate issue for a new link", async () => {
+  const existing = managed(row("missing"));
   existing.assignees.push({ login: "helper" });
   existing.labels.push({ name: "other" });
   const { api, calls } = mockApi([existing]);
-  assert.equal(await synchronize([entry("missing", "ok", 200), entry("new", "dead", 410)], api, run), "updated");
-  const update = calls.find(call => call.method === "PATCH");
+  const counts = await synchronize([entry("missing", "dead", 410), entry("new", "dead", 410)], api, run);
+  assert.equal(counts.updated, 1);
+  assert.equal(counts.created, 1);
+  const update = updates(calls)[0];
   assert.equal(update.route, "/issues/42");
   assert.deepEqual(update.data.assignees, ["JFWooten4", "helper"]);
   assert.deepEqual(update.data.labels, ["broken-links", "other"]);
-  assert.deepEqual(readState(update.data.body).map(row => row.key), ["new"]);
-  assert.ok(!calls.some(call => call.method === "POST" && call.route === "/issues"));
+  assert.equal(readState(update.data.body)[0].status, 410);
+  assert.equal(readState(creates(calls)[0].data.body)[0].key, "new");
 });
 
-test("keeps previously confirmed failures open until recovery is verified", async () => {
-  const prior = reconcile([entry("missing", "dead", 404)], []);
-  const { api, calls } = mockApi([managed(prior)]);
-  assert.equal(await synchronize([entry("missing", "inconclusive", 429, "https://example.com/new")], api, run), "updated");
-  const update = calls.find(call => call.method === "PATCH");
+test("keeps a prior failure open if its replacement cannot be checked", async () => {
+  const { api, calls } = mockApi([managed(row("missing"))]);
+  assert.equal((await synchronize([entry("missing", "inconclusive", 429, "https://example.com/new")], api, run)).updated, 1);
+  const update = updates(calls)[0];
   assert.equal(readState(update.data.body)[0].pending, "https://example.com/new");
   assert.match(update.data.body, /recheck inconclusive/);
   assert.notEqual(update.data.state, "closed");
 });
 
-test("closes the issue after verified recovery or mapping removal, not on an incomplete audit", async () => {
-  const previous = reconcile([entry("missing", "dead", 404), entry("removed", "dead", 410)], []);
-  const existing = managed(previous);
-  const { api, calls } = mockApi([existing]);
+test("closes each recovered or removed link independently and never from an empty audit", async () => {
+  const { api, calls } = mockApi([managed(row("missing")), managed(row("removed"), 43), managed(row("still"), 44)]);
   await assert.rejects(synchronize([], api, run), /Missing completed/);
   assert.equal(calls.length, 0);
-  assert.equal(await synchronize([entry("missing", "ok", 200)], api, run), "closed");
-  assert.deepEqual(calls.find(call => call.method === "PATCH").data, { state: "closed", state_reason: "completed" });
+  const counts = await synchronize([entry("missing", "ok", 200), entry("still", "dead", 404)], api, run);
+  assert.equal(counts.closed, 2);
+  assert.equal(counts.unchanged, 1);
+  assert.deepEqual(updates(calls).map(call => call.route), ["/issues/42", "/issues/43"]);
+  for (const update of updates(calls)) {
+    assert.equal(update.data.state, "closed");
+    assert.equal(update.data.state_reason, "completed");
+    assert.equal(readState(update.data.body)[0].resolved, true);
+  }
 });
 
-test("fails safely for duplicate managed issues and ignores pull requests", async () => {
-  const results = [entry("missing", "dead", 404)];
-  const existing = managed(reconcile(results, []));
+test("manual closure before repair reopens the same issue, never creates another", async () => {
+  const { api, calls } = mockApi([managed(row("missing"), 42, "closed")]);
+  const counts = await synchronize([entry("missing", "dead", 404)], api, run);
+  assert.equal(counts.reopened, 1);
+  assert.equal(creates(calls).length, 0);
+  assert.equal(updates(calls)[0].route, "/issues/42");
+  assert.equal(updates(calls)[0].data.state, "open");
+});
+
+test("manual closure followed by verified recovery records resolution without reopening", async () => {
+  const { api, calls } = mockApi([managed(row("missing"), 42, "closed")]);
+  const counts = await synchronize([entry("missing", "ok", 200)], api, run);
+  assert.equal(counts.closed, 1);
+  assert.equal(creates(calls).length, 0);
+  assert.equal(updates(calls)[0].data.state, "closed");
+  assert.equal(readState(updates(calls)[0].data.body)[0].resolved, true);
+});
+
+test("a new confirmed failure after verified recovery creates a fresh issue only once", async () => {
+  const history = managed({ ...row("missing"), resolved: true }, 42, "closed");
+  const first = mockApi([history]);
+  assert.equal((await synchronize([entry("missing", "dead", 404)], first.api, run)).created, 1);
+  const next = mockApi([history, managed(row("missing"), 43)]);
+  assert.equal((await synchronize([entry("missing", "dead", 404)], next.api, run)).unchanged, 1);
+  assert.equal(creates(next.calls).length, 0);
+});
+
+test("a resolved issue is not reopened on an inconclusive check", async () => {
+  const { api, calls } = mockApi([managed({ ...row("missing"), resolved: true }, 42, "closed")]);
+  await synchronize([entry("missing", "inconclusive", 429)], api, run);
+  assert.ok(calls.every(call => call.method === "GET"));
+});
+
+test("fails safely for duplicate unresolved issues and ignores pull requests", async () => {
+  const existing = managed(row("missing"));
   const { api, calls } = mockApi([existing, { ...existing, number: 43 }]);
-  await assert.rejects(synchronize(results, api, run), /Multiple managed/);
+  await assert.rejects(synchronize([entry("missing", "dead", 404)], api, run), /Multiple active/);
   assert.ok(calls.every(call => call.method === "GET"));
   const prs = mockApi([{ ...existing, pull_request: {} }]);
-  assert.equal(await synchronize(results, prs.api, run), "created");
+  assert.equal((await synchronize([entry("missing", "dead", 404)], prs.api, run)).created, 1);
 });
 
 test("GitHub credentials are sent only to the configured issue API", async () => {
@@ -104,8 +150,8 @@ test("GitHub credentials are sent only to the configured issue API", async () =>
     calls.push({ url, options });
     return { ok: true, status: 200, json: async () => [] };
   });
-  await api("GET", "/issues?state=open");
-  assert.equal(calls[0].url, "https://api.github.com/repos/JFWooten4/JFWooten4/issues?state=open");
+  await api("GET", "/issues?state=all");
+  assert.equal(calls[0].url, "https://api.github.com/repos/JFWooten4/JFWooten4/issues?state=all");
   assert.equal(calls[0].options.headers.Authorization, "Bearer test-token");
   assert.equal(calls[0].options.redirect, "error");
 });
