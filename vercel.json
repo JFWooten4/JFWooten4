@@ -45,11 +45,6 @@
       "source": "/scam/:path*",
       "destination": "/btc/:path*",
       "permanent": true
-    },
-    {
-      "source": "/legal/:path*",
-      "destination": "/law/:path*",
-      "permanent": true
     }
   ],
   "rewrites": [

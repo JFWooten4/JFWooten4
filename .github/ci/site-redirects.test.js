@@ -227,9 +227,6 @@ test("all published static assets have identical root aliases", () => {
   assert.ok(!config.rewrites.some(rule => rule.destination.startsWith("/static/")));
   const fallback = config.rewrites.at(-1);
   assert.deepEqual(fallback, { source: "/:path*", destination: "/api/redirect" });
-  assert.deepEqual(config.redirects.find(rule => rule.source === "/legal/:path*"), {
-    source: "/legal/:path*", destination: "/law/:path*", permanent: true,
-  });
 
   const staticOutput = path.join(site, "static");
   function checkAliases(dir) {
