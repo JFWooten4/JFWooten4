@@ -93,6 +93,17 @@ test("Jekyll publishes every TOML registry and the Minima stylesheet", () => {
   assert.equal(fs.existsSync(path.join(site, "api")), false);
 });
 
+test("Jekyll publishes the public search index", () => {
+  const entries = JSON.parse(readSite("search-index.json"));
+  assert.equal(entries.length, Object.keys(expected).length);
+  assert.deepEqual(Object.fromEntries(entries.map(({ key, href }) => [key, href])), expected);
+  for (const entry of entries) {
+    assert.deepEqual(Object.keys(entry).sort(), ["comment", "href", "key"]);
+    assert.equal(typeof entry.comment, "string");
+  }
+  assert.equal(entries.find(({ key }) => key === "scf-1").comment, "Round 11");
+});
+
 test("every configured shortlink returns its exact HTTP destination", () => {
   for (const [key, destination] of Object.entries(expected)) {
     for (const method of ["GET", "HEAD"]) {
