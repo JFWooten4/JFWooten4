@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - "codex/**"
       - "vercel.json"
       - "Gemfile"
       - "Gemfile.lock"
