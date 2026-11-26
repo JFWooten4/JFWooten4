@@ -45,6 +45,16 @@
       "source": "/scam/:path*",
       "destination": "/btc/:path*",
       "permanent": true
+    },
+    {
+      "source": "/legal/mtgox-business-plan-2013.pdf",
+      "destination": "/law/mtgox-business-plan-2013.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/legal/mtgox-situation-draft-2014.pdf",
+      "destination": "/law/mtgox-situation-draft-2014.pdf",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -79,6 +89,10 @@
     {
       "source": "/legal/:path*",
       "destination": "/static/legal/:path*"
+    },
+    {
+      "source": "/law/:path*",
+      "destination": "/static/law/:path*"
     },
     {
       "source": "/src/:path*",
