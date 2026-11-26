@@ -37,11 +37,7 @@
   ],
   "rewrites": [
     {
-      "source": "/codex",
-      "destination": "/codex/index.html"
-    },
-    {
-      "source": "/codex/:thread",
+      "source": "/codex/:thread*",
       "destination": "/codex/index.html"
     },
     {

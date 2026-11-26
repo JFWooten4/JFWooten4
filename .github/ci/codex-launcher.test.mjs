@@ -9,10 +9,11 @@ const native = `codex://threads/${id}`;
 
 test("serves the Codex launcher before the generic redirect", () => {
   const routes = JSON.parse(fs.readFileSync(new URL("../../vercel.json", import.meta.url), "utf8")).rewrites;
-  assert.deepEqual(routes.slice(0, 2), [
-    { source: "/codex", destination: "/codex/index.html" },
-    { source: "/codex/:thread", destination: "/codex/index.html" },
+  assert.deepEqual(routes.filter(route => route.source.startsWith("/codex")), [
+    { source: "/codex/:thread*", destination: "/codex/index.html" },
   ]);
+  assert.ok(routes.findIndex(route => route.source === "/codex/:thread*") < routes.findIndex(route => route.source === "/:path*"));
+  assert.deepEqual(routes.at(-1), { source: "/:path*", destination: "/api/redirect" });
 });
 
 test("opens a Codex thread from its HTTPS route", () => {
