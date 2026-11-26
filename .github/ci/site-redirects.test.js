@@ -219,7 +219,7 @@ test("published homepage references existing media and matching credits directly
 
   assert.doesNotMatch(html, /["']\/props\/|power-mountian|climbing-pheonix|decievingly-cute|fannign|twiggl/);
   const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
-  assert.ok(!config.redirects.some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
+  assert.ok(!(config.redirects ?? []).some(rule => /^\/(?:props|backgrounds|banners)\//.test(rule.source)));
 });
 
 test("all published static assets have identical root aliases", () => {

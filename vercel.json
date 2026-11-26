@@ -35,13 +35,6 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/scam/:path+",
-      "destination": "/btc/:path+",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/codex",
