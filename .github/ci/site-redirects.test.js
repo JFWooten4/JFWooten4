@@ -253,3 +253,26 @@ test("all published static assets have identical root aliases", () => {
   assert.equal(readSite("ppt/index.html"), readSite("slides/index.html"));
   assert.equal(readSite("search.html"), readSite("search/index.html"));
 });
+
+test("friend gallery routes accept any numeric index without matching image paths", () => {
+  const config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+  const routes = config.rewrites.filter(rule => rule.source.startsWith("/friends/"));
+  assert.deepEqual(routes, [{ source: "/friends/:index([0-9]+)", destination: "/index.html" }]);
+  assert.ok(config.rewrites.indexOf(routes[0]) < config.rewrites.findIndex(rule => rule.source === "/:path*"));
+  const route = new RegExp("^" + routes[0].source.replace(":index", "") + "/?$");
+  const parser = readSite("index.html").match(/function getFriendIndexFromPath\(\) \{[\s\S]*?\n      \}/);
+  assert.ok(parser);
+  function parse(pathname) {
+    return vm.runInNewContext(parser[0] + "\ngetFriendIndexFromPath()", { window: { location: { pathname } } });
+  }
+  for (const value of [0, 3, 4, 12, 123]) {
+    const pathname = "/friends/" + value;
+    assert.ok(route.test(pathname));
+    assert.equal(parse(pathname), value);
+    assert.equal(parse(pathname + "/"), value);
+  }
+  for (const pathname of ["/friends/large/photo.jpg", "/friends/medium/photo.webp", "/friends/small/photo.webp", "/friends/-1", "/friends/1.5", "/friends/12/extra"]) {
+    assert.ok(!route.test(pathname), pathname);
+    assert.equal(parse(pathname), -1, pathname);
+  }
+});

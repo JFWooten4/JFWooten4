@@ -62,19 +62,7 @@
       "destination": "/codex/index.html"
     },
     {
-      "source": "/friends/0",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/friends/1",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/friends/2",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/friends/3",
+      "source": "/friends/:index([0-9]+)",
       "destination": "/index.html"
     },
     {
