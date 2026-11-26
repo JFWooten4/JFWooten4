@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "node api/_generate-redirects.js && bundle exec ruby api/_publish-static.rb",
+  "buildCommand": "node api/_generate-redirects.js && bundle exec ruby api/_publish-static.rb && node api/_pdf-parts.mjs build",
   "outputDirectory": "_site",
   "functions": {
     "api/redirect.js": {

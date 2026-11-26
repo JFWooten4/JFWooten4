@@ -11,3 +11,6 @@
 /assets/main.scss
 /scripts/codex-launcher.mjs
 /codex/index.html
+
+# Build output, including reconstructed PDFs.
+/_site/

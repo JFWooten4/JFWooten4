@@ -275,3 +275,22 @@ test("friend gallery routes accept any numeric index without matching image path
     assert.equal(parse(pathname), -1, pathname);
   }
 });
+
+test("reconstructed PDFs publish identical static and root aliases", () => {
+  const temporary = fs.mkdtempSync(path.join(require("node:os").tmpdir(), "pdf-alias-"));
+  try {
+    const script = path.join(root, "api/_pdf-parts.mjs");
+    const original = path.join(temporary, "original.pdf");
+    const bytes = Buffer.from("%PDF-1.4\nfixture\n");
+    fs.writeFileSync(original, bytes);
+    execFileSync(process.execPath, [script, "split", original, "static/book/fixture.pdf"], { cwd: temporary });
+    execFileSync(process.execPath, [script, "build"], { cwd: temporary });
+    for (const file of ["static/book/fixture.pdf", "book/fixture.pdf"]) {
+      assert.deepEqual(fs.readFileSync(path.join(temporary, "_site", file)), bytes);
+    }
+    execFileSync(process.execPath, [script, "build"], { cwd: temporary });
+    assert.deepEqual(fs.readFileSync(path.join(temporary, "_site/book/fixture.pdf")), bytes);
+  } finally {
+    fs.rmSync(temporary, { recursive: true, force: true });
+  }
+});
