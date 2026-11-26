@@ -37,13 +37,8 @@
   ],
   "redirects": [
     {
-      "source": "/scam",
-      "destination": "/btc",
-      "permanent": true
-    },
-    {
-      "source": "/scam/:path*",
-      "destination": "/btc/:path*",
+      "source": "/scam/:path+",
+      "destination": "/btc/:path+",
       "permanent": true
     }
   ],
