@@ -10,3 +10,6 @@
 /search-index.json
 /assets/main.scss
 /scripts/codex-launcher.mjs
+
+# Build output, including reconstructed PDFs.
+/_site/

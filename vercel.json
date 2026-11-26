@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "node api/_generate-redirects.js && bundle exec jekyll build",
+  "buildCommand": "node api/_generate-redirects.js && bundle exec jekyll build && node _scripts/pdf-parts.mjs build",
   "outputDirectory": "_site",
   "functions": {
     "api/redirect.js": {

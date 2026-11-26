@@ -5,6 +5,8 @@ github_username: JFWooten4
 theme: minima
 includes_dir: api
 exclude:
+  - _pdf-parts
+  - _scripts
   - api
   - Gemfile
   - Gemfile.lock
