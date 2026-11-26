@@ -29,6 +29,8 @@ function generateRedirects(root = path.resolve(__dirname, "..")) {
   fs.mkdirSync(includes, { recursive: true });
   fs.writeFileSync(path.join(includes, "_redirect-lookup.generated.js"), renderLookup(entries));
   fs.writeFileSync(path.join(includes, "_redirect-comments.generated.js"), renderComments(entries));
+  const searchIndex = entries.map(({ key, href, comment }) => ({ key, href, comment }));
+  fs.writeFileSync(path.join(root, "search-index.json"), JSON.stringify(searchIndex) + "\n");
   return entries.length;
 }
 
