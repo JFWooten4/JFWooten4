@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: "22"
       - name: Test redirects, Codex launcher, and link checker
-        run: node --test .github/ci/redirects.test.js .github/ci/codex-launcher.test.mjs .github/ci/check-redirect-links.test.js .github/ci/search-copy-toast.test.js .github/ci/redirect-link-issues.test.js
+        run: node --test .github/ci/redirects.test.js .github/ci/codex-launcher.test.mjs .github/ci/check-redirect-links.test.js .github/ci/search-copy-toast.test.js .github/ci/redirect-link-issues.test.js .github/ci/redirect-editor.test.js
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"

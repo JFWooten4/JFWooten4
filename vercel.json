@@ -45,6 +45,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/redirect-editor",
+      "destination": "/api/redirect-edit"
+    },
+    {
       "source": "/:path*",
       "destination": "/api/redirect"
     }
