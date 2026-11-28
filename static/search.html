@@ -121,7 +121,7 @@ permalink: /search/
     .controls {
       display: grid;
       gap: 12px;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr) auto auto;
       width: min(60vw, 100%);
       margin: 0 auto;
     }
@@ -158,6 +158,28 @@ permalink: /search/
       transform: translateY(-1px);
       box-shadow: 0 10px 20px rgba(244, 180, 60, 0.25);
     }
+
+    #redirect-dialog {
+      width: min(520px, calc(100vw - 32px)); padding: 24px;
+      border: 1px solid var(--stroke); border-radius: 18px;
+      background: #101b2d; color: var(--ink);
+    }
+    #redirect-dialog::backdrop { background: rgba(0, 0, 0, 0.65); }
+    #redirect-dialog form { display: grid; gap: 12px; }
+    #redirect-dialog [hidden] { display: none !important; }
+    #redirect-dialog label { display: grid; gap: 6px; }
+    #redirect-dialog input {
+      width: 100%; padding: 10px; border: 1px solid var(--stroke);
+      border-radius: 8px; background: #0b0f1a; color: var(--ink); font: inherit;
+    }
+    #redirect-dialog button, #redirect-sign-in {
+      padding: 10px 14px; border-radius: 8px; border: 1px solid var(--stroke);
+      background: var(--accent); color: #1a1406; font: inherit; cursor: pointer;
+    }
+    #redirect-dialog button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #redirect-preview, #redirect-commit { overflow-wrap: anywhere; color: var(--accent-2); }
+    #redirect-editor-status { color: var(--muted); }
+    #redirect-dialog .dialog-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
     .meta {
       display: flex;
@@ -357,6 +379,7 @@ permalink: /search/
       <div class="controls">
         <input id="query" type="text" placeholder="Search by key, link, or topic" autocomplete="off">
         <button id="open-all" type="button">Open All</button>
+        <button id="new-redirect" type="button">+ New Redirect</button>
       </div>
       <div class="meta">
         <span>Total: <strong id="count">0</strong></span>
@@ -367,6 +390,24 @@ permalink: /search/
       <div id="empty" class="empty" hidden>No matches. Try a different query.</div>
     </section>
   </main>
+  <dialog id="redirect-dialog" aria-labelledby="redirect-dialog-title">
+    <h2 id="redirect-dialog-title">New Redirect</h2>
+    <p id="redirect-auth-result" role="status"></p>
+    <p id="redirect-editor-status" role="status" aria-live="polite"></p>
+    <a id="redirect-sign-in" href="/redirect-editor?action=login" hidden>Sign in with GitHub</a>
+    <form id="redirect-form" hidden>
+      <label>Shortlink key<input id="redirect-key" required maxlength="80" autocomplete="off" spellcheck="false"></label>
+      <label>Destination URL<input id="redirect-href" required maxlength="2048" autocomplete="url"></label>
+      <label>Comment (optional)<input id="redirect-comment" maxlength="240"></label>
+      <div>Preview: <output id="redirect-preview" for="redirect-key">Enter a shortlink key</output></div>
+      <button id="redirect-save" type="submit" disabled>Save to main</button>
+    </form>
+    <p><a id="redirect-commit" target="_blank" rel="noopener noreferrer" hidden>View commit on GitHub</a></p>
+    <div class="dialog-actions">
+      <button id="redirect-close" type="button">Close</button>
+      <button id="redirect-sign-out" type="button" hidden>Sign out</button>
+    </div>
+  </dialog>
   <div id="copy-toast" class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <script id="redirect-registry">
@@ -570,7 +611,7 @@ permalink: /search/
           "<button id=\"retry\" type=\"button\">Retry Open All</button>" +
           "<ul id=\"links\"></ul>" +
           "<script>" +
-          "var entries=" + JSON.stringify(visibleEntries) + ";" +
+          "var entries=" + JSON.stringify(visibleEntries).replace(/[<>&\u2028\u2029]/g, function (character) { return "\\u" + character.charCodeAt(0).toString(16).padStart(4, "0"); }) + ";" +
           "var statusEl=document.getElementById('status');" +
           "var linksEl=document.getElementById('links');" +
           "function renderLinks(){" +
@@ -628,5 +669,6 @@ permalink: /search/
 
     initializeSearch(buildEntries());
   </script>
+  <script src="/search-editor.js" defer></script>
 </body>
 </html>
