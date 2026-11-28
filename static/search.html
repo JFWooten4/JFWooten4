@@ -650,9 +650,7 @@ permalink: /search/
           "renderLinks();" +
           "launchAll();" +
           "<\/script>" +
-          "  <script src="/search-editor.js" defer></script>
-</body>
-</html>"
+          "</body></html>"
         );
         launcher.document.close();
         setStatus("Opened launcher for " + visibleEntries.length + " result" + (visibleEntries.length === 1 ? "" : "s"));
@@ -671,5 +669,6 @@ permalink: /search/
 
     initializeSearch(buildEntries());
   </script>
+  <script src="/search-editor.js" defer></script>
 </body>
 </html>
